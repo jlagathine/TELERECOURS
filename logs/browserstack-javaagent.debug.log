@@ -1,0 +1,1200 @@
+18:19:59.025 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.16.1
+18:19:59.029 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+18:19:59.313 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+18:19:59.314 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+18:19:59.315 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+18:19:59.316 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+18:26:03.016 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+18:26:03.019 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+18:26:03.255 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+18:26:03.256 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+18:26:03.256 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+18:26:03.258 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+09:42:44.768 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+09:42:44.768 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+09:42:45.018 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+09:42:45.020 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+09:42:45.020 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+09:42:45.021 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+09:43:38.605 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+09:43:38.612 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+09:43:38.846 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+09:43:38.848 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+09:43:38.848 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+09:43:38.849 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:06:48.878 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:06:48.885 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:06:49.111 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:06:49.114 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:06:49.114 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:06:49.115 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:12:57.056 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:12:57.060 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:12:57.284 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:12:57.285 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:12:57.286 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:12:57.287 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:35:28.706 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:35:28.709 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:35:28.968 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:35:28.970 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:35:28.970 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:35:28.971 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+12:14:30.334 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+12:14:30.339 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+12:14:30.574 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:14:30.576 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+12:14:30.576 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+12:14:30.577 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+12:16:55.607 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+12:16:55.610 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+12:16:55.842 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+12:16:55.844 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+12:16:55.844 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+12:16:55.845 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:07:35.047 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+14:07:35.051 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+14:07:35.275 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:07:35.276 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+14:07:35.276 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:07:35.278 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:10:57.819 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+14:10:57.822 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+14:10:58.036 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:10:58.036 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+14:10:58.036 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:10:58.036 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:12:20.068 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+14:12:20.072 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+14:12:20.320 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:12:20.321 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+14:12:20.322 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:12:20.323 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:47:18.112 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+17:47:18.117 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+17:47:18.342 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:47:18.344 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+17:47:18.344 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:47:18.345 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:50:32.555 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+17:50:32.559 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+17:50:32.794 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:50:32.795 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+17:50:32.795 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:50:32.797 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:53:42.035 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+17:53:42.038 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+17:53:42.269 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:53:42.271 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+17:53:42.271 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:53:42.273 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:03:04.940 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:03:04.943 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:03:05.167 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:03:05.169 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:03:05.169 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:03:05.170 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:51:30.921 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:51:30.925 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:51:31.159 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:51:31.161 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:51:31.161 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:51:31.162 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:47:21.927 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+16:47:21.931 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+16:47:22.171 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:47:22.173 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+16:47:22.173 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:47:22.174 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:13:02.857 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+17:13:02.861 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+17:13:03.083 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:13:03.084 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+17:13:03.084 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:13:03.085 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+18:02:26.963 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+18:02:26.966 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+18:02:27.177 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+18:02:27.178 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+18:02:27.179 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+18:02:27.180 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+18:13:10.111 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+18:13:10.116 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+18:13:10.346 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+18:13:10.348 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+18:13:10.349 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+18:13:10.350 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+18:36:58.069 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+18:36:58.069 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+18:36:58.287 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+18:36:58.288 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+18:36:58.288 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+18:36:58.289 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+18:43:31.726 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+18:43:31.731 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+18:43:31.950 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+18:43:31.952 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+18:43:31.952 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+18:43:31.953 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+09:59:07.631 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+09:59:07.647 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+09:59:07.869 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+09:59:07.871 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+09:59:07.871 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+09:59:07.872 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:00:51.454 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+10:00:51.458 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+10:00:51.692 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:00:51.695 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+10:00:51.695 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:00:51.697 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:05:28.040 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+10:05:28.046 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+10:05:28.273 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:05:28.275 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+10:05:28.275 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:05:28.276 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:11:14.364 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+10:11:14.371 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+10:11:14.598 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:11:14.600 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+10:11:14.600 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:11:14.601 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:12:05.275 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+10:12:05.279 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+10:12:05.498 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:12:05.500 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+10:12:05.500 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:12:05.502 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:13:39.508 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+10:13:39.512 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+10:13:39.747 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:13:39.749 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+10:13:39.749 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:13:39.750 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:19:22.468 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+10:19:22.472 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+10:19:22.696 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:19:22.698 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+10:19:22.698 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:19:22.699 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:20:12.683 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+10:20:12.688 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+10:20:12.923 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:20:12.924 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+10:20:12.925 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:20:12.926 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:21:00.777 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+10:21:00.782 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+10:21:01.023 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:21:01.024 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+10:21:01.024 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:21:01.025 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:23:02.495 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+10:23:02.499 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+10:23:02.716 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:23:02.717 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+10:23:02.717 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:23:02.718 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:59:13.253 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:59:13.253 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:59:13.468 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:59:13.468 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:59:13.468 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:59:13.468 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:45:29.436 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+16:45:29.440 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+16:45:29.660 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:45:29.660 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+16:45:29.660 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:45:29.660 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:46:59.369 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+16:46:59.373 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+16:46:59.599 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:46:59.600 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+16:46:59.601 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:46:59.602 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:47:51.722 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+16:47:51.725 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+16:47:51.952 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:47:51.954 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+16:47:51.954 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:47:51.955 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:58:34.132 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+16:58:34.135 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+16:58:34.348 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:58:34.349 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+16:58:34.350 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:58:34.351 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:59:19.995 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+16:59:19.998 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+16:59:20.221 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:59:20.223 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+16:59:20.223 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:59:20.224 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:00:14.908 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+17:00:14.916 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+17:00:15.139 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:00:15.140 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+17:00:15.140 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:00:15.141 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:08:19.908 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+17:08:19.908 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+17:08:20.139 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:08:20.140 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+17:08:20.140 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:08:20.142 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:24:22.146 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+17:24:22.150 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+17:24:22.369 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:24:22.370 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+17:24:22.371 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:24:22.372 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:28:06.539 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+17:28:06.548 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+17:28:06.763 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:28:06.764 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+17:28:06.765 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:28:06.766 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+10:51:10.615 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+10:51:10.621 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+10:51:10.859 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+10:51:10.860 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+10:51:10.860 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+10:51:10.861 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:01:40.573 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:01:40.576 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:01:40.789 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:01:40.790 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:01:40.790 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:01:40.791 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:11:18.580 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:11:18.583 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:11:18.797 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:11:18.799 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:11:18.799 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:11:18.801 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:13:16.684 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:13:16.688 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:13:16.901 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:13:16.902 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:13:16.903 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:13:16.905 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:15:03.335 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:15:03.341 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:15:03.553 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:15:03.554 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:15:03.555 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:15:03.556 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:20:26.385 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:20:26.385 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:20:26.631 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:20:26.632 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:20:26.632 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:20:26.633 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:25:57.004 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:25:57.012 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:25:57.248 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:25:57.249 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:25:57.249 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:25:57.251 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:29:08.132 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:29:08.135 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:29:08.369 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:29:08.370 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:29:08.370 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:29:08.371 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:36:58.425 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:36:58.428 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:36:58.647 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:36:58.648 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:36:58.648 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:36:58.650 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:41:25.607 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:41:25.611 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:41:25.833 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:41:25.835 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:41:25.835 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:41:25.835 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+11:42:35.737 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+11:42:35.742 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+11:42:35.962 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+11:42:35.964 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+11:42:35.964 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+11:42:35.965 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:40:02.566 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+14:40:02.573 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+14:40:02.811 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:40:02.813 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+14:40:02.813 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:40:02.814 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:41:41.862 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+14:41:41.865 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+14:41:42.087 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:41:42.089 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+14:41:42.089 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:41:42.090 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:42:23.762 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+14:42:23.765 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+14:42:23.983 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:42:23.984 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+14:42:23.984 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:42:23.986 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:46:59.490 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+14:46:59.494 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+14:46:59.721 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:46:59.723 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+14:46:59.723 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:46:59.724 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:02:33.208 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:02:33.211 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:02:33.426 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:02:33.428 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:02:33.428 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:02:33.429 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:07:00.880 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:07:00.883 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:07:01.101 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:07:01.102 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:07:01.103 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:07:01.104 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:11:21.974 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:11:21.978 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:11:22.198 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:11:22.200 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:11:22.200 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:11:22.201 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:20:10.641 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:20:10.644 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:20:10.861 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:20:10.863 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:20:10.864 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:20:10.866 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:22:58.009 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:22:58.013 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:22:58.218 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:22:58.219 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:22:58.219 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:22:58.220 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:32:49.966 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:32:49.969 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:32:50.190 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:32:50.191 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:32:50.191 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:32:50.193 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:37:12.417 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:37:12.421 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:37:12.638 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:37:12.639 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:37:12.640 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:37:12.642 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:48:13.318 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:48:13.323 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:48:13.534 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:48:13.536 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:48:13.536 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:48:13.537 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:50:26.989 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:50:26.992 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:50:27.203 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:50:27.204 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:50:27.204 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:50:27.205 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:52:46.991 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:52:46.995 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:52:47.216 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:52:47.217 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:52:47.217 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:52:47.218 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+16:49:26.018 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+16:49:26.024 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+16:49:26.267 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+16:49:26.268 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+16:49:26.269 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+16:49:26.269 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:25:16.409 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+17:25:16.413 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+17:25:16.622 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:25:16.623 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+17:25:16.623 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:25:16.624 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:42:02.253 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+17:42:02.260 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+17:42:02.481 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:42:02.482 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+17:42:02.482 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:42:02.484 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:50:38.969 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+17:50:38.977 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+17:50:39.217 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:50:39.218 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+17:50:39.219 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:50:39.220 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+17:59:30.184 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+17:59:30.184 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+17:59:30.408 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+17:59:30.409 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+17:59:30.410 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+17:59:30.411 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+18:00:08.264 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+18:00:08.272 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+18:00:08.500 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+18:00:08.502 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+18:00:08.502 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+18:00:08.503 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+14:59:44.321 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+14:59:44.325 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+14:59:44.553 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+14:59:44.555 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+14:59:44.555 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+14:59:44.556 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:19:08.191 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:19:08.194 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:19:08.418 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:19:08.419 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:19:08.420 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:19:08.421 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:21:12.085 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:21:12.089 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:21:12.304 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:21:12.306 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:21:12.306 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:21:12.308 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:23:46.309 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:23:46.313 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:23:46.536 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:23:46.537 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:23:46.537 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:23:46.539 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:25:47.642 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:25:47.646 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:25:47.869 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:25:47.871 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:25:47.872 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:25:47.874 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+
+15:41:12.043 [main] INFO  c.browserstack.BrowserStackJavaAgent - Selenium version detected - 4.18.1
+15:41:12.047 [main] INFO  c.browserstack.BrowserStackJavaAgent - Appium version detected - 
+15:41:12.267 [main] DEBUG c.b.config.BrowserStackConfig - Cli Config passed - {}
+15:41:12.268 [main] INFO  c.browserstack.utils.UtilityMethods - BrowserStack Yml Detected : C:\browserstack.yml
+15:41:12.268 [main] ERROR c.b.config.BrowserStackConfig - [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+15:41:12.269 [main] ERROR c.browserstack.BrowserStackJavaAgent - Something went wrong - java.lang.RuntimeException: [Invalid Path] Config file does not exist at any parent directory of C:\Users\jagathine\eclipse-workspace\TELERECOURS. Please include a browserstack.yml/browserstack.yaml file containing configuration for tests.
+	at com.browserstack.config.BrowserStackConfig.getInstance(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.b(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.a(Unknown Source)
+	at com.browserstack.BrowserStackJavaAgent.premain(Unknown Source)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndStartAgent(InstrumentationImpl.java:491)
+	at java.instrument/sun.instrument.InstrumentationImpl.loadClassAndCallPremain(InstrumentationImpl.java:503)
+

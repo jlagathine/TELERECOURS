@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="false" name="Suite">
+	<!--parameter name="cas" value="Après les test1 et test2"/-->
+	
+	  	<test name ="MyTest1">
+	    	<classes>
+	      		<class name="testfonction.Annotationtest">
+	      			<methods>
+	  					<include name = "beforeTest1Tes2"/>
+	  					<include name = "test1"/>
+	  					<include name = "afterMethod1"/>
+	  					<include name = "test2"/>
+	  					<include name = "afterMethod1"/>
+	      			</methods>
+	      		</class>
+	    	</classes>
+	  	</test> 
+	  	<parameter name="cas" value="Après le test3"/>
+	  	
+	  	<test name ="MyTest2">
+	    	<classes>
+	      		<class name="testfonction.Annotationtest">
+	      			<methods>
+	      				<include name = "beforeTest2"/>
+	      				<include name = "test3"/>
+	      				<parameter name="cas1" value="Après les test3"/>
+	      				<!--include name = "afterMethod1"/-->
+	      			</methods>
+	      		</class>
+	    	</classes>
+	  	</test> 
+	</suite> 

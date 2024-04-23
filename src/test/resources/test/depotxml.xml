@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="false" name="Suite">
+	  	<test name ="MyTest1">
+	    	<classes>
+	      		<class name="Requete.depotReq">
+	      			<methods>
+	      				<!--include name = "choixSiteTACAA"/-->
+	  					<include name = "depotReqCAA"/>
+	  					<include name = "depotReqTA"/>
+	      			</methods>
+	      		</class>
+	    	</classes>
+	  	</test> 
+	  	<test name ="MyTest2">
+	    	<classes>
+	      		<class name="Requete.depotReq">
+	      			<methods>
+	      				<include name = "depotReqCE"/>
+	      			</methods>
+	      		</class>
+	    	</classes>
+	  	</test> 
+</suite> 

@@ -31,7 +31,7 @@ public class Navigation_Sk_Ouverture_Dossier {
 			
 			//Indiquer le numéro du dossier
 			Keyboard.maStringToKeyboard(numDoc);
-			System.out.println("nNuméro de dossier renseigné ...."+MesFonctions.extractCurrentHeure()+"\r");
+			System.out.println("Numéro de dossier renseigné ...."+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Valider le choix du dossier
 			Thread.sleep(200);
@@ -39,7 +39,7 @@ public class Navigation_Sk_Ouverture_Dossier {
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 			coords = MesFonctions.waitObject(fileImage);
 			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
-			System.out.println("Choix du dossier valider ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			System.out.println("Choix du dossier validé ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			Thread.sleep(300);
 			
 			break;
@@ -62,7 +62,7 @@ public class Navigation_Sk_Ouverture_Dossier {
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 			coords = MesFonctions.waitObject(fileImage);
 			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
-			System.out.println("Choix du dossier valider ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			System.out.println("Choix du dossier validé ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			break;
 			
@@ -84,7 +84,7 @@ public class Navigation_Sk_Ouverture_Dossier {
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 			coords = MesFonctions.waitObject(fileImage);
 			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
-			System.out.println("Choix du dossier valider ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			System.out.println("Choix du dossier validé ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			break;
 

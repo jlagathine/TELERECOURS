@@ -49,6 +49,7 @@ public class JdbcClass {
 		String URL = "jdbc:oracle:thin:"+name+"/"+mdp+"@192.168.5.91:1530/mtl1_trr";//URL ( connect via SID ): jdbc:oracle:thin:"User"/"password"@{HOST}[:{PORT}]:{DB}
 //		String URL = "jdbc:oracle:thin:"+name+"/"+mdp+"@192.168.5.90:1530/ric1_trr";
 		String URL1 = "jdbc:oracle:thin:"+name+"/"+mdp+"@192.168.5.93:1530/TRINT1";
+//		String URL1 = "jdbc:oracle:thin:"+name+"/"+mdp+"@192.168.5.92:1530/TRINT1";
 		
 		//Chargement de la classe de driver
 		DriverManager.registerDriver(new oracle.jdbc.OracleDriver());//java Driver Class: oracle.jdbc.OracleDriver
@@ -90,14 +91,16 @@ public class JdbcClass {
 	}
 	
 	//SKIPPER
-	public static boolean conDBSK (String SID) throws SQLException {
+	public static boolean conDBSK (String SID, String env, String id, String mdp) throws SQLException {
 		//URL de la base de données
-		String URL = "jdbc:oracle:thin:lb/lb@192.168.13.134:1526/"+SID;//URL ( connect via SID ): jdbc:oracle:thin:"User"/"password"@{HOST}[:{PORT}]:{DB}
+		String URL = "jdbc:oracle:thin:"+id+"/"+mdp+"@192.168.13.134:1526/"+SID;//URL ( connect via SID ): jdbc:oracle:thin:"User"/"password"@{HOST}[:{PORT}]:{DB}
+		String URL1 = "jdbc:oracle:thin:"+id+"/"+mdp+"@192.168.13.20:1526/"+SID;
 		
 		//Chargement de la classe de driver
 		DriverManager.registerDriver(new oracle.jdbc.OracleDriver());//java Driver Class: oracle.jdbc.OracleDriver
 		
 		//Création de l'objet de statement
+		if(env=="rec") {
 		try {
 		con1 = DriverManager.getConnection(URL);
 		boolean verif = con1 != null;
@@ -108,6 +111,19 @@ public class JdbcClass {
 		}catch(Exception e) {
 			System.out.println("Non connecté à BDD RECETTE SKIPPER");
 			e.printStackTrace();
+			}
+		}else {
+			try {
+				con1 = DriverManager.getConnection(URL1);
+				boolean verif = con1 != null;
+				if (verif==true) {
+				    System.out.println("Connecté à BDD INTEGRATION SKIPPER");
+				    return verif;
+					}
+				}catch(Exception e) {
+					System.out.println("Non connecté à BDD INTEGRATION SKIPPER");
+					e.printStackTrace();
+					}
 		}
 		return false;
 		
@@ -970,6 +986,7 @@ public class JdbcClass {
 				while(rs1.next()) {
 					//Vérification du numéro de transaction ID dans la table TR 
 					transId = rs1.getString(1).trim();
+					System.out.println("Le transactionId de la requête est : "+transId);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -1114,7 +1131,7 @@ public class JdbcClass {
 			 stmt = con.createStatement();
 				
 				//Requête SQL
-				query = "SELECT DISTINCT (SELECT E.MES_ID FROM EVT E WHERE E.REQ_ID ='"+req+"' AND E.MES_ID = 'RECDPI') AS mesure FROM EVT";
+				query = "SELECT DISTINCT (SELECT E.MES_ID FROM EVT E WHERE E.REQ_ID ='"+req+"' AND E.MES_ID = 'RECDPA') AS mesure FROM EVT";
 				try {
 					//Exécution de la requête de type SELECT -> executeQuery
 					rs = stmt.executeQuery(query);
@@ -1147,5 +1164,187 @@ public class JdbcClass {
 			return null;
 		}
 	 
+	 public static String sqlVerification_Recepetion_Memoire(String req, String jur) throws SQLException {
+			//Création de la méthode statement (méthode pour exécuter les requêtes)
+		 if(jur=="TA" || jur=="CAA") {
+			stmt = con.createStatement();
+					//Requête SQL
+					query = "SELECT DISTINCT (SELECT E.MES_ID FROM EVT E WHERE E.REQ_ID ='"+req+"' AND E.MES_ID = 'RECMEM') AS mesure FROM EVT";
+					try {
+						//Exécution de la requête de type SELECT -> executeQuery
+						rs = stmt.executeQuery(query);
+						//Affichage des résultats
+						while(rs.next()) {
+							while(rs.getString(1)==null) {
+								System.out.println("aucune information disponible....."+MesFonctions.extractCurrentHeure()+"\r");
+								Thread.sleep(2000);
+								rs = stmt.executeQuery(query);
+									if(rs.next()) {
+									System.out.println("CODE_RETOUR=0");
+									}
+									else {
+										System.err.println("CODE_RETOUR=-1");
+										}
+									}
+									System.out.println("La ligne est ajoutée, la requête a été créée : "+rs.getString(1)+"....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+								}
+							} catch (Exception e) {
+							e.printStackTrace();
+							}
+					
+					try {
+						//Fermeture de l'objet d'exécution
+						stmt.close();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+		 	}else {
+				 stmt = con.createStatement();
+					
+					//Requête SQL
+				 	query = "SELECT DISTINCT (SELECT E.MES_ID FROM EVT E WHERE E.REQ_ID ='"+req+"' AND E.MES_ID = 'RECPMEMO') AS mesure FROM EVT";
+					try {
+						//Exécution de la requête de type SELECT -> executeQuery
+						rs = stmt.executeQuery(query);
+						//Affichage des résultats
+						while(rs.next()) {
+							while(rs.getString(1)==null) {
+								System.out.println("aucune information disponible....."+MesFonctions.extractCurrentHeure()+"\r");
+								Thread.sleep(2000);
+								rs = stmt.executeQuery(query);
+								if(rs.next()) {
+									System.out.println("CODE_RETOUR=0");
+								}
+								else {
+									System.err.println("CODE_RETOUR=-1");
+								}
+							}
+							System.out.println("La ligne est ajoutée, la requête a été créée : "+rs.getString(1)+"....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					try {
+						//Fermeture de l'objet d'exécution
+						stmt.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+			 }
+		return null;
+	 }
+	 
+	 public static String sqlVerification_Enregistrement_PAM(String req, String nom_fichier) throws SQLException {
+			//Création de la méthode statement (méthode pour exécuter les requêtes)
+			stmt = con1.createStatement();
+					//Requête SQL
+					query = "SELECT DISTINCT (SELECT DISTINCT P.PJ_ID FROM EVT E, PJ P WHERE E.EVT_ID = P.EVT_ID AND E.REQ_ID = '"+req+"' AND P.PJ_ID LIKE '%"+nom_fichier+"%') AS PIECE FROM PJ";
+					try {
+						//Exécution de la requête de type SELECT -> executeQuery
+						rs = stmt.executeQuery(query);
+						//Affichage des résultats
+						while(rs.next()) {
+							while(rs.getString(1)==null) {
+								System.out.println("aucune information disponible....."+MesFonctions.extractCurrentHeure()+"\r");
+								Thread.sleep(2000);
+								rs = stmt.executeQuery(query);
+									if(rs.next()) {
+									System.out.println("CODE_RETOUR=0");
+									}
+									else {
+										System.err.println("CODE_RETOUR=-1");
+										}
+									}
+									System.out.println("La ligne est ajoutée, la requête a été créée : "+rs.getString(1)+"....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+								}
+							} catch (Exception e) {
+							e.printStackTrace();
+							}
+					
+					try {
+						//Fermeture de l'objet d'exécution
+						stmt.close();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+		return null;
+	 }
+	 
+	 public static List<String> listActeurInactif_CNDA() throws SQLException{
+		 stmt = con1.createStatement(); 
+		 query = "SELECT A.ACT_NOM\r\n"
+		 		+ "FROM ANN_AVO A\r\n"
+		 		+ "WHERE A.ANN_ACTIF = 1\r\n"
+		 		+ "ORDER BY 1 ASC";
+		 List<String> lst = new ArrayList<>();
+		 try {
+		 rs = stmt.executeQuery(query);
+		 while(rs.next()) {
+				lst.add(rs.getString(1));
+		 	}
+		 }catch (Exception e) {
+				e.printStackTrace();
+				}
+		 
+		 return lst;
+	 }
+	 
+	 public static List<String> listActeurActif_CNDA() throws SQLException{
+		 stmt = con1.createStatement(); 
+		 query = "SELECT A.ACT_NOM\r\n"
+		 		+ "FROM ANN_AVO A\r\n"
+		 		+ "WHERE A.ANN_ACTIF = 0\r\n"
+		 		+ "ORDER BY 1 ASC";
+		 List<String> lst = new ArrayList<>();
+		 try {
+		 rs = stmt.executeQuery(query);
+		 while(rs.next()) {
+				lst.add(rs.getString(1));
+		 	}
+		 }catch (Exception e) {
+				e.printStackTrace();
+				}
+		 
+		 return lst;
+	 }
+	 
+	 public static List<String> listActeurInactif_CNDA1() throws SQLException{
+		 stmt = con1.createStatement(); 
+		 query = "SELECT A.ACT_NOM || ' '|| A.IND_PRENOM AS \"Nom\"\r\n"
+		 		+ "FROM ANN_AVO A\r\n"
+		 		+ "WHERE A.ANN_ACTIF = 1\r\n"
+		 		+ "ORDER BY 1 ASC";
+		 List<String> lst = new ArrayList<>();
+		 try {
+		 rs = stmt.executeQuery(query);
+		 while(rs.next()) {
+				lst.add(rs.getString(1));
+		 	}
+		 }catch (Exception e) {
+				e.printStackTrace();
+				}
+		 
+		 return lst;
+	 }
+	 
+	 public static List<String> listActeurActif_CNDA1() throws SQLException{
+		 stmt = con1.createStatement(); 
+		 query = "SELECT A.ACT_NOM || ' '|| A.IND_PRENOM AS \"Nom\"\r\n"
+		 		+ "FROM ANN_AVO A\r\n"
+		 		+ "WHERE A.ANN_ACTIF = 0\r\n"
+		 		+ "ORDER BY 1 ASC";
+		 List<String> lst = new ArrayList<>();
+		 try {
+		 rs = stmt.executeQuery(query);
+		 while(rs.next()) {
+				lst.add(rs.getString(1));
+		 	}
+		 }catch (Exception e) {
+				e.printStackTrace();
+				}
+		 
+		 return lst;
+	 }
 }
 

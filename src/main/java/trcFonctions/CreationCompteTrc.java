@@ -504,7 +504,7 @@ public class CreationCompteTrc {
 		 name = nom;
 		 MesFonctions.objet(driver,  myXpath).clear();
 		 MesFonctions.objet(driver,  myXpath).sendKeys(name);
-		 System.out.println("Nom Ok");
+		 System.out.println("Nom Ok"); 
 		 
 			//Mail
 		 myXpath = "//input[@id='email']";
@@ -541,10 +541,19 @@ public class CreationCompteTrc {
 		 System.out.println("Soumission du formulaire......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		 
 		 //Confirmation
+		 myXpath = "//button//span[contains(text(),\"Enregistrer quand même\")]";// Enregistrer quand même ; Confirmer
+		 MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		 MesFonctions.objet(driver,  myXpath).click();
+		 
 		 myXpath = "//button//span[contains(text(),'Confirmer')]";
 		 MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		 
 		 MesFonctions.objet(driver,  myXpath).click();
+		 
+		 myXpath = "//div[@role='alert']//span[contains(text(),\"Veuillez en choisir une autre.\")]";
+		 boolean verif = false;
+		 if(MesFonctions.isElementPresent(driver, myXpath, verif)) {
+			 throw new Exception(MesFonctions.objet(driver, myXpath).getText());
+		 }
 		 
 //		 myXpath = "//button//span[contains(text()=\"Modifications enregistrées\")]";
 //		 mesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
@@ -553,21 +562,22 @@ public class CreationCompteTrc {
 		 onglet =  MesFonctions.getWindow(driver, 1);
 		 driver.switchTo().window(onglet);
 		 String url = driver.getCurrentUrl();
-		 boolean verif = url.contains("int1");
-		 if(!verif) {
-			 driver.get("https://mail.recette.conseil-etat.fr/");
-			 System.out.println("URL sélectionnée : "+url);
-		 }
-		 else {
-			 driver.get("https://mail.int1.conseil-etat.fr/");
-			 System.out.println("URL sélectionnée : "+url);
-		 }
+		 verif = url.contains("int1");
+			 if(!verif) {
+				 driver.get("https://mail.recette.conseil-etat.fr/");
+				 System.out.println("URL sélectionnée : "+url);
+				 System.out.println("Mail sélectionné : "+mail);
+			 }
+			 else {
+				 driver.get("https://mail.int1.conseil-etat.fr/");
+				 System.out.println("URL sélectionnée : "+url);
+				 System.out.println("Mail sélectionné : "+mail);
+			 }
 
 		 myXpath = "//a[@class='navbar-brand']";
 		 MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 		 
-		 myXpath = "//div[@class='msglist-message row ng-scope']//child::span[text()=\"[Télérecours citoyens] Confirmez votre nouvelle adresse de messagerie\"]"
-		 		+ "//parent::div//preceding-sibling::div[@class='col-md-3 col-sm-4 ng-binding']//child::div[@class='ng-binding ng-scope' and contains(text(),'"+mail+"')]";
+		 myXpath = "//div[@class='msglist-message row ng-scope']//child::span[text()=\"[Télérecours citoyens] Confirmez votre nouvelle adresse de messagerie\"]//parent::div//preceding-sibling::div[@class='col-md-3 col-sm-4 ng-binding']//child::div[@class='ng-binding ng-scope' and contains(text(),'"+mail+"')]";
 //		 String myXpath2 = "//span[text()=\"[Télérecours citoyens] Confirmez votre nouvelle adresse de messagerie\"]";
 		 
 		 verif = false;
@@ -591,7 +601,6 @@ public class CreationCompteTrc {
 		 MesFonctions.objet(driver,  myXpath).click();
 //		 driver.switchTo().parentFrame();
 		 System.out.println("le compte est activé......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-		 Thread.sleep(2000);
 		 
 		 //Se connecter
 		 onglet =  MesFonctions.getWindow(driver, 2);
@@ -623,7 +632,7 @@ public class CreationCompteTrc {
 		 //Lien réinitialisation du mot de passe
 		 String myXpath = "//a[contains(text(),\"passe\")]";
 		 MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		 Thread.sleep(1200);
+		 Thread.sleep(100);
 		 ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,  myXpath));
 		 MesFonctions.objet(driver,  myXpath).click();
 //		 mesFonctions.objet(driver,  myXpath).click();//pas de clic réalisé---à corriger

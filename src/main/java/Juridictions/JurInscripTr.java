@@ -3,7 +3,6 @@ package Juridictions;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import fonctionnalites.MicroFonctions;
 import lesFonctions.MesFonctions;
@@ -79,7 +78,7 @@ public class JurInscripTr {
 			String mail = MicroFonctions.formulaireTACAA(driver);
 
 			//Mail
-			MicroFonctions.mailYop(driver, mail);
+			MicroFonctions.mailYop(driver, mail); 
 			
 			//Récupération de ses codes
 			MicroFonctions.Inscription(driver);

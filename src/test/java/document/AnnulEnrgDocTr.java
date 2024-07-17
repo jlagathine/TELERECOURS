@@ -29,6 +29,7 @@ public class AnnulEnrgDocTr {
 	   String mdp;
 	   String choixJur;
 	   String dossier;
+	   String env;
 	   
 	   @BeforeSuite
 	   public void InitialisationDoc () {
@@ -40,7 +41,7 @@ public class AnnulEnrgDocTr {
 	   @BeforeMethod
 	   public void connexionTr() throws Throwable  {
 		  choixJur = "Conseil"; //Préciser le dossier
-		  JurDocTr.maJuridiction(driver, choixJur);
+		  JurDocTr.maJuridiction(driver, choixJur, env);
 	   }
 	   
 	   @Test
@@ -50,7 +51,7 @@ public class AnnulEnrgDocTr {
 		JurDocTr.docDepotMem(driver, choixJur, dossier);
 		Thread.sleep(2000);
 		
-		String doc = JurDocTr.docEnregMem(driver, choixJur, dossier);
+		String doc = JurDocTr.docEnregMem(driver, choixJur, dossier, env);
 		
 		JurAnnulEnrgDocTr.annulEnrgDoc(driver, element, choixJur, doc);
 	   

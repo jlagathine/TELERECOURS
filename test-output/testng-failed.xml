@@ -3,11 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tr_skipper_bout_en_bout.Transmission_type_dpi_dpa_creation_mesure">
+      <class name="document.trDoc">
         <methods>
-          <include name="navigation_tr_transmission"/>
+          <include name="fin"/>
+          <include name="depotDoc"/>
+          <include name="déconnexion"/>
+          <include name="InitialisationDoc"/>
+          <include name="connexionTr"/>
         </methods>
-      </class> <!-- tr_skipper_bout_en_bout.Transmission_type_dpi_dpa_creation_mesure -->
+      </class> <!-- document.trDoc -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

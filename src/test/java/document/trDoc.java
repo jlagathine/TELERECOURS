@@ -12,22 +12,20 @@ import org.testng.annotations.Test;
 
 import Juridictions.JurDocTr;
 import browser.Navigateur;
-
+import requete_depot_enreg.Requete_TR_depot_enreg;
+/*
+ * MISE A NIVEAU IMPERATIVE !!!!!
+ * 
+ * 
+ */
 	public class trDoc {
 		
-		WebDriver driver;
-		   DesiredCapabilities caps;
+		   WebDriver driver;
 		   WebElement element; 
-		   String username;
-		   String password;
-		   boolean verif;
-		   String myXpath;
 		   String browserName;
-		   String value;
-		   String identifiant;
-		   String mdp;
 		   String choiJur;
 		   String dossier;
+		   String env;
 		   
 		   @BeforeSuite
 		   public void InitialisationDoc () {
@@ -38,38 +36,20 @@ import browser.Navigateur;
 		   
 		   @BeforeMethod
 		   public void connexionTr() throws Throwable  {
-			  choiJur = "CTX"; //Ne pas oublier de mettre les autres juridiction en commentaire
-			  JurDocTr.maJuridiction(driver, choiJur);
+			  env = "int1"; 
+			  choiJur = "CAA"; //Ne pas oublier de mettre les autres juridiction en commentaire
+			  dossier = "2400070";//Requete_TR_depot_enreg.TR_depot(jur, browserName, env);
+			  JurDocTr.maJuridiction(driver, choiJur, env);
 		   }
 				
-			@Test(enabled=false)
-			public void depotDocTA() throws Throwable {
-					dossier = "2400248";
-					
-					JurDocTr.docDepotMem(driver, choiJur, dossier);
-					Thread.sleep(200);
-					
-					JurDocTr.docEnregMem(driver, choiJur, dossier);
-			   }
-			
-			@Test(enabled=true)
-			public void depotDocCAA() throws Throwable {
-					dossier = "2300023";
-					
-					JurDocTr.docDepotMem(driver, choiJur, dossier);
-					Thread.sleep(200);
-					
-					JurDocTr.docEnregMem(driver, choiJur, dossier);
-			   }
-			
 			@Test
-			public void depotDocCE() throws Throwable {
-					dossier = "366709";
+			public void depotDoc() throws Throwable {
+					
 					
 					JurDocTr.docDepotMem(driver, choiJur, dossier);
 					Thread.sleep(200);
 					
-					JurDocTr.docEnregMem(driver, choiJur, dossier);
+					JurDocTr.docEnregMem(driver, choiJur, dossier, env);
 			   }
 			
 

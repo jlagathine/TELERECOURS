@@ -94,6 +94,10 @@ public class Navigation_Skipper_Code_RattachementTRC {
 	public static Object ficheActeurPhysiqueMoral(String jur) throws Throwable {
 		Navigation_Skipper_Code_RattachementTRC.selectionQualiteActeurMoral(jur);
 		Navigation_Skipper_Code_RattachementTRC.nomActeurMoral(jur);
+		if(jur=="CTX" || jur=="CAA") {
+			Navigation_Sk_Choix_Civ.choix_civ_fiche_acteur_moral(jur);
+//			Navigation_Sk_Choix_Civ.choix_civ_acteur_phys(jur, "monsieur");
+		}
 //		Navigation_Skipper.prenomActeurPhysique(jur);
 		Navigation_Skipper_Code_RattachementTRC.adresseActeurMoral(jur);
 		Navigation_Skipper_Code_RattachementTRC.villeActeurMoral(jur);
@@ -105,17 +109,22 @@ public class Navigation_Skipper_Code_RattachementTRC {
 		System.out.println("Fiche acteur validée ....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		
 		if(jur=="TA") {
-			Thread.sleep(2000);
-			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\TA - bouton_Annuler - Skipper - Liste des dossiers rapprochés.png";
+			Thread.sleep(100);
+			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\TA2 - bouton_Annuler - Skipper - Liste des dossiers rapprochés.png";
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+			coords = MesFonctions.waitObject(fileImage);
 			coords1 = new Pair<Pair<Integer,Integer>, Pair<Integer,Integer>>(new Pair<>(-1, -1), new Pair<>(0,0));
 			
 			while(!coords.equals(coords1)) {
-				Thread.sleep(1000);
-				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\TA - bouton_Annuler - Skipper - Liste des dossiers rapprochés.png";
-				coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 				MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+				Thread.sleep(1000);
+				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\TA2 - bouton_Annuler - Skipper - Liste des dossiers rapprochés.png";
+				coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+//				coords = MesFonctions.waitObject(fileImage);
+//				MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+//				coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 				System.out.println("Fiche de rapprochement des acteurs - Click sur le bouton \"Annuler\" ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			
 			}
 		}
 		return null;
@@ -159,7 +168,7 @@ public class Navigation_Skipper_Code_RattachementTRC {
 		Thread.sleep(100);
 		result = MesFonctions.OCR_decryptage(image);
 		}
-	System.out.println("La qualité requérant est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+	System.out.println("La qualité \"Dédfendeur\" est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 	
 	Keyboard.keyBoard(KeyEvent.VK_TAB);
 	
@@ -176,7 +185,7 @@ public class Navigation_Skipper_Code_RattachementTRC {
 				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Nom_Acteur_moral-Skipper_TA1 - Fiche acteur.png";
 					}
 					else {
-					fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Nom_Acteur_moral-Skipper_CAA1 - Fiche acteur.png";//Nom_Acteur_moral-Skipper - Fiche acteu
+					fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Nom_Acteur_moral-Skipper - Fiche acteur.png";//Nom_Acteur_moral-Skipper_CAA1 - Fiche acteu
 					}
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
@@ -216,10 +225,12 @@ public class Navigation_Skipper_Code_RattachementTRC {
 		//Remplir la fiche requérant_VILLE
 		if(jur=="CTX") {
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Ville_Acteur_Moral-Skipper_CTX - Fiche acteur.png";
-			}
-			else {
-			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Ville_Acteur_Phys-Skipper TA- Fiche acteur.png";
-			}
+			}else if(jur=="CAA") {
+				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Ville_Acteur_Phys-Skipper CAA- Fiche acteur.png";
+				}
+				else {
+				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Ville_Acteur_Moral-Skipper TA- Fiche acteur.png";
+				}
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
 		MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
@@ -238,10 +249,10 @@ public class Navigation_Skipper_Code_RattachementTRC {
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\CP_Acteur_moral - Skipper_CTX - Fiche acteur.png";
 			}
 			else if(jur=="TA") {
-				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\CP_Acteur_moral - Skipper_TA1 - Fiche acteur.png";
+				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\CP_Acteur_moral - Skipper_TA - Fiche acteur.png";//CP_Acteur_moral - Skipper_TA - Fiche acteur ; CP_Acteur_moral - Skipper_TA1 - Fiche acteur
 				}
 				else {
-					fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\CP_Acteur_moral - Skipper - Fiche acteur.png";
+					fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\CP_Acteur_moral - Skipper - Fiche acteur.png";//CP_Acteur_moral - Skipper - Fiche acteur
 					}
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
@@ -639,18 +650,20 @@ public class Navigation_Skipper_Code_RattachementTRC {
 			coords = MesFonctions.waitObject(fileImage);
 			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
 			System.out.println("Validation de la création du fichier ....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-		}
+		}else {
 		
 		//Attente de la génération du fichier RTF
-		Thread.sleep(2000);
-		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_Annuler-Génération du fichier c__temp_RATACTRC1.rtf.png";
+		Thread.sleep(100);
+		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_Annuler-Génération du fichier c__temp_RATACTRC.rtf.png";
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
 		
 		while(!coords.equals(coords1)) {
-			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_Annuler-Génération du fichier c__temp_RATACTRC1.rtf.png";
+			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_Annuler-Génération du fichier c__temp_RATACTRC.rtf.png";
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+			}
 		}
+		System.out.println("Le fichier a été généré....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		return null;
 	}
 	

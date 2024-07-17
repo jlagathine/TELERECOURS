@@ -25,28 +25,53 @@ public class Transmission_type_dpi_dpa_creation_mesure {
 	String jur_annuaire;
 	String jur_dest;
 	String id;
+	String DB_id;
+	String DB_mdp;
 	String mdp;
 	String type;
 	String env;
 	WebDriver driver;
 	
+	
+	/*La juridiction de destinantion "JUR_DEST" est la juridiction qui demande le dossier de première instance DPI/DPA
+	 *La juridiction de transmission "JUR" est la juridiction qui transmet le dossier de première instance
+	 * 
+	 * Ensemble des mesures par juridiction pour la valeur de JUR_ANNUAIRE
+	 * 
+	 * ENV = REC
+	 * TA : "Juridictions AJU CAA" (juridiction transmettrice CAA) ; "Juridictions  CE" (juridiction transmettrice CE)
+	 * CAA : "TRIBUNAL ADMINISTRATIF DE PARIS" (juridiction transmettrice TA) ; "CONSEIL D'ETAT" (juridiction transmettrice CE)
+	 * CTX : "TRIBUNAL ADMINISTRATIF DE PARIS" (juridiction transmettrice TA) ; "COUR ADMINISTRATIVE D'APPEL DE PARIS" (juridiction transmettrice CAA)
+	 * 
+	 * ENV = INT1
+	 * TA : "Juridictions AJU CAA" (juridiction transmettrice CAA) ; "Juridictions  CE" (juridiction transmettrice CE)
+	 * CAA : "TRIBUNAL ADMINISTRATIF DE PARIS" (juridiction transmettrice TA) ; "CONSEIL D'ETAT" (juridiction transmettrice CE)
+	 * CTX : "JUR_121" (juridiction transmettrice TA) ; "JUR_597" (juridiction transmettrice CAA)
+	 * 
+	 * Le numéro de dossier "DOSSIER" correspond au dossier de première instance
+	 * Le numéro de dossier "NUMREQDEST" correspond au dossier sur lequel est fait la transmission du dossier de première instance
+	 * 
+	 * Le type "TYPE" : "renvoi" ; "DPI/DPA" ; "decision" ; "decision" 
+	 */
+	
 	@Test(priority=1)
 	public void navigation_sk() throws Throwable {
+		//Création de la mesure Réception PMI pour le dossier de DESTINATION sur SKIPPER
 		try {
-		//Création de la mesure Réception PMI pour le dossier de DESTINATION sur SKIPPER 
-		jur = "CAA";
-		jur_dest = "TA";
+		browserName = "chrome";
+		jur = "TA";
+		jur_dest = "CTX";
 		id = "lb";
 		mdp = "lb";
-		numReqDest ="2400152";// Requete_TR_depot_enreg.TR_depot(jur_dest);//numéro de dossier 
-		dossier = Requete_TR_depot_enreg.TR_depot(jur);
-		type = "DPI/DPA";
-		jur_annuaire = "AJUCAA";//TRIBUNAL ADMINISTRATIF DE PARIS-TAP ; COUR ADMINISTRATIVE D'APPEL DE PARIS ; CONSEIL D'ETAT ; Juridictions  AJUCAA (TA)
 		env = "rec";
+		numReqDest = Requete_TR_depot_enreg.TR_depot(jur_dest, browserName, env); 
+		dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, env);
+		type = "DPI/DPA";
+		jur_annuaire = "TRIBUNAL ADMINISTRATIF DE PARIS";
 		
 		
 			//SKIPPER_ouverture
-			Navigation_Sk_Authentification.authentification(jur_dest, id, mdp);
+			Navigation_Sk_Authentification.authentification_env(jur_dest, id, mdp, env);
 			
 			//SKIPPER_ouverture_dossier
 			Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur_dest, numReqDest);
@@ -66,11 +91,26 @@ public class Transmission_type_dpi_dpa_creation_mesure {
 		//verification 
 		switch (jur_dest) {
 		case "TA":
-			JdbcClass.conDBTR("tr2_ta75", "tr2_ta75", env);
-			break;
+		if(env=="rec") {
+			DB_id = "tr2_ta75";
+			DB_mdp = "tr2_ta75";
+		}else {
+			DB_id = "tr2_ta69";
+			DB_mdp = "tr2_ta69";
+		}
+		JdbcClass.conDBTR(DB_id, DB_mdp, env);
+		break;
+		
 		case "CAA":
-			JdbcClass.conDBTR("tr2_caa75", "tr2_caa75", env);
-			break;
+		if(env=="rec") {
+			DB_id = "tr2_caa75";
+			DB_mdp = "tr2_caa75";
+		}else {
+			DB_id = "tr2_caa69";
+			DB_mdp = "tr2_caa69";
+		}
+		JdbcClass.conDBTR(DB_id, DB_mdp, env);
+		break;
 		case "CTX":
 			JdbcClass.conDBTR("telerecours", "telerecours", env);
 			break;
@@ -84,13 +124,13 @@ public class Transmission_type_dpi_dpa_creation_mesure {
 	@Test(priority=3)
 	public void navigation_tr_transmission() throws Throwable {
 	try {
-		browserName = "chrome";
+		
 		//Ouverture du navigateur
 		driver = Navigateur.choixBrowser(browserName);
 		System.out.println(driver);
 		
 		//Choix du site
-		Transmission_TR_expediteur.choix_site_juridiction(driver, jur, id, mdp);
+		Transmission_TR_expediteur.choix_site_juridiction(driver, jur, id, mdp, env);
 		
 		//Selection du dossier
 		Transmission_TR_expediteur.selection_dossier(driver, dossier);
@@ -116,13 +156,13 @@ public class Transmission_type_dpi_dpa_creation_mesure {
 	@Test(priority=4)
 	public void navigation_tr_recepetion() throws Throwable {	
 	try {
-		browserName = "chrome";
+//		browserName = "chrome";
 		//Ouverture du navigateur
 		driver = Navigateur.choixBrowser(browserName);
 		System.out.println(driver);
 			
 		//Choix du site
-		Transmission_TR_expediteur.choix_site_juridiction(driver, jur_dest, id, mdp);
+		Transmission_TR_expediteur.choix_site_juridiction(driver, jur_dest, id, mdp, env);
 		
 		//accès onglet de renvoi
 		Transmission_TR_reception.acces_onglet_renvoi_DPI_DPA(driver, jur_dest);

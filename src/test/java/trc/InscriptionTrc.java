@@ -60,14 +60,14 @@ public class InscriptionTrc {
 		 compagny = "Pizza";
 		 CreationCompteTrc.inscriptionTypeTrc(driver, type, compagny);
 		 CreationCompteTrc.activationCpt(driver);
-		 String name = "YALU";
+		 String name = "TAPI";//TAPI ; YALU
 		 CreationCompteTrc.modificationCompteTrc(driver, name);
 		 CreationCompteTrc.reinitialisationMdp(driver);
 		 
 		 }catch(Exception e) {
 			 My_SreenShot.takeScreenshot(driver);
 			   e.printStackTrace();
-		   		} 
+		   		}  
 	 }
 	 
 	 

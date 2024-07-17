@@ -24,6 +24,8 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 	String mdp;
 	String dossier;
 	String type;
+	String DB_id;
+	String DB_mdp;
 	String env;
 	String jur_trans;
 	String browserName;
@@ -41,21 +43,37 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 	//Identifiant de connexion juridiction émétrice
 	id = "lb";
 	mdp = "lb";
-	jur = "TA";
-	dossier = Requete_TR_depot_enreg.TR_depot(jur);
+	jur = "CTX";
+	dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, env);
 	
 	//JDD - juridiction de transmission
-	jur_trans = "CAA";
+	jur_trans = "TA";
 	type = "renvoi";
 	
 	
 		switch (jur) {
 		case "TA":
-			JdbcClass.conDBTR("tr2_ta75", "tr2_ta75", env);
+			if(env=="rec") {
+				DB_id = "tr2_ta75";
+				DB_mdp = "tr2_ta75";
+			}else {
+				DB_id = "tr2_ta69";
+				DB_mdp = "tr2_ta69";
+			}
+			JdbcClass.conDBTR(DB_id, DB_mdp, env);
 			break;
+			
 		case "CAA":
-			JdbcClass.conDBTR("tr2_caa75", "tr2_caa75", env);
+			if(env=="rec") {
+				DB_id = "tr2_caa75";
+				DB_mdp = "tr2_caa75";
+			}else {
+				DB_id = "tr2_caa69";
+				DB_mdp = "tr2_caa69";
+			}
+			JdbcClass.conDBTR(DB_id, DB_mdp, env);
 			break;
+			
 		case "CTX":
 			JdbcClass.conDBTR("telerecours", "telerecours", env);
 			break;
@@ -72,7 +90,7 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 		System.out.println(driver);
 		
 		//Choix du site
-		Transmission_TR_expediteur.choix_site_juridiction(driver, jur, id, mdp);
+		Transmission_TR_expediteur.choix_site_juridiction(driver, jur, id, mdp, env);
 		
 		//Selection du dossier
 		Transmission_TR_expediteur.selection_dossier(driver, dossier);
@@ -99,12 +117,20 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 	@Test(priority=2)
 	public void navigation_SK() throws AWTException, Throwable {
 	//Identifiant de connexion juridiction_receptrice
-	id = "cp";
-	mdp = "cp";
+	
+//	env = "rec";
+//	jur_trans = "CAA";
+	if(jur_trans=="CAA") {
+		id = "cp";
+		mdp = "cp";
+	}else {
+		id = "lb";
+		mdp = "lb";
+	}
 	
 	try {
 		//Authentification
-		Navigation_Sk_Authentification.authentification(jur_trans, id, mdp);
+		Navigation_Sk_Authentification.authentification_env(jur_trans, id, mdp, env);
 		
 		//Création nouveau dossier - onglet générique
 		Navigation_Skipper_creation_dossier.nouveau_recours_papier_sk(jur_trans);
@@ -131,10 +157,10 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 		//fermeture de l'application
 		Navigation_Sk_Fermeture_Application.fermeture_sk(jur_trans);
 		
-	} catch (Exception e) {
-		My_SreenShot.screenshot();
-		e.printStackTrace();
-	}
+		} catch (Exception e) {
+			My_SreenShot.screenshot();
+			e.printStackTrace();
+		}
 	
 	}
 	
@@ -174,7 +200,7 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 		System.out.println(driver);
 		
 		//Choix du site
-		Transmission_TR_expediteur.choix_site_juridiction(driver, jur_trans, id, mdp);
+		Transmission_TR_expediteur.choix_site_juridiction(driver, jur_trans, id, mdp, env);
 		
 		//accès onglet de renvoi
 		Transmission_TR_reception.acces_onglet_renvoi_DPI_DPA(driver, jur_trans);

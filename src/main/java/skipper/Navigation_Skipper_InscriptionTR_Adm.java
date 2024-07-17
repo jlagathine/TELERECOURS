@@ -165,13 +165,13 @@ public class Navigation_Skipper_InscriptionTR_Adm {
 		result = MesFonctions.OCR_decryptage(image);
 		
 		//Accéder à la liste des destinataires
-		String nomAdm = "COMMISSION DEPARTEMENTALE";//;
+		String nomAdm = "UR_104";//;
 		while(!result.contains(nomAdm)) {
 			//Déplacement du curseur
 			Keyboard.keyBoard(KeyEvent.VK_DOWN);
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Pointer-destinataire-Communication du code Télérecours citoyens.png";
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
-			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+22, coords.getFirst().getSecond(), 281, 18);
+			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+22, coords.getFirst().getSecond(), 281, 16);
 			image = MesFonctions.screenshot(bounds);
 			result = MesFonctions.OCR_decryptage(image);
 			Thread.sleep(50);

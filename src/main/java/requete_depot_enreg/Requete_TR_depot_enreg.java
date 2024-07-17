@@ -10,20 +10,21 @@ public class Requete_TR_depot_enreg {
 	static WebDriver driver;
 	static String browserName;
 	static String numreq;
+	static String depot;
 	
-	public static String TR_depot(String jur) throws Throwable {
+	public static String TR_depot(String jur, String navigateur, String env) throws Throwable {
 	//Connection
-	browserName = "chrome";
-	driver = Navigateur.choixBrowser(browserName);
+//	browserName = "chrome";
+	driver = Navigateur.choixBrowser(navigateur) ;
 	
 	//Choix juridiction
-	JurReqTr.maJuridiction(driver, jur);
+	JurReqTr.maJuridiction(driver, jur, env);
 	
 	//Depot de requête
-	JurReqTr.reqDepot(driver, jur);
+	depot = JurReqTr.reqDepot(driver, jur, env);
 	
 	//Enregistrement de la requête   
-	numreq = JurReqTr.reqEnreg(driver, jur);
+	numreq = JurReqTr.reqEnreg(driver, jur, depot, env);
 	
 	//Deconnexion
 	MicroFonctions.deconnexionTrInt(driver);

@@ -10,28 +10,33 @@ import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
 import lesFonctions.MesFonctions;
 import pdfGeneration.PdfCreationEtEcriture;
+import requete_depot_enreg.Requete_TR_depot_enreg;
 import trc.EntrerCodeRattachement;
 
 public class sk_transmission_code_TRC {
 	String jur;
+	String browserName;
 	String numdoc;
 	String id;
 	String mdp;
 	String env;
 	String code;
+	String DB_id;
+	String DB_mdp;
 	WebDriver driver;
 	
 	
-	@Test
+	@Test(priority=1)
 	public void navigation_skipper() throws Throwable {
+		browserName = "chrome";
 		env = "rec";
-		jur = "CAA";
+		jur = "CTX";
 		id = "lb";
 		mdp = "lb";
-		numdoc ="2400072"; //CAA 2400070; CE 367628; TA 2400152
+		numdoc = "367380";//Requete_TR_depot_enreg.TR_depot(jur, browserName, env); //CAA 2400070; CE 367628; TA 2400152
 		
 			//Skipper
-			Navigation_Sk_Authentification.authentification(jur, id, mdp);
+			Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
 			//selection dossier
 			Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur, numdoc);
 		
@@ -51,7 +56,7 @@ public class sk_transmission_code_TRC {
 	}
 			
 			
-	@Test	
+	@Test(priority=2)	
 	public void navigation_TRC() throws Throwable {
 		try {	
 			String mail = "sorin@yopmail.com";
@@ -70,17 +75,31 @@ public class sk_transmission_code_TRC {
 			}
 	}
 		
-	@Test	
+	@Test(priority=3)	
 	public void verification_BD() throws Throwable {
 		try {	
 			//base de donnée
 			switch (jur) {
 			case "TA":
-				JdbcClass.conDBTR("tr2_ta75", "tr2_ta75", env);
-				break;
-			case "CAA":
-				JdbcClass.conDBTR("tr2_caa75", "tr2_caa75", env);
-				break;
+			if(env=="rec") {
+				DB_id = "tr2_ta75";
+				DB_mdp = "tr2_ta75";
+			}else {
+				DB_id = "tr2_ta69";
+				DB_mdp = "tr2_ta69";
+			}
+			JdbcClass.conDBTR(DB_id, DB_mdp, env);
+			break;
+		case "CAA":
+			if(env=="rec") {
+				DB_id = "tr2_caa75";
+				DB_mdp = "tr2_caa75";
+			}else {
+				DB_id = "tr2_caa69";
+				DB_mdp = "tr2_caa69";
+			}
+			JdbcClass.conDBTR(DB_id, DB_mdp, env);
+			break;
 			case "CTX":
 				JdbcClass.conDBTR("telerecours", "telerecours", env);
 				break;

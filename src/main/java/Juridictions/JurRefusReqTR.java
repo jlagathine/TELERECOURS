@@ -5,7 +5,6 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import fonctionnalites.MicroFonctions;
 import lesFonctions.MesFonctions;
@@ -23,12 +22,12 @@ public class JurRefusReqTR {
 	static String mdp;
 	static String nom;
 	
-	public static String juridiction (WebDriver driver, WebElement element, String choixJur) throws Throwable {
-		JurReqTr.maJuridiction(driver, choixJur);
+	public static String juridiction (WebDriver driver, String choixJur, String env) throws Throwable {
+		JurReqTr.maJuridiction(driver, choixJur, env);
 		return null;
 	}
 
-	public static String depot (WebDriver driver, WebElement element, String choixJur) throws Throwable {
+	public static String depot (WebDriver driver, String choixJur) throws Throwable {
 		switch (choixJur) {
 		case "TA":
 			//Préparer l'envoi d'une requête
@@ -187,7 +186,7 @@ public class JurRefusReqTR {
 		return null;
 	}
 	
-	public static String reqRefuser(WebDriver driver, WebElement element, String choixJur) throws Throwable {
+	public static String reqRefuser(WebDriver driver, String choixJur) throws Throwable {
 		
 		switch (choixJur) {
 		case "TA":

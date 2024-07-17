@@ -1,24 +1,23 @@
-package skipper;
+package tr_skipper_bout_en_bout;
 
 import java.sql.SQLException;
 
 import org.jgrapht.alg.util.Pair;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
-import Juridictions.JurInvitIsnscriptConsult;
 import Juridictions.JurInscripTr;
+import Juridictions.JurInvitIsnscriptConsult;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
-import lesFonctions.MesFonctions;
-import net.sourceforge.tess4j.TesseractException;
 import pdfGeneration.PdfCreationEtEcriture;
+import skipper.Navigation_Sk_Authentification;
+import skipper.Navigation_Sk_Fermeture_Application;
+import skipper.Navigation_Sk_Ouverture_Dossier;
+import skipper.Navigation_Skipper_InscriptionTR_Adm;
+import skipper.Reduction_fenetre_word;
 
 public class Sk_transmission_code_inscription_adm {
 	String jur;
@@ -31,26 +30,28 @@ public class Sk_transmission_code_inscription_adm {
 	String nom;
 	String nomAdmin;
 	String prenom;
+	String DB_id;
+	String DB_mdp;
 	String env;
 	WebDriver driver;
 	
 	@Test
 	public void navigation_sk() throws Throwable {
-		env = "rec"; 
+		env = "int1"; 
 		jur = "CTX";
-		id = "fm";
-		mdp = "fm";
-		numdoc = "366478";//366478, 22478
+		id = "sice";
+		mdp = "sice";
+		numdoc = "412056";//366478, 22478
 		
-		env = "rec";
 		prenom = "Dominique";
 		nomAdmin = "MAGLOIRE";
 		
 		try {
 			//SKIPPER
-			Navigation_Sk_Authentification.authentification(jur, id, mdp);
+			Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
 		
 			type = "defendeur"; //avocat
+			Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur, numdoc);
 			Navigation_Skipper_InscriptionTR_Adm.selectionActeur_defendeur_requerant(jur);
 			Navigation_Skipper_InscriptionTR_Adm.SelectionTypeActeur(type, jur);
 			nom = Navigation_Skipper_InscriptionTR_Adm.fiche_acteur(jur);
@@ -78,10 +79,24 @@ public class Sk_transmission_code_inscription_adm {
 		//Base de donnée
 		switch (jur) {
 		case "TA":
-			JdbcClass.conDBTR("tr2_ta75", "tr2_ta75", env);
+			if(env=="rec") {
+				DB_id = "tr2_ta75";
+				DB_mdp = "tr2_ta75";
+			}else {
+				DB_id = "tr2_ta69";
+				DB_mdp = "tr2_ta69";
+			}
+			JdbcClass.conDBTR(DB_id, DB_mdp, env);
 			break;
 		case "CAA":
-			JdbcClass.conDBTR("tr2_caa75", "tr2_caa75", env);
+			if(env=="rec") {
+				DB_id = "tr2_caa75";
+				DB_mdp = "tr2_caa75";
+			}else {
+				DB_id = "tr2_caa69";
+				DB_mdp = "tr2_caa69";
+			}
+			JdbcClass.conDBTR(DB_id, DB_mdp, env);
 			break;
 		case "CTX":
 			JdbcClass.conDBTR("telerecours", "telerecours", env);

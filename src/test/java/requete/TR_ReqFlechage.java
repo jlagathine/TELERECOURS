@@ -2,8 +2,6 @@ package requete;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -17,16 +15,8 @@ import browser.Navigateur;
 public class TR_ReqFlechage {
 	
 	WebDriver driver;
-	   DesiredCapabilities caps;
-	   WebElement element; 
-	   String username;
-	   String password;
-	   boolean verif;
-	   String myXpath;
 	   String browserName;
-	   String value;
-	   String identifiant;
-	   String mdp;
+	   String env;
 	   String choixJur;
 	
 	   @BeforeSuite
@@ -39,7 +29,7 @@ public class TR_ReqFlechage {
 	   @BeforeMethod
 	   public void connexionTr() throws Throwable  {
 		  choixJur = "Cour";
-		  JurReqTr.maJuridiction(driver, choixJur);
+		  JurReqTr.maJuridiction(driver, choixJur, env);
 	   }
 	   
 	   @Test

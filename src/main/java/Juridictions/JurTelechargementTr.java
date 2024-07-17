@@ -99,7 +99,7 @@ public class JurTelechargementTr {
 			driver.get("https://www.telerecours.recette.juradm.fr");
 			
 			//S'authentifier
-			identifiant = "afl53e7";
+			identifiant = "marc617";
 			mdp = "Lhommeest2019*";			
 			MicroFonctions.AuthentificationTaCaaCeExt(driver, identifiant, mdp);
 			MicroFonctions.choixJuridictionTA(driver);
@@ -133,7 +133,7 @@ public class JurTelechargementTr {
 			driver.get("https://www.telerecours.recette.conseil-etat.fr");
 			
 			//S'authentifier
-			identifiant = "dai5mQr";
+			identifiant = "bilO1Et";//bilO1Et ; dai5mQr
 			mdp = "Lhommeest2019*";			
 			MicroFonctions.AuthentificationTaCaaCeExt(driver, identifiant, mdp);
 			MicroFonctions.choixJuridcitionCE(driver);
@@ -224,7 +224,7 @@ public class JurTelechargementTr {
 			MicroFonctions.rechercheSimple(driver, numDossier);
 			
 			//Consultation onglet Historique
-			MicroFonctions.consultationOngletHistoDossier(driver, element);
+			MicroFonctions.consultationOngletHistoDossier(driver);
 			
 			//Téléchargement fichier depuis les événement de l'historique
 			MicroFonctions.telechgtDossierOngletHisto(driver, element);
@@ -235,7 +235,7 @@ public class JurTelechargementTr {
 			MicroFonctions.rechercheSimple(driver, numDossier);
 			
 			//Consultation onglet Historique
-			MicroFonctions.consultationOngletHistoDossier(driver, element);
+			MicroFonctions.consultationOngletHistoDossier(driver);
 			
 			//Téléchargement fichier depuis les événement de l'historique
 			MicroFonctions.telechgtDossierOngletHisto(driver, element);
@@ -246,7 +246,7 @@ public class JurTelechargementTr {
 			MicroFonctions.rechercheSimple(driver, numDossier);
 			
 			//Consultation onglet Historique
-			MicroFonctions.consultationOngletHistoDossier(driver, element);
+			MicroFonctions.consultationOngletHistoDossier(driver);
 			
 			//Téléchargement fichier depuis les événement de l'historique
 			MicroFonctions.telechgtDossierOngletHisto(driver, element);
@@ -266,7 +266,7 @@ public class JurTelechargementTr {
 			MicroFonctions.rechercheSimple(driver, numDossier);
 			
 			//Consultation onglet Historique
-			MicroFonctions.consultationOngletHistoDossier(driver, element);
+			MicroFonctions.consultationOngletHistoDossier(driver);
 			
 			//Chargement de dossier
 			MicroFonctions.chgtDossierOngletHisto(driver, element);

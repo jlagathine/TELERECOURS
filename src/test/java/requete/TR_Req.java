@@ -1,8 +1,6 @@
 package requete;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -17,37 +15,30 @@ import fonctionnalites.MicroFonctions;
 public class TR_Req {
 
 	WebDriver driver;
-	   DesiredCapabilities caps;
-	   WebElement element; 
-	   String username;
-	   String password;
-	   boolean verif;
-	   String myXpath;
 	   String browserName;
-	   String value;
-	   String identifiant;
-	   String mdp;
+	   String env;
+	   String dossier;
 	   String choixJur;
 	
 	   @BeforeSuite
 	   public void InitialisationDoc(){
 	   browserName = "chrome";
+	   env = "int1";
+	   choixJur = "TA";//CAA, CTX, TA
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);
 	   }
 	   
 	   @BeforeMethod
 	   public void connexionTr() throws Throwable  {
-		  choixJur = "TA";//CAA, CTX, TA
-		  JurReqTr.maJuridiction(driver, choixJur);
+		  JurReqTr.maJuridiction(driver, choixJur, env);
 	   }
 	   
 	   @Test
 		public void depotReq() throws Throwable {
 	    try {
-			   JurReqTr.reqDepot(driver, choixJur);
-			   
-			   JurReqTr.reqEnreg(driver, choixJur);//attention à la méthode "refusEnrgReq()" et "reqEnreg()"
+			   dossier = JurReqTr.reqDepot(driver, choixJur, env);
+			   JurReqTr.reqEnreg(driver, choixJur, dossier, env);//attention à la méthode "refusEnrgReq()" et "reqEnreg()"
 			   
 		} catch (Exception e) {
 			
@@ -55,11 +46,10 @@ public class TR_Req {
 			e.printStackTrace();
 			
 			}
-	    
 	   }
 	   
 	   @AfterMethod
-		public void déconnexion() throws Exception {
+		public void deconnexion() throws Exception {
 		   MicroFonctions.deconnexionTrInt(driver);	
 		}
 				

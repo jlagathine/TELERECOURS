@@ -15,7 +15,7 @@ public class RefusTrc {
 	static String call;
 	static String url;
 	
-	public static String reqRefusTrc(WebDriver driver, String choiJur, String numDos) throws Throwable {
+	public static String reqRefusTrc(WebDriver driver, String choiJur, String numDos, String env) throws Throwable {
 		switch (choiJur) {
 		case "TA":
 			
@@ -32,7 +32,7 @@ public class RefusTrc {
 //			   call = numReqTrc.replace("*", "");
 			   
 			   //Authentification TA
-			   if(driver.getCurrentUrl().contains("recette")) {
+			   if(driver.getCurrentUrl().contains(env)) {
 				   identifiant = "lb";
 				   mdp = "lb";
 				   url ="https://www.telerecours.recette.juradm.fr/TA75";

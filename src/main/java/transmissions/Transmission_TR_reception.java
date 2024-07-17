@@ -211,7 +211,7 @@ public class Transmission_TR_reception {
 		myXpath = "//a[contains(@id,'Mstr_cpMain_gvTransmissions') and text()='"+req_trans+"']//parent::td//following-sibling::td[text()='"+req_dest+"']";
 		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 		myXpath = "//a[contains(@id,'Mstr_cpMain_gvTransmissions') and text()='"+req_trans+"']//parent::td//following-sibling::td";
-		System.out.println("Dossier transmis : "+MesFonctions.objet(driver, myXpath).getText().trim());
+		System.out.println("Dossier de destinantion : "+MesFonctions.objet(driver, myXpath).getText().trim());
 		
 		myXpath = "//a[contains(@id,'Mstr_cpMain_gvTransmissions') and text()='"+req_trans+"']//parent::td//following-sibling::td[text()='"+req_dest+"']//following-sibling::td";
 		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));

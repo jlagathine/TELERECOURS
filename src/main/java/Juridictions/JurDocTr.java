@@ -30,6 +30,7 @@ public class JurDocTr {
 	static Iterator<String> it;
 	static String caractSpec;
 	static String nom;
+	static String URL;
 	static String acteur;
 	static String nomMem;
 	static String nomInv;
@@ -42,17 +43,28 @@ public class JurDocTr {
 	static List<String> str1 = new ArrayList<>();
 	
 	
-		public static String maJuridiction(WebDriver driver, String choixJur) throws Throwable {
+		public static String maJuridiction(WebDriver driver, String choixJur, String env) throws Throwable {
 			
 			switch (choixJur) {
 			case "TA":
 				
-				driver.get("https://www.telerecours.recette.juradm.fr/");
-				Thread.sleep(200);
-				System.out.println("Connection réussie");
-	
-				username = "marc617";
-				password = "Lhommeest2019*";
+				if(env=="rec") {
+					URL = "https://www.telerecours.recette.juradm.fr/";
+					driver.get(URL);
+					Thread.sleep(100);
+					System.out.println("Accès page "+URL+"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			
+					username = "marc617";//alfKT04 ; marc617 ; def8md0
+					password = "Lhommeest2019*";
+				}else {
+					URL = "https://www.telerecours.int1.juradm.fr/";
+					driver.get(URL);
+					Thread.sleep(100);
+					System.out.println("Accès page "+URL+"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			
+					username = "avotx32";//alfKT04 ; marc617
+					password = "Lhommeest2019*";
+				}
 				
 				//Authentification
 				myXpath = "//input[@id='Username']";
@@ -71,12 +83,23 @@ public class JurDocTr {
 				
 			case "CAA":
 				
-				driver.get("https://www.telerecours.recette.juradm.fr/");
-				Thread.sleep(200);
-				System.out.println("Connection réussie");
-	
-				username = "bus5qtT";
-				password = "Lhommeest2019*";
+				if(env=="rec") {
+					URL = "https://www.telerecours.recette.juradm.fr/";
+					driver.get(URL);
+					Thread.sleep(100);
+					System.out.println("Connection réussie....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			
+					username = "bus5qtT";//aja8u1q//alfKT04 (administration ; retirer l'ajout du requérant )//bus5qtT
+					password = "Lhommeest2019*";
+				}else {
+					URL = "https://www.telerecours.int1.juradm.fr/";
+					driver.get(URL);
+					Thread.sleep(100);
+					System.out.println("Connection réussie....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			
+					username = "avoq214";//aja8u1q//alfKT04 (administration ; retirer l'ajout du requérant )//bus5qtT
+					password = "Lhommeest2019*";
+				}
 				
 				//Authentification
 				myXpath = "//input[@id='Username']";
@@ -95,12 +118,23 @@ public class JurDocTr {
 				
 			case "CTX":
 				
-				driver.get("https://www.telerecours.recette.conseil-etat.fr/");
-				Thread.sleep(200);
-				System.out.println("Connection réussie");
-	
-				username = "dai5mQr";
-				password = "Lhommeest2019*";
+				if(env=="rec") {
+					URL = "https://www.telerecours.recette.conseil-etat.fr/";
+					driver.get(URL);
+					Thread.sleep(100);
+					System.out.println("Connection réussie");
+			
+					username = "bilO1Et";//dai5mQr/aja8u1q/delM872
+					password = "Lhommeest2019*";
+				}else {
+					URL = "https://www.telerecours.int1.conseil-etat.fr/";
+					driver.get(URL);
+					Thread.sleep(100);
+					System.out.println("Connection réussie");
+			
+					username = "avoq214";//dai5mQr/aja8u1q/delM872
+					password = "Lhommeest2019*";
+				}
 				
 				//Authentification
 				myXpath = "//input[@id='Username']";
@@ -339,7 +373,7 @@ public class JurDocTr {
 		return null;
 		}
 		
-		public static String docEnregMem (WebDriver driver, String choixJur, String dossier) throws Throwable {
+		public static String docEnregMem (WebDriver driver, String choixJur, String dossier, String env) throws Throwable {
 			
 			switch (choixJur) {
 			case "TA" :
@@ -350,13 +384,24 @@ public class JurDocTr {
 				// Déconnexion
 				MicroFonctions.deconnexionTrExt(driver);
 				
-				identifiant = "lb";
-				mdp = "lb";
+				if(env=="rec") {
+					identifiant = "lb";
+					mdp = "lb";
+					
+					// Authentification
+					driver.get("https://www.telerecours.recette.juradm.fr/TA75");
+					Thread.sleep(200);
+					MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				}else {
+					identifiant = "sice";
+					mdp = "sice";
+					
+					// Authentification
+					driver.get("https://www.telerecours.int1.juradm.fr/TA75");
+					Thread.sleep(200);
+					MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				}
 				
-				// Authentification
-				driver.get("https://www.telerecours.recette.juradm.fr/TA75");
-				Thread.sleep(2000);
-				MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
 				
 				// Enregistrer le document
 				myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
@@ -432,13 +477,24 @@ public class JurDocTr {
 				// Déconnexion
 				MicroFonctions.deconnexionTrExt(driver);
 				
-				identifiant = "lb";
-				mdp = "lb";
+				if(env=="rec") {
+					identifiant = "lb";
+					mdp = "lb";
+					
+					// Authentification
+					driver.get("https://www.telerecours.recette.juradm.fr/CA75");
+					Thread.sleep(200);
+					MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				}else {
+					identifiant = "sice";
+					mdp = "sice";
+					
+					// Authentification
+					driver.get("https://www.telerecours.int1.juradm.fr/CA75");
+					Thread.sleep(200);
+					MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				}
 				
-				// Authentification
-				driver.get("https://www.telerecours.recette.juradm.fr/CA75");
-				Thread.sleep(2000);
-				MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
 				
 				// Enregistrer le document
 				myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
@@ -464,7 +520,8 @@ public class JurDocTr {
 				myXpath = "//textarea[@id='txtMessage']";
 				verifText = driver.findElement(By.xpath(myXpath)).getText();
 				if(text.equals(verifText)) {
-					System.out.println("Les textes sont identiques");}
+					System.out.println("Les textes sont identiques");
+					}
 					else {
 						System.err.println("Les textes sont différents : ");
 						throw new Exception(verifText+" Texte attendu : " +text);
@@ -496,10 +553,10 @@ public class JurDocTr {
 			   }
 				   
 			   //Enregistrement du document 
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   MicroFonctions.enrgDoc(driver);
 			   
-			   Thread.sleep(2000);
+			   Thread.sleep(200);
 			   str1.clear();
 			   str.clear();
 			   
@@ -514,13 +571,23 @@ public class JurDocTr {
 				// Déconnexion
 				MicroFonctions.deconnexionTrExt(driver);
 				
-				identifiant = "lb";
-				mdp = "lb";
-				
-				// Authentification
-				driver.get("https://www.telerecours.recette.conseil-etat.fr/conseil");
-				Thread.sleep(2000);
-				MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				if(env=="rec") {
+					identifiant = "fm";
+					mdp = "fm";
+					
+					// Authentification
+					driver.get("https://www.telerecours.recette.conseil-etat.fr/conseil");
+					Thread.sleep(200);
+					MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				}else {
+					identifiant = "sice";
+					mdp = "sice";
+					
+					// Authentification
+					driver.get("https://www.telerecours.int1.conseil-etat.fr/conseil");
+					Thread.sleep(200);
+					MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				}
 				
 				// Enregistrer le document
 				acteur = MicroFonctions.accesEnrDoc(driver, choixJur, dossier);
@@ -578,6 +645,80 @@ public class JurDocTr {
 				break;
 			}
 			return dossier;
+		}
+		
+		public static void acces_PAM(WebDriver driver) {
+		//Accès à la ligne de la mesure "RECEPETION D'UN MEMEOIRE"
+		String myXpath = "//td[text()=\"Réception d'un mémoire\"]//following-sibling::td/span";
+		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		MesFonctions.objet(driver, myXpath).click();
+		
+		System.out.println("Affichage de la fenêtre de PAM....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		}
+		
+		public static void Ajout_PAM(WebDriver driver) {
+		//Accès à la fenêtre des pièces jointe"
+		String onglet = MesFonctions.getWindow(driver, 2);
+		driver.switchTo().window(onglet);
+		String myXpath = "//span[text()='Fichiers']";
+		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		System.out.println("Accès à la fenêtre des pièces jointe....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		
+			for(int i=0;i<5;i++) {
+			//Ajout de pièces
+			myXpath = "//input[@id='fuAjouterFichier']";
+			int pcs = i+2;
+			MesFonctions.objet(driver, myXpath).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\Le mémoire 5\\Le Mémoire 5 - Copie ("+pcs+").pdf");
+			
+			System.out.println("La picèes est chargée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			
+			//Renseigner le type de pièce
+			myXpath = "//select[@id='ddlTypeFichier']";
+			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			String value = "MEM";
+			MesFonctions.selection(driver, myXpath, value);
+			System.out.println("Le type de pièce est renseigné....."+MesFonctions.extractCurrentHeure());
+			
+			//Joindre la pièce
+			myXpath = "//a[@id='lbJoindreFichier']";
+			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			MesFonctions.objet(driver, myXpath).click();
+			System.out.println("Le type de pièce "+pcs+" est jointe....."+MesFonctions.extractCurrentHeure());
+			}
+		
+		}
+		
+		public static String selection_PAM_avant_enregistrment (WebDriver driver) {
+		//Sélection des fichiers
+		myXpath = "//input[contains(@id,'SelectCheckBox')]";
+		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		List<WebElement> elts = driver.findElements(By.xpath(myXpath));
+		List<String> nom_fichier = new ArrayList<>();
+		int nbr = elts.size()+1;
+		for(int i=1;i<nbr;i++) {
+			myXpath = "(//input[contains(@id,'SelectCheckBox')])["+i+"]";
+			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			MesFonctions.objet(driver, myXpath).click();
+			
+			myXpath = "(//input[contains(@id,'SelectCheckBox')])["+i+"]//ancestor::td//following-sibling::td//span/a";
+			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			System.out.println("Le ficher : "+MesFonctions.objet(driver, myXpath).getText().trim()+"...."+MesFonctions.extractCurrentHeure());
+			 
+			nom_fichier.add(MesFonctions.objet(driver, myXpath).getText().trim());
+			}
+		String str =  nom_fichier.get(1).split("_")[0];
+		System.out.println("Toutes les pièces ont été ajoutées....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		return str;
+		}
+		
+		public static void enregister_PAM (WebDriver driver) throws InterruptedException {
+		myXpath = "//a[@id='lbEnregistrer']";
+		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		MesFonctions.objet(driver, myXpath).click();
+		System.out.println("Toutes les pièces ont été enregistrées....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		
+		String onglet = MesFonctions.getWindow(driver, 1);
+		driver.switchTo().window(onglet);
 		}
 		
 	}

@@ -13,6 +13,12 @@ import org.testng.annotations.Test;
 import Juridictions.JurTelechargementTr;
 import browser.Navigateur;
 
+/*
+ * 
+ * SCRIPT A REVOIR !!!!!
+ * 
+ */
+
 public class TelechargementPiècesHist {
 	
 	WebDriver driver;
@@ -38,13 +44,13 @@ public class TelechargementPiècesHist {
 	   
 	   @BeforeMethod 
 	   public void initialisation () throws Throwable {
-		   choixJur = "CTX";
+		   choixJur = "CAA";
 			JurTelechargementTr.actIntConnexion(driver, choixJur);//attention à "actIntConnexion" et "actExtConnexion" 
 		 }
 	   
 	   @Test
 	   public void téléchargementFichiersParEvent() throws Throwable {
-		   dossier = "366654";// bien choisir le dossier
+		   dossier = "2400188";// bien choisir le dossier
 		   JurTelechargementTr.telechgtOngletHisto(driver, element, choixJur, dossier);
 	   }
 	   

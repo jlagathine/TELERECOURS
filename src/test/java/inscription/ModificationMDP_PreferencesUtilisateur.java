@@ -17,11 +17,13 @@ public class ModificationMDP_PreferencesUtilisateur {
 	WebDriver driver;
 	String browserName;
 	String choixJur;
+	String env;
 	
 	
 	@BeforeSuite
 	public void InitialisationDoc (){
 	browserName = "chrome";
+	env = "rec";
 	driver = Navigateur.choixBrowser(browserName);
 	System.out.println(driver);
 	   }
@@ -29,7 +31,7 @@ public class ModificationMDP_PreferencesUtilisateur {
 	@BeforeMethod
     public void connexionTr() throws Throwable  {
 	choixJur = "Tribunal";
-	JurReqTr.maJuridiction(driver, choixJur);
+	JurReqTr.maJuridiction(driver, choixJur, env);
 	   }
 	
 	@Test

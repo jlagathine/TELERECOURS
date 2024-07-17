@@ -21,6 +21,7 @@ public class JurReqTrc {
 	static boolean verif;
 	static String myXpath;
 	static String nom;
+	static String requete;
 	static Select select;
 	static String value;
 	static String texte;
@@ -43,7 +44,7 @@ public class JurReqTrc {
 		case "int1": 
 			String url = "https://citoyens.int1.telerecours.fr/";
 			driver.get(url);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			System.out.println("Accès page "+driver.getCurrentUrl()+"......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			username = "zaire@yopmail.com";
 			password = "Lhommeest2019*";
@@ -53,7 +54,7 @@ public class JurReqTrc {
 		case "rec": 
 			url = "https://citoyens.recette.telerecours.fr/";
 			driver.get(url);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			System.out.println("Accès page "+driver.getCurrentUrl()+"......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			username = "sorin@yopmail.com";
 			password = "Lhommeest2019*";
@@ -81,14 +82,14 @@ public class JurReqTrc {
 							  
 		//Action et CGU
 		MicroFonctions.conditionsGeneralesTrcSansBrouillon(driver);
-		Thread.sleep(2000);
+		Thread.sleep(200);
 		System.out.println("CGU validées......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		
 		//Déposer un recours
 		MicroFonctions.lesTypesRecoursTrc(driver, recours, verif);
 		System.out.println("Acteur(s) renseigné(s)......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		
-		Thread.sleep(1000);
+		Thread.sleep(100);
 		return null;
 	}
 	
@@ -115,7 +116,7 @@ public class JurReqTrc {
 				   //Envoyer
 				   myXpath = "//span[contains(@class,'label') and (contains(text(),\"Envoyer\"))]";
 				   MesFonctions.objet(driver,  myXpath).click();
-				   Thread.sleep(2500);
+				   Thread.sleep(200);
 				   System.out.println("Envoi réussi......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				   
 				  
@@ -131,7 +132,7 @@ public class JurReqTrc {
 				   //dépôt fichiers (1 REQ, 1 DECACT, 4PC ou 97PC <= 99)
 				   MicroFonctions.depotFilesReqTrc(driver);//depotFilesReqTrc_99Pieces ou depotFilesReqTrc
 				   System.out.println("Dépôt de fichiers réalisé......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-				   Thread.sleep(1000);
+				   Thread.sleep(100);
 				   
 				   //Récapitulation de l'envoi
 				   MicroFonctions.recapitulatifTRC(driver);
@@ -139,7 +140,7 @@ public class JurReqTrc {
 				   //Envoyer
 				   myXpath = "//span[contains(@class,'label') and (contains(text(),\"Envoyer\"))]";
 				   MesFonctions.objet(driver,  myXpath).click();
-				   Thread.sleep(2500);
+				   Thread.sleep(200);
 				   System.out.println("Envoi réussi......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				   
 				  
@@ -155,7 +156,7 @@ public class JurReqTrc {
 				   //dépôt fichiers (1 REQ, 1 DECACT, 4PC ou 97PC <= 99)
 				   MicroFonctions.depotFilesReqTrc(driver);//depotFilesReqTrc_99Pieces ou depotFilesReqTrc
 				   System.out.println("Dépôt de fichiers réalisé......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-				   Thread.sleep(1000);
+				   Thread.sleep(100);
 				   
 				   //Récapitulation de l'envoi
 				   MicroFonctions.recapitulatifTRC(driver);
@@ -163,7 +164,7 @@ public class JurReqTrc {
 				   //Envoyer
 				   myXpath = "//span[contains(@class,'label') and (contains(text(),\"Envoyer\"))]";
 				   MesFonctions.objet(driver,  myXpath).click();
-				   Thread.sleep(2500);
+				   Thread.sleep(200);
 				   System.out.println("Envoi réussi......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				   
 				  
@@ -183,14 +184,14 @@ public class JurReqTrc {
 			//choix du niveau juridiction
 			   myXpath = "//label[@for='radio-TA' and(contains(text(),\"Tribunal administratif\"))]";
 			   MesFonctions.objet(driver,  myXpath).click();
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   System.out.println("Choix de juridition : TA");
 			   
 			   //choix de la juridiction
 			   myXpath = "//select[@id='site-juridiction-id']";
 			   value = "1";
 			   MesFonctions.selection(driver, myXpath, value);
-			   Thread.sleep(1500);
+			   Thread.sleep(300);
 			   System.out.println("TA PARIS");
 			   
 			   myXpath = "//button[@type]//span[contains(text(),'Page suivante - Requête')]";
@@ -202,7 +203,7 @@ public class JurReqTrc {
 			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.selection(driver, myXpath, value);
 			   System.out.println("Une procédure normale......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   //Votre requête concerne-t-elle un contentieux social ? 
 			   Trc_depot_formulaire.Trc_formulaire_2_requete_DALO(driver);
@@ -216,7 +217,7 @@ public class JurReqTrc {
 				  myXpath = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
 				  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 				  MesFonctions.objet(driver,  myXpath).click();
-				  Thread.sleep(1000);
+				  Thread.sleep(100);
 			   }else {
 				   System.out.println("Des alertes sont présentes : \r");
 				   for(int i=0;i<nbr;i++) {
@@ -225,9 +226,9 @@ public class JurReqTrc {
 			   }
 			   
 			   //dépôt fichiers (1 REQ, 1 DECACT, 4PC ou 97PC <= 99)
-			   MicroFonctions.depotFilesReqTrc(driver);//depotFilesReqTrc_99Pieces ou depotFilesReqTrc
+			   MicroFonctions.depotFilesReqTrc_WithForm(driver);//depotFilesReqTrc_99Pieces ou depotFilesReqTrc
 			   System.out.println("Dépôt de fichiers réalisé......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   //Récapitulation de l'envoi
 			   MicroFonctions.recapitulatifTRC(driver);
@@ -236,7 +237,7 @@ public class JurReqTrc {
 			   
 			   myXpath = "//span[contains(@class,'label') and (contains(text(),\"Envoyer\"))]";
 			   MesFonctions.objet(driver,  myXpath).click();
-			   Thread.sleep(2500);
+			   Thread.sleep(500);
 			   System.out.println("Envoi réussi....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			   
 			  
@@ -246,14 +247,14 @@ public class JurReqTrc {
 			   //choix du niveau juridiction
 			   myXpath = "//label[@for='radio-CAA' and(contains(text(),\"Cour administrative\"))]";
 			   MesFonctions.objet(driver,  myXpath).click();
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   System.out.println("Choix de juridition : CA");
 			   
 			   //choix de la juridiction
 			   myXpath = "//select[@id='site-juridiction-id']";
 			   value = "5";
 			   MesFonctions.selection(driver, myXpath, value);
-			   Thread.sleep(1500);
+			   Thread.sleep(500);
 			   System.out.println("CA PARIS");
 			   
 			   //choix du type d'acte attaqué
@@ -261,7 +262,7 @@ public class JurReqTrc {
 			   value = "AUTRES";
 			   MesFonctions.selection(driver, myXpath, value);
 			   System.out.println("Acte attaqué : AUTRES");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   myXpath = "//button[@type]//span[contains(text(),'Page suivante - Requête')]";
 			   MesFonctions.objet(driver,  myXpath).click();
@@ -272,7 +273,7 @@ public class JurReqTrc {
 			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.selection(driver, myXpath, value);
 			   System.out.println("Une procédure normale......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 				//Votre requête concerne-t-elle un contentieux social ? 
 		   		Trc_depot_formulaire.Trc_formulaire_2_requete_DALO(driver);
@@ -295,7 +296,7 @@ public class JurReqTrc {
 			   }
 			   
 			   //dépôt fichiers (1 REQ, 1 DECACT, 4PC ou 97PC <= 99)
-			   MicroFonctions.depotFilesReqTrc(driver);
+			   MicroFonctions.depotFilesReqTrc_WithForm(driver);
 			   System.out.println("Dépôt de fichiers réalisé......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			   Thread.sleep(1000);
 			   
@@ -310,7 +311,7 @@ public class JurReqTrc {
 			   
 			   break;
 			   
-		default:
+		default:System.err.println("Aucune juridiction à ce nom");
 			break;
 		}
 		
@@ -487,9 +488,9 @@ public class JurReqTrc {
 			   
 			   myXpath = "//i//parent::button//parent::a/span";
 			   str =  MesFonctions.nbrEtNomsObjetBrut(driver, myXpath);
-			   Thread.sleep(1000);
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   driver.findElement(By.xpath("//span[text()=\"Déconnexion\"]")).click();
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   System.out.println(str+"\r");
 			  
 //			   call = numReqTrc.replace("*", "");
@@ -529,13 +530,13 @@ public class JurReqTrc {
 			   MesFonctions.objet(driver,  myXpath).click(); 
 			   myXpath = "//a[@class='numDossier' and (text()='" + numDos +" (TRC)')]";
 			   MesFonctions.objet(driver,  myXpath).click();
-			   Thread.sleep(2000);
+			   Thread.sleep(200);
 			   System.out.println("Onglet \"Requêtes\" sélectionné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			   
 			   myXpath = "//td[contains(text(),'Déposé sur Télérecours par')]//following-sibling::td";
 			   String auteur = MesFonctions.leTexte(driver, texte, myXpath);
 			   System.out.println("Auteur du dépôt : "+auteur+"\r");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   //Vérification des fichiers
 			   System.out.println("vérification des fichiers en cours...");
@@ -543,7 +544,7 @@ public class JurReqTrc {
 			   caractSpec = "_";
 			   String actAtt = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
 			   str1.add(actAtt);
-			   Thread.sleep(1000);
+			   Thread.sleep(500);
 			   
 			   myXpath = "//a[contains(@id,'rptPiecesJointe_ct')]";
 			   elements = driver.findElements(By.xpath(myXpath)); 
@@ -558,20 +559,20 @@ public class JurReqTrc {
 			   caractSpec = "_";
 			   String file = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
 			   str1.add(file);
-			   Thread.sleep(1000);
+			   Thread.sleep(500);
 				}
 			   
 			   myXpath = "//a[@id='fileLinkFichierCourrier_hplFichier']";
 			   String req = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
 			   str1.add(req);
-			   Thread.sleep(1000);
+			   Thread.sleep(500);
 			   
 			   myXpath = "//a[@id='fileLinkFichierInventaire_hplFichier']";
 			   String invPcs = MesFonctions.leNom(driver, myXpath, caractSpec);
-			   Thread.sleep(1000);
+			   Thread.sleep(500);
 			   
 			   str1.add(invPcs);
-			   Thread.sleep(1000);
+			   Thread.sleep(500);
 			   
 			   if(str1.equals(str)) {
 				   System.out.println("Tous les fichiers sont présents......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
@@ -585,37 +586,38 @@ public class JurReqTrc {
 			   ChbrMatCatTA = "chambre"; 
 			   value = "11"; 
 			   MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
-			   Thread.sleep(1000);
+			   Thread.sleep(500);
 			   System.out.println("Chambre renseignée");
 			   
 			   //Choix de la matiere
 			   ChbrMatCatTA = "matiere"; 
 			   value = "03"; 
 			   MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   ChbrMatCatTA = "ssmatiere"; 
 			   value = "0303"; 
 			   MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
 			   System.out.println("Matière et sous-matière renseignées");
-			   Thread.sleep(1000);
+			   Thread.sleep(500);
 			   
 			   //Choix de la catégorie
 			   ChbrMatCatTA = "categorie"; 
 			   value = "CC"; 
 			   MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
 			   System.out.println("Catégorie renseignée");
-			   Thread.sleep(1000);
+			   Thread.sleep(500);
 			   
 			   //Sauvegarder et enregistrement de la requête 
 			   MicroFonctions.sauvReq(driver);
-			   Thread.sleep(3000);
+			   Thread.sleep(100);
 			   
 			   myXpath = "//a[@class='numDossier' and (text()='" + numDos +" (TRC)')]";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
-			   Thread.sleep(2000);
+			   Thread.sleep(200);
 			   
-			   MicroFonctions.enrgReqFlech(driver);
-			   Thread.sleep(3000);
+			   requete = MicroFonctions.enrgReqFlech(driver);
+			   Thread.sleep(100);
 			   
 			   str1.clear();
 			   str.clear();
@@ -633,7 +635,7 @@ public class JurReqTrc {
 			   //trouver le numero de la requête
 //			   myXpath = "//jhi-numero-dossier//span";
 //			   numReqTrc = mesFonctions.leTexte(driver, texte, myXpath);
-			   Thread.sleep(1000); 
+			   Thread.sleep(100); 
 //	 		   System.out.println(numReqTrc);
 	 		  
 			   MicroFonctions.verifEnvoiTrc(driver);
@@ -642,9 +644,9 @@ public class JurReqTrc {
 			  myXpath = "//i//parent::button//parent::a/span";
 			  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			  str =  MesFonctions.nbrEtNomsObjetBrut(driver, myXpath);
-			  Thread.sleep(1000);
+			  Thread.sleep(100);
 			  driver.findElement(By.xpath("//span[text()=\"Déconnexion\"]")).click();
-			  Thread.sleep(1000);
+			  Thread.sleep(100);
 			  System.out.println(str+"\r");
 			  
 //			   call = numReqTrc.replace("*", "");
@@ -680,16 +682,18 @@ public class JurReqTrc {
 			   System.out.println(MesFonctions.objet(driver,  myXpath).getText().trim());
 			   
 			   myXpath = "//td[@id='Entete1_MenuActeur1_im1_AC']";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
 			   myXpath = "//a[@class='numDossier' and (text()='" + numDos +" (TRC)')]";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
-			   Thread.sleep(2000);
+			   Thread.sleep(200);
 			   System.out.println("Onglet \"Requête\" sélectionné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			   
 			   myXpath = "//td[contains(text(),'Déposé sur Télérecours par')]//following-sibling::td";
 			   auteur = MesFonctions.leTexte(driver, texte, myXpath);
 			   System.out.println("Auteur du dépôt : "+auteur+"\r");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   //Vérification des fichiers
 			   System.out.println("vérification des fichiers en cours......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
@@ -697,7 +701,7 @@ public class JurReqTrc {
 			   caractSpec = "_";
 			   String actAtt1 = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
 			   str1.add(actAtt1);
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   myXpath = "//a[contains(@id,'rptPiecesJointe_ct')]";
 			   elements = driver.findElements(By.xpath(myXpath)); 
@@ -712,20 +716,20 @@ public class JurReqTrc {
 			   caractSpec = "_";
 			   String file = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
 			   str1.add(file);
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 				}
 			   
 			   myXpath = "//a[@id='fileLinkFichierCourrier_hplFichier']";
 			   String req1 = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
 			   str1.add(req1);
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   myXpath = "//a[@id='fileLinkFichierInventaire_hplFichier']";
 			   String invPcs1 = MesFonctions.leNom(driver, myXpath, caractSpec);
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   str1.add(invPcs1);
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   if(str1.equals(str)) {
 				   System.out.println("Tous les fichiers sont présents....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
@@ -740,36 +744,37 @@ public class JurReqTrc {
 			   value = "1"; 
 			   MicroFonctions.choixChbrMatCatCAA(driver, ChbrMatCatCAA, value);
 			   System.out.println("Chambre renseignée");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   //Choix de la matiere
 			   ChbrMatCatCAA = "matiere"; 
 			   value = "06"; 
 			   MicroFonctions.choixChbrMatCatCAA(driver, ChbrMatCatCAA, value);
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   ChbrMatCatCAA = "ssmatiere"; 
 			   value = "06010402"; 
 			   MicroFonctions.choixChbrMatCatCAA(driver, ChbrMatCatCAA, value);
 			   System.out.println("Matière et sous-matière renseignées");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   //Choix de la catégorie
 			   ChbrMatCatCAA = "categorie"; 
 			   value = "REC"; 
 			   MicroFonctions.choixChbrMatCatCAA(driver, ChbrMatCatCAA, value);
 			   System.out.println("Catégorie renseignée");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   //Sauvegarder et enregistrement de la requête 
 			   MicroFonctions.sauvReq(driver);
-			   Thread.sleep(3000);
+			   Thread.sleep(100);
 			   
 			   myXpath = "//a[@class='numDossier' and (text()='" + numDos +" (TRC)')]";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
-			   Thread.sleep(2000);
+			   Thread.sleep(200);
 			   
-			   MicroFonctions.enrgReqFlech(driver);
-			   Thread.sleep(3000);
+			   requete = MicroFonctions.enrgReqFlech(driver);
+			   Thread.sleep(300);
 			   
 			   str1.clear();
 			   str.clear();
@@ -794,10 +799,11 @@ public class JurReqTrc {
 			   
 			   
 			  myXpath = "//i//parent::button//parent::a/span";
+			  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			  str =  MesFonctions.nbrEtNomsObjetBrut(driver, myXpath);
-			  Thread.sleep(1000);
+			  Thread.sleep(100);
 			  driver.findElement(By.xpath("//span[text()=\"Déconnexion\"]")).click();
-			  Thread.sleep(1000);
+			  Thread.sleep(100);
 			  System.out.println(str);
 			  
 //			   call = "21476";//numReqTrc.replace("*", "");
@@ -835,14 +841,15 @@ public class JurReqTrc {
 			   myXpath = "//td[@id='Entete1_MenuActeur1_im1_AC']";
 			   MesFonctions.objet(driver,  myXpath).click();
 			   myXpath = "//a[@class='numDossier' and (text()='" + numDos +" (TRC)')]";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
-			   Thread.sleep(2000);
+			   Thread.sleep(200);
 			   System.out.println("Onglet \"Requête\" sélectionné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			   
 			   myXpath = "//td[contains(text(),'Déposé sur Télérecours par')]//following-sibling::td";
 			   auteur = MesFonctions.leTexte(driver, texte, myXpath);
 			   System.out.println("Auteur du dépôt : "+auteur+"\r");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   //Vérification des fichiers
 			   System.out.println("vérification des fichiers en cours...");
@@ -850,7 +857,7 @@ public class JurReqTrc {
 			   caractSpec = "_";
 			   String actAtt2 = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
 			   str1.add(actAtt2);
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   myXpath = "//a[contains(@id,'rptPiecesJointe_ct')]";
 			   elements = driver.findElements(By.xpath(myXpath)); 
@@ -865,20 +872,20 @@ public class JurReqTrc {
 			   caractSpec = "_";
 			   String file = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
 			   str1.add(file);
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 				}
 			   
 			   myXpath = "//a[@id='fileLinkFichierRequete_hplFichier']";
 			   String req2 = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
 			   str1.add(req2);
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   myXpath = "//a[@id='fileLinkFichierInventaire_hplFichier']";
 			   String invPcs2 = MesFonctions.leNom(driver, myXpath, caractSpec);
 			   Thread.sleep(1000);
 			   
 			   str1.add(invPcs2);
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   if(str1.equals(str)) {
 				   System.out.println("Tous les fichiers sont présents......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
@@ -892,36 +899,37 @@ public class JurReqTrc {
 			   value = "1"; 
 			   MicroFonctions.choixChbrMatCatCTX(driver, ChbrMatCatCTX, value);
 			   System.out.println("Chambre renseignée");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   //Choix de la matiere
 			   ChbrMatCatCTX = "matiere"; 
 			   value = "27"; 
 			   MicroFonctions.choixChbrMatCatCTX(driver, ChbrMatCatCTX, value);
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   ChbrMatCatCTX= "ssmatiere"; 
 			   value = "2701"; 
 			   MicroFonctions.choixChbrMatCatCTX(driver, ChbrMatCatCTX, value);
 			   System.out.println("Matière et sous-matière renseignées");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   //Choix de la catégorie
 			   ChbrMatCatCTX = "categorie"; 
 			   value = "CRS"; 
 			   MicroFonctions.choixChbrMatCatCTX(driver, ChbrMatCatCTX, value);
 			   System.out.println("Catégorie renseignée");
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   
 			   //Sauvegarder et enregistrement de la requête 
 			   MicroFonctions.sauvReq(driver);
-			   Thread.sleep(3000);
+			   Thread.sleep(300);
 			   
 			   myXpath = "//a[@class='numDossier' and (text()='" + numDos +" (TRC)')]";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
-			   Thread.sleep(2000);
+			   Thread.sleep(200);
 			   
-			   MicroFonctions.enrgReqFlech(driver);
-			   Thread.sleep(3000);
+			   requete = MicroFonctions.enrgReqFlech(driver);
+			   Thread.sleep(300);
 			   
 			   str1.clear();
 			   str.clear();
@@ -935,7 +943,7 @@ public class JurReqTrc {
 			break;
 		}
 		
-		return null;
+		return requete;
 	}
 	
 	public static String Verification_Req_Async_DB(String env, String jur, String mail) throws Throwable {

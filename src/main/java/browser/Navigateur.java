@@ -50,7 +50,7 @@ public class Navigateur {
 			   
 			   FirefoxOptions option = new FirefoxOptions();
 			   caps.setCapability("moz:firefoxOptions", option);
-			   option.addArguments("--headless");
+//			   option.addArguments("--headless");
 			   option.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");
 			   option.addArguments("-private");
 			   

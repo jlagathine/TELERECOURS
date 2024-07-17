@@ -1,20 +1,13 @@
-package tr_skipper_bout_en_bout;
+package skipper;
 
 import java.awt.AWTException;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
-import Juridictions.JurReqTr;
-import browser.Navigateur;
 import captureTool.My_SreenShot;
-import fonctionnalites.MicroFonctions;
 import lesFonctions.MesFonctions;
-import skipper.Navigation_Sk_Ajout_Mesure;
-import skipper.Navigation_Sk_Authentification;
-import skipper.Navigation_Sk_Fermeture_Application;
-import skipper.Navigation_Sk_Ouverture_Dossier;
-import skipper.Navigation_Skipper_Creation_Defendeur;
+import requete_depot_enreg.Requete_TR_depot_enreg;
 
 public class CreationDossier_navigationSK {
 	
@@ -22,8 +15,6 @@ public class CreationDossier_navigationSK {
 	String req;
 	String id;
 	String mdp;
-	String code;
-	String password;
 	String type;
 	String nom;
 	String env;
@@ -35,21 +26,11 @@ public class CreationDossier_navigationSK {
 		try {
 			//Choix Navigateur
 			String	browserName = "chrome";
-		    driver = Navigateur.choixBrowser(browserName);
-		    System.out.println(driver);
-		    
-		    //Authentification TR
-		    jur = "CTX";
-		    JurReqTr.maJuridiction(driver, jur);
-		    
-		    //Dépot et enregistrement de la requête
-		    JurReqTr.reqDepot(driver, jur);
-		    req = JurReqTr.reqEnreg(driver, jur);
-		    
-		    //Deconnexion TR
-		    MicroFonctions.deconnexionTrInt(driver);
-		    driver.quit();
-		    Thread.sleep(200);
+			jur = "CTX";
+			id = "lb";
+			mdp = "lb";
+			env = "rec";
+			req = Requete_TR_depot_enreg.TR_depot(jur, browserName, env);
 		    
 		} catch (Exception e) {
 			My_SreenShot.takeScreenshot(driver);
@@ -60,14 +41,14 @@ public class CreationDossier_navigationSK {
 	
 	@Test
 	public void navigation_SK() throws AWTException, Throwable {
-	id = "lb";
-	mdp = "lb";
-	req = "367714";
-	jur = "CTX";
+//	id = "lb";
+//	mdp = "lb";
+//	req = "367714";
+//	jur = "CTX";
 	
 	try {
 		//Ouverture SKIPPER
-		Navigation_Sk_Authentification.authentification(jur, id, mdp);
+		Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
 		
 		//Choix dossier
 		Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur, req);//req
@@ -81,7 +62,7 @@ public class CreationDossier_navigationSK {
 		
 		//Ajout mesure
 		Navigation_Sk_Ajout_Mesure.acces_onglet_historique();
-		Navigation_Sk_Ajout_Mesure.menu_contextuel_Accuse_Recep_Req(jur);//jur
+		Navigation_Sk_Ajout_Mesure.menu_contextuel_Accuse_Recep_Req(jur, env);//jur
 
 		Navigation_Sk_Ajout_Mesure.Mesure_Contextuelle_Communication_Req(jur);
 		Navigation_Sk_Ajout_Mesure.acces_onglet_synthese(jur);

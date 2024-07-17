@@ -19,25 +19,39 @@ public class Transmission_TR_expediteur {
 	}
 	
 	
-	public static Object choix_site_juridiction(WebDriver driver, String jur, String id, String mdp) {
+	public static Object choix_site_juridiction(WebDriver driver, String jur, String id, String mdp, String env) {
 		switch (jur) {
 		
 		case "TA":
-			driver.get("https://www.telerecours.recette.juradm.fr/TA75");
-			MicroFonctions.AuthentificationTaCaaCeInt(driver, id, mdp);
+			if(env=="rec") {
+				driver.get("https://www.telerecours.recette.juradm.fr/TA75");
+				MicroFonctions.AuthentificationTaCaaCeInt(driver, id, mdp);
+			}else {
+				driver.get("https://www.telerecours.int1.juradm.fr/TA75");
+				MicroFonctions.AuthentificationTaCaaCeInt(driver, id, mdp);
+			}
 			
 			break;
 			
 		case "CAA":
-			driver.get("https://www.telerecours.recette.juradm.fr/CA75");
-			MicroFonctions.AuthentificationTaCaaCeInt(driver, id, mdp);
+			if(env=="rec") {
+				driver.get("https://www.telerecours.recette.juradm.fr/CA75");
+				MicroFonctions.AuthentificationTaCaaCeInt(driver, id, mdp);
+			}else {
+				driver.get("https://www.telerecours.int1.juradm.fr/CA75");
+				MicroFonctions.AuthentificationTaCaaCeInt(driver, id, mdp);
+			}
 			
 			break;
 			
 		case "CTX":
-			driver.get("https://www.telerecours.recette.conseil-etat.fr/conseil");
-			MicroFonctions.AuthentificationTaCaaCeInt(driver, id, mdp);
-			
+			if(env=="rec") {
+				driver.get("https://www.telerecours.recette.conseil-etat.fr/conseil");
+				MicroFonctions.AuthentificationTaCaaCeInt(driver, id, mdp);
+			}else {
+				driver.get("https://www.telerecours.int1.conseil-etat.fr/conseil");
+				MicroFonctions.AuthentificationTaCaaCeInt(driver, id, mdp);
+			}
 			break;
 
 		default:
@@ -46,16 +60,18 @@ public class Transmission_TR_expediteur {
 		return null;
 	}
 	
-	public static Object type_transmission(WebDriver driver, String type) {
+	public static Object type_transmission(WebDriver driver, String type) throws InterruptedException {
 		switch (type) {
 		
 		case "renvoi":
 			String myXpath = "//select[@id='Mstr_cpMain_ddlTypeTransmission']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			Thread.sleep(70);
 			value= "2";
 			MesFonctions.selection(driver, myXpath, value);
 			myXpath = "//select[@id='Mstr_cpMain_ddlTypeTransmission']//option[@value='"+value+"']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			Thread.sleep(70);
 			System.out.println("La valeur : \""+MesFonctions.objet(driver, myXpath).getText().trim()+"\" a été sélectionnée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			break;
@@ -63,10 +79,12 @@ public class Transmission_TR_expediteur {
 		case "DPI/DPA":
 			myXpath = "//select[@id='Mstr_cpMain_ddlTypeTransmission']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			Thread.sleep(70);
 			value= "1";
 			MesFonctions.selection(driver, myXpath, value);
 			myXpath = "//select[@id='Mstr_cpMain_ddlTypeTransmission']//option[@value='"+value+"']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			Thread.sleep(70);
 			System.out.println("La valeur : \""+MesFonctions.objet(driver, myXpath).getText().trim()+"\" a été sélectionnée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			break;
@@ -74,10 +92,12 @@ public class Transmission_TR_expediteur {
 		case "decision":
 			myXpath = "//select[@id='Mstr_cpMain_ddlTypeTransmission']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			Thread.sleep(70);
 			value= "3";
 			MesFonctions.selection(driver, myXpath, value);
 			myXpath = "//select[@id='Mstr_cpMain_ddlTypeTransmission']//option[@value='"+value+"']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			Thread.sleep(70);
 			System.out.println("La valeur : \""+MesFonctions.objet(driver, myXpath).getText().trim()+"\" a été sélectionnée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			break;
@@ -88,15 +108,17 @@ public class Transmission_TR_expediteur {
 		return null;
 	}
 	
-	public static Object choix_juridiction(WebDriver driver, String jur) {
+	public static Object choix_juridiction(WebDriver driver, String jur) throws InterruptedException {
 		switch (jur) {
 		
 		case "TA":
 			String myXpath = "//select[@id='Mstr_cpMain_ddlJuridiction']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			Thread.sleep(70);
 			value= "TA75";
 			MesFonctions.selection(driver, myXpath, value);
 			myXpath = "//select[@id='Mstr_cpMain_ddlJuridiction']//option[@value='"+value+"']";
+			Thread.sleep(70);
 			System.out.println("La valeur : \""+MesFonctions.objet(driver, myXpath).getText().trim()+"\" a été sélectionnée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			break;
@@ -104,9 +126,11 @@ public class Transmission_TR_expediteur {
 		case "CAA":
 			myXpath = "//select[@id='Mstr_cpMain_ddlJuridiction']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			Thread.sleep(70);
 			value= "CA75";
 			MesFonctions.selection(driver, myXpath, value);
 			myXpath = "//select[@id='Mstr_cpMain_ddlJuridiction']//option[@value='"+value+"']";
+			Thread.sleep(70);
 			System.out.println("La valeur : \""+MesFonctions.objet(driver, myXpath).getText().trim()+"\" a été sélectionnée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			break;
@@ -114,9 +138,11 @@ public class Transmission_TR_expediteur {
 		case "CTX":
 			myXpath = "//select[@id='Mstr_cpMain_ddlJuridiction']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			Thread.sleep(70);
 			value= "CE";
 			MesFonctions.selection(driver, myXpath, value);
 			myXpath = "//select[@id='Mstr_cpMain_ddlJuridiction']//option[@value='"+value+"']";
+			Thread.sleep(70);
 			System.out.println("La valeur : \""+MesFonctions.objet(driver, myXpath).getText().trim()+"\" a été sélectionnée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			break;
@@ -158,7 +184,8 @@ public class Transmission_TR_expediteur {
 			String myXpath ="//input[@id='Mstr_cpMain_txtDossierDestination']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			MesFonctions.objet(driver, myXpath).sendKeys(req);
-			Keyboard.keyBoard(KeyEvent.VK_ENTER);
+			Thread.sleep(200);
+			Keyboard.keyBoard(KeyEvent.VK_ENTER); 
 			
 			String myXpath1 = "//label[@id='Mstr_cpMain_ucDetailDossierDestination_labelRequerant']";
 			myXpath = "//span[@id='Mstr_cpMain_ucDetailDossierDestination_splitRequerant']";

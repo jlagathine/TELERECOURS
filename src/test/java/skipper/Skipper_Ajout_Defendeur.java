@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import captureTool.My_SreenShot;
 import net.sourceforge.tess4j.TesseractException;
+import requete_depot_enreg.Requete_TR_depot_enreg;
 
 public class Skipper_Ajout_Defendeur {
 	String jur;
@@ -17,6 +18,7 @@ public class Skipper_Ajout_Defendeur {
 	String id;
 	String mdp;
 	String code;
+	String browserName;
 	String password;
 	String type;
 	String nom;
@@ -25,15 +27,23 @@ public class Skipper_Ajout_Defendeur {
 	
 	@BeforeSuite
 	public void ouverture_Skipper() throws TesseractException, Throwable {
-		jur = "TA";
-		id = "lb";
-		mdp = "lb";
-		numdoc = "2400188";//366478, 22478
-		
-		//Authentification
-		Navigation_Sk_Authentification.authentification(jur, id, mdp);
-		//Ouverture dossier
-		Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur, numdoc);
+	try {
+			jur = "CTX";
+			id = "lb";
+			mdp = "lb";
+			env = "rec";
+			browserName = "chrome";
+			numdoc = Requete_TR_depot_enreg.TR_depot(jur, browserName, env);//366478, 22478
+			
+			//Authentification
+			Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
+			//Ouverture dossier
+			Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur, numdoc);
+			
+		} catch (Exception e) {
+			My_SreenShot.takeScreenshot(driver);
+			   e.printStackTrace();
+		}
 	}
 	
 	@Test
@@ -50,7 +60,7 @@ public class Skipper_Ajout_Defendeur {
 			
 			//Ajout mesure
 			Navigation_Sk_Ajout_Mesure.acces_onglet_historique();
-			Navigation_Sk_Ajout_Mesure.menu_contextuel_Accuse_Recep_Req(jur);//jur
+			Navigation_Sk_Ajout_Mesure.menu_contextuel_Accuse_Recep_Req(jur, env);//jur
 
 			Navigation_Sk_Ajout_Mesure.Mesure_Contextuelle_Communication_Req(jur);
 			Navigation_Sk_Ajout_Mesure.acces_onglet_synthese(jur);

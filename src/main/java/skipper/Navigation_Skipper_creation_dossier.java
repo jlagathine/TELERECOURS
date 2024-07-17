@@ -23,18 +23,7 @@ public class Navigation_Skipper_creation_dossier {
 	static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>  coords;
 	static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> coords1;
 	
-//	public static Object ouvertureBamo() throws Throwable, AWTException, Throwable {
-//		return Navigation_Skipper_Code_RattachementTRC.ouvertureBAMO();
-//	}
-//
-//	public static Object choixApplicatioSk(String jur) throws TesseractException, Throwable {
-//		return Navigation_Skipper_Code_RattachementTRC.selectionApplicationContentieux(jur);
-//	}
-//	
-//	public static Object authentication_sk(String ID, String mdp) throws Throwable {
-//		return Navigation_Skipper_Code_RattachementTRC.authentificationSK(ID, mdp);
-//	}
-	
+
 	public static Object nouveau_recours_papier_sk(String jur) throws InterruptedException, IOException, Throwable  {
 	//Click icone NOUVEAU DOSSIER
 		if(jur=="TA") {
@@ -54,17 +43,32 @@ public class Navigation_Skipper_creation_dossier {
 	//Renseigner le champ nature
 		if(jur=="TA") {
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\champ_nature_TA.png";
-		}else if(jur=="CAA" || jur=="CTX") {
-			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\champ_nature_CAA.png";
-		}
-	
-	coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
-	coords = MesFonctions.waitObject(fileImage);
-	MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()+65/2, coords.getFirst().getSecond()+ coords.getSecond().getSecond()/2);
-	bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+67, coords.getFirst().getSecond(), 186, 20);
-	image = MesFonctions.screenshot(bounds);
-	result = MesFonctions.OCR_decryptage(image);
-	
+			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+			coords = MesFonctions.waitObject(fileImage);
+			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()+65/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+68, coords.getFirst().getSecond()+3, 186, 16);
+			image = MesFonctions.screenshot(bounds);
+			result = MesFonctions.OCR_decryptage(image);
+			
+			}else if(jur=="CTX") {
+				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\champ_nature_CAA.png";
+				coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+				coords = MesFonctions.waitObject(fileImage);
+				MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()+65/2, coords.getFirst().getSecond()+ coords.getSecond().getSecond()/2);
+				bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+76, coords.getFirst().getSecond(), 186, 16);//65
+				image = MesFonctions.screenshot(bounds);
+				result = MesFonctions.OCR_decryptage(image);
+				
+				}else if(jur=="CAA") {
+					fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\champ_nature_CAA.png";
+					coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+					coords = MesFonctions.waitObject(fileImage);
+					MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()+65/2, coords.getFirst().getSecond()+ coords.getSecond().getSecond()/2);
+					bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+67, coords.getFirst().getSecond()+2, 186, 16);//65
+					image = MesFonctions.screenshot(bounds);
+					result = MesFonctions.OCR_decryptage(image);
+					}
+		
 	String nature = "";
 	if(jur=="TA" || jur=="CTX") {
 		nature = "Excès";
@@ -88,27 +92,34 @@ public class Navigation_Skipper_creation_dossier {
 	
 	public static Object champ_saisine(String jur) throws TesseractException, Throwable {	
 	//Renseigner le champ saisine
-	
+	if(jur=="TA" || jur=="CTX") {
 	if(jur=="TA") {
 		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\champ_saisine_TA.png";
-//		else if(jur=="CAA") {
-//			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\champ_saisine_CAA.png";
-//		}
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
 		MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()+65/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
-		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+66, coords.getFirst().getSecond(), 186, 20);
+		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+67, coords.getFirst().getSecond()+1, 186, 16);
 		image = MesFonctions.screenshot(bounds);
 		result = MesFonctions.OCR_decryptage(image);
-		
-		String nature ="";
-		if(jur=="TA") {
-			nature = "via";
 		}
-//		else if(jur=="CAA") {
-//			nature = "Appel TA";
-//		}
-		while(!result.contains(nature)) {
+		else if(jur=="CTX") {
+			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\champ_saisine_CAA.png";
+			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+			coords = MesFonctions.waitObject(fileImage);
+			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()+65/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+75, coords.getFirst().getSecond()+2, 120, 16);
+			MesFonctions.mouveSouris(1, 1);
+			image = MesFonctions.screenshot(bounds);
+			result = MesFonctions.OCR_decryptage(image);
+		}
+		String saisine ="";
+		if(jur=="TA") {
+			saisine = "via";
+		}
+		else if(jur=="CTX") {
+			saisine = "Cassation CAA";
+		}
+		while(!result.contains(saisine)) {
 		//Déplacement du curseur
 		Keyboard.keyBoard(KeyEvent.VK_DOWN);
 		Thread.sleep(100);
@@ -134,7 +145,7 @@ public class Navigation_Skipper_creation_dossier {
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 			coords = MesFonctions.waitObject(fileImage);
 			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()+65/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
-			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+65, coords.getFirst().getSecond(), 186, 20);
+			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+67, coords.getFirst().getSecond()+1, 186, 16);
 			image = MesFonctions.screenshot(bounds);
 			result = MesFonctions.OCR_decryptage(image);
 			
@@ -165,7 +176,7 @@ public class Navigation_Skipper_creation_dossier {
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 			coords = MesFonctions.waitObject(fileImage);
 			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()+65/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
-			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+65, coords.getFirst().getSecond(), 186, 20);
+			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+65, coords.getFirst().getSecond()+2, 186, 20);
 			image = MesFonctions.screenshot(bounds);
 			result = MesFonctions.OCR_decryptage(image);
 			
@@ -222,15 +233,17 @@ public class Navigation_Skipper_creation_dossier {
 	coords = MesFonctions.waitObject(fileImage);
 	MesFonctions.singleClick((coords.getFirst().getFirst() + coords.getSecond().getFirst()+260/2), (coords.getFirst().getSecond() + coords.getSecond().getSecond()+30/2));
 	if(jur=="TA") {
-		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+120, coords.getFirst().getSecond()+26, 203, 20);
-	}else if(jur=="CAA" || jur=="CTX") {
-		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+120, coords.getFirst().getSecond()+19, 203, 20);//+26
+		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+120, coords.getFirst().getSecond()+26, 203, 16);
+	}else if(jur=="CTX") {
+		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+120, coords.getFirst().getSecond()+23, 203, 16);//+26
+	}else if(jur=="CAA") {
+		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+120, coords.getFirst().getSecond()+23, 203, 16);
 	}
 	
 	image = MesFonctions.screenshot(bounds);
 	result = MesFonctions.OCR_decryptage(image);
 	
-	String nature = "AGRICULTURE";
+	String nature = "AGRICUL";
 	while(!result.contains(nature)) {
 	//Déplacement du curseur
 	Keyboard.keyBoard(KeyEvent.VK_DOWN);
@@ -539,8 +552,15 @@ public class Navigation_Skipper_creation_dossier {
 					}
 		
 		image = MesFonctions.screenshot(bounds);
-		result = MesFonctions.OCR_decryptage(image);
-		System.out.println("Récupération du numero de dossier....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		if(jur=="TA" || jur=="CAA") {
+			result = (String) MesFonctions.regex_num_req(MesFonctions.OCR_decryptage(image), 7);
+			}
+				else if(jur=="CTX") {
+					result = (String) MesFonctions.regex_num_req(MesFonctions.OCR_decryptage(image), 6);
+				}
+//		result = MesFonctions.OCR_decryptage(image);
+		
+		System.out.println("Récupération du numero de dossier : " +result+"....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		
 		return result.trim();
 	}

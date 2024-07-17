@@ -39,12 +39,13 @@ public class DemArch {
 	 @BeforeMethod 
 	 public void initialisation () throws Throwable {
 		 choiJur = "CTX";
+		 dossier = "367761";//2300045 (TA) ;2300023 (CAA) ;366709 (CTX) 
 		JurTelechargementTr.actExtConnexion(driver, choiJur); 
 	 }
 	 
 	 @Test
 	 public void exploitation() throws Throwable {
-		 dossier = "367676";//2300045 (TA) ;2300023 (CAA) ;366709 (CTX) 
+		
 		JurTelechargementTr.telechargement(driver, dossier) ;
 	 }
 	 

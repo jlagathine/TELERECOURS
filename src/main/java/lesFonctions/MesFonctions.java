@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
@@ -58,6 +59,11 @@ public class MesFonctions {
 	        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 	        return pattern.matcher(strTemp).replaceAll("");
 		}
+		
+		static public String sansAccent(String s) {
+			return Normalizer.normalize(s, Normalizer.Form.NFD);
+		}
+		
 		
 		//Fonction de changement de window 1/3
 		public static String childWindow (WebDriver driver) {
@@ -401,14 +407,14 @@ public class MesFonctions {
 		
 		//capture d'écran 
 		public static BufferedImage capturePluscreationFichier(String str) throws AWTException, IOException  {
-		Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-		BufferedImage capture = new Robot().createScreenCapture(screenRect);
-
-	    File file = new File(str);
-	    ImageIO.write(capture, "png", file );
-	    
-	    return capture;
-		}
+			Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+			BufferedImage capture = new Robot().createScreenCapture(screenRect);
+	
+		    File file = new File(str);
+		    ImageIO.write(capture, "png", file );
+		    
+		    return capture;
+			}
 		
 		public static String rewriteDigits(int number, int nbDigits){
 		    String res = "";
@@ -495,6 +501,7 @@ public class MesFonctions {
 		}
 		Thread.sleep(50);
 		System.out.println("l'élément est affiché...."+MesFonctions.extractCurrentHeure());
+		System.out.println("Coordonnées X="+coords.getFirst().getFirst()+" Y="+coords.getFirst().getSecond()+" ; dimension : ("+coords.getSecond().getFirst()+") , ("+coords.getSecond().getSecond()+")");
 		return coords;	
 		}
 		
@@ -550,6 +557,79 @@ public class MesFonctions {
 				Thread.sleep(300);
 				return null;
 				}
+			
+	//compte nombre de caractère d'une string		
+	public static int count_caractere(String s, char c){
+		int count = 0;
+		for (char a : s.toCharArray()){
+		count = (a == c ? count + 1 : count);
+		}
+		System.out.println("Nombre de caractère(s) trouvé(s) : " +count);
+		return count;
+		} 
+	
+	//récupère les n chiffres d'une string
+	public static Object regex_num_req(String str, int digit_num_req) {
+		String pat = "\\d{"+digit_num_req+"}";
+		Pattern pattern = Pattern.compile(pat);
+		Matcher matcher = pattern.matcher(str);
+		
+		String code = "";
+		
+	    for(int i=0;i<str.length();i++) {
+	    	if(matcher.find()) { 
+				  code = matcher.group().trim();
+				  System.out.println(code);
+				    }
+	    	else {
+	    		System.err.println("Aucune occurence");
+	    		}
+	   		}
+	    
+	    return code;
+    
+	}
+	
+	public static List<String> recuperation_Majuscule_List_String(List<String> str) {
+		//Récupérer les majuscules dans une string 
+		List<String> lst = new ArrayList<>();
+		for(String s:str) {
+			String txt = "";
+			
+			for(int i=0;i<s.length();i++) {
+				if(Character.isUpperCase(s.charAt(i)) || (s.charAt(i)==' ' || s.charAt(i)=='-' && s.length()!=0 )) {
+					txt += String.valueOf(s.charAt(i));
+				}	
+			}
+			while(txt.charAt(txt.length() - 1) == ' ') {
+				txt = txt.substring(0, txt.length() - 1);
+			}
+			lst.add(txt);
+		}
+		System.out.println(lst);
+		return lst;
+	}
+	
+	public static String recuperation_Majuscule_String(String str) {
+		//Récupérer les majuscules dans une string 
+		String pat = "\\p{Upper}\\p{Lower}";
+		Pattern pattern = Pattern.compile(pat);
+		Matcher matcher = pattern.matcher(str);
+		while(matcher.find()) {
+			str = str.replace(matcher.group(), "");
+		}
+		
+			String txt = "";
+			for(int i=0;i<str.length();i++) {
+				if(Character.isUpperCase(str.charAt(i)) || (str.charAt(i)==' ' || str.charAt(i)=='-' && str.length()!=0 )) {
+					txt += String.valueOf(str.charAt(i));
+				}	
+			}
+			txt = txt.trim();
+			
+		System.out.println(txt);
+		return txt;
+	}
 	
 }
 

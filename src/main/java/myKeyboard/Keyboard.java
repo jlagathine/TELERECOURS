@@ -113,13 +113,13 @@ public class Keyboard {
         case '*': doType(VK_ASTERISK); break;
         case '(': doType(VK_LEFT_PARENTHESIS); break;
         case ')': doType(VK_RIGHT_PARENTHESIS); break;
-        case '_': doType(VK_UNDERSCORE); break;
+        case '_': doType(VK_8); break;
         case '+': doType(VK_PLUS); break;
         case '\t': doType(VK_TAB); break;
         case '\n': doType(VK_ENTER); break;
-        case '[': doType(VK_OPEN_BRACKET); break;
-        case ']': doType(VK_CLOSE_BRACKET); break;
-        case '\\': doType(VK_BACK_SLASH); break;
+        case '[': doType(VK_ALT_GRAPH, VK_LEFT_PARENTHESIS); break;
+        case ']': doType(VK_ALT_GRAPH, VK_RIGHT_PARENTHESIS); break;
+        case '\\': doType(VK_ALT_GRAPH, VK_8); break;
         case '{': doType(VK_SHIFT, VK_OPEN_BRACKET); break;
         case '}': doType(VK_SHIFT, VK_CLOSE_BRACKET); break;
         case '|': doType(VK_SHIFT, VK_BACK_SLASH); break;
@@ -129,10 +129,10 @@ public class Keyboard {
         case '"': doType(VK_QUOTEDBL); break;
         case ',': doType(VK_COMMA); break;
         case '<': doType(VK_SHIFT, VK_COMMA); break;
-        case '.': doType(VK_PERIOD); break;
+        case '.': doType(VK_SHIFT, VK_SEMICOLON); break;
         case '>': doType(VK_SHIFT, VK_PERIOD); break;
         case '/': doType(VK_SLASH); break;
-        case '?': doType(VK_SHIFT, VK_SLASH); break;
+        case '?': doType(VK_SHIFT, VK_COMMA); break;
         case ' ': doType(VK_SPACE); break;
         default:
             throw new IllegalArgumentException("Cannot type character " + character);

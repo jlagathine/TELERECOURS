@@ -1,4 +1,4 @@
-package skipper;
+package tr_skipper_bout_en_bout;
 
 import java.sql.SQLException;
 
@@ -13,6 +13,13 @@ import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
 import net.sourceforge.tess4j.TesseractException;
 import pdfGeneration.PdfCreationEtEcriture;
+import requete_depot_enreg.Requete_TRC_depot_enreg;
+import requete_depot_enreg.Requete_TR_depot_enreg;
+import skipper.Navigation_Sk_Authentification;
+import skipper.Navigation_Sk_Fermeture_Application;
+import skipper.Navigation_Sk_Ouverture_Dossier;
+import skipper.Navigation_Skipper_InscriptionTR_Avocat;
+import skipper.Reduction_fenetre_word;
 
 public class Sk_transmission_code_inscription_avocat {
 
@@ -22,23 +29,28 @@ public class Sk_transmission_code_inscription_avocat {
 	String mdp;
 	String code;
 	String password;
+	String browserName;
 	String type;
 	String nom;
 	String env;
+	String DB_id;
+	String DB_mdp;
 	WebDriver driver;
 	
-	@Test
+	@Test(priority=1)
 	public void ouverture_Skipper() throws TesseractException, Throwable {
-		env = "rec";
-		jur = "TA";
-		id = "lb";
-		mdp = "lb";
-		numdoc = "22154";//366478, 22478
+		env = "int1";
+		browserName = "chrome";
+		jur = "CTX";
+		id = "sice";
+		mdp = "sice";
+		numdoc = "412148";//Requete_TR_depot_enreg.TR_depot(jur, browserName, env);
 		try {
 			//SKIPPER
-			Navigation_Sk_Authentification.authentification(jur, id, mdp);
+			Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
 			
 			type = "avocat"; //defendeur
+			Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur, numdoc);
 			Navigation_Skipper_InscriptionTR_Avocat.selectionActeur_defendeur_requerant(jur);
 			Navigation_Skipper_InscriptionTR_Avocat.SelectionTypeActeur(type, jur);
 			nom = Navigation_Skipper_InscriptionTR_Avocat.fiche_acteur(jur);
@@ -62,15 +74,30 @@ public class Sk_transmission_code_inscription_avocat {
 			e.printStackTrace();
 		}
 	}
-		
+	
+	@Test(priority=2)
 	public void verification_BD() throws SQLException, InterruptedException {
 		//Base de donnée
 		switch (jur) {
 		case "TA":
-			JdbcClass.conDBTR("tr2_ta75", "tr2_ta75", env);
+			if(env=="rec") {
+				DB_id = "tr2_ta75";
+				DB_mdp = "tr2_ta75";
+			}else {
+				DB_id = "tr2_ta69";
+				DB_mdp = "tr2_ta69";
+			}
+			JdbcClass.conDBTR(DB_id, DB_mdp, env);
 			break;
 		case "CAA":
-			JdbcClass.conDBTR("tr2_caa75", "tr2_caa75", env);
+			if(env=="rec") {
+				DB_id = "tr2_caa75";
+				DB_mdp = "tr2_caa75";
+			}else {
+				DB_id = "tr2_caa69";
+				DB_mdp = "tr2_caa69";
+			}
+			JdbcClass.conDBTR(DB_id, DB_mdp, env);
 			break;
 		case "CTX":
 			JdbcClass.conDBTR("telerecours", "telerecours", env);
@@ -81,11 +108,12 @@ public class Sk_transmission_code_inscription_avocat {
 		}
 		JdbcClass.sqlVerificationCodeInscriptionTr(password);
 		}
-		
+	
+	@Test(priority=3)	
 	public void navigation_TR() throws Throwable {
 		//TR
 		try {
-			env = "rec";
+//			env = "rec";
 			if(jur=="TA" || jur=="CAA") {
 			driver = Navigateur.choixBrowser("chrome");
 			JurInscripTr.maJuridiction(driver, "TACAA", env);

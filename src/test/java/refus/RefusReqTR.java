@@ -2,8 +2,6 @@ package refus;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -16,15 +14,8 @@ import browser.Navigateur;
 public class RefusReqTR {
 
 	WebDriver driver;
-	   DesiredCapabilities caps;
-	   WebElement element; 
-	   String username;
-	   String password;
-	   boolean verif;
-	   String myXpath;
+	   String env;
 	   String browserName;
-	   String value;
-	   String identifiant;
 	   String mdp;
 	   String choixJur;
 	
@@ -38,13 +29,13 @@ public class RefusReqTR {
 	   @BeforeMethod
 	   public void connexionTr() throws Throwable  {
 		  choixJur = "CTX";
-		  JurRefusReqTR.juridiction(driver, element, choixJur);  
+		  JurRefusReqTR.juridiction(driver, choixJur, env);  
 	   }
 	   
 	   @Test
 		public void depotReq() throws Throwable {
-		   JurRefusReqTR.depot(driver, element, choixJur);
-		   JurRefusReqTR.reqRefuser(driver, element, choixJur);
+		   JurRefusReqTR.depot(driver, choixJur);
+		   JurRefusReqTR.reqRefuser(driver, choixJur);
 	   }
 	   
 	   @AfterMethod

@@ -38,7 +38,7 @@ public class DepotEnregistrementBrouillon {
 		if(env == "int1") {
 			mail = "zaire@yopmail.com";
 		}else {
-			mail = "sorin@yopmail.com";
+			mail = "martial@yopmail.com";
 		}
 		TrcDepotReq_Brouillon.authentification(driver, mail, password, env);
 	   }

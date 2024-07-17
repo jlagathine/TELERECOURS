@@ -166,7 +166,7 @@ public class Navigation_Skipper_InscriptionTR_Avocat {
 		result = MesFonctions.OCR_decryptage(image);
 		
 		//Accéder à la liste des destinataires
-		nom = "BOUILLY";//"AMNACHE";"QUILIOT";
+		nom = "AVO_1";//"AMNACHE";"QUILIOT";
 		while(!result.contains(nom)) {
 			//Déplacement du curseur
 			Keyboard.keyBoard(KeyEvent.VK_DOWN);

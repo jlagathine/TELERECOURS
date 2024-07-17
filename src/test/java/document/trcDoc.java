@@ -45,21 +45,21 @@ import lesFonctions.MesFonctions;
 		   
 		   @BeforeMethod
 		   public void connexionTrc() throws Throwable  {
-			   env = "rec";//int1 ou rec
+			 //choix du dossier de dépôt de mémoires
+			dossier = "2400214";//dossier : est le numéro de dossier 
+			jur = "CAA"; //"TA" ou "CAA" et "CTX"(solution de contournement quant aux numéros de dossiers à la fois présents dans les deux juridictions)
+			env = "rec";//int1 ou rec
+			
 			   if(env == "int1") {
 					mail = "zaire@yopmail.com";
 				}else {
-					mail = "sorin@yopmail.com";
+					mail = "martial@yopmail.com";
 				}
 			 JurDocTrc.authentification(driver, env, mail);
 		   }
 				
 			@Test
 			public void depotPieceTrc () throws Throwable {
-				
-			//choix du dossier de dépôt de mémoires
-			dossier = "367630";//dossier : est le numéro de dossier 
-			jur = "CTX"; //"TA" ou "CAA" et "CTX"(solution de contournement quant aux numéros de dossiers à la fois présents dans les deux juridictions)
 			
 			try {
 				
@@ -83,18 +83,17 @@ import lesFonctions.MesFonctions;
 		 		//Suppression mail
 		 		MicroFonctions.suppression_Mail_MailHog(driver, mail, env);
 				
-			} catch (Exception e) {
+					}catch (Exception e) {
 				
-				My_SreenShot.takeScreenshot(driver);
-				e.printStackTrace();
+						My_SreenShot.takeScreenshot(driver);
+						e.printStackTrace();
 				
-				}
+					}
 			}		
 			
 		 	@AfterMethod
 		 	public void déconnexion() throws Throwable {
-				MicroFonctions.deconnexionTrInt(driver);
-				
+				MicroFonctions.deconnexionTrInt(driver);	
 			}
 				
 			@AfterSuite

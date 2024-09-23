@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-09-20T18:19:39 CEST" name="Default suite" finished-at="2024-09-20T18:24:14 CEST" duration-ms="274458">
+  <suite started-at="2024-09-23T16:40:31 CEST" name="Default suite" finished-at="2024-09-23T16:41:14 CEST" duration-ms="43223">
     <groups>
     </groups>
-    <test started-at="2024-09-20T18:19:39 CEST" name="Default test" finished-at="2024-09-20T18:24:14 CEST" duration-ms="274458">
-      <class name="tr_skipper_bout_en_bout.Sk_transmission_code_inscription_avocat">
-        <test-method signature="ouverture_Skipper()[pri:1, instance:tr_skipper_bout_en_bout.Sk_transmission_code_inscription_avocat@43bc63a3]" started-at="2024-09-20T18:19:39 CEST" name="ouverture_Skipper" finished-at="2024-09-20T18:21:45 CEST" duration-ms="126185" status="PASS">
+    <test started-at="2024-09-23T16:40:31 CEST" name="Default test" finished-at="2024-09-23T16:41:14 CEST" duration-ms="43223">
+      <class name="inscription.FinDeValididite_MDP">
+        <test-method signature="Initialisation()[pri:1, instance:inscription.FinDeValididite_MDP@43bc63a3]" started-at="2024-09-23T16:40:31 CEST" name="Initialisation" finished-at="2024-09-23T16:40:32 CEST" duration-ms="883" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ouverture_Skipper -->
-        <test-method signature="verification_BD()[pri:2, instance:tr_skipper_bout_en_bout.Sk_transmission_code_inscription_avocat@43bc63a3]" started-at="2024-09-20T18:21:46 CEST" name="verification_BD" finished-at="2024-09-20T18:22:43 CEST" duration-ms="57767" status="PASS">
+        </test-method> <!-- Initialisation -->
+        <test-method signature="updateDB()[pri:2, instance:inscription.FinDeValididite_MDP@43bc63a3]" started-at="2024-09-23T16:40:32 CEST" name="updateDB" finished-at="2024-09-23T16:40:33 CEST" duration-ms="1594" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verification_BD -->
-        <test-method signature="navigation_TR()[pri:3, instance:tr_skipper_bout_en_bout.Sk_transmission_code_inscription_avocat@43bc63a3]" started-at="2024-09-20T18:22:43 CEST" name="navigation_TR" finished-at="2024-09-20T18:24:14 CEST" duration-ms="90456" status="PASS">
+        </test-method> <!-- updateDB -->
+        <test-method signature="mot_de_passe_trop_long()[pri:3, instance:inscription.FinDeValididite_MDP@43bc63a3]" started-at="2024-09-23T16:40:33 CEST" name="mot_de_passe_trop_long" finished-at="2024-09-23T16:40:37 CEST" duration-ms="3475" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- navigation_TR -->
-      </class> <!-- tr_skipper_bout_en_bout.Sk_transmission_code_inscription_avocat -->
+        </test-method> <!-- mot_de_passe_trop_long -->
+        <test-method signature="mot_de_passe_trop_court()[pri:4, instance:inscription.FinDeValididite_MDP@43bc63a3]" started-at="2024-09-23T16:40:37 CEST" name="mot_de_passe_trop_court" finished-at="2024-09-23T16:40:40 CEST" duration-ms="3462" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- mot_de_passe_trop_court -->
+        <test-method signature="mot_de_passe_caracteres_interdits()[pri:5, instance:inscription.FinDeValididite_MDP@43bc63a3]" started-at="2024-09-23T16:40:40 CEST" name="mot_de_passe_caracteres_interdits" finished-at="2024-09-23T16:40:44 CEST" duration-ms="3516" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- mot_de_passe_caracteres_interdits -->
+        <test-method signature="mot_de_passe_max_caracteres()[pri:6, instance:inscription.FinDeValididite_MDP@43bc63a3]" started-at="2024-09-23T16:40:44 CEST" name="mot_de_passe_max_caracteres" finished-at="2024-09-23T16:40:48 CEST" duration-ms="3724" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- mot_de_passe_max_caracteres -->
+        <test-method signature="authentification_nouveau_mdp()[pri:7, instance:inscription.FinDeValididite_MDP@43bc63a3]" started-at="2024-09-23T16:40:48 CEST" name="authentification_nouveau_mdp" finished-at="2024-09-23T16:41:14 CEST" duration-ms="26518" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- authentification_nouveau_mdp -->
+      </class> <!-- inscription.FinDeValididite_MDP -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -4,12 +4,6 @@ import java.sql.SQLException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
@@ -18,9 +12,7 @@ import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
 
 public class mdpValidite {
-	WebDriver driver;
-	   DesiredCapabilities caps;
-	   WebElement element; 
+	WebDriver driver; 
 	   String username;
 	   String password;
 	   String password1;
@@ -35,34 +27,35 @@ public class mdpValidite {
 	   String choixJur;
 	   
  
-	@BeforeSuite
-	public void Initialisation () throws SQLException, Throwable {
+	@Test(priority = 1)
+	public void update_db () throws SQLException, Throwable {
 		env = "rec";
 		nom = "tr_commun";
 		mdp = "tr_commun";
 		name = "GIANIS";
 		ANJ_AEXID = 20661;
-		duree = 367;
+		duree = 363;//{"WarningDelay": 10,"MaximumPasswordAge": 365}
+		choixJur = "TACAA";
+		identifiant = "gia458f"+"\t"+"\n"+"\0"+"\r"+"\b";
+		password = "Lhommeest2019*";
+		password1 = "Jtbe3ox3pZ vFGOtAWWTa1L]R[4)89";//{"Letters": "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ","SpecialChars": "()-_éèà=*{}[]ç","Digits": "0123456789","MinLength": 12,"MaxLength": 30} exclure : ><$£¤%@+:/\.#~&²!?;€,
 		
 		JdbcClass.conDBTR(nom, mdp, env);
 		JdbcClass.mdpValidite(duree, name, ANJ_AEXID);
 		Thread.sleep(3000);
 	}
 	
-	@BeforeMethod
-	public void updateDB () throws SQLException {
+	@Test(priority = 2)
+	public void Initialisation () throws SQLException {
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);
 	}
 	
-	@Test
+	
+	@Test(priority = 3)
 	public void Authentification () throws Throwable {
 		try {
-		choixJur = "TACAA";
-		identifiant = "gia458f";
-		password = "Lhommeest2019*";
-		password1 = "Lhommeest2019**";
 		//Connexion avec un mot de passe expiré et changement de mot de passe
 		MicroFonctions.mdpFinValidite(driver, identifiant, password, choixJur);
 		
@@ -75,7 +68,7 @@ public class mdpValidite {
 		}
 	}
 	
-	@AfterMethod
+	@Test(priority = 4)
 	public void déconnexion() throws Exception {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("//a[@id='lnkdeconnecter']")).click();
@@ -83,7 +76,7 @@ public class mdpValidite {
 		Thread.sleep(2000);
 	}
 			
-	@AfterSuite
+	@Test(priority = 5)
 	public void fin() {
 		System.out.println("LE TEST EST TERMINE !!!");
 		driver.quit();

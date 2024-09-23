@@ -3,15 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="inscription.IdentMdpOublie_Recovery">
+      <class name="inscription.mdpValidite">
         <methods>
-          <include name="fin"/>
-          <include name="deconnexion"/>
-          <include name="connexionTr"/>
-          <include name="InitialisationDoc"/>
-          <include name="recuperation_identifiants_apres_expriration_jeton"/>
+          <include name="déconnexion"/>
         </methods>
-      </class> <!-- inscription.IdentMdpOublie_Recovery -->
+      </class> <!-- inscription.mdpValidite -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

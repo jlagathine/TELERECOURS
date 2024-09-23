@@ -58,8 +58,14 @@ public class MicroFonctions {
 			String myXpath3 = "//button[@id='login-submit']";
 			
 			MesFonctions.waiting2(driver, myXpath1, Duration.ofSeconds(3));
+			MesFonctions.objet(driver, myXpath1).clear();
 			MesFonctions.objet(driver, myXpath1).sendKeys(identifiant);
+			System.out.println("Insertion de l'identifiant : "+identifiant+"....."+MesFonctions.extractCurrentHeure());
+			
+			MesFonctions.objet(driver, myXpath2).clear();
 			MesFonctions.objet(driver, myXpath2).sendKeys(mdp);
+			System.out.println("Insertion du mot de passe : "+mdp+"......"+MesFonctions.extractCurrentHeure());
+			
 			MesFonctions.objet(driver, myXpath3).click();
 			System.out.println("Validation des identifiants Username : "+identifiant+" mot de passe : "+mdp+"....."+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r");
 			Thread.sleep(200);
@@ -71,30 +77,40 @@ public class MicroFonctions {
 			String myXpath1 = "//input[@id='txtIdentifiant']";
 			String myXpath2 = "//input[@id='txtPassword']";
 			String myXpath3 = "//a[@id='ibOk']/span[@class='button-text' and (text()='Valider')]";
+			
 			MesFonctions.waiting2(driver, myXpath1, Duration.ofSeconds(3));
+			MesFonctions.objet(driver, myXpath1).clear();
 			MesFonctions.objet(driver, myXpath1).sendKeys(identifiant);
-			MesFonctions.objet(driver,myXpath2).sendKeys(mdp);
-			MesFonctions.objet(driver,myXpath3).click();
+			System.out.println("Insertion de l'identifiant : "+identifiant+"....."+MesFonctions.extractCurrentHeure()+"\r");
+			
+			MesFonctions.objet(driver, myXpath2).clear();
+			MesFonctions.objet(driver, myXpath2).sendKeys(mdp);
+			System.out.println("Insertion du mot de passe : "+mdp+"......"+MesFonctions.extractCurrentHeure()+"\r");
+			
+			MesFonctions.objet(driver, myXpath3).click();
 			System.out.println("Validation des identifiants Username : "+identifiant+" mot de passe : "+mdp+"....."+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//vérification de la page
 			String myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			System.out.println(MesFonctions.objet(driver,myXpath).getText().trim()+"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			System.out.println(MesFonctions.objet(driver, myXpath).getText().trim()+"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			return null;
 	}
 		public static String AuthentificationTrc (WebDriver driver, String username, String password) {
 			//taper son adresse email
 			String myXpath0 = "//input[@id='username']";
 			MesFonctions.objet(driver,myXpath0).sendKeys(username);
+			System.out.println("Insertion de l'identifiant : "+username+"....."+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//taper son mot de passe
 			String myXpath1 = "//input[@id='password']";
 			MesFonctions.objet(driver,myXpath1).sendKeys(password);
+			System.out.println("Insertion du mot de passe : "+password+"......"+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Soumettre
 			String myXpath2 = "//button[@type='submit']";
 			MesFonctions.objet(driver,myXpath2).click();
+			System.out.println("Validation des identifiants Username : "+username+" mot de passe : "+password+"....."+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Accès page d'accueil
 			String myXpath = "//h1[text()=\"Bienvenue sur Télérecours citoyens\"]";
@@ -1101,52 +1117,91 @@ public class MicroFonctions {
 		  
 		  return null;
 	   }
+	   	
+	   	public static void changementMdp(WebDriver driver, String mdp, String mdp2, String id) throws Throwable {
+	   		String myXpath = "//h1[@id='staticBackdropLabel']";
+			  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			  //Ouverture de la PopUp de modification de ses codes
+			  		//Code provisoire
+			  String myXpath1 = "//input[@id='password-field2']";
+			  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			  MesFonctions.objet(driver,myXpath1).sendKeys(mdp);
+			  System.out.println("Insertion de l'ancien mot de passe : "+mdp +"....."+MesFonctions.extractCurrentHeure());
+			  		//nouveau code
+			  String myXpath2 = "//input[@id='password-field3']";
+			  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			  MesFonctions.objet(driver, myXpath2).sendKeys(mdp2);
+			  System.out.println("Insertion du nouveau mot de passe : "+mdp2 +"....."+MesFonctions.extractCurrentHeure());
+			  		//Confirmation du nouveau code
+			  String myXpath3 = "//input[@id='password-field4']";
+			  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			  MesFonctions.objet(driver, myXpath3).sendKeys(mdp2);
+			  System.out.println("Confirmation du nouveau mot de passe : "+mdp2 +"....."+MesFonctions.extractCurrentHeure());
+			  Thread.sleep(1200);
+			  
+			  //Validation
+			  myXpath = "//button[@id='updpass']";
+			  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			  MesFonctions.objet(driver,myXpath).click();
+			  System.out.println("Validation des nouveaux identifiants....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			  
+			  String myXpath4 = "//h1[text()='Se connecter']";
+			  MesFonctions.waiting2(driver, myXpath4, Duration.ofSeconds(3));
+			  System.out.println("Retour à la page d'authentification......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			  
+			  //Vérification des nouveaux codes d'authentification
+			  Thread.sleep(200);
+			  myXpath = "//input[@id='Username']";
+			  String myXpath5 = "//input[@id='password-field']";
+			  String myXpath6 = "//button[@id='login-submit']";
+			 
+			  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			  MesFonctions.objet(driver, myXpath).clear();
+			  MesFonctions.objet(driver, myXpath).sendKeys(id);
+			  
+			  MesFonctions.waiting2(driver, myXpath5, Duration.ofSeconds(3));
+			  MesFonctions.objet(driver, myXpath5).clear();
+			  MesFonctions.objet(driver, myXpath5).sendKeys(mdp2);
+			  System.out.println("Insertion du mot de passe : "+mdp2 +"....."+MesFonctions.extractCurrentHeure());
+			  MesFonctions.objet(driver, myXpath6).click();
+			  
+			  
+			  Thread.sleep(200);
+			  boolean verif = false;
+			  myXpath = "//li[text()=\"Nom d'utilisateur ou mot de passe invalide\"]";
+			  if(MesFonctions.isElementPresent(driver, myXpath, verif)==false) {
+			  System.out.println("Authentification réussie");
+			  }else {
+				  System.out.println("Echec d'authentification......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			  }
+			  
+			  //Choix de la juridiction
+			  MicroFonctions.choixJuridictionTA(driver);
+	   	}
 	  
-	  @SuppressWarnings("unused")
-	  	public static String changementMdp (WebDriver driver, String mdp, String mdp2, String id) throws Throwable {
-		  String myXpath = "//h1[@id='staticBackdropLabel']";
-		  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		  //Ouverture de la PopUp de modification de ses codes
-		  		//Code provisoire
-		  String myXpath1 = "//input[@id='password-field2']";
-		  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		  MesFonctions.objet(driver,myXpath1).sendKeys(mdp);
-		  System.out.println("Insertion de l'ancien mot de passe : "+mdp +"....."+MesFonctions.extractCurrentHeure());
-		  		//nouveau code
-		  String myXpath2 = "//input[@id='password-field3']";
-		  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		  MesFonctions.objet(driver, myXpath2).sendKeys(mdp2);
-		  System.out.println("Insertion du nouveau mot de passe : "+mdp2 +"....."+MesFonctions.extractCurrentHeure());
-		  		//Confirmation du nouveau code
-		  String myXpath3 = "//input[@id='password-field4']";
-		  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		  MesFonctions.objet(driver, myXpath3).sendKeys(mdp2);
-		  System.out.println("Confirmation du nouveau mot de passe : "+mdp2 +"....."+MesFonctions.extractCurrentHeure());
-		  Thread.sleep(1200);
-		  
-		  //Validation
-		  myXpath = "//button[@id='updpass']";
-		  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		  MesFonctions.objet(driver,myXpath).click();
-		  System.out.println("Validation des nouveaux identifiants....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-		  
-		  String myXpath4 = "//h1[text()='Se connecter']";
-		  MesFonctions.waiting2(driver, myXpath4, Duration.ofSeconds(3));
-		  System.out.println("Retour à la page d'authentification......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-		  
+	 
+	  	public static String authentification_nouveau_Mdp (WebDriver driver, String jur, String id, String mdp) throws Throwable {
 		  //Vérification des nouveaux codes d'authentification
 		  Thread.sleep(200);
-		  myXpath = "//input[@id='Username']";
-		  Integer lg = MesFonctions.objet(driver, myXpath).getText().length();
-		  if(lg == null) {
-			  MesFonctions.objet(driver,myXpath).sendKeys(id);
-		  }
+		  String myXpath = "//input[@id='Username']";
 		  String myXpath5 = "//input[@id='password-field']";
 		  String myXpath6 = "//button[@id='login-submit']";
+//		  Integer lg = MesFonctions.objet(driver, myXpath).getText().length();
+//		  if(lg == null) {
+//			  MesFonctions.objet(driver, myXpath).sendKeys(id);
+//		  }
+		  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		  MesFonctions.objet(driver, myXpath).clear();
+		  MesFonctions.objet(driver, myXpath).sendKeys(id);
+		  System.out.println("Insertion du mot de l'identifiant : "+id +"....."+MesFonctions.extractCurrentHeure());
+		  
 		  MesFonctions.waiting2(driver, myXpath5, Duration.ofSeconds(3));
-		  MesFonctions.objet(driver, myXpath5).sendKeys(mdp2);
-		  System.out.println("Insertion du mot de passe : "+mdp2 +"....."+MesFonctions.extractCurrentHeure());
+		  MesFonctions.objet(driver, myXpath5).sendKeys(mdp);
+		  System.out.println("Insertion du nouveau mot de passe : "+mdp+"....."+MesFonctions.extractCurrentHeure());
+		  
+		  //Validation des identifiants
 		  MesFonctions.objet(driver, myXpath6).click();
+		  System.out.println("Validation des identifiants......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		  
 		  
 		  Thread.sleep(200);
@@ -1155,13 +1210,67 @@ public class MicroFonctions {
 		  if(MesFonctions.isElementPresent(driver, myXpath, verif)==false) {
 		  System.out.println("Authentification réussie");
 		  }else {
-			  System.out.println("Echec d'authentification......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			  System.err.println("Echec d'authentification......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		  }
 		  
 		  //Choix de la juridiction
-		  MicroFonctions.choixJuridictionTA(driver);
+		  if(jur=="TACAA") {
+			  MicroFonctions.choixJuridictionTA(driver);
+		  }
+		
 		  return null;
 	  }
+	  
+	  	public static void mot_de_passe_passant_nonpassant(WebDriver driver, String mdp, String mdp2) throws Throwable {
+  		 String myXpath = "//h1[@id='staticBackdropLabel']";
+		  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		  //Ouverture de la PopUp de modification de ses codes
+		  		//Code provisoire
+		  String myXpath1 = "//input[@id='password-field2']";
+		  MesFonctions.waiting2(driver, myXpath1, Duration.ofSeconds(3));
+		  MesFonctions.objet(driver, myXpath1).sendKeys(mdp);
+		  System.out.println("Insertion de l'ancien mot de passe : "+mdp +"....."+MesFonctions.extractCurrentHeure());
+		  		//nouveau code
+		  String myXpath2 = "//input[@id='password-field3']";
+		  MesFonctions.waiting2(driver, myXpath2, Duration.ofSeconds(3));
+		  MesFonctions.objet(driver, myXpath2).sendKeys(mdp2);
+		  System.out.println("Insertion du nouveau mot de passe : "+mdp2 +"....."+MesFonctions.extractCurrentHeure());
+		  		//Confirmation du nouveau code
+		  String myXpath3 = "//input[@id='password-field4']";
+		  MesFonctions.waiting2(driver, myXpath3, Duration.ofSeconds(3));
+		  MesFonctions.objet(driver, myXpath3).sendKeys(mdp2);
+		  System.out.println("Confirmation du nouveau mot de passe : "+mdp2 +"....."+MesFonctions.extractCurrentHeure());
+		  Thread.sleep(1200);
+		  
+		  //Validation
+		  myXpath = "//button[@id='updpass']";
+		  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		  MesFonctions.objet(driver, myXpath).click();
+		  System.out.println("Validation du nouveau mot de passe : "+mdp2+"....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		  Thread.sleep(500);
+	  	
+		  boolean verif = false;
+		  //Vérification de la présence de l'alerte
+		  myXpath = "//div[@class='alert alert-info']//li";
+		  if(MesFonctions.isElementPresent(driver, myXpath, verif)) {
+			  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			  String alert = MesFonctions.objet(driver, myXpath).getText();
+			  System.err.println("Le nouveau mot de passe "+mdp2+" n'a pas pu être validé");
+			  System.err.println(alert);
+			  
+			  //Annulation de l'authentification
+			  myXpath = "//button[@class='btn btn-secondary']";
+			  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			  MesFonctions.objet(driver, myXpath).click();
+			  System.out.println("Annulation du changement de mot de passe....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r"); 
+		  }
+		  
+		  //Retour à la page d'acceuil
+		  String myXpath4 = "//h1[text()='Se connecter']";
+		  MesFonctions.waiting2(driver, myXpath4, Duration.ofSeconds(3));
+		  System.out.println("Retour à la page d'authentification......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		  
+	  	}
 	    
 	  	public static String conditionsGeneralesTrcSansBrouillon (WebDriver driver) throws Throwable {
 		   

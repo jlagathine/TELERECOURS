@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="document.trDoc">
+      <class name="inscription.IdentMdpOublie_Recovery">
         <methods>
           <include name="fin"/>
-          <include name="depotDoc"/>
-          <include name="déconnexion"/>
-          <include name="InitialisationDoc"/>
+          <include name="deconnexion"/>
           <include name="connexionTr"/>
+          <include name="InitialisationDoc"/>
+          <include name="recuperation_identifiants_apres_expriration_jeton"/>
         </methods>
-      </class> <!-- document.trDoc -->
+      </class> <!-- inscription.IdentMdpOublie_Recovery -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

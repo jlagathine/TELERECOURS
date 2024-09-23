@@ -466,7 +466,412 @@ public class JurReqTrc {
 		return null;
 	}
 	
+	public static void authentication_interne_TRCJmeter(WebDriver driver, String jur, String env) throws Throwable {
+		
+		switch (jur) {
+		case "TA":
+			String TrUrl = "https://www.telerecours.recette.juradm.fr/TA75";
+			String TrUrlInt = "https://www.telerecours.int1.juradm.fr/TA75"; 
+		   //Authentification TA
+					
+			
+			if(!env.equals("rec")) {
+				driver.get(TrUrlInt);
+				identifiant = "sice";
+				mdp = "sice";
+				myXpath = "//input[@id='txtIdentifiant']";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			   MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+			   System.out.println("Connexion TA réussie......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			}else {
+				driver.get(TrUrl);
+				identifiant = "lb";
+				mdp = "lb";
+			   myXpath = "//input[@id='txtIdentifiant']";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			   MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+			   System.out.println("Connexion TA réussie......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			}
+				
+		   
+			break;
+			
+		case "CAA" :
+			
+			TrUrl = "https://www.telerecours.recette.juradm.fr/CA75";
+			TrUrlInt = "https://www.telerecours.int1.juradm.fr/CA75"; 
+
+			   //Authentification CAA
+			   
+				if(!env.equals("rec")) {
+					driver.get(TrUrlInt);
+					identifiant = "sice";
+					mdp = "sice";
+					myXpath = "//input[@id='txtIdentifiant']";
+				   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				   MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				   System.out.println("Connexion CA réussie......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				}else {
+					driver.get(TrUrl);
+					identifiant = "lb";
+					mdp = "lb";
+					myXpath = "//input[@id='txtIdentifiant']";
+				   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(10));
+				   MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				   System.out.println("Connexion CA réussie......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				}
+			   
+			   //Traiter la requête 
+			   myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			   MesFonctions.verifyPresenceOfElement(driver, myXpath, jur);
+			   System.out.println(MesFonctions.objet(driver,  myXpath).getText().trim());
+			   myXpath = "//td[@id='Entete1_MenuActeur1_im1_AC']";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			   MesFonctions.objet(driver,  myXpath).click();
+			   
+			break;
+			
+		case "CTX" :
+			TrUrl = "https://www.telerecours.recette.conseil-etat.fr/conseil";
+			TrUrlInt = "https://www.telerecours.int1.conseil-etat.fr/conseil"; 
 	
+		   //Authentification CE
+
+			if(!env.equals("rec")) {
+				driver.get(TrUrlInt);
+				 myXpath = "//input[@id='txtIdentifiant']";
+				 identifiant = "sice";
+				   mdp = "sice";
+				   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(10));
+				   MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				   System.out.println("Connexion CE réussie....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			}else {
+				driver.get(TrUrl);
+				identifiant = "fm";
+				   mdp = "fm";
+				 myXpath = "//input[@id='txtIdentifiant']";
+				   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(10));
+				   MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				   System.out.println("Connexion CE réussie......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			}
+		  
+		   
+		   //Traiter la requête
+		   myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
+		   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		   MesFonctions.verifyPresenceOfElement(driver, myXpath, jur);
+		   System.out.println(MesFonctions.objet(driver,  myXpath).getText().trim());
+		   myXpath = "//td[@id='Entete1_MenuActeur1_im1_AC']";
+		   MesFonctions.objet(driver,  myXpath).click();
+			break;
+			
+
+		default:System.err.println("Cette juridiction n'est pas connue....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			break;
+		}
+		
+	}
+	
+	public static String reqEnrgTrcJmeter (WebDriver driver, String jur, int dossier) throws Throwable {
+		switch (jur) {
+		
+		case "TA":
+			
+			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
+			   MesFonctions.objet(driver,  myXpath).click();
+			   Thread.sleep(200);
+			   System.out.println("Onglet \"Requêtes\" sélectionné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			   
+			   myXpath = "//td[contains(text(),'Déposé sur Télérecours par')]//following-sibling::td";
+			   String auteur = MesFonctions.leTexte(driver, texte, myXpath);
+			   System.out.println("Auteur du dépôt : "+auteur+"\r");
+			   Thread.sleep(100);
+			   
+			   //Vérification des fichiers
+			   System.out.println("vérification des fichiers en cours...");
+			   myXpath = "//a[@id='fileLinkFichierDecAttq_hplFichier']";
+			   caractSpec = "_";
+			   String actAtt = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
+			   System.out.println("Le fichier de la décision attaquée est bien présent : "+actAtt);
+			   Thread.sleep(100);
+			   
+			   myXpath = "//a[contains(@id,'rptPiecesJointe_ct')]";
+			   elements = driver.findElements(By.xpath(myXpath)); 
+			   
+			   int taille = elements.size();
+			   for(int i = 1; i <=taille; i++) {
+				   if(i<10) {
+			   myXpath = "//a[contains(@id,'rptPiecesJointe_ctl0"+i+"')]";
+				   }else {
+					   myXpath = "//a[contains(@id,'rptPiecesJointe_ctl"+i+"')]";
+				   }
+			   caractSpec = "_";
+			   String file = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
+			   System.out.println("Le fichier de la pièce complémentaire est bien présent : "+file);
+			   Thread.sleep(100);
+				}
+			   
+			   myXpath = "//a[@id='fileLinkFichierCourrier_hplFichier']";
+			   String req = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
+			   System.out.println("Le fichier de la requête est bien présent : "+req);
+			   Thread.sleep(100);
+			   
+			   myXpath = "//a[@id='fileLinkFichierInventaire_hplFichier']";
+			   String invPcs = MesFonctions.leNom(driver, myXpath, caractSpec);
+			   Thread.sleep(100);
+			   System.out.println("Le fichier de l'inventaire est bien présent : "+invPcs);
+			   Thread.sleep(100);
+			   
+			   //Choix de la chambre
+			   ChbrMatCatTA = "chambre"; 
+			   value = "11"; 
+			   MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
+			   Thread.sleep(100);
+			   System.out.println("Chambre renseignée");
+			   
+			   //Choix de la matiere
+			   ChbrMatCatTA = "matiere"; 
+			   value = "03"; 
+			   MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
+			   Thread.sleep(100);
+			   ChbrMatCatTA = "ssmatiere"; 
+			   value = "0303"; 
+			   MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
+			   System.out.println("Matière et sous-matière renseignées");
+			   Thread.sleep(100);
+			   
+			   //Choix de la catégorie
+			   ChbrMatCatTA = "categorie"; 
+			   value = "CC"; 
+			   MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
+			   System.out.println("Catégorie renseignée");
+			   Thread.sleep(100);
+			   
+//			   //Sauvegarder et enregistrement de la requête 
+//			   MicroFonctions.sauvReq(driver);
+//			   Thread.sleep(100);
+//			   
+//			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
+//			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+//			   MesFonctions.objet(driver,  myXpath).click();
+//			   Thread.sleep(200);
+			   
+			   requete = MicroFonctions.enrgReqFlech(driver);
+			   Thread.sleep(100);
+			   
+			   System.out.println("Dépôt et enregistrement TRC TA terminés......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");  
+			
+			break;
+			
+		case "CAA" :
+
+			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			   MesFonctions.objet(driver,  myXpath).click();
+			   Thread.sleep(200);
+			   System.out.println("Onglet \"Requête\" sélectionné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			   
+			   myXpath = "//td[contains(text(),'Déposé sur Télérecours par')]//following-sibling::td";
+			   auteur = MesFonctions.leTexte(driver, texte, myXpath);
+			   System.out.println("Auteur du dépôt : "+auteur+"\r");
+			   Thread.sleep(100);
+			   
+			   //Vérification des fichiers
+			   System.out.println("vérification des fichiers en cours......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			   myXpath = "//a[@id='fileLinkFichierDecAttq_hplFichier']";
+			   caractSpec = "_";
+			   String actAtt1 = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
+			   str1.add(actAtt1);
+			   Thread.sleep(100);
+			   
+			   myXpath = "//a[contains(@id,'rptPiecesJointe_ct')]";
+			   elements = driver.findElements(By.xpath(myXpath)); 
+			   
+			   int taille1 = elements.size();
+			   for(int i = 1; i <=taille1; i++) {
+				   if(i<9) {
+			   myXpath = "//a[contains(@id,'rptPiecesJointe_ctl0"+i+"')]";
+				   }else {
+					   myXpath = "//a[contains(@id,'rptPiecesJointe_ctl"+i+"')]";
+				   }
+			   caractSpec = "_";
+			   String file = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
+			   str1.add(file);
+			   Thread.sleep(100);
+				}
+			   
+			   myXpath = "//a[@id='fileLinkFichierCourrier_hplFichier']";
+			   String req1 = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
+			   str1.add(req1);
+			   Thread.sleep(100);
+			   
+			   myXpath = "//a[@id='fileLinkFichierInventaire_hplFichier']";
+			   String invPcs1 = MesFonctions.leNom(driver, myXpath, caractSpec);
+			   Thread.sleep(100);
+			   
+			   str1.add(invPcs1);
+			   Thread.sleep(100);
+			   
+			   if(str1.equals(str)) {
+				   System.out.println("Tous les fichiers sont présents....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			   }
+			   else {
+				   System.err.println("Les tableaux sont différents \rtableau actuel : "+str1+" \rtableau attendu :"+str+"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			
+			   }
+			   
+			   //Choix de la chambre
+			   ChbrMatCatCAA = "chambre"; 
+			   value = "1"; 
+			   MicroFonctions.choixChbrMatCatCAA(driver, ChbrMatCatCAA, value);
+			   System.out.println("Chambre renseignée");
+			   Thread.sleep(100);
+			   
+			   //Choix de la matiere
+			   ChbrMatCatCAA = "matiere"; 
+			   value = "06"; 
+			   MicroFonctions.choixChbrMatCatCAA(driver, ChbrMatCatCAA, value);
+			   Thread.sleep(100);
+			   ChbrMatCatCAA = "ssmatiere"; 
+			   value = "06010402"; 
+			   MicroFonctions.choixChbrMatCatCAA(driver, ChbrMatCatCAA, value);
+			   System.out.println("Matière et sous-matière renseignées");
+			   Thread.sleep(100);
+			   
+			   //Choix de la catégorie
+			   ChbrMatCatCAA = "categorie"; 
+			   value = "REC"; 
+			   MicroFonctions.choixChbrMatCatCAA(driver, ChbrMatCatCAA, value);
+			   System.out.println("Catégorie renseignée");
+			   Thread.sleep(100);
+			   
+			   //Sauvegarder et enregistrement de la requête 
+			   MicroFonctions.sauvReq(driver);
+			   Thread.sleep(100);
+			   
+			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			   MesFonctions.objet(driver,  myXpath).click();
+			   Thread.sleep(200);
+			   
+			   requete = MicroFonctions.enrgReqFlech(driver);
+			   Thread.sleep(300);
+			   
+			   str1.clear();
+			   str.clear();
+			   
+			   System.out.println("Dépôt et enregistrement TRC CA terminés......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");  
+			
+			break;
+			
+		case "CTX" :
+			   
+			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			   MesFonctions.objet(driver,  myXpath).click();
+			   Thread.sleep(200);
+			   System.out.println("Onglet \"Requête\" sélectionné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			   
+			   myXpath = "//td[contains(text(),'Déposé sur Télérecours par')]//following-sibling::td";
+			   auteur = MesFonctions.leTexte(driver, texte, myXpath);
+			   System.out.println("Auteur du dépôt : "+auteur+"\r");
+			   Thread.sleep(100);
+			   
+			   //Vérification des fichiers
+			   System.out.println("vérification des fichiers en cours...");
+			   myXpath = "//a[@id='fileLinkFichierDecAttq_hplFichier']";
+			   caractSpec = "_";
+			   String actAtt2 = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
+			   str1.add(actAtt2);
+			   Thread.sleep(100);
+			   
+			   myXpath = "//a[contains(@id,'rptPiecesJointe_ct')]";
+			   elements = driver.findElements(By.xpath(myXpath)); 
+			   
+			   int taille2 = elements.size();
+			   for(int i = 1; i <=taille2; i++) {
+				   if(i<9) {
+			   myXpath = "//a[contains(@id,'rptPiecesJointe_ctl0"+i+"')]";
+				   }else {
+					   myXpath = "//a[contains(@id,'rptPiecesJointe_ctl"+i+"')]";
+				   }
+			   caractSpec = "_";
+			   String file = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
+			   str1.add(file);
+			   Thread.sleep(100);
+				}
+			   
+			   myXpath = "//a[@id='fileLinkFichierRequete_hplFichier']";
+			   String req2 = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
+			   str1.add(req2);
+			   Thread.sleep(100);
+			   
+			   myXpath = "//a[@id='fileLinkFichierInventaire_hplFichier']";
+			   String invPcs2 = MesFonctions.leNom(driver, myXpath, caractSpec);
+			   Thread.sleep(1000);
+			   
+			   str1.add(invPcs2);
+			   Thread.sleep(100);
+			   
+			   if(str1.equals(str)) {
+				   System.out.println("Tous les fichiers sont présents......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			   }
+			   else {
+				   System.err.println("Les tableaux sont différents \rtableau actuel : "+str1+" \rtableau attendu :"+str+"......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			   }
+			   
+			   //Choix de la chambre
+			   ChbrMatCatCTX = "chambre"; 
+			   value = "1"; 
+			   MicroFonctions.choixChbrMatCatCTX(driver, ChbrMatCatCTX, value);
+			   System.out.println("Chambre renseignée");
+			   Thread.sleep(100);
+			   
+			   //Choix de la matiere
+			   ChbrMatCatCTX = "matiere"; 
+			   value = "27"; 
+			   MicroFonctions.choixChbrMatCatCTX(driver, ChbrMatCatCTX, value);
+			   Thread.sleep(100);
+			   ChbrMatCatCTX= "ssmatiere"; 
+			   value = "2701"; 
+			   MicroFonctions.choixChbrMatCatCTX(driver, ChbrMatCatCTX, value);
+			   System.out.println("Matière et sous-matière renseignées");
+			   Thread.sleep(100);
+			   
+			   //Choix de la catégorie
+			   ChbrMatCatCTX = "categorie"; 
+			   value = "CRS"; 
+			   MicroFonctions.choixChbrMatCatCTX(driver, ChbrMatCatCTX, value);
+			   System.out.println("Catégorie renseignée");
+			   Thread.sleep(100);
+			   
+			   //Sauvegarder et enregistrement de la requête 
+			   MicroFonctions.sauvReq(driver);
+			   Thread.sleep(300);
+			   
+			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			   MesFonctions.objet(driver,  myXpath).click();
+			   Thread.sleep(200);
+			   
+			   requete = MicroFonctions.enrgReqFlech(driver);
+			   Thread.sleep(300);
+			   
+			   str1.clear();
+			   str.clear();
+			   
+			   System.out.println("Dépôt et enregistrement TRC CE terminés");  
+			
+			
+			break;
+
+		default:System.err.println("Cette juridiction n'est pas reconnue....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			break;
+		}
+		
+		return requete;
+	}
 	
 	public static String reqEnrgTrc (WebDriver driver, String jur, String numDos) throws Throwable {
 		switch (jur) {

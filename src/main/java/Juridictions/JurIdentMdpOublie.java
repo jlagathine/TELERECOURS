@@ -27,12 +27,12 @@ public class JurIdentMdpOublie {
 			//Clic sur le lien 
 			String myXpath = "//a[@href and text()='Identifiant et/ou mot de passe oublié ?']";
 			MesFonctions.objet(driver,  myXpath).click();
-			System.out.println("Clic sur le lien Identifiant et/ou mot de passe oublié ?");
+			System.out.println("Clic sur le lien Identifiant et/ou mot de passe oublié ?......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Accès page de récupération des indentifiants
 			myXpath = "//h1[text()='Récupérer ses identifiants de connexion']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			System.out.println("Page de récupération de ses identifiants");
+			System.out.println("Page de récupération de ses identifiants......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			break;
 			
 		case "Conseil":
@@ -43,12 +43,12 @@ public class JurIdentMdpOublie {
 			//Clic sur le lien 
 			myXpath = "//a[@href and text()='Identifiant et/ou mot de passe oublié ?']";
 			MesFonctions.objet(driver,  myXpath).click();
-			System.out.println("Clic sur le lien Identifiant et/ou mot de passe oublié ?");
+			System.out.println("Clic sur le lien Identifiant et/ou mot de passe oublié ?......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Accès page de récupération des indentifiants
 			myXpath = "//h1[text()='Récupérer ses identifiants de connexion']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			System.out.println("Page de récupération de ses identifiants");
+			System.out.println("Page de récupération de ses identifiants......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			break;
 			
 		default: System.err.println("Cette juridiction n'existe pas");
@@ -204,9 +204,9 @@ public class JurIdentMdpOublie {
 			
 		   //Choix de la juridiction
 		   MicroFonctions.choixJuridictionTA(driver);
-		   Thread.sleep(1000);
+		   Thread.sleep(100);
 			
-		   name = "Paris";
+		   name = "TA";
 		   myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
 		   verif = (MesFonctions.objet(driver,  myXpath).getText()).contains(name);
 		   Thread.sleep(1500);

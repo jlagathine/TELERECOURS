@@ -31,7 +31,7 @@ public class Navigation_Sk_Ouverture_Dossier {
 			
 			//Indiquer le numéro du dossier
 			Keyboard.maStringToKeyboard(numDoc);
-			System.out.println("Numéro de dossier renseigné ...."+MesFonctions.extractCurrentHeure()+"\r");
+			System.out.println("Numéro de dossier renseigné : "+numDoc+"...."+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Valider le choix du dossier
 			Thread.sleep(200);

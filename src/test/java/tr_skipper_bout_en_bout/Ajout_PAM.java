@@ -24,11 +24,13 @@ public class Ajout_PAM {
 	String browserName;
 	String id;
 	String type;
+	String qualite;
 	String nom;
 	String mdp;
 	String DB_id;
 	String DB_mdp;
 	String env;
+	String saisine;
 	String nom_fichier;
 	WebDriver driver;
 	
@@ -37,14 +39,15 @@ public class Ajout_PAM {
 	//Ajout de la mesure mémoire en défense
 	try {
 		browserName = "chrome";
-		jur = "CTX";
+		jur = "TA";
 		id = "lb";
 		mdp = "lb";
 		env = "rec";
-		dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, env);
-		type = "defendeur"; //defendeur
+		saisine = "Jugement";
+		dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
+		qualite = "defendeur"; //defendeur
 		nom ="AEROPORTS";//JUR_101 ; AEROPORTS
-		
+		type = "Autres";//Sociétes privées ; Autres
 		
 		//SKIPPER_ouverture
 		Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
@@ -54,8 +57,8 @@ public class Ajout_PAM {
 		
 		
 		Navigation_Skipper_Creation_Defendeur.selectionActeur_defendeur_requerant(jur);
-		Navigation_Skipper_Creation_Defendeur.SelectionTypeActeur(type, jur);
-		Navigation_Skipper_Creation_Defendeur.fiche_acteur(jur, nom);
+		Navigation_Skipper_Creation_Defendeur.SelectionQualiteActeur(qualite, jur);
+		Navigation_Skipper_Creation_Defendeur.fiche_acteur(jur, nom, type);
 		
 		//Ajout mesure
 		Navigation_Sk_Ajout_Mesure.acces_onglet_historique();

@@ -18,6 +18,7 @@ import requete_depot_enreg.Requete_TR_depot_enreg;
 import skipper.Navigation_Sk_Authentification;
 import skipper.Navigation_Sk_Fermeture_Application;
 import skipper.Navigation_Sk_Ouverture_Dossier;
+import skipper.Navigation_Skipper_Creation_Defendeur;
 import skipper.Navigation_Skipper_InscriptionTR_Avocat;
 import skipper.Reduction_fenetre_word;
 
@@ -31,29 +32,33 @@ public class Sk_transmission_code_inscription_avocat {
 	String password;
 	String browserName;
 	String type;
+	String qualite;
 	String nom;
 	String env;
+	String saisine;
 	String DB_id;
 	String DB_mdp;
 	WebDriver driver;
 	
 	@Test(priority=1)
 	public void ouverture_Skipper() throws TesseractException, Throwable {
-		env = "int1";
+		env = "rec";
+		nom = "AUDUC";
 		browserName = "chrome";
-		jur = "CTX";
-		id = "sice";
-		mdp = "sice";
-		numdoc = "412148";//Requete_TR_depot_enreg.TR_depot(jur, browserName, env);
+		saisine = "Jugement";
+		jur = "TA";
+		id = "lb";
+		mdp = "lb";
+		numdoc = "2400628";//Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
 		try {
 			//SKIPPER
 			Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
 			
-			type = "avocat"; //defendeur
+			qualite = "avocat"; //defendeur
 			Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur, numdoc);
 			Navigation_Skipper_InscriptionTR_Avocat.selectionActeur_defendeur_requerant(jur);
-			Navigation_Skipper_InscriptionTR_Avocat.SelectionTypeActeur(type, jur);
-			nom = Navigation_Skipper_InscriptionTR_Avocat.fiche_acteur(jur);
+			Navigation_Skipper_Creation_Defendeur.SelectionQualiteActeur(qualite, jur);
+			Navigation_Skipper_InscriptionTR_Avocat.fiche_acteur(jur, nom);
 			Navigation_Skipper_InscriptionTR_Avocat.constitutionMandataire(jur);
 			Navigation_Skipper_InscriptionTR_Avocat.AccesMesure(jur);
 			Navigation_Skipper_InscriptionTR_Avocat.validationCourrierDansTr(jur);

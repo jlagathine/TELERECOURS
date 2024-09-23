@@ -27,6 +27,7 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 	String DB_id;
 	String DB_mdp;
 	String env;
+	String saisine;
 	String jur_trans;
 	String browserName;
 	int mes;
@@ -44,10 +45,11 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 	id = "lb";
 	mdp = "lb";
 	jur = "CTX";
-	dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, env);
+	saisine = "Jugement";
+	dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
 	
 	//JDD - juridiction de transmission
-	jur_trans = "TA";
+	jur_trans = "CAA";
 	type = "renvoi";
 	
 	
@@ -161,7 +163,6 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 			My_SreenShot.screenshot();
 			e.printStackTrace();
 		}
-	
 	}
 	
 	@Test(priority=3)

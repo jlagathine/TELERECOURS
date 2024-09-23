@@ -656,6 +656,15 @@ public class JurDocTr {
 		System.out.println("Affichage de la fenêtre de PAM....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		}
 		
+		public static void acces_PAM_arret(WebDriver driver) {
+		//Accès à la ligne de la mesure "RECEPETION D'UN MEMEOIRE"
+		String myXpath = "//td[text()=\"Arrêt\"]//following-sibling::td/span";
+		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		MesFonctions.objet(driver, myXpath).click();
+		
+		System.out.println("Affichage de la fenêtre de PAM....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		}
+		
 		public static void Ajout_PAM(WebDriver driver) {
 		//Accès à la fenêtre des pièces jointe"
 		String onglet = MesFonctions.getWindow(driver, 2);
@@ -683,10 +692,40 @@ public class JurDocTr {
 			myXpath = "//a[@id='lbJoindreFichier']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			MesFonctions.objet(driver, myXpath).click();
-			System.out.println("Le type de pièce "+pcs+" est jointe....."+MesFonctions.extractCurrentHeure());
+			System.out.println("La pièce "+pcs+" est jointe....."+MesFonctions.extractCurrentHeure()+"\r");
 			}
 		
 		}
+		
+		public static void Ajout_PAM_Decision(WebDriver driver) {
+			//Accès à la fenêtre des pièces jointe"
+			String onglet = MesFonctions.getWindow(driver, 2);
+			driver.switchTo().window(onglet);
+			String myXpath = "//span[text()='Fichiers']";
+			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			System.out.println("Accès à la fenêtre des pièces jointe....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			
+				//Ajout de pièces
+				myXpath = "//input[@id='fuAjouterFichier']";
+				MesFonctions.objet(driver, myXpath).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\Decision.pdf");
+				
+				System.out.println("La picèes est chargée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				
+				//Renseigner le type de pièce
+				myXpath = "//select[@id='ddlTypeFichier']";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				String value = "DJU";
+				MesFonctions.selection(driver, myXpath, value);
+				System.out.println("Le type de pièce est renseigné....."+MesFonctions.extractCurrentHeure());
+				
+				//Joindre la pièce
+				myXpath = "//a[@id='lbJoindreFichier']";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.objet(driver, myXpath).click();
+				System.out.println("La pièce de la décision a été ajoutée....."+MesFonctions.extractCurrentHeure()+"\r");
+			
+			}
+			
 		
 		public static String selection_PAM_avant_enregistrment (WebDriver driver) {
 		//Sélection des fichiers
@@ -706,9 +745,31 @@ public class JurDocTr {
 			 
 			nom_fichier.add(MesFonctions.objet(driver, myXpath).getText().trim());
 			}
-		String str =  nom_fichier.get(1).split("_")[0];
+		String str = nom_fichier.get(0).substring(nom_fichier.get(0).indexOf(nom_fichier.get(0).split("_")[6]), nom_fichier.get(0).indexOf("."));
 		System.out.println("Toutes les pièces ont été ajoutées....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		return str;
+		}
+		
+		public static void selection_PAM_avant_enregistrment_DECISION (WebDriver driver) {
+		//Sélection des fichiers
+		myXpath = "//input[contains(@id,'SelectCheckBox')]";
+		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		List<WebElement> elts = driver.findElements(By.xpath(myXpath));
+		List<String> nom_fichier = new ArrayList<>();
+		int nbr = elts.size()+1;
+		for(int i=1;i<nbr;i++) {
+			myXpath = "(//input[contains(@id,'SelectCheckBox')])["+i+"]";
+			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			MesFonctions.objet(driver, myXpath).click();
+			
+			myXpath = "(//input[contains(@id,'SelectCheckBox')])["+i+"]//ancestor::td//following-sibling::td//span/a";
+			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			System.out.println("Le ficher : "+MesFonctions.objet(driver, myXpath).getText().trim()+"...."+MesFonctions.extractCurrentHeure());
+			 
+			nom_fichier.add(MesFonctions.objet(driver, myXpath).getText().trim());
+			}
+		
+		System.out.println("Toutes les pièces ont été ajoutées....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		}
 		
 		public static void enregister_PAM (WebDriver driver) throws InterruptedException {

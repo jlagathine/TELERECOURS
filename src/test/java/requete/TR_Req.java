@@ -19,12 +19,14 @@ public class TR_Req {
 	   String env;
 	   String dossier;
 	   String choixJur;
+	   String saisine;
 	
 	   @BeforeSuite
 	   public void InitialisationDoc(){
 	   browserName = "chrome";
-	   env = "int1";
-	   choixJur = "TA";//CAA, CTX, TA
+	   env = "rec";
+	   choixJur = "CAA";//CAA, CTX, TA
+	   saisine = "Jugement"; //Premier ressort ; Jugement
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);
 	   }
@@ -37,7 +39,7 @@ public class TR_Req {
 	   @Test
 		public void depotReq() throws Throwable {
 	    try {
-			   dossier = JurReqTr.reqDepot(driver, choixJur, env);
+			   dossier = JurReqTr.reqDepot(driver, choixJur, saisine, env);
 			   JurReqTr.reqEnreg(driver, choixJur, dossier, env);//attention à la méthode "refusEnrgReq()" et "reqEnreg()"
 			   
 		} catch (Exception e) {

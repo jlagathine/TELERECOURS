@@ -269,7 +269,7 @@ public class JurReqTr {
 		return null;
 	}
 
-	public static String reqDepot (WebDriver driver, String choixJur, String env) throws Throwable {
+	public static String reqDepot (WebDriver driver, String choixJur, String saisine, String env) throws Throwable {
 		
 		switch (choixJur) {
 		case "CAA":
@@ -291,6 +291,8 @@ public class JurReqTr {
 			
 			// Décision attaquée
 			Thread.sleep(100);
+			int nbrMem ;
+			if(!saisine.equals("Premier ressort")) {
 			value = "1";
 			auteur = MicroFonctions.choixSaisine(driver, value);
 			
@@ -308,8 +310,14 @@ public class JurReqTr {
 			numero = "2300541";
 			driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtNumeroDecision']")).sendKeys(numero);// numéro
 			
-			int nbrMem = MicroFonctions.depotFilesReqTr_Dec(driver);
+			//fichier de décision attaquée
+			nbrMem = MicroFonctions.depotFilesReqTr_Dec(driver);
 			nbr.add(nbrMem);
+			
+				}else if(saisine == "Premier ressort") {
+				value = "13";
+				auteur = MicroFonctions.choixSaisine(driver, value);
+					}
 			
 			// Requête
 			int nbrMem1 =MicroFonctions.depotFilesReqTr_req(driver);
@@ -346,16 +354,26 @@ public class JurReqTr {
 			MesFonctions.objet(driver,  myXpath).click();// Vérification
 			Thread.sleep(200);
 			
+			// Modification du fichier de la requête
+			MicroFonctions.ajout_fichier_requete_page_verification(driver);
+			
+			// Envoyer
+			myXpath = "//input[@id='Mstr_cpMain_btDeposerRequete2']";
+			MesFonctions.objet(driver,  myXpath).click();// Vérification
+			Thread.sleep(200);
 
 			// Vérification des fichiers téléchargés
 			System.out.println("Vérification des fichiers en cours......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			//Decision
+			if(saisine != "Premier ressort") {
 			myXpath = "//a[@id='Mstr_cpMain_fileLinkFichierDecAttq_hplFichier']";
 			caractSpec = "_";
 			decAtt = MesFonctions.leNom(driver, myXpath, caractSpec);
 			str.add(decAtt);
 			Thread.sleep(200);
+			}
 			
+			//Requête
 			myXpath = "//a[@id='Mstr_cpMain_fileLinkFichierCourrier_hplFichier']";
 			caractSpec = "_";
 			req = MesFonctions.leNom(driver, myXpath, caractSpec);
@@ -462,7 +480,14 @@ public class JurReqTr {
 			MesFonctions.objet(driver,  myXpath).click();// Vérification
 			Thread.sleep(200);
 			
-
+			//Modification du fichier de la requête
+			MicroFonctions.ajout_fichier_requete_page_verification(driver);
+			
+			// Envoyer
+			myXpath = "//input[@id='Mstr_cpMain_btDeposerRequete2']";
+			MesFonctions.objet(driver,  myXpath).click();// Vérification
+			Thread.sleep(200);
+			
 			// Vérification des fichiers téléchargés
 			//Decision
 			myXpath = "//a[@id='Mstr_cpMain_fileLinkFichierDecAttq_hplFichier']";
@@ -531,10 +556,11 @@ public class JurReqTr {
 			
 			// Décision attaquée
 			Thread.sleep(100);
+			if(!saisine.equals("Premier ressort")) {
 			value = "10";
 			auteur = MicroFonctions.choixSaisine(driver, value);
 			
-			dateDec = "07/06/2020";
+			dateDec = "07/06/2022";
 			driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtDateDecAttCAA']")).sendKeys(dateDec);// Date de décision
 			
 			value = "11074";
@@ -545,6 +571,10 @@ public class JurReqTr {
 			
 			nbrMem = MicroFonctions.depotFilesReqTr_Dec(driver);
 			nbr.add(nbrMem);
+			}else if(saisine.equals("Premier ressort")) {
+				value = "2";
+				auteur = MicroFonctions.choixSaisine(driver, value);
+					}
 			
 			// Requête
 			nbrMem1 =MicroFonctions.depotFilesReqTr_req(driver);
@@ -581,15 +611,26 @@ public class JurReqTr {
 			MesFonctions.objet(driver,  myXpath).click();// Vérification
 			Thread.sleep(200);
 			
+			
+			//Modification du fichier de la requête
+			MicroFonctions.ajout_fichier_requete_page_verification(driver);
+			
+			// Envoyer
+			myXpath = "//input[@id='Mstr_cpMain_btDeposerRequete2']";
+			MesFonctions.objet(driver,  myXpath).click();// Vérification
+			Thread.sleep(200);
+			
 
 			// Vérification des fichiers téléchargés
 			System.out.println("Vérification des fichiers en cours...");
 			//Decision
+			if(saisine != "Premier ressort") {
 			myXpath = "//a[@id='Mstr_cpMain_fileLinkFichierDecAttq_hplFichier']";
 			caractSpec = "_";
 			decAtt = MesFonctions.leNom(driver, myXpath, caractSpec);
 			str.add(decAtt);
 			Thread.sleep(200);
+			}
 			
 			myXpath = "//a[@id='Mstr_cpMain_fileLinkFichierRequete_hplFichier']";
 			caractSpec = "_";
@@ -1152,20 +1193,24 @@ public static String reqAdmDepot (WebDriver driver, String choixJur, String env)
 				// vérification des informations transmises lors du dépôt
 				MicroFonctions.verifUrgence(driver, urg);
 				MicroFonctions.verifMatiere(driver, mat);
+				String sais = MicroFonctions.verifSaisine(driver);
 				
-				driver.findElement(By.xpath("//input[@value ='" + auteur + "']"));
-				System.out.println("trouvé : " + auteur);
-				Thread.sleep(100);
-				driver.findElement(By.xpath("//input[@value ='" + dateDec + "']"));
-				System.out.println("trouvé : " + dateDec);
-				Thread.sleep(100);
-				driver.findElement(By.xpath("//input[@value =\"" + juridiction + "\"]"));
-				System.out.println("trouvé : " + juridiction);
-				Thread.sleep(100);
-				driver.findElement(By.xpath("//input[@value ='" + numero + "']"));
-				System.out.println("trouvé : " + numero);
+				if(!sais.equals("Premier ressort")){
+					driver.findElement(By.xpath("//input[@value ='" + auteur + "']"));
+					System.out.println("trouvé : " + auteur);
+					Thread.sleep(100);
+					driver.findElement(By.xpath("//input[@value ='" + dateDec + "']"));
+					System.out.println("trouvé : " + dateDec);
+					Thread.sleep(100);
+					driver.findElement(By.xpath("//input[@value =\"" + juridiction + "\"]"));
+					System.out.println("trouvé : " + juridiction);
+					Thread.sleep(100);
+					driver.findElement(By.xpath("//input[@value ='" + numero + "']"));
+					System.out.println("trouvé : " + numero);
 
-				Thread.sleep(100);
+					Thread.sleep(100);
+				}
+				
 				
 				// Choix de la chambre
 				ChbrMatCatCAA = "chambre";
@@ -1197,11 +1242,13 @@ public static String reqAdmDepot (WebDriver driver, String choixJur, String env)
 				Thread.sleep(300);
 				driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier + "')]")).click();
 				
-				//Vérification fichiers 
+				//Vérification fichiers
+				if(!sais.equals("Premier ressort")){
 				myXpath = "//a[@id='fileLinkFichierDecAttq_hplFichier']";
 				caractSpec = "_";
 				verifFile1 = MesFonctions.leNom(driver, myXpath, caractSpec);
 				str1.add(verifFile1);
+				}
 				
 				myXpath = "//a[@id='fileLinkFichierCourrier_hplFichier']";
 				caractSpec = "_";
@@ -1276,23 +1323,28 @@ public static String reqAdmDepot (WebDriver driver, String choixJur, String env)
 				// vérification des informations transmises lors du dépôt
 				MicroFonctions.verifUrgence(driver, urg);
 				MicroFonctions.verifMatiere(driver, mat);
+				sais = MicroFonctions.verifSaisine(driver);
 				
+				if(!sais.equals("Premier ressort")){
 				driver.findElement(By.xpath("//input[@value ='" + auteur + "']"));
 				System.out.println("trouvé : " + auteur);
 				Thread.sleep(100);
 				driver.findElement(By.xpath("//input[@value ='" + dateDec + "']"));
 				System.out.println("trouvé : " + dateDec);
 				Thread.sleep(100);
-				if(env=="rec") {
-				driver.findElement(By.xpath("//input[@value =\""+juridiction+"\"]"));
-				System.out.println("trouvé : " + juridiction); //En int1 la mention est JUR_597 au lieu de COUR ADMINISTRATIVE D'APPEL DE PARIS
-				}else {
-					driver.findElement(By.xpath("//input[@value ='JUR_597']"));
+					if(env=="rec") {
+					driver.findElement(By.xpath("//input[@value =\""+juridiction+"\"]"));
 					System.out.println("trouvé : " + juridiction); //En int1 la mention est JUR_597 au lieu de COUR ADMINISTRATIVE D'APPEL DE PARIS
-				}
+					}else {
+						driver.findElement(By.xpath("//input[@value ='JUR_597']"));
+						System.out.println("trouvé : " + juridiction); //En int1 la mention est JUR_597 au lieu de COUR ADMINISTRATIVE D'APPEL DE PARIS
+					}
+					
 				Thread.sleep(100);
 				driver.findElement(By.xpath("//input[@value ='" + numero + "']"));
 				System.out.println("trouvé : " + numero);
+				}
+				
 
 				Thread.sleep(100);
 				
@@ -1327,10 +1379,12 @@ public static String reqAdmDepot (WebDriver driver, String choixJur, String env)
 				driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier + "')]")).click();
 				
 				//Vérification fichiers 
+				if(!sais.equals("Premier ressort")) {
 				myXpath = "//a[@id='fileLinkFichierDecAttq_hplFichier']";
 				caractSpec = "_";
 				verifFile1 = MesFonctions.leNom(driver, myXpath, caractSpec);
 				str1.add(verifFile1);
+				}
 				
 				myXpath = "//a[@id='fileLinkFichierRequete_hplFichier']";
 				caractSpec = "_";

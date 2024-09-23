@@ -195,7 +195,7 @@ public class Transmission_TR_reception {
 		return null;
 	}
 	
-	public static Object Verification_Transmission_Enregistree(WebDriver driver, String type, String req_trans, String req_dest) {
+	public static Object Verification_Transmission_Enregistree(WebDriver driver, String type, String req_trans, String req_dest, String jur, String jurdest) {
 		//Choix du type de la transmission
 		Transmission_TR_reception.type_transmission(driver, type);
 		
@@ -206,12 +206,12 @@ public class Transmission_TR_reception {
 		String myXpath = "//a[contains(@id,'Mstr_cpMain_gvTransmissions') and text()='"+req_trans+"']";
 		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 		myXpath = "//a[contains(@id,'Mstr_cpMain_gvTransmissions')]";
-		System.out.println("Dossier transmis : "+MesFonctions.objet(driver, myXpath).getText().trim());
+		System.out.println("Dossier transmis : "+MesFonctions.objet(driver, myXpath).getText().trim()+" "+jur);
 		
 		myXpath = "//a[contains(@id,'Mstr_cpMain_gvTransmissions') and text()='"+req_trans+"']//parent::td//following-sibling::td[text()='"+req_dest+"']";
 		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 		myXpath = "//a[contains(@id,'Mstr_cpMain_gvTransmissions') and text()='"+req_trans+"']//parent::td//following-sibling::td";
-		System.out.println("Dossier de destinantion : "+MesFonctions.objet(driver, myXpath).getText().trim());
+		System.out.println("Dossier de destinantion : "+MesFonctions.objet(driver, myXpath).getText().trim()+" "+jurdest);
 		
 		myXpath = "//a[contains(@id,'Mstr_cpMain_gvTransmissions') and text()='"+req_trans+"']//parent::td//following-sibling::td[text()='"+req_dest+"']//following-sibling::td";
 		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));

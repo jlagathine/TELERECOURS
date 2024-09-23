@@ -21,6 +21,8 @@ public class Skipper_Ajout_Defendeur {
 	String browserName;
 	String password;
 	String type;
+	String qualite;
+	String saisine;
 	String nom;
 	String env;
 	WebDriver driver;
@@ -28,12 +30,13 @@ public class Skipper_Ajout_Defendeur {
 	@BeforeSuite
 	public void ouverture_Skipper() throws TesseractException, Throwable {
 	try {
-			jur = "CTX";
+			jur = "CAA";
 			id = "lb";
 			mdp = "lb";
 			env = "rec";
 			browserName = "chrome";
-			numdoc = Requete_TR_depot_enreg.TR_depot(jur, browserName, env);//366478, 22478
+			saisine = "Jugement";
+			numdoc = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);//366478, 22478
 			
 			//Authentification
 			Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
@@ -52,11 +55,12 @@ public class Skipper_Ajout_Defendeur {
 	try {
 		
 		//Ajout défendeur
-			type = "defendeur"; //defendeur
+			qualite = "defendeur"; //defendeur
 			nom ="AEROPORTS";
+			type = "Autres";
 			Navigation_Skipper_Creation_Defendeur.selectionActeur_defendeur_requerant(jur);
-			Navigation_Skipper_Creation_Defendeur.SelectionTypeActeur(type, jur);
-			Navigation_Skipper_Creation_Defendeur.fiche_acteur(jur, nom);
+			Navigation_Skipper_Creation_Defendeur.SelectionQualiteActeur(qualite, jur);
+			Navigation_Skipper_Creation_Defendeur.fiche_acteur(jur, nom, type);
 			
 			//Ajout mesure
 			Navigation_Sk_Ajout_Mesure.acces_onglet_historique();

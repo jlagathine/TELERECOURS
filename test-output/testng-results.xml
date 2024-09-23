@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-07-15T16:19:28 CEST" name="Default suite" finished-at="2024-07-15T16:20:42 CEST" duration-ms="73815">
+  <suite started-at="2024-09-20T18:19:39 CEST" name="Default suite" finished-at="2024-09-20T18:24:14 CEST" duration-ms="274458">
     <groups>
     </groups>
-    <test started-at="2024-07-15T16:19:28 CEST" name="Default test" finished-at="2024-07-15T16:20:42 CEST" duration-ms="73815">
-      <class name="requete.TR_Adm_Req">
-        <test-method is-config="true" signature="InitialisationDoc()[pri:0, instance:requete.TR_Adm_Req@26794848]" started-at="2024-07-15T16:19:24 CEST" name="InitialisationDoc" finished-at="2024-07-15T16:19:28 CEST" duration-ms="4451" status="PASS">
+    <test started-at="2024-09-20T18:19:39 CEST" name="Default test" finished-at="2024-09-20T18:24:14 CEST" duration-ms="274458">
+      <class name="tr_skipper_bout_en_bout.Sk_transmission_code_inscription_avocat">
+        <test-method signature="ouverture_Skipper()[pri:1, instance:tr_skipper_bout_en_bout.Sk_transmission_code_inscription_avocat@43bc63a3]" started-at="2024-09-20T18:19:39 CEST" name="ouverture_Skipper" finished-at="2024-09-20T18:21:45 CEST" duration-ms="126185" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- InitialisationDoc -->
-        <test-method is-config="true" signature="connexionTr()[pri:0, instance:requete.TR_Adm_Req@26794848]" started-at="2024-07-15T16:19:28 CEST" name="connexionTr" finished-at="2024-07-15T16:19:30 CEST" duration-ms="1687" status="PASS">
+        </test-method> <!-- ouverture_Skipper -->
+        <test-method signature="verification_BD()[pri:2, instance:tr_skipper_bout_en_bout.Sk_transmission_code_inscription_avocat@43bc63a3]" started-at="2024-09-20T18:21:46 CEST" name="verification_BD" finished-at="2024-09-20T18:22:43 CEST" duration-ms="57767" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- connexionTr -->
-        <test-method signature="depotReq()[pri:0, instance:requete.TR_Adm_Req@26794848]" started-at="2024-07-15T16:19:30 CEST" name="depotReq" finished-at="2024-07-15T16:20:42 CEST" duration-ms="71861" status="PASS">
+        </test-method> <!-- verification_BD -->
+        <test-method signature="navigation_TR()[pri:3, instance:tr_skipper_bout_en_bout.Sk_transmission_code_inscription_avocat@43bc63a3]" started-at="2024-09-20T18:22:43 CEST" name="navigation_TR" finished-at="2024-09-20T18:24:14 CEST" duration-ms="90456" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- depotReq -->
-        <test-method is-config="true" signature="deconnexion()[pri:0, instance:requete.TR_Adm_Req@26794848]" started-at="2024-07-15T16:20:42 CEST" name="deconnexion" finished-at="2024-07-15T16:20:42 CEST" duration-ms="230" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- deconnexion -->
-        <test-method is-config="true" signature="fin()[pri:0, instance:requete.TR_Adm_Req@26794848]" started-at="2024-07-15T16:20:42 CEST" name="fin" finished-at="2024-07-15T16:20:42 CEST" duration-ms="190" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- fin -->
-      </class> <!-- requete.TR_Adm_Req -->
+        </test-method> <!-- navigation_TR -->
+      </class> <!-- tr_skipper_bout_en_bout.Sk_transmission_code_inscription_avocat -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

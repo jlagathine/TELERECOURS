@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
 import browser.Navigateur;
+import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
 
 public class mdpValidite {
@@ -41,7 +42,7 @@ public class mdpValidite {
 		mdp = "tr_commun";
 		name = "GIANIS";
 		ANJ_AEXID = 20661;
-		duree = 359;
+		duree = 367;
 		
 		JdbcClass.conDBTR(nom, mdp, env);
 		JdbcClass.mdpValidite(duree, name, ANJ_AEXID);
@@ -57,7 +58,7 @@ public class mdpValidite {
 	
 	@Test
 	public void Authentification () throws Throwable {
-		
+		try {
 		choixJur = "TACAA";
 		identifiant = "gia458f";
 		password = "Lhommeest2019*";
@@ -67,6 +68,11 @@ public class mdpValidite {
 		
 		//Changement de mot de passe depuis les préférences utilisateurs
 		MicroFonctions.PrefUserChangeMdp(driver, password1, choixJur);
+		
+		}catch(Exception e) {
+		   My_SreenShot.takeScreenshot(driver);
+		   e.printStackTrace();
+		}
 	}
 	
 	@AfterMethod

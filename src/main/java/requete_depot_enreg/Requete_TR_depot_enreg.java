@@ -11,8 +11,9 @@ public class Requete_TR_depot_enreg {
 	static String browserName;
 	static String numreq;
 	static String depot;
+	static String saisine;
 	
-	public static String TR_depot(String jur, String navigateur, String env) throws Throwable {
+	public static String TR_depot (String jur, String navigateur, String saisine, String env) throws Throwable {
 	//Connection
 //	browserName = "chrome";
 	driver = Navigateur.choixBrowser(navigateur) ;
@@ -21,7 +22,7 @@ public class Requete_TR_depot_enreg {
 	JurReqTr.maJuridiction(driver, jur, env);
 	
 	//Depot de requête
-	depot = JurReqTr.reqDepot(driver, jur, env);
+	depot = JurReqTr.reqDepot(driver, jur, saisine, env);
 	
 	//Enregistrement de la requête   
 	numreq = JurReqTr.reqEnreg(driver, jur, depot, env);

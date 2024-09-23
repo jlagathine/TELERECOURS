@@ -14,8 +14,10 @@ import Juridictions.JurIdentMdpOublie;
 //la réalisation de ce test nécessite qu'un mail de récupération d'identifiant soit envoyé et que ce dernier
 //arrive à expiration (vérifier dans les paramêtre le temps de validité du jeton) 
 import browser.Navigateur;
+import captureTool.My_SreenShot;
+import fonctionnalites.MicroFonctions;
 
-public class IdentMdpOublie {
+public class IdentMdpOublie_Recovery {
 	WebDriver driver;
 	   DesiredCapabilities caps;
 	   WebElement element; 
@@ -29,33 +31,28 @@ public class IdentMdpOublie {
 	   String mail;
 	   String choixJur;
 	
-	   @BeforeSuite
-	   public void InitialisationDoc (){
-	   browserName = "chrome";
-	   driver = Navigateur.choixBrowser(browserName);
-	   System.out.println(driver);
-	   }
-	   
-	   @BeforeMethod
-	   public void connexionTr() throws Throwable  {
-		   choixJur = "TACAA";
-		  JurIdentMdpOublie.identMdpLink(driver, choixJur);
-	   }
-	   
+	
 	   @Test//(invocationCount = 5)==loop i=5
-		public void depotReqTA() throws Throwable {
+		public void recuperation_identifiants_apres_expriration_jeton() throws Throwable {
+		   try {
+		   browserName = "chrome";
+		   driver = Navigateur.choixBrowser(browserName);
+		   System.out.println(driver);
 		   
-			mail = "bussy@yopmail.com";
+			mail = "gianis@yopmail.com";
 			choixJur = "TACAA";
-		   JurIdentMdpOublie.recupIndentLienInvalideMdp(driver, element, choixJur, mail);	
+		   JurIdentMdpOublie.recupIndentLienInvalideMdp(driver, element, choixJur, mail);
+		   } 
+		   catch (Exception e) {
+			   My_SreenShot.takeScreenshot(driver);
+			   e.printStackTrace();
+				}
 		   }
 	   
 	   @AfterMethod
 		public void deconnexion() throws Exception {
-			Thread.sleep(1000);
-			driver.findElement(By.xpath("//a[@id='lnkdeconnecter']")).click();
-			System.out.println("Déconnexion réussie");
-			Thread.sleep(2000);
+		   MicroFonctions.deconnexionTrExt(driver);
+
 		}
 				
 		@AfterSuite

@@ -32,6 +32,7 @@ public class Navigateur {
 			   options.addArguments("--disable-popup-blocking");
 			   options.addArguments("--remote-allow-origins=*");
 			   options.addArguments("--incognito");//navigation privée
+			   options.addArguments("--disable-search-engine-choice-screen");
 
 			   driver = new ChromeDriver(options);
 			   System.out.println("Initialisation réussie....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");

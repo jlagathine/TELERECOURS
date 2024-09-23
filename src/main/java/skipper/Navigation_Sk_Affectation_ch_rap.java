@@ -50,7 +50,7 @@ public class Navigation_Sk_Affectation_ch_rap {
 		}
 	}
 	
-	public static void effectation_dossier(String jur, String dossier) throws Throwable {
+	public static void affectation_dossier(String jur, String dossier) throws Throwable {
 	//Entrer le numéro de dossier
 		switch (jur) {
 		case "TA":
@@ -125,6 +125,7 @@ public class Navigation_Sk_Affectation_ch_rap {
 			coords = MesFonctions.waitObject(fileImage);
 			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
 			System.out.println("Confirmation de la validation, click sur le bouton \"OUI\" ...."+MesFonctions.extractCurrentHeure()+"\r");
+			
 			break;
 			
 		case "CAA":

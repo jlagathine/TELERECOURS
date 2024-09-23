@@ -371,6 +371,7 @@ public class JdbcClass {
 		 		+ "WHERE A.ANJ_AEXID = "+ANJ_AEXID+"";
 
 		 stmt = con.createStatement();
+		 System.out.println("exécution des requêtes : "+upd+"\r"+dlt1+"\r"+dlt2+"\r"+dlt3+"\r");
 		 
 		 try {
 			 stmt.executeUpdate(upd);
@@ -399,6 +400,7 @@ public class JdbcClass {
 		 		+ "FROM UTI_EXT_TR U\r\n"
 		 		+ "WHERE U.UTI_EXT_RPVA_AVOCAT_ID = "+RPVA_AVOCAT_ID+" \r\n"
 		 		+ "AND U.UTI_EXT_TR_ID = (SELECT MAX(U.UTI_EXT_TR_ID) FROM UTI_EXT_TR U)";
+		System.out.println("exécution de la requête : "+sql);
 		
 		stmt = con.createStatement();
 		try {rs = stmt.executeQuery(sql);
@@ -427,7 +429,7 @@ public class JdbcClass {
 		 		+ "SET DATE_CREATION_MDP = (SYSDATE - "+duree+")\r\n"
 		 		+ "WHERE NOM ='"+nom+"'"
  				+ "AND ANJ_AEXID = "+ANJ_AEXID+"";
-		 
+		 System.out.println("exécution de la requête : "+sql); 
 		 
 		 try {
 			 stmt.executeUpdate(sql);
@@ -441,6 +443,8 @@ public class JdbcClass {
 		 		+ "FROM UTI_EXT_TR U\r\n"
 		 		+ "where U.NOM = '"+nom+"'\r\n"
 		 		+ "AND ANJ_AEXID = "+ANJ_AEXID+"";
+		 System.out.println("exécution de la requête : "+sql);
+		 
 		 try {
 			 rs = stmt.executeQuery(sql);
 			 while(rs.next()) {
@@ -467,7 +471,7 @@ public class JdbcClass {
 					+ "AND ROWNUM < 2\r\n"
 					+ "ORDER BY D.DAR_DATE_CREATION DESC";
 //			System.out.println(sql);
-
+			System.out.println("exécution de la requête : "+sql);
 			stmt = con.createStatement();
 			
 			try {rs = stmt.executeQuery(sql);
@@ -502,8 +506,8 @@ public class JdbcClass {
 					+ "AND A.ANN_ID = 16640 \r\n"
 					+ "GROUP BY E.REQ_ID\r\n"
 					+ "HAVING SUM((F.FI_TAILLE)/1000000)< 1";
-			System.out.println(sql);
-
+			
+			System.out.println("exécution de la requête : "+sql);
 			stmt = con.createStatement();
 			
 			try {rs = stmt.executeQuery(sql);
@@ -589,7 +593,7 @@ public class JdbcClass {
 		 String delUser = "DELETE FROM jhi_user_authority WHERE user_id = (SELECT id FROM jhi_user WHERE email = '"+mail+"')";
 		 String delUser1 = "DELETE FROM jhi_user WHERE last_name = '"+name+"' AND email = '"+mail+"'";
 		 stmt = con2.createStatement();
-		 
+		 System.out.println("exécution des requêtes : "+delUser+"\r"+delUser1+"\r");
 		 try {
 			 System.out.println(stmt.executeUpdate(delUser));
 			 System.out.println(stmt.executeUpdate(delUser1));
@@ -607,7 +611,7 @@ public class JdbcClass {
 		 		+ "FROM jhi_user "
 		 		+ "WHERE email in ('gradenait@yopmail.com', 'zaire@yopmail.com', 'wossewodda-3728@yopmail.com', 'delvy@yopmail.com')" ;
 		 stmt = con2.createStatement();
-		 
+		 System.out.println("exécution de la requête : "+sql);
 		 try {rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				System.out.println(rs.getString(1));
@@ -641,6 +645,7 @@ public class JdbcClass {
 		
 		String sql4 = "DELETE FROM requete\r\n"
 					+ "WHERE numero_requete_provisoire  = '"+Numprovisoire+"'";
+		System.out.println("exécution de la requête : "+sql1+"\r"+sql2+"\r"+sql3+"\r"+sql4+"\r");
 		
 		stmt = con.createStatement();
 		try {
@@ -698,6 +703,7 @@ public class JdbcClass {
 					query = "SELECT I.RATTACH_TRC_DT\r\n"
 							+ "FROM INSCRIPT_TRC I\r\n"
 							+ "WHERE I.CODE_SECRET = '"+code+"'";
+					System.out.println("exécution de la requête : "+query);
 					try {
 						//Exécution de la requête de type SELECT -> executeQuery
 						rs = stmt.executeQuery(query);
@@ -736,6 +742,7 @@ public class JdbcClass {
 					
 					//Requête SQL
 					query = "SELECT DISTINCT (SELECT I.CODE_SECRET FROM INSCRIPT_TRC I WHERE I.CODE_SECRET = '"+code+"') AS code_secret FROM INSCRIPT_TRC";
+					System.out.println("exécution de la requête : "+query);
 					try {
 						//Exécution de la requête de type SELECT -> executeQuery
 						rs = stmt.executeQuery(query);
@@ -767,12 +774,58 @@ public class JdbcClass {
 			return null;
 		}
 	 
-	 public static String sqlVerificationCodeInscriptionTr(String code) throws SQLException, InterruptedException {
+	 public static String IdEventMes_Comiitr(String req_num) throws InterruptedException, SQLException {
+		//Création de la méthode statement (méthode pour exécuter les requêtes)
+			stmt = con1.createStatement();
+			String code = "";		
+					//Requête SQL
+					query = "SELECT DISTINCT (SELECT A.EVT_ID\r\n"
+							+ "FROM EVT A\r\n"
+							+ "WHERE A.REQ_ID = '"+req_num+"'\r\n"
+							+ "AND A.MES_ID = 'COMIITR' AND A.EVT_SSNUM = 1) AS evt_id FROM EVT";
+					System.out.println("exécution de la requête : "+query);
+					try {
+						//Exécution de la requête de type SELECT -> executeQuery
+						rs = stmt.executeQuery(query);
+						
+						//Affichage des résultats
+						while(rs.next()) {
+							while(rs.getString(1)==null) {
+								System.out.println("aucune information disponible....."+MesFonctions.extractCurrentHeure()+"\r");
+								Thread.sleep(2000);
+								rs = stmt.executeQuery(query);
+								if(rs.next()) {
+									System.out.println("CODE_RETOUR=0");
+								}
+								else {
+									System.err.println("CODE_RETOUR=-1");
+								}
+							}
+							code = rs.getString(1);
+							System.out.println("L'ID de l'événement a été récupéré : "+rs.getString(1)+"....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					try {
+						//Fermeture de l'objet d'exécution
+						stmt.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					Thread.sleep(1000);
+			return code;
+
+	 }
+	 
+	 public static String sqlVerificationCodeInscriptionTrAdm(String code, String evt_id, String req_num) throws SQLException, InterruptedException {
 			//Création de la méthode statement (méthode pour exécuter les requêtes)
 			stmt = con.createStatement();
 					
 					//Requête SQL
 					query = "SELECT DISTINCT (SELECT I.LOGIN_INSCRIPT_TR FROM INSCRIPT_TR I WHERE I.MDP_INSCRIPT_TR = '"+code+"') AS code_secret FROM INSCRIPT_TR";
+					System.out.println("exécution de la requête : "+query);
 					try {
 						//Exécution de la requête de type SELECT -> executeQuery
 						rs = stmt.executeQuery(query);
@@ -794,6 +847,78 @@ public class JdbcClass {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+					
+					
+					
+					//Vérification de la diiffusion du courrier
+					String sql1 = "SELECT DISTINCT (SELECT A.DS_CD_EVT\r\n"
+							+ "FROM DIFFUSION_TR A\r\n"
+							+ "WHERE A.DS_CD_EVT = '"+evt_id+"'\r\n"
+							+ "AND A.DS_NUM_DOSSIER = '"+req_num+"') AS code_secret FROM DIFFUSION_TR";
+					System.out.println("exécution de la requête : "+sql1);
+					try {
+					rs = stmt.executeQuery(sql1);
+					while(rs.next()) {
+						evt_id = rs.getString(1);
+						
+						while(rs.getString(1)==null) {
+							System.out.println("Le courrier n'est pas encore diffusé: "+rs.getString(2)+"....."+MesFonctions.extractCurrentHeure()+"\r");
+							Thread.sleep(2000);
+							rs = stmt.executeQuery(sql1);
+							if(rs.next()) {
+								System.out.println("CODE_RETOUR=0");
+							}
+							else {
+								System.err.println("CODE_RETOUR=-1");
+							}
+						}
+						System.out.println("Le courrier a été diffusé....."+MesFonctions.extractCurrentHeure()+"\r");
+					}
+				}
+			 catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+					
+					try {
+						//Fermeture de l'objet d'exécution
+						stmt.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					Thread.sleep(1000);
+			return null;
+		}
+	 
+	 public static String sqlVerificationCodeInscriptionTr(String code) throws SQLException, InterruptedException {
+			//Création de la méthode statement (méthode pour exécuter les requêtes)
+			stmt = con.createStatement();
+					
+					//Requête SQL
+					query = "SELECT DISTINCT (SELECT I.LOGIN_INSCRIPT_TR FROM INSCRIPT_TR I WHERE I.MDP_INSCRIPT_TR = '"+code+"') AS code_secret FROM INSCRIPT_TR";
+					System.out.println("exécution de la requête : "+query);
+					try {
+						//Exécution de la requête de type SELECT -> executeQuery
+						rs = stmt.executeQuery(query);
+						//Affichage des résultats
+						while(rs.next()) {
+							while(rs.getString(1)==null) {
+								System.out.println("aucune information disponible....."+MesFonctions.extractCurrentHeure()+"\r");
+								Thread.sleep(2000);
+								rs = stmt.executeQuery(query);
+								if(rs.next()) {
+									System.out.println("CODE_RETOUR=0");
+								}
+								else {
+									System.err.println("CODE_RETOUR=-1");
+								}
+							}
+							System.out.println("La colonne est renseignée ; le rattachement a été réalisé : "+rs.getString(1)+"....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
 					
 					try {
 						//Fermeture de l'objet d'exécution
@@ -811,7 +936,7 @@ public class JdbcClass {
 		 		+ "last_modified_date = DATE_ADD((Select DATE_SUB(SYSDATE(), INTERVAL "+mois+" MONTH)), INTERVAL 1 DAY),\r\n"
 		 		+ "cgu_date_acceptation = DATE_ADD((Select DATE_SUB(SYSDATE(), INTERVAL "+mois+" MONTH)), INTERVAL 1 DAY) \r\n"
 		 		+ "WHERE email in ('"+mail+"')";
-		 
+		 System.out.println("exécution de la requête : "+sql);
 		 stmt = con2.createStatement();
 			try {
 				System.out.println("Nombre de ligne modifiée : "+stmt.executeUpdate(sql));
@@ -828,6 +953,7 @@ public class JdbcClass {
 		 		+ "WHERE r.user_id in (SELECT ju.id\r\n"
 		 		+ "				FROM jhi_user ju\r\n"
 		 		+ "					WHERE ju.email in ('"+mail+"'))\r\n";
+		 System.out.println("exécution de la requête : "+sql);
 		 System.out.println(mail);
 		 stmt = con2.createStatement();
 		 boolean verif = false;
@@ -875,7 +1001,7 @@ public class JdbcClass {
 		 				+ "SET last_login_date = DATE_ADD((Select DATE_SUB(SYSDATE(), INTERVAL  "+mois+" MONTH)), INTERVAL 1 DAY)\r\n"
 		 				+ "WHERE email = '"+mail+"'";
 		 
-		 
+		 System.out.println("exécution de la requête : "+sql);
 		 stmt = con2.createStatement();
 			try {
 				System.out.println("La colonne \"LAST_LOGIN_DATE\" a bien été modifiée : "+stmt.executeUpdate(sql)+"....."+MesFonctions.extractCurrentHeure()+"\r");
@@ -890,7 +1016,7 @@ public class JdbcClass {
 		 String sql  = "UPDATE jhi_user\r\n"
 		 				+ "SET last_call_date = NULL "	
 		 				+ "WHERE email = '"+mail+"'";
-		 
+		 System.out.println("exécution de la requête : "+sql);
 		 
 		 stmt = con2.createStatement();
 			try {
@@ -923,7 +1049,7 @@ public class JdbcClass {
 		 		+ "						WHERE user_id in(SELECT id \r\n"
 		 		+ "		 							FROM jhi_user \r\n"
 		 		+ "		 							WHERE email in ('"+mail+"')))";
-		 
+		 System.out.println("exécution de la requête : "+sql1+"\r"+sql2+"\r"+sql3);
 		 stmt = con2.createStatement();
 			try {
 				System.out.println("Les colonnes \"DATE_MODIFICATION\" et \"DATE_CREATION\" ont bien été modifiées : "+stmt.executeUpdate(sql1)+"....."+MesFonctions.extractCurrentHeure()+"\r");
@@ -946,6 +1072,7 @@ public class JdbcClass {
 		 		+ "					WHERE ju.email in ('"+mail+"'))\r\n"
 		 		+ "AND r.statut NOT IN ('Terminé','Refusé')"
 		 		;
+		 System.out.println("exécution de la requête : "+sql);
 		 System.out.println(mail);
 		 stmt = con2.createStatement();
 		 boolean verif = false;
@@ -975,7 +1102,7 @@ public class JdbcClass {
 		 		+ "				FROM requete r2 \r\n"
 		 		+ "				WHERE r2.user_id = (SELECT id FROM jhi_user\r\n"
 		 		+ "		 		 								WHERE email in ('"+mail+"')))";
-		 
+		 System.out.println("exécution de la requête : "+sql1);
 		 String numDos = "";
 		 String transId = "";
 		 stmt = con.createStatement();
@@ -997,7 +1124,7 @@ public class JdbcClass {
 					String sql2 = "SELECT DISTINCT (SELECT R.RT_TRC_TRANS_ID FROM REQUETE R WHERE R.RT_TRC_TRANS_ID = '"+transId+"') AS trans_ID FROM REQUETE";
 					
 					rs = stmt.executeQuery(sql2);
-					
+					System.out.println("exécution de la requête : "+sql2);
 					while(rs.next()) {
 						
 						while(rs.getString(1)==null) {
@@ -1021,6 +1148,7 @@ public class JdbcClass {
 					String sql3 = "SELECT R.RT_ID, R.RT_CD_XML_ID_ETA\r\n"
 					 		+ "FROM REQUETE R\r\n"
 					 		+ "WHERE R.RT_TRC_TRANS_ID = '"+transId+"'";
+					System.out.println("exécution de la requête : "+sql3);
 					try {
 					rs = stmt.executeQuery(sql3);
 					while(rs.next()) {
@@ -1062,6 +1190,7 @@ public class JdbcClass {
 					
 					//Requête SQL
 					query = "SELECT DISTINCT (SELECT R.REQ_ID FROM REQ R WHERE R.REQ_ID ='"+code+"') AS numero_requete FROM REQ ";
+					System.out.println("exécution de la requête : "+query);
 					try {
 						//Exécution de la requête de type SELECT -> executeQuery
 						rs = stmt.executeQuery(query);
@@ -1099,6 +1228,7 @@ public class JdbcClass {
 			stmt = con.createStatement();
 					//Requête SQL
 					query = "SELECT DISTINCT (SELECT E.MES_ID FROM EVT E WHERE E.REQ_ID ='"+req+"' AND E.MES_ID = 'RECRPMI') AS mesure FROM EVT";
+					System.out.println("exécution de la requête : "+query);
 					try {
 						//Exécution de la requête de type SELECT -> executeQuery
 						rs = stmt.executeQuery(query);
@@ -1132,6 +1262,7 @@ public class JdbcClass {
 				
 				//Requête SQL
 				query = "SELECT DISTINCT (SELECT E.MES_ID FROM EVT E WHERE E.REQ_ID ='"+req+"' AND E.MES_ID = 'RECDPA') AS mesure FROM EVT";
+				System.out.println("exécution de la requête : "+query);
 				try {
 					//Exécution de la requête de type SELECT -> executeQuery
 					rs = stmt.executeQuery(query);
@@ -1170,6 +1301,7 @@ public class JdbcClass {
 			stmt = con.createStatement();
 					//Requête SQL
 					query = "SELECT DISTINCT (SELECT E.MES_ID FROM EVT E WHERE E.REQ_ID ='"+req+"' AND E.MES_ID = 'RECMEM') AS mesure FROM EVT";
+					System.out.println("exécution de la requête : "+query);
 					try {
 						//Exécution de la requête de type SELECT -> executeQuery
 						rs = stmt.executeQuery(query);
@@ -1203,6 +1335,7 @@ public class JdbcClass {
 					
 					//Requête SQL
 				 	query = "SELECT DISTINCT (SELECT E.MES_ID FROM EVT E WHERE E.REQ_ID ='"+req+"' AND E.MES_ID = 'RECPMEMO') AS mesure FROM EVT";
+				 	System.out.println("exécution de la requête : "+query);
 					try {
 						//Exécution de la requête de type SELECT -> executeQuery
 						rs = stmt.executeQuery(query);
@@ -1240,6 +1373,7 @@ public class JdbcClass {
 			stmt = con1.createStatement();
 					//Requête SQL
 					query = "SELECT DISTINCT (SELECT DISTINCT P.PJ_ID FROM EVT E, PJ P WHERE E.EVT_ID = P.EVT_ID AND E.REQ_ID = '"+req+"' AND P.PJ_ID LIKE '%"+nom_fichier+"%') AS PIECE FROM PJ";
+					System.out.println("exécution de la requête : "+query);
 					try {
 						//Exécution de la requête de type SELECT -> executeQuery
 						rs = stmt.executeQuery(query);
@@ -1278,6 +1412,7 @@ public class JdbcClass {
 		 		+ "WHERE A.ANN_ACTIF = 1\r\n"
 		 		+ "ORDER BY 1 ASC";
 		 List<String> lst = new ArrayList<>();
+		 System.out.println("exécution de la requête : "+query);
 		 try {
 		 rs = stmt.executeQuery(query);
 		 while(rs.next()) {
@@ -1297,6 +1432,7 @@ public class JdbcClass {
 		 		+ "WHERE A.ANN_ACTIF = 0\r\n"
 		 		+ "ORDER BY 1 ASC";
 		 List<String> lst = new ArrayList<>();
+		 System.out.println("exécution de la requête : "+query);
 		 try {
 		 rs = stmt.executeQuery(query);
 		 while(rs.next()) {
@@ -1316,6 +1452,7 @@ public class JdbcClass {
 		 		+ "WHERE A.ANN_ACTIF = 1\r\n"
 		 		+ "ORDER BY 1 ASC";
 		 List<String> lst = new ArrayList<>();
+		 System.out.println("exécution de la requête : "+query);
 		 try {
 		 rs = stmt.executeQuery(query);
 		 while(rs.next()) {
@@ -1335,6 +1472,7 @@ public class JdbcClass {
 		 		+ "WHERE A.ANN_ACTIF = 0\r\n"
 		 		+ "ORDER BY 1 ASC";
 		 List<String> lst = new ArrayList<>();
+		 System.out.println("exécution de la requête : "+query);
 		 try {
 		 rs = stmt.executeQuery(query);
 		 while(rs.next()) {
@@ -1345,6 +1483,203 @@ public class JdbcClass {
 				}
 		 
 		 return lst;
+	 }
+	 
+	 public static void replication_evt(String dossier) throws SQLException {
+			//Création de la méthode statement (méthode pour exécuter les requêtes)
+			stmt = con.createStatement();
+					//Requête SQL
+					query = "SELECT DISTINCT (SELECT MES_ID FROM EVT WHERE MES_ID = 'ARRET' AND REQ_ID = '"+dossier+"') AS ARRET\r\n"
+							+ "FROM EVT";
+					System.out.println("exécution de la requête : "+query);
+					try {
+						//Exécution de la requête de type SELECT -> executeQuery
+						rs = stmt.executeQuery(query);
+						//Affichage des résultats
+						while(rs.next()) {
+							while(rs.getString(1)==null) {
+								System.out.println("aucune information disponible....."+MesFonctions.extractCurrentHeure()+"\r");
+								Thread.sleep(2000);
+								rs = stmt.executeQuery(query);
+									if(rs.next()) {
+									System.out.println("CODE_RETOUR=0");
+									}
+									else {
+										System.err.println("CODE_RETOUR=-1");
+										}
+									}
+									System.out.println("La ligne : "+rs.getString(1)+" existe....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+								}
+							} catch (Exception e) {
+							e.printStackTrace();
+							}
+					
+					try {
+						//Fermeture de l'objet d'exécution
+						stmt.close();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+	 }
+	 
+	
+	 public static List<String> recuperation_email(String dossier) throws SQLException {
+		 //Connexion BBD
+		 stmt = con.createStatement();
+		 
+		 //Requête SQL
+		 query = "SELECT B.ACT_EMAIL\r\n"
+		 		+ "FROM TR_COMMUN.ANN_TR B\r\n"
+		 		+ "WHERE B.ANJ_AEXID IN(SELECT C.ANJ_AEXID FROM TELERECOURS.ACT A, TELERECOURS.ANN_AVO C WHERE A.ANN_ID = C.AVO_ID AND A.QUA_ID = 'A' AND A.REQ_ID = '"+dossier+"') \r\n"
+		 		+ "OR B.ANJ_AEXID IN(SELECT D.ANJ_AEXID FROM TELERECOURS.ACT A, TELERECOURS.ANN_JUR D WHERE A.ANN_ID = D.ANJ_ID AND A.ANJ_TYPE = 'MIN' AND A.REQ_ID = '"+dossier+"')\r\n"
+		 		+ "ORDER BY 1 ASC";
+		 
+		 String reqsql = "SELECT B.ACT_EMAIL\r\n"
+		 		+ "FROM TR_COMMUN.ANN_TR B\r\n"
+		 		+ "WHERE B.ANJ_AEXID IN(SELECT C.ANJ_AEXID FROM TELERECOURS.ACT A, TELERECOURS.ANN_AVO C WHERE A.ANN_ID = C.AVO_ID AND A.REQ_ID = '"+dossier+"') \r\n"
+		 		+ "OR B.ANJ_AEXID IN(SELECT D.ANJ_AEXID FROM TELERECOURS.ACT A, TELERECOURS.ANN_JUR D WHERE A.ANN_ID = D.ANJ_ID AND A.REQ_ID = '"+dossier+"')\r\n"
+		 		+ "ORDER BY 1 ASC";
+		 
+		 List<String> lst = new ArrayList<>();
+		 List<String> lst1 = new ArrayList<>();
+		 System.out.println("exécution de la requête : "+query+"\r");
+		 try {
+			 rs = stmt.executeQuery(query);
+			 while(rs.next()) {
+				 if(rs.getString(1)!=null) {
+					lst.add(rs.getString(1).replace(";", ",").trim());
+				 }
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 System.out.println("Liste des mails souhaités : "+lst+"......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		 System.out.println("exécution de la requête : "+reqsql+"\r");
+		 stmt1 = con.createStatement();
+		 try {
+			 rs1 = stmt1.executeQuery(reqsql);
+			 while(rs1.next()) {
+				 if(rs1.getString(1)!=null) {
+					lst1.add(rs1.getString(1).replace(";", ",").trim());
+				 }
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 
+		 System.out.println("Ensemble de tous les mails : "+lst1+"......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		 
+		 try {
+				//Fermeture de l'objet d'exécution
+				stmt.close();
+				stmt1.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		return lst;
+		  
+	 }
+	 
+	 public static String Verification_job_decision(String dossier) throws SQLException {
+			//Création de la méthode statement (méthode pour exécuter les requêtes)
+			stmt = con.createStatement();
+			
+					//Requête SQL
+					query = "SELECT DISTINCT (SELECT A.DD_MAILTO FROM DECISION_DISPO A WHERE A.DD_REQ_ID = '"+dossier+"') AS MAIL\r\n"
+							+ "FROM DECISION_DISPO";
+					String mail = "";
+					try {
+						//Exécution de la requête de type SELECT -> executeQuery
+						rs = stmt.executeQuery(query);
+						//Affichage des résultats
+						while(rs.next()) {
+							while(rs.getString(1)==null) {
+								System.out.println("aucune information disponible....."+MesFonctions.extractCurrentHeure()+"\r");
+								Thread.sleep(2000);
+								rs = stmt.executeQuery(query);
+									if(rs.next()) {
+									System.out.println("CODE_RETOUR=0");
+									}
+									else {
+										System.err.println("CODE_RETOUR=-1");
+										}
+									}
+									mail = rs.getString(1);
+//									System.out.println(mail);
+									System.out.println("La liste des mails des destinataires : "+rs.getString(1)+" existe, le job décision est créé....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+								}
+							} catch (Exception e) {
+							e.printStackTrace();
+							}
+					
+					try {
+						//Fermeture de l'objet d'exécution
+						stmt.close();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					return mail;
+	 }
+	 
+	 public static void verification_creation_dossier(String dossier) throws SQLException {
+		 stmt = con.createStatement();
+		 String sql = "SELECT SUM(CASE WHEN A.REQ_ID = '"+dossier+"' THEN 1 ELSE 0 END)\r\n"
+		 		+ "FROM ACT A";
+		 System.out.println("Exécution de la requête : "+sql);
+		 try {
+			 rs = stmt.executeQuery(sql);
+			 
+			 while(rs.next()){
+				 while(rs.getInt(1)==0) {
+					 System.out.println("aucune information disponible....."+MesFonctions.extractCurrentHeure()+"\r");
+						Thread.sleep(2000);
+						rs = stmt.executeQuery(sql);
+						if(rs.next()) {
+						System.out.println("CODE_RETOUR=0");
+						}
+						else {
+							System.err.println("CODE_RETOUR=-1");
+							}
+						}
+				 System.out.println("Le dossier existe dans la table ACT....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				 }
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 stmt.close(); 
+	 }
+	
+	 
+	 public static List<Integer> Recuperation_numRequeteTRC_Jmeter() throws SQLException {
+		 stmt = con.createStatement();
+		 String sql = ""
+		 		+ "SELECT A.RT_ID \r\n"
+		 		+ "FROM REQUETE A\r\n"
+		 		+ "WHERE A.RT_ID_PREVALIDEUR IN (20699,\r\n"
+		 		+ "20598,\r\n"
+		 		+ "24853,\r\n"
+		 		+ "19419,\r\n"
+		 		+ "20544)\r\n"
+		 		+ "AND A.RT_ID = A.RT_NUM_DOSSIER\r\n"
+		 		+ "AND A.RT_CD_XML_ID_ETA = '2'\r\n"
+		 		+ "AND TRUNC(A.RT_DT_DEPOT) = TO_DATE('"+MesFonctions.extractCurrentDate()+"', 'DD/MM/YYYY')\r\n"
+		 		+ "ORDER BY 1 DESC \r";
+		 
+		 System.out.println("Exécution de la requête : \r"+sql);
+		 List<Integer> num = new ArrayList<>();
+		 try {
+			 rs = stmt.executeQuery(sql);
+			 
+			 while(rs.next()){
+				num.add(rs.getInt(1));  
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 System.out.println("L'ensemble des dossiers enregistrés ont été sélectionnés....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		System.out.println(num); 
+		return num;
 	 }
 }
 

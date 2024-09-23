@@ -112,20 +112,22 @@ public class Navigation_Skipper_InscriptionTR_Avocat {
 		return null;
 	}
 	
-	public static String fiche_acteur(String jur) throws TesseractException, Throwable {
+	public static String fiche_acteur(String jur, String nom_act) throws TesseractException, Throwable {
 		Navigation_Skipper_InscriptionTR_Avocat.boutonAnnuaire(jur);
-		nom = Navigation_Skipper_InscriptionTR_Avocat.recherche_acteur(jur);
+		nom = Navigation_Skipper_InscriptionTR_Avocat.recherche_acteur(jur, nom_act);
 		return nom;
 	}
 	
 	public static Object boutonAnnuaire(String jur) throws InterruptedException, IOException, AWTException {
 		//Click bouton annuaire
-		if(jur=="CAA" || jur=="CTX") {
+		if(jur=="CAA") {
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_Annuaire-Fiche acteur_CAA.png";
-				}
-				else {
-					fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_Annuaire-Fiche acteur.png";
-				}
+				}else if(jur=="CTX") {
+					fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Btn_Icone_Annuaire - Skipper - Fiche acteur - CTX.png";
+						}
+						else {
+							fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_Annuaire-Fiche acteur.png";
+						}
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
 		MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
@@ -134,7 +136,7 @@ public class Navigation_Skipper_InscriptionTR_Avocat {
 		return null;
 	}
 	
-	public static String recherche_acteur(String jur) throws TesseractException, Throwable {
+	public static String recherche_acteur(String jur, String nom_act) throws TesseractException, Throwable {
 		//Inscrit à TR décoché
 		if(jur=="CAA") {
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\InscritaTr-coche_CAA.png";
@@ -166,7 +168,7 @@ public class Navigation_Skipper_InscriptionTR_Avocat {
 		result = MesFonctions.OCR_decryptage(image);
 		
 		//Accéder à la liste des destinataires
-		nom = "AVO_1";//"AMNACHE";"QUILIOT";
+		nom = nom_act;//"AMNACHE";"QUILIOT";
 		while(!result.contains(nom)) {
 			//Déplacement du curseur
 			Keyboard.keyBoard(KeyEvent.VK_DOWN);

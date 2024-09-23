@@ -17,11 +17,11 @@ public class JurInvitIsnscriptConsult {
 		case "TACAA":
 			//Connexion	
 			MicroFonctions.obtenirCodeTACAA(driver, code, mdp);
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 
 			//Consultation
-			MicroFonctions.adminConsultationAvantInscript(driver);
-			Thread.sleep(1000);
+			MicroFonctions.adminConsultationAvantInscript(driver, mdp);
+			Thread.sleep(300);
 			
 			//Formulaire
 			String mail = MicroFonctions.formulaireAdmin(driver, nom, prenom);
@@ -34,28 +34,28 @@ public class JurInvitIsnscriptConsult {
 			
 			//Choix de la juridiction
 			MicroFonctions.choixJuridictionTA(driver);
-			Thread.sleep(1000);
+			Thread.sleep(200);
 			
 			name = "Paris";
 			myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
 			verif = name.contains(MesFonctions.objet(driver, myXpath).getText());
-			Thread.sleep(1500);
+			Thread.sleep(500);
 			System.out.println(verif);
 			if (verif==true) {
 				System.err.println("la redirection n'a pas bien fonctionné");
 			}
-			Thread.sleep(3000);
+			Thread.sleep(300);
 			
 			break;
 			
 		case "CE":
 			//Connexion	
 			MicroFonctions.obtenirCodeCE(driver, code, mdp);
-			Thread.sleep(1000);
+			Thread.sleep(200);
 			
 			//Consultation
-			MicroFonctions.adminConsultationAvantInscript(driver);
-			Thread.sleep(1000);
+			MicroFonctions.adminConsultationAvantInscript(driver, mdp);
+			Thread.sleep(200);
 			
 			//Formulaire
 			mail = MicroFonctions.formulaireAdmin(driver, nom, prenom);
@@ -69,14 +69,14 @@ public class JurInvitIsnscriptConsult {
 			name = "Télérecours - Conseil d'Etat";
 			myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
 			verif = name.equals(MesFonctions.objet(driver, myXpath).getText());
-			Thread.sleep(1500);
+			Thread.sleep(300);
 			System.out.println(verif);
 			if (!verif) {
 				System.err.println("la redirection n'a pas bien fonctionné");
 			}else {
 				System.out.println("la redirection a pas bien fonctionné");
 			}
-			Thread.sleep(3000);
+			Thread.sleep(300);
 		
 			break;
 		

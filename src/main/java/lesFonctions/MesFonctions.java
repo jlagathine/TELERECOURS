@@ -129,24 +129,22 @@ public class MesFonctions {
 		
 	
 		//fonction d'attente de chargement 1
-		public static WebDriverWait waiting1 (WebDriver driver, Duration duree) {
+		public static void waiting1 (WebDriver driver, Duration duree) {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-			wait.until(ExpectedConditions.alertIsPresent());
-		return null;	
+			wait.until(ExpectedConditions.alertIsPresent());	
 		}
 		
 		//fonction d'attente de chargement 2
-		public static WebDriverWait waiting2 (WebDriver driver, String myXpath, Duration duree) {
+		public static void waiting2 (WebDriver driver, String myXpath, Duration duree) {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(myXpath)));
-		return null;	
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(myXpath)));	
 	}
 		
 		//fonction d'attente de chargement 2
-		public static WebDriverWait waiting3 (WebDriver driver, String tag, Duration duree) {
+		public static void waiting3 (WebDriver driver, String tag, Duration duree) {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(190));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName(tag)));
-		return null;
+
 		}
 	
 		//fonction de séléction d'option par valeur
@@ -248,11 +246,10 @@ public class MesFonctions {
 			return null;
 		}
 		
-		public static JavascriptExecutor clickOn (WebDriver driver, String myXpath) {
+		public static void clickOn (WebDriver driver, String myXpath) {
 			WebElement element =  MesFonctions.objet(driver, myXpath);
 			JavascriptExecutor js = (JavascriptExecutor)driver;
 			js.executeScript("arguments[0].click();", element);
-			return null;
 		}
 		
 		public static String verifyPresenceOfElement (WebDriver driver, String myXpath, String texte) throws Throwable {
@@ -260,7 +257,7 @@ public class MesFonctions {
 			String str = driver.findElement(By.xpath(myXpath)).getText().trim();
 				boolean verif = str.contains(texte);
 			if(verif == true) {
-				Thread.sleep(1000);
+				Thread.sleep(100);
 			}
 			else {
 				System.err.println("L'element n'est pas présent : "+str+" / " +texte);
@@ -269,11 +266,11 @@ public class MesFonctions {
 		}
 		
 		public static String verifyPresenceOfAttribute (WebDriver driver, String myXpath, String nomAttr) throws Throwable {
-				Thread.sleep(1000);
+				Thread.sleep(100);
 			String str = driver.findElement(By.xpath(myXpath)).getAttribute("value").trim();
 				boolean verif = str.contains(nomAttr);
 			if(verif == true) {
-				Thread.sleep(1000);
+				Thread.sleep(100);
 			}
 			else {
 				System.err.println("L'element n'est pas présent : "+str+" / " +nomAttr);
@@ -282,11 +279,11 @@ public class MesFonctions {
 		}
 		
 		public static String verifyPresenceOfAttribute1 (WebDriver driver, String myXpath, String nomAttr, String valueAttr) throws Throwable {
-			Thread.sleep(1000);
+			Thread.sleep(100);
 		String str = driver.findElement(By.xpath(myXpath)).getAttribute(nomAttr).trim();
 			boolean verif = str.contains(valueAttr);
 		if(verif == true) {
-			Thread.sleep(1000);
+			Thread.sleep(100);
 		}
 		else {
 			System.err.println("L'element n'est pas présent : "+str+" / " +nomAttr);
@@ -331,13 +328,13 @@ public class MesFonctions {
 			return formatter.format(date);
 		}
 		
-		public static boolean isAlertPresent (WebDriver driver) {
-			if(MesFonctions.waiting1(driver, Duration.ofSeconds(3))!=null) {
-			return true;}
-			else {
-			return false;
-			}
-		}
+//		public static boolean isAlertPresent (WebDriver driver) {
+//			if(MesFonctions.waiting1(driver, Duration.ofSeconds(3))!=null) {
+//			return true;}
+//			else {
+//			return false;
+//			}
+//		}
 		
 		public static String transitWindow(WebDriver driver, int nbr){
 			//String url = driver.getCurrentUrl();
@@ -552,6 +549,7 @@ public class MesFonctions {
 					bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+X, coords.getFirst().getSecond(), x, y);
 					image = MesFonctions.screenshot(bounds);
 					result = MesFonctions.OCR_decryptage(image);
+					System.out.println(result+"********"+nom);
 					Thread.sleep(50);
 				}
 				Thread.sleep(300);
@@ -575,16 +573,14 @@ public class MesFonctions {
 		Matcher matcher = pattern.matcher(str);
 		
 		String code = "";
-		
-	    for(int i=0;i<str.length();i++) {
+
 	    	if(matcher.find()) { 
-				  code = matcher.group().trim();
+				  code = matcher.group();
 				  System.out.println(code);
 				    }
 	    	else {
 	    		System.err.println("Aucune occurence");
 	    		}
-	   		}
 	    
 	    return code;
     

@@ -30,7 +30,7 @@ public class TRC_Req {
 	   public void InitialisationDoc() {
 	   browserName = "chrome";
 	   recours = "seulRequerant";//les types de recours = "seulRequerant"; "autresRequerant"; "mandataire"
-	   jur = "CTX"; //les types de dépôt sont : "TA" ou "CAA" et "CTX"
+	   jur = "CAA"; //les types de dépôt sont : "TA" ou "CAA" et "CTX"
 	   formulaire = "NoForm"; //NoForm/Form /Form1 avec ou sans formulaire 
 	   env = "rec";//int1 ou rec
 	   
@@ -44,7 +44,7 @@ public class TRC_Req {
 			if(env == "int1") {
 				mail = "zaire@yopmail.com";//mail = "zaire@yopmail.com";//"zaire@yopmail.com" pour l'INT1; "delvy@yopmail.com" pour la recette 
 			}else {
-				mail = "martial@yopmail.com";
+				mail = "talon@yopmail.com";
 			}
 			
 		JurReqTrc.firstSteps(driver, recours, env, mail);

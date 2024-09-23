@@ -16,8 +16,10 @@ public class CreationDossier_navigationSK {
 	String id;
 	String mdp;
 	String type;
+	String qualite;
 	String nom;
 	String env;
+	String saisine;
 	int mes;
 	WebDriver driver;
 	
@@ -30,7 +32,8 @@ public class CreationDossier_navigationSK {
 			id = "lb";
 			mdp = "lb";
 			env = "rec";
-			req = Requete_TR_depot_enreg.TR_depot(jur, browserName, env);
+			saisine = "Jugement";
+			req = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
 		    
 		} catch (Exception e) {
 			My_SreenShot.takeScreenshot(driver);
@@ -54,11 +57,12 @@ public class CreationDossier_navigationSK {
 		Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur, req);//req
 		
 		//Ajout défendeur
-		type = "defendeur"; //defendeur
+		qualite = "defendeur"; //defendeur
+		type = "Autres";
 		nom ="AEROPORTS";
 		Navigation_Skipper_Creation_Defendeur.selectionActeur_defendeur_requerant(jur);
-		Navigation_Skipper_Creation_Defendeur.SelectionTypeActeur(type, jur);
-		Navigation_Skipper_Creation_Defendeur.fiche_acteur(jur, nom);
+		Navigation_Skipper_Creation_Defendeur.SelectionQualiteActeur(qualite, jur);
+		Navigation_Skipper_Creation_Defendeur.fiche_acteur(jur, nom, type);
 		
 		//Ajout mesure
 		Navigation_Sk_Ajout_Mesure.acces_onglet_historique();

@@ -418,7 +418,7 @@ public class Navigation_Sk_Ajout_Mesure {
 		return null;
 	}
 	
-	public static Object ajout_mesure_reception_DPI(String jur, String jur_annuaire) throws InterruptedException, IOException, Throwable {
+	public static Object ajout_mesure_reception_DPI(String jur, String jur_annuaire, String type) throws InterruptedException, IOException, Throwable {
 		//Accès à l'onglet mesure
 		if(jur=="TA") {
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\onglet_mesure - TA - Mesure.png";
@@ -500,7 +500,35 @@ public class Navigation_Sk_Ajout_Mesure {
 				coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 				coords = MesFonctions.waitObject(fileImage);
 				MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
-				System.out.println("Sélection du émétteur :  \"ANNUAIRE\" ...."+MesFonctions.extractCurrentHeure()+"\r");
+				System.out.println("Sélection de l'émétteur :  \"ANNUAIRE\" ...."+MesFonctions.extractCurrentHeure()+"\r");
+				
+				//Type juridiction
+				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Type_Admin_DPI - Recherche d'une grande partie dans l'annuaire.png";
+				coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+				coords = MesFonctions.waitObject(fileImage);
+				MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2 + 31, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+				MesFonctions.mouveSouris(1, 1);
+				bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+34, coords.getFirst().getSecond(), 127, 15);
+				image = MesFonctions.screenshot(bounds);
+				result = MesFonctions.OCR_decryptage(image);
+				
+				//Accéder à la liste des destinataires
+				while(!result.contains(type)) {
+					//Déplacement du curseur
+					Thread.sleep(70);
+					Keyboard.keyBoard(KeyEvent.VK_DOWN);
+					fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Type_Admin_DPI - Recherche d'une grande partie dans l'annuaire.png";
+					coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+					coords = MesFonctions.waitObject(fileImage);
+					bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+34, coords.getFirst().getSecond(), 127, 15);
+					image = MesFonctions.screenshot(bounds);
+					result = MesFonctions.OCR_decryptage(image);
+					}
+				
+				MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2 + 31, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+				System.out.println("Le type de la juridiction est sélectionné ....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		
+				Navigation_Skipper_Creation_Defendeur.Click_btn_Rechreche(jur);
 				
 				//Sélection de la juridiction
 					//définir un rectangle d'observation

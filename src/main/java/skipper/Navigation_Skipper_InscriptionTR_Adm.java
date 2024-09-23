@@ -111,9 +111,9 @@ public class Navigation_Skipper_InscriptionTR_Adm {
 		return null;
 	}
 	
-	public static String fiche_acteur(String jur) throws TesseractException, Throwable {
+	public static String fiche_acteur(String jur, String nomAdm) throws TesseractException, Throwable {
 		Navigation_Skipper_InscriptionTR_Adm.boutonAnnuaire(jur);
-		nom = Navigation_Skipper_InscriptionTR_Adm.recherche_acteur(jur);
+		nom = Navigation_Skipper_InscriptionTR_Adm.recherche_acteur(jur, nomAdm);
 		return nom;
 	}
 	
@@ -133,7 +133,7 @@ public class Navigation_Skipper_InscriptionTR_Adm {
 		return null;
 	}
 	
-	public static String recherche_acteur(String jur) throws TesseractException, Throwable {
+	public static String recherche_acteur(String jur, String nomAdm) throws TesseractException, Throwable {
 		//Inscrit à TR décoché
 		if(jur=="CAA") {
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\InscritaTr-coche_CAA.png";
@@ -160,18 +160,19 @@ public class Navigation_Skipper_InscriptionTR_Adm {
 		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Pointer-destinataire-Communication du code Télérecours citoyens.png";
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
-		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+22, coords.getFirst().getSecond(), 281, 18);
+//		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+22, coords.getFirst().getSecond(), 281, 18);
+		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+306, coords.getFirst().getSecond(), 75, 16);
 		image = MesFonctions.screenshot(bounds);
 		result = MesFonctions.OCR_decryptage(image);
 		
 		//Accéder à la liste des destinataires
-		String nomAdm = "UR_104";//;
 		while(!result.contains(nomAdm)) {
 			//Déplacement du curseur
 			Keyboard.keyBoard(KeyEvent.VK_DOWN);
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Pointer-destinataire-Communication du code Télérecours citoyens.png";
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
-			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+22, coords.getFirst().getSecond(), 281, 16);
+//			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+22, coords.getFirst().getSecond(), 281, 16);
+			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+306, coords.getFirst().getSecond(), 75, 16);
 			image = MesFonctions.screenshot(bounds);
 			result = MesFonctions.OCR_decryptage(image);
 			Thread.sleep(50);
@@ -307,7 +308,7 @@ public class Navigation_Skipper_InscriptionTR_Adm {
 //		coords = mesFonctions.waitObject(fileImage);
 		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+12, coords.getFirst().getSecond(), 221, 18);
 		image = MesFonctions.screenshot(bounds);
-		result = MesFonctions.OCR_decryptage(image);
+		result = MesFonctions.OCR_decryptage(image).trim();
 		
 		//Accéder à la liste des destinataires
 		while(!result.contains(nom.trim())) {
@@ -318,8 +319,11 @@ public class Navigation_Skipper_InscriptionTR_Adm {
 			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+12, coords.getFirst().getSecond(), 221, 18);
 			image = MesFonctions.screenshot(bounds);
 			result = MesFonctions.OCR_decryptage(image);
+			System.out.println(result+" ****** "+nom);
 			Keyboard.keyBoard(KeyEvent.VK_DOWN);
 			}
+		
+		System.out.println("L'acteur est selectionné....."+MesFonctions.extractCurrentHeure());
 		
 		//Ajout acteur dana la case destinataire
 		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Ajout_Acteur_Destinataire-Communication du code Télérecours citoyens.png";

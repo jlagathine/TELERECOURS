@@ -25,10 +25,12 @@ public class Transmission_type_dpi_dpa_creation_mesure {
 	String jur_annuaire;
 	String jur_dest;
 	String id;
+	String saisine;
 	String DB_id;
 	String DB_mdp;
 	String mdp;
 	String type;
+	String type_jur;
 	String env;
 	WebDriver driver;
 	
@@ -60,13 +62,15 @@ public class Transmission_type_dpi_dpa_creation_mesure {
 		try {
 		browserName = "chrome";
 		jur = "TA";
-		jur_dest = "CTX";
+		jur_dest = "CAA";
 		id = "lb";
 		mdp = "lb";
 		env = "rec";
-		numReqDest = Requete_TR_depot_enreg.TR_depot(jur_dest, browserName, env); 
-		dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, env);
+		saisine = "Jugement";
+		numReqDest = Requete_TR_depot_enreg.TR_depot(jur_dest, browserName, saisine, env); 
+		dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
 		type = "DPI/DPA";
+		type_jur = "Juridictions";
 		jur_annuaire = "TRIBUNAL ADMINISTRATIF DE PARIS";
 		
 		
@@ -75,7 +79,7 @@ public class Transmission_type_dpi_dpa_creation_mesure {
 			
 			//SKIPPER_ouverture_dossier
 			Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur_dest, numReqDest);
-			Navigation_Sk_Ajout_Mesure.ajout_mesure_reception_DPI(jur_dest, jur_annuaire);
+			Navigation_Sk_Ajout_Mesure.ajout_mesure_reception_DPI(jur_dest, jur_annuaire, type_jur);
 			
 			//SKIPPER_fermeture
 			Navigation_Sk_Fermeture_Application.fermeture_sk(jur_dest);
@@ -184,7 +188,7 @@ public class Transmission_type_dpi_dpa_creation_mesure {
 		Transmission_TR_reception.enregister_transmission(driver);
 		
 		//Vérification de la transmission
-		Transmission_TR_reception.Verification_Transmission_Enregistree(driver, type, dossier, numReqDest);
+		Transmission_TR_reception.Verification_Transmission_Enregistree(driver, type, dossier, numReqDest, jur, jur_dest);
 		
 		//Deconnexion
 		MicroFonctions.deconnexionTrInt(driver);

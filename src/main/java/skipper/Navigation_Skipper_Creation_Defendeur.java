@@ -57,33 +57,127 @@ public class Navigation_Skipper_Creation_Defendeur {
 		return null;
 	}
 	
-	public static Object SelectionTypeActeur(String type, String jur) throws TesseractException, Throwable {
-		switch (type) {
-		case "avocat":
-			//Sélectionner la qualité
-			//click bouton selecteur
-		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\bouton_Selecteur_qualite - Fiche acteur.png";
+	public static void click_Btn_Creer (String jur) throws AWTException, InterruptedException, IOException {
+		//Ajouter des acteur _ Accéder au bouton créer
+		if(jur=="TA") {
+			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_creer_acteur 1 - TA - creer.png";
+			}
+			else if(jur=="CAA") {
+				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_creer_acteur - Cour Administrative d'Appel - creer.png";
+				}
+				else{
+					fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\btn_creer-Skipper contentieux.png";
+				}
+		
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
-		bounds = new Rectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), coords.getSecond().getFirst(), coords.getSecond().getSecond());
-		
-		//Créer un défendeur
-		result = "";
-		while(!result.contains("Avocat")) {
-			Keyboard.keyBoard(KeyEvent.VK_DOWN);
-			Thread.sleep(100);
-			image = MesFonctions.screenshot(bounds);
-			Thread.sleep(100);
-			result = MesFonctions.OCR_decryptage(image);
+		MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+		System.out.println("Ajout d'un acteur - Click sur le bouton \"Créer\" ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+
+	}
+	
+	public static Object SelectionQualiteActeur(String qualite, String jur) throws TesseractException, Throwable {
+		switch (qualite) {
+		case "avocat":
+//			//Sélectionner la qualité
+//			//click bouton selecteur
+//		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\bouton_Selecteur_qualite - Fiche acteur.png";
+//		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+//		coords = MesFonctions.waitObject(fileImage);
+//		bounds = new Rectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), coords.getSecond().getFirst(), coords.getSecond().getSecond());
+//		image = MesFonctions.screenshot(bounds);
+//		result = MesFonctions.OCR_decryptage(image);
+//		
+//		//Créer un défendeur
+//		while(!result.contains("Avocat")) {
+//			Keyboard.keyBoard(KeyEvent.VK_DOWN);
+//			Thread.sleep(100);
+//			image = MesFonctions.screenshot(bounds);
+//			Thread.sleep(100);
+//			result = MesFonctions.OCR_decryptage(image);
+//			}
+//		System.out.println("La qualité requérant est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+//		
+//		Keyboard.keyBoard(KeyEvent.VK_TAB);
+			if(jur=="CTX") {
+				int nbr = 3;
+				for(int i=0; i<nbr; i++) {
+					Keyboard.keyBoard(KeyEvent.VK_DOWN);
+				}
+			}else if(jur=="TA" || jur=="CAA") {
+					int nbr = 10;
+					for(int i=0; i<nbr; i++) {
+						Keyboard.keyBoard(KeyEvent.VK_DOWN);
+					}
 			}
-		System.out.println("La qualité requérant est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-		
-		Keyboard.keyBoard(KeyEvent.VK_TAB);
+					
+		System.out.println("La qualité avocat est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			break;
 			
 			
 		case "defendeur":
 			//Sélectionner la qualité
+//			//click bouton selecteur
+//		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\bouton_Selecteur_qualite - Fiche acteur.png";
+//		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+//		coords = MesFonctions.waitObject(fileImage);
+//		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), 150, 13);
+//		image = MesFonctions.screenshot(bounds);
+//		result = MesFonctions.OCR_decryptage(image);
+//		
+//		//Créer un défendeur
+//		while(!result.contains("Defendeur")) {
+//			Thread.sleep(100);
+//			Keyboard.keyBoard(KeyEvent.VK_DOWN);
+//			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), 150, 13);
+//			image = MesFonctions.screenshot(bounds);
+//			result = MesFonctions.OCR_decryptage(image);
+//			}
+		if(jur=="CTX") {
+				int nbr = 2;
+				for(int i=0; i<nbr; i++) {
+					Keyboard.keyBoard(KeyEvent.VK_DOWN);
+				}
+			}else if(jur=="TA" || jur=="CAA") {
+					int nbr = 3;
+					for(int i=0; i<nbr; i++) {
+						Keyboard.keyBoard(KeyEvent.VK_DOWN);
+					}
+		}
+		
+	
+		System.out.println("La qualité défendeur est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		
+//		Keyboard.keyBoard(KeyEvent.VK_TAB);
+			
+			break;
+			
+		case "observateur":
+			//Sélectionner la qualité
+			//click bouton selecteur
+		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\bouton_Selecteur_qualite - Fiche acteur.png";
+		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+		coords = MesFonctions.waitObject(fileImage);
+		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), 150, 13);
+		image = MesFonctions.screenshot(bounds);
+		result = MesFonctions.OCR_decryptage(image);
+		
+		//Créer un défendeur
+		while(!result.contains("Observateur")) {
+			Keyboard.keyBoard(KeyEvent.VK_DOWN);
+			Thread.sleep(100);
+			image = MesFonctions.screenshot(bounds);
+			Thread.sleep(100);
+			result = MesFonctions.OCR_decryptage(image);
+			}
+		System.out.println("La qualité défendeur est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		
+//		Keyboard.keyBoard(KeyEvent.VK_TAB);
+			
+			break;
+			
+		case "intervenant":
+			//Sélectionner la qualité
 			//click bouton selecteur
 		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\bouton_Selecteur_qualite - Fiche acteur.png";
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
@@ -92,14 +186,14 @@ public class Navigation_Skipper_Creation_Defendeur {
 		
 		//Créer un défendeur
 		result = "";
-		while(!result.contains("Defendeur")) {
+		while(!result.contains("Intervenant")) {
 			Keyboard.keyBoard(KeyEvent.VK_DOWN);
 			Thread.sleep(100);
 			image = MesFonctions.screenshot(bounds);
 			Thread.sleep(100);
 			result = MesFonctions.OCR_decryptage(image);
 			}
-		System.out.println("La qualité requérant est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		System.out.println("La qualité défendeur est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		
 		Keyboard.keyBoard(KeyEvent.VK_TAB);
 			
@@ -111,8 +205,11 @@ public class Navigation_Skipper_Creation_Defendeur {
 		return null;
 	}
 	
-	public static String fiche_acteur(String jur, String leNom ) throws TesseractException, Throwable {
+	public static String fiche_acteur(String jur, String leNom, String type ) throws TesseractException, Throwable {
 		Navigation_Skipper_InscriptionTR_Avocat.boutonAnnuaire(jur);
+		Navigation_Skipper_Creation_Defendeur.decoche_non_inscrit_TR(jur);
+		Navigation_Skipper_Creation_Defendeur.type_juridiction(jur, type);
+		Navigation_Skipper_Creation_Defendeur.Click_btn_Rechreche(jur);
 		nom = Navigation_Skipper_Creation_Defendeur.recherche_acteur(jur, leNom);
 		return nom;
 	}
@@ -133,23 +230,23 @@ public class Navigation_Skipper_Creation_Defendeur {
 		return null;
 	}
 	
+	public static void Click_btn_Rechreche(String jur) throws AWTException, IOException, InterruptedException {
+		//Click bouton "RECHERCHER"
+		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Btn_Rechercher - Recherche d'une grande partie dans l'annuaire.png";
+		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+		coords = MesFonctions.waitObject(fileImage);
+		MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+		System.out.println("Click bouton \"RECHERCHER\"...."+MesFonctions.extractCurrentHeure()+"\r");
+		
+	}
+	
 	public static String recherche_acteur(String jur, String leNom) throws TesseractException, Throwable {
 		//Inscrit à TR décoché
-		if(jur=="CAA") {
-			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\InscritaTr-coche_CAA.png";
-			}
-			else if(jur=="CTX") {
-				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\InscritaTr-coche_CTX.png";
-			}
-			else {
-				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\InscritaTr-coche.png";
-			}
-		
-		
 		//définir un rectangle d'observation
 		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Pointer-destinataire-Communication du code Télérecours citoyens.png";
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
+		MesFonctions.singleClick(16, 258);
 		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+23, coords.getFirst().getSecond(), 278, 18);
 		image = MesFonctions.screenshot(bounds);
 		result = MesFonctions.OCR_decryptage(image);
@@ -175,5 +272,42 @@ public class Navigation_Skipper_Creation_Defendeur {
 		
 		return null;
 	}
+		
+	public static void type_juridiction(String jur, String type) throws TesseractException, Throwable {
+	//Type juridiction
+	fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Type_Admin - Recherche d'une grande partie dans l'annuaire.png";
+	coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+	coords = MesFonctions.waitObject(fileImage);
+	MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2 + 31, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+	MesFonctions.mouveSouris(1, 1);
+	bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+34, coords.getFirst().getSecond(), 127, 15);
+	image = MesFonctions.screenshot(bounds);
+	result = MesFonctions.OCR_decryptage(image);
 	
+	//Accéder à la liste des destinataires
+	while(!result.contains(type)) {
+		//Déplacement du curseur
+		Thread.sleep(70);
+		Keyboard.keyBoard(KeyEvent.VK_DOWN);
+		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Type_Admin - Recherche d'une grande partie dans l'annuaire.png";
+		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+		coords = MesFonctions.waitObject(fileImage);
+		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+34, coords.getFirst().getSecond(), 127, 15);
+		image = MesFonctions.screenshot(bounds);
+		result = MesFonctions.OCR_decryptage(image);
+		}
+	
+	MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2 + 31, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+	System.out.println("Le type de la juridiction est sélectionné ....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+	}
+
+	public static void decoche_non_inscrit_TR(String jur) throws InterruptedException, IOException, AWTException {
+	//Décocher l'option "Non inscrit à TR"
+	fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Coche_non_inscrit_TR - Recherche d'une grande partie dans l'annuaire.png";
+	coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+	coords = MesFonctions.waitObject(fileImage);
+	MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+	
+	System.out.println("L'option \"Non inscrit à TR\" est décochée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+	}
 }

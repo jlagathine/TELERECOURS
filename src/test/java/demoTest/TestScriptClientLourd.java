@@ -25,7 +25,7 @@ public class TestScriptClientLourd {
 	
 	Navigation_Sk_Authentification.authentification_rec(jur, id, mdp);
 	Navigation_Sk_Affectation_ch_rap.click_trt_par_lots_affectation(jur);
-	Navigation_Sk_Affectation_ch_rap.effectation_dossier(jur, dossier);
+	Navigation_Sk_Affectation_ch_rap.affectation_dossier(jur, dossier);
 	
 	}
 

@@ -19,18 +19,21 @@ public class Enregistrement_Requete_TRC_JMETER {
 	String DB_id;
 	String DB_mdp;
 	String env;
-	String jur;
 	String browserName;
-	List<Integer> dossier = new ArrayList<>();
+	String jur;
+	List<String> listJur = List.of("TA", "CAA", "CTX");
+	List<Integer> dossier_TA = new ArrayList<>();
+	List<Integer> dossier_CAA = new ArrayList<>();
+	List<Integer> dossier_CTX = new ArrayList<>();
 	
 	@Test(priority = 1)
-	public void Recuperation_requeteTRC_Jmeter()throws SQLException {
-		jur = "TA";
-		env = "rec";
+	public void Recuperation_requeteTRC_Jmeter() throws SQLException {
 		browserName = "chrome";
-		
-		switch (jur) {
-		case "TA":
+		env = "rec";
+		for(int i=0; i<listJur.size(); i++) {
+		jur = listJur.get(i);
+		if(jur.equals("TA")) {
+			System.out.println(jur);
 			if(env=="rec") {
 				DB_id = "tr2_ta75";
 				DB_mdp = "tr2_ta75";
@@ -38,29 +41,29 @@ public class Enregistrement_Requete_TRC_JMETER {
 				DB_id = "tr2_ta69";
 				DB_mdp = "tr2_ta69";
 			}
-			JdbcClass.conDBTR(DB_id, DB_mdp, env);
-			break;
-			
-		case "CAA":
-			if(env=="rec") {
-				DB_id = "tr2_caa75";
-				DB_mdp = "tr2_caa75";
-			}else {
-				DB_id = "tr2_caa69";
-				DB_mdp = "tr2_caa69";
-			}
-			JdbcClass.conDBTR(DB_id, DB_mdp, env);
-			break;
-			
-		case "CTX":
-			JdbcClass.conDBTR("telerecours", "telerecours", env);
-			break;
-
-		default:  System.err.println("Aucune juridiction à ce nom");
-			break;
+			 JdbcClass.conDBTR(DB_id, DB_mdp, env);
+			 dossier_TA.addAll(JdbcClass.Recuperation_numRequeteTRC_Jmeter());
+			 System.out.println(dossier_TA+"\r");
+				}	
+				else if(jur.equals("CAA")) {
+					System.out.println(jur);
+					if(env=="rec") {
+						DB_id = "tr2_caa75";
+						DB_mdp = "tr2_caa75";
+					}else {
+						DB_id = "tr2_caa69";
+						DB_mdp = "tr2_caa69";
+						}
+					JdbcClass.conDBTR(DB_id, DB_mdp, env);
+					dossier_CAA.addAll(JdbcClass.Recuperation_numRequeteTRC_Jmeter());
+					System.out.println(dossier_CAA+"\r");
+					}
+					else{
+						JdbcClass.conDBTR("telerecours", "telerecours", env);
+					}
+		dossier_CTX.addAll(JdbcClass.Recuperation_numRequeteTRC_Jmeter());
+		System.out.println(dossier_CTX+"\r");
 		}
-		dossier.addAll(JdbcClass.Recuperation_numRequeteTRC_Jmeter()) ;
-	
 	}
 	
 	@Test(priority = 2)
@@ -75,11 +78,11 @@ public class Enregistrement_Requete_TRC_JMETER {
 		//Click bouton requête
 		MicroFonctions.bouton_requete_int(driver, jur);
 		
-		for(int i=0;i<dossier.size();) {
-			String myXpath = "//a[@class='numDossier' and (text()='" + dossier.get(i) +" (TRC)')]";
+		for(int i=0;i<dossier_TA.size();) {
+			String myXpath = "//a[@class='numDossier' and (text()='" + dossier_TA.get(i) +" (TRC)')]";
 			boolean verif = false;
 			if(MesFonctions.isElementPresent(driver, myXpath, verif)) {
-				JurReqTrc.reqEnrgTrcJmeter(driver, jur, dossier.get(i));
+				JurReqTrc.reqEnrgTrcJmeter(driver, jur, dossier_TA.get(i), env);
 				i++;
 			}
 			else {

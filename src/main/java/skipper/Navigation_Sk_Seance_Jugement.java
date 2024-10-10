@@ -3,6 +3,10 @@ package skipper;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.jgrapht.alg.util.Pair;
 
@@ -21,7 +25,7 @@ public class Navigation_Sk_Seance_Jugement {
 	static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>  coords;
 	static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> coords1;
 	
-	public static String creation_seance(String jur, String heure, String dossier) throws Throwable {
+	public static String creation_seance(String jur, String date, String heure, String dossier) throws Throwable {
 		//Click onglet SEANCE
 		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Seance - Skipper contentieux.png";
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
@@ -46,7 +50,8 @@ public class Navigation_Sk_Seance_Jugement {
 		System.out.println("Click bouton \"CREER\" ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		
 		//inscription de la date
-		Keyboard.maStringToKeyboard(MesFonctions.extractCurrentDate().replaceAll("/", ""));
+		//par défaut ajouter_jour_date(0)
+		Keyboard.maStringToKeyboard(date.replaceAll("/", ""));
 		Thread.sleep(150);
 		Keyboard.keyBoard(KeyEvent.VK_TAB);
 		Thread.sleep(150);
@@ -167,8 +172,6 @@ public class Navigation_Sk_Seance_Jugement {
 		MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
 		System.out.println("Fermeture de la fiche d'enrôlement......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		
-		
-		
 		Thread.sleep(200);
 		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Fermeture_liste_seance_jugement - Liste des séances de jugement.png";
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
@@ -209,18 +212,18 @@ public class Navigation_Sk_Seance_Jugement {
 		int cnt = 0;
 		while(!result.contains(role)) {
 			//Déplacement du curseur
-			Thread.sleep(70);
 			Keyboard.keyBoard(KeyEvent.VK_DOWN);
-			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Pointeur-Liste des audiences pour mise à disposition.png";
-			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+			Thread.sleep(300);
+//			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Pointeur-Liste des audiences pour mise à disposition.png";
+//			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 			coords = MesFonctions.waitObject(fileImage);
-			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+97, coords.getFirst().getSecond(), 45, 18);
+			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+99, coords.getFirst().getSecond(), 45, 18);
 			image = MesFonctions.screenshot(bounds);
 			result = MesFonctions.OCR_decryptage(image);
 			cnt++;
 			}
 		
-		System.out.println("trouvé");
+//		System.out.println("trouvé");
 		
 		//Click onglet SEANCE
 		if(cnt==0) {
@@ -243,7 +246,7 @@ public class Navigation_Sk_Seance_Jugement {
 		coords = MesFonctions.waitObject(fileImage);
 		MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2 + 180, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
 		
-		nbr = 3;
+		nbr = 1;
 		for(int i=0; i<nbr; i++) {
 			Keyboard.keyBoard(KeyEvent.VK_DOWN);
 		}
@@ -255,8 +258,7 @@ public class Navigation_Sk_Seance_Jugement {
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
 		MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2 + 70, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
-		
-		Keyboard.maStringToKeyboard(MesFonctions.extractCurrentDate().replaceAll("/", ""));
+		Keyboard.maStringToKeyboard(date.replaceAll("/", ""));
 		
 		System.out.println("Date fixée......"+MesFonctions.extractCurrentHeure()+"\r");
 		
@@ -279,7 +281,7 @@ public class Navigation_Sk_Seance_Jugement {
 		MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
 		
 		
-		//Renseigner l'issue dde jugement
+		//Renseigner l'issue de jugement
 		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Issue_decision_CTX.png";
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);

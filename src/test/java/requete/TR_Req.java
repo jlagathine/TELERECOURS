@@ -1,5 +1,7 @@
 package requete;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -22,12 +24,13 @@ public class TR_Req {
 	   String saisine;
 	
 	   @BeforeSuite
-	   public void InitialisationDoc(){
+	   public void InitialisationDoc() throws IOException{
 	   browserName = "chrome";
 	   env = "rec";
-	   choixJur = "CAA";//CAA, CTX, TA
+	   choixJur = "CTX";//CAA, CTX, TA
 	   saisine = "Jugement"; //Premier ressort ; Jugement
 	   driver = Navigateur.choixBrowser(browserName);
+	   
 	   System.out.println(driver);
 	   }
 	   

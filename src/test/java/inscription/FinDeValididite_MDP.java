@@ -1,5 +1,6 @@
 package inscription;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import org.openqa.selenium.WebDriver;
@@ -45,7 +46,7 @@ public class FinDeValididite_MDP {
 		}
 
 	   @Test(priority = 2)
-		public void updateDB () throws SQLException {
+		public void updateDB () throws SQLException, IOException {
 		   browserName = "chrome";
 		   driver = Navigateur.choixBrowser(browserName);
 		   System.out.println(driver);

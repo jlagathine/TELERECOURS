@@ -12,6 +12,7 @@ import Juridictions.JurInvitIsnscriptConsult;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import lesFonctions.MesFonctions;
 import pdfGeneration.PdfCreationEtEcriture;
 import skipper.Navigation_Sk_Authentification;
 import skipper.Navigation_Sk_Fermeture_Application;
@@ -28,6 +29,7 @@ public class Sk_transmission_code_inscription_adm {
 	String password;
 	String type;
 	String nom;
+	String qualite;
 	String nomAdm;
 	String nomAdmin;
 	String prenom;
@@ -40,24 +42,27 @@ public class Sk_transmission_code_inscription_adm {
 	@Test(priority=1)
 	public void navigation_sk() throws Throwable {
 		env = "rec"; //Environnment de test 
-		jur = "CAA"; //Juridiction de test
+		jur = "CTX"; //Juridiction de test
 		id = "lb"; //Identifiant SK
 		mdp = "lb"; //mot de passe SK
-		numdoc = "2400158";//366478, 22478
+		numdoc = "367841";//366478, 22478
+//		password = "z7gsj1";
+//		code = "CE-fj4isn";
 		
-		nomAdm = "CAEN"; //CODE NOM de l'administration que l'on souhaite enregistrer 
+		nomAdm = "PREFMUKA"; //CODE NOM de l'administration que l'on souhaite enregistrer 
 		prenom = "Dominique"; //Prénom du représentant de l'administration lors de l'inscription TR
-		nomAdmin = "FILIPELLI"; //Nom du représentant de l'administration lors de l'inscription TR
+		nomAdmin = "GILDAS"; //Nom du représentant de l'administration lors de l'inscription TR
 		
 		try {
 			//SKIPPER
 			Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
 		
-			type = "defendeur"; //avocat
+			qualite = "defendeur"; //avocat
+			type = "Administrations locales";
 			Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur, numdoc);
 			Navigation_Skipper_InscriptionTR_Adm.selectionActeur_defendeur_requerant(jur);
-			Navigation_Skipper_InscriptionTR_Adm.SelectionTypeActeur(type, jur);
-			nom = Navigation_Skipper_InscriptionTR_Adm.fiche_acteur(jur, nomAdm);
+			Navigation_Skipper_InscriptionTR_Adm.SelectionTypeActeur(qualite, jur);
+			Navigation_Skipper_InscriptionTR_Adm.fiche_acteur(jur, nomAdm, type);
 			Navigation_Skipper_InscriptionTR_Adm.accesMesuresContextuelles(jur);
 			Navigation_Skipper_InscriptionTR_Adm.validationCourrierDansTr(jur);
 			Navigation_Skipper_InscriptionTR_Adm.traitementDeTexte_courrier(jur);
@@ -75,6 +80,7 @@ public class Sk_transmission_code_inscription_adm {
 		} catch (Exception e) {
 			My_SreenShot.screenshot();
 			e.printStackTrace();
+			throw new Exception("Test interrompu....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		}	
 	}
 	
@@ -122,12 +128,12 @@ public class Sk_transmission_code_inscription_adm {
 	
 	@Test(priority=3)
 	public void navigation_TR() throws Throwable {
-		jur = "CAA";
-		env = "rec";
-		code = "C75-8if9lu";
-		password = "q2j4je";
-		prenom = "Dominique";
-		nomAdmin = "FILIPELLI";
+//		jur = "CAA";
+//		env = "rec";
+//		code = "CE-fj4isn";
+//		password = "q2j4je";
+//		prenom = "Dominique";
+//		nomAdmin = "FILIPELLI";
 		try {
 			
 			//TR
@@ -146,6 +152,7 @@ public class Sk_transmission_code_inscription_adm {
 		} catch (Exception e) {
 			My_SreenShot.takeScreenshot(driver);
 			e.printStackTrace();
+			throw new Exception("Test interrompu....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		}
 	}	
 }

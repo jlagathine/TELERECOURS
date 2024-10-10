@@ -67,8 +67,8 @@ public class JurInscripTr {
 	return null;
 	}
 	
-	public static String obtenirCode (WebDriver driver, String choixJur, String code, String motpasse, String nom) throws Throwable {
-		switch (choixJur) {
+	public static String obtenirCode (WebDriver driver, String jur, String code, String motpasse, String nom) throws Throwable {
+		switch (jur) {
 		case "TACAA":
 			//Connexion
 			MicroFonctions.obtenirCodeTACAA(driver, code, motpasse);
@@ -81,21 +81,21 @@ public class JurInscripTr {
 			MicroFonctions.mailYop(driver, mail); 
 			
 			//Récupération de ses codes
-			MicroFonctions.Inscription(driver);
+			MicroFonctions.Inscription(driver, jur);
 			
 			//Choix de la juridiction
-			MicroFonctions.choixJuridictionTA(driver);
-			Thread.sleep(1000);
-			
-			name = "Paris";
-			myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
-			verif = name.contains(MesFonctions.objet(driver, myXpath).getText());
-			Thread.sleep(1500);
-			System.out.println(verif);
-			if (verif==true) {
-				System.err.println("la redirection n\'a pas bien fonctionné");
-			}
-			Thread.sleep(3000);
+//			MicroFonctions.choixJuridictionTA(driver);
+//			Thread.sleep(1000);
+//			
+//			name = "Paris";
+//			myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
+//			verif = name.contains(MesFonctions.objet(driver, myXpath).getText());
+//			Thread.sleep(1500);
+//			System.out.println(verif);
+//			if (verif==true) {
+//				System.err.println("la redirection n\'a pas bien fonctionné");
+//			}
+//			Thread.sleep(3000);
 			break;
 			
 		case "Conseil":
@@ -110,19 +110,19 @@ public class JurInscripTr {
 			MicroFonctions.mailYop(driver, mail);
 			
 			//Récupération de ses codes
-			MicroFonctions.Inscription(driver);
+			MicroFonctions.Inscription(driver, jur);
 			
-			name = "Télérecours - Conseil d'Etat";
-			myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
-			verif = name.equals(MesFonctions.objet(driver, myXpath).getText());
-			Thread.sleep(1500);
-			System.out.println(verif);
-			if (!verif) {
-				System.err.println("la redirection n\'a pas bien fonctionné");
-			}else {
-				System.out.println("la redirection a bien fonctionné");
-			}
-			Thread.sleep(3000);
+//			name = "Télérecours - Conseil d'Etat";
+//			myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
+//			verif = name.equals(MesFonctions.objet(driver, myXpath).getText());
+//			Thread.sleep(1500);
+//			System.out.println(verif);
+//			if (!verif) {
+//				System.err.println("la redirection n\'a pas bien fonctionné");
+//			}else {
+//				System.out.println("la redirection a bien fonctionné");
+//			}
+//			Thread.sleep(3000);
 			break;
 
 		default: System.err.println("Cette juridiction n'existe pas");

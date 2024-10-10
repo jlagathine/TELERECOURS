@@ -28,7 +28,7 @@ public class Skipper_Ajout_Defendeur {
 	WebDriver driver;
 	
 	@BeforeSuite
-	public void ouverture_Skipper() throws TesseractException, Throwable {
+	public void creation_dossier() throws TesseractException, Throwable {
 	try {
 			jur = "CAA";
 			id = "lb";
@@ -38,10 +38,6 @@ public class Skipper_Ajout_Defendeur {
 			saisine = "Jugement";
 			numdoc = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);//366478, 22478
 			
-			//Authentification
-			Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
-			//Ouverture dossier
-			Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur, numdoc);
 			
 		} catch (Exception e) {
 			My_SreenShot.takeScreenshot(driver);
@@ -58,6 +54,12 @@ public class Skipper_Ajout_Defendeur {
 			qualite = "defendeur"; //defendeur
 			nom ="AEROPORTS";
 			type = "Autres";
+			
+			//Authentification
+			Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
+			//Ouverture dossier
+			Navigation_Sk_Ouverture_Dossier.selectDossierSk(jur, numdoc);
+			
 			Navigation_Skipper_Creation_Defendeur.selectionActeur_defendeur_requerant(jur);
 			Navigation_Skipper_Creation_Defendeur.SelectionQualiteActeur(qualite, jur);
 			Navigation_Skipper_Creation_Defendeur.fiche_acteur(jur, nom, type);

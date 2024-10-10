@@ -1,104 +1,134 @@
 package document;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import JDBC.JdbcClass;
 import Juridictions.JurDocTrc;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
 import lesFonctions.MesFonctions;
+import requete_depot_enreg.Requete_TRC_depot_enreg;
 
 	public class trcDoc {
 		
 		 WebDriver driver;
-		   DesiredCapabilities caps;
-		   WebElement element; 
-		   String username;
-		   String password;
 		   boolean verif;
-		   String myXpath;
 		   String browserName;
-		   String value;
 		   String jur;
 		   String dossier;
-		   String identifiant;
 		   String mdp;
 		   String mail;
-		   String onglet;
-		   String monUrl;
 		   String env;
-		   
-		   
-		   @BeforeSuite
-		   public void InitialisationDoc () {
+		   String DB_id;
+		   String DB_mdp;
+		 
+
+		   @Test(priority = 1)
+		   public void Trc_creation_dossier() throws Throwable  {
+		   //choix du dossier de dépôt de mémoires
+		   jur = "CTX"; //"TA" ou "CAA" et "CTX"(solution de contournement quant aux numéros de dossiers à la fois présents dans les deux juridictions)
+		   env = "int1";//int1 ou rec
 		   browserName = "chrome";
-		   driver = Navigateur.choixBrowser(browserName);
-		   System.out.println(driver);
+		   dossier = "412206";//Requete_TRC_depot_enreg.TRC_depot_enreg(jur, browserName, env);//dossier : est le numéro de dossier 
 		   }
 		   
-		   @BeforeMethod
-		   public void connexionTrc() throws Throwable  {
-			 //choix du dossier de dépôt de mémoires
-			dossier = "2400214";//dossier : est le numéro de dossier 
-			jur = "CAA"; //"TA" ou "CAA" et "CTX"(solution de contournement quant aux numéros de dossiers à la fois présents dans les deux juridictions)
-			env = "rec";//int1 ou rec
+		   @Test(priority = 2)
+		   public void verification_enregistrement_dossier() throws Throwable {
+		   //Connexion base de donnée TR
+				switch (jur) {
+				
+				case "TA":
+				if(env=="rec") {
+					DB_id = "tr2_ta75";
+					DB_mdp = "tr2_ta75";
+				}else {
+					DB_id = "tr2_ta69";
+					DB_mdp = "tr2_ta69";
+				}
+				JdbcClass.conDBTR(DB_id, DB_mdp, env);
+				break;
+				
+				case "CAA":
+				if(env=="rec") {
+					DB_id = "tr2_caa75";
+					DB_mdp = "tr2_caa75";
+				}else {
+					DB_id = "tr2_caa69";
+					DB_mdp = "tr2_caa69";
+				}
+				JdbcClass.conDBTR(DB_id, DB_mdp, env);
+				break;
+				
+				case "CTX":
+					JdbcClass.conDBTR("telerecours", "telerecours", env);
+					break;
+
+				default:  System.err.println("Aucune juridiction à ce nom");
+					break;
+				}
 			
-			   if(env == "int1") {
+		   //Connexion base de donnée TR
+		   JdbcClass.conDBTRC(env);
+		   JdbcClass.TRC_Verification_creation_dossier_BDTRC(dossier);
+		   JdbcClass.TRC_Verification_creation_dossier_BDTR(dossier);
+		   
+		   }
+				
+		   @Test(priority = 3)
+		   public void Trc_depot_documents() throws Throwable {
+			
+			driver = Navigateur.choixBrowser(browserName);
+			  if(env == "int1") {
 					mail = "zaire@yopmail.com";
 				}else {
 					mail = "martial@yopmail.com";
 				}
-			 JurDocTrc.authentification(driver, env, mail);
-		   }
-				
-			@Test
-			public void depotPieceTrc () throws Throwable {
+		
+		   try {
+			JurDocTrc.authentification(driver, env, mail);
 			
-			try {
+			//Dépôt de document
+			JurDocTrc.docDepotMem(driver, dossier, jur);
+			
+			//Vérification des mail
+			JurDocTrc.verification_Mail_Depot_Doc_TRC(driver, mail, env);
 				
-				//Dépôt de document
-				JurDocTrc.docDepotMem(driver, verif, dossier, jur);
+			//Suppression mail
+			MicroFonctions.suppression_Mail_MailHog(driver, mail, env);
+			
+		    }catch (Exception e) {
+			My_SreenShot.takeScreenshot(driver);
+			e.printStackTrace();
+			throw new Exception("Test interrompu....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			   }
+		    }
 				
-				//Vérification des mail
-				JurDocTrc.verification_Mail_Depot_Doc_TRC(driver, mail, env);
-					
-				//Suppression mail
-				MicroFonctions.suppression_Mail_MailHog(driver, mail, env);
-				
-				
-				
-				//Enregistrement du documment
-				JurDocTrc.docEnregTrc(driver, dossier, jur);
-				
-				//Vérification des mail
-				JurDocTrc.verification_Mail_Enreg_Doc_TRC(driver, mail, env);
-		 		
-		 		//Suppression mail
-		 		MicroFonctions.suppression_Mail_MailHog(driver, mail, env);
-				
-					}catch (Exception e) {
-				
-						My_SreenShot.takeScreenshot(driver);
-						e.printStackTrace();
-				
-					}
+			@Test(priority = 4)
+			public void trc_enregistrement_doc() throws Throwable {
+				try {
+			//Enregistrement du documment
+			JurDocTrc.docEnregTrc(driver, dossier, jur);	
+			
+			//Vérification des mail
+			JurDocTrc.verification_Mail_Enreg_Doc_TRC(driver, mail, env);
+	 		
+	 		//Suppression mail
+	 		MicroFonctions.suppression_Mail_MailHog(driver, mail, env);
+			
+				}catch (Exception e) {
+					My_SreenShot.takeScreenshot(driver);
+					e.printStackTrace();
+					throw new Exception("Test interrompu....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				}
 			}		
 			
-		 	@AfterMethod
+		 	@Test(priority = 5)
 		 	public void déconnexion() throws Throwable {
-				MicroFonctions.deconnexionTrInt(driver);	
-			}
-				
-			@AfterSuite
-			public void fin() {
+				MicroFonctions.deconnexionTrInt(driver);
 				System.out.println("LE TEST EST TERMINE !!!....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				driver.quit();
 			}
+				
 }

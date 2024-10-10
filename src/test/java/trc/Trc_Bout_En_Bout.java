@@ -1,5 +1,7 @@
 package trc;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -30,7 +32,7 @@ public class Trc_Bout_En_Bout {
 
 
 	@BeforeSuite
-	   public void InitialisationDoc() {
+	   public void InitialisationDoc() throws IOException {
 		   browserName = "chrome";
 		   driver = Navigateur.choixBrowser(browserName);
 		   System.out.println(driver);

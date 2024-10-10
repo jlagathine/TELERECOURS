@@ -49,8 +49,11 @@ public class Decision_Envoi {
 		id = "lb";
 		mdp = "lb";
 		saisine = "Jugement";
-		heure = "1859";//horaire de mise à disposition de la décision (regarder la prochaine exécution du job DECISIONS_SAISIES depuis le AdminTR)
-		dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
+		date = MesFonctions.ajouter_jour_date(0); //nombre de jour ajouter à la décision
+		heure = "1600";//horaire de mise à disposition de la décision (regarder la prochaine exécution du job DECISIONS_SAISIES depuis le AdminTR)
+		
+		dossier = "367947";//Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
+		
 		try {
 			//SKIPPER_ouverture
 			Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
@@ -66,15 +69,31 @@ public class Decision_Envoi {
 			Navigation_Skipper_Creation_Defendeur.SelectionQualiteActeur(qualite, jur);
 			Navigation_Skipper_Creation_Defendeur.fiche_acteur(jur, nom, type);
 			
+			qualite = "requérant"; //defendeur
+			type = "Administrations locales";
+			nom ="ACADEMIE DE PARIS";
+			Navigation_Skipper_Creation_Defendeur.selectionActeur_defendeur_requerant(jur);
+			Navigation_Skipper_Creation_Defendeur.SelectionQualiteActeur(qualite, jur);
+			Navigation_Skipper_Creation_Defendeur.fiche_acteur(jur, nom, type);
+			
 			/*modifier l'ajout du deuxième acteur*/
+			qualite = "defendeur"; //defendeur
 			type = "Ministères";
 			nom ="MINISTERE DE LA DEFENSE";
 			Navigation_Skipper_Creation_Defendeur.click_Btn_Creer(jur);
 			Navigation_Skipper_Creation_Defendeur.SelectionQualiteActeur(qualite, jur);
 			Navigation_Skipper_Creation_Defendeur.fiche_acteur(jur, nom, type);
 			
+			qualite = "observateur"; //defendeur
 			type = "Autres";
 			nom ="BANQUE";
+			Navigation_Skipper_Creation_Defendeur.click_Btn_Creer(jur);
+			Navigation_Skipper_Creation_Defendeur.SelectionQualiteActeur(qualite, jur);
+			Navigation_Skipper_Creation_Defendeur.fiche_acteur(jur, nom, type);
+			
+			qualite = "intervenant";
+			type = "Préfets";
+			nom ="PREFECTURE DE LA GIRONDE";
 			Navigation_Skipper_Creation_Defendeur.click_Btn_Creer(jur);
 			Navigation_Skipper_Creation_Defendeur.SelectionQualiteActeur(qualite, jur);
 			Navigation_Skipper_Creation_Defendeur.fiche_acteur(jur, nom, type);
@@ -83,7 +102,7 @@ public class Decision_Envoi {
 			Navigation_Sk_Fermeture_Dossier.fermerDossierSk(jur);
 			
 			//Création d'une séance de jugement
-			role = Navigation_Sk_Seance_Jugement.creation_seance(jur, heure, dossier);
+			role = Navigation_Sk_Seance_Jugement.creation_seance(jur, date, heure, dossier);
 			
 			//Saisie du sens de la décision
 			Navigation_Sk_Seance_Jugement.saisie_sens_decision(jur, date, heure, dossier, role);
@@ -108,7 +127,7 @@ public class Decision_Envoi {
 	 
 	@Test(priority = 3)
 	public void navigation_tr_transmission() throws Throwable {
-//		dossier = "367851";
+//		dossier = "367923";
 //		browserName = "chrome";
 //		jur = "CTX";
 //		env = "rec";
@@ -160,6 +179,7 @@ public class Decision_Envoi {
 	
 	@Test(priority = 5)
 	public void verification_creation_job_decision() throws SQLException {
+		if(date.equals(MesFonctions.extractCurrentDate())) {
 		//Connexion BDD TR
 		JdbcClass.conDBTR("telerecours", "telerecours", env);
 		
@@ -184,5 +204,7 @@ public class Decision_Envoi {
 				System.err.println("la liste des mails selectionnés pour l'envoi de la décision ne correspond pas à celle souhaitée......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			}
 		}
+		System.out.println("La décision ne sera visible");
+	}
 
 }

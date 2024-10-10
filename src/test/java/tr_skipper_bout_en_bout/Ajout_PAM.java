@@ -114,12 +114,12 @@ public class Ajout_PAM {
 	
 	@Test(priority=3)
 	public void navigation_tr_transmission() throws Throwable {
-	try {
 		
 		//Ouverture du navigateur
 		driver = Navigateur.choixBrowser(browserName);
 		System.out.println(driver);
 		
+	try {
 		//Choix du site
 		Transmission_TR_expediteur.choix_site_juridiction(driver, jur, id, mdp, env);
 		

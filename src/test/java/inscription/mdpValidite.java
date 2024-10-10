@@ -1,5 +1,6 @@
 package inscription;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import org.openqa.selenium.By;
@@ -46,7 +47,7 @@ public class mdpValidite {
 	}
 	
 	@Test(priority = 2)
-	public void Initialisation () throws SQLException {
+	public void Initialisation () throws SQLException, IOException {
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);

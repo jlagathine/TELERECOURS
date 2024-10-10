@@ -1,5 +1,6 @@
 package trcFonctions;
 
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import JDBC.JdbcClass;
 import fonctionnalites.MicroFonctions;
 import lesFonctions.MesFonctions;
+import myKeyboard.Keyboard;
 
 public class CreationCompteTrc {
 	
@@ -21,7 +23,7 @@ public class CreationCompteTrc {
 	static String mail;
 	static String onglet;
 	static String password;
-	static String env;
+//	static String env;
 	
 	 public static String inscriptionTypeTrc(WebDriver driver, String type, String compagnie) throws Throwable {
 		 date = "16/05/1993";
@@ -39,8 +41,12 @@ public class CreationCompteTrc {
 				String myXpath = "//button[@class='btn big-outline-button' and text()=\"Compte particulier\"]";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 				MesFonctions.goToDown(driver, myXpath);
+				Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+				Thread.sleep(500);
+				
 				//Accès page d'inscription
 				MesFonctions.objet(driver, myXpath).click();
+//				MesFonctions.souris_mvt(driver, myXpath).click();
 				System.out.println("Accès formulaire d'inscription particulier....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				myXpath = "//legend[text()=\"Informations personnelles\"]";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
@@ -94,7 +100,7 @@ public class CreationCompteTrc {
 				
 					//Adresse 1
 				myXpath = "//input[@id='adresse2']"; 
-				MesFonctions.objet(driver,  myXpath).sendKeys("BAT 2");
+				MesFonctions.objet(driver, myXpath).sendKeys("BAT 2");
 				System.out.println("Adresse Ok");
 				
 					//Adresse 2
@@ -121,7 +127,13 @@ public class CreationCompteTrc {
 			    //Création compte
 			    myXpath = "//span[text()=\"Créer mon compte\"]";
 			    MesFonctions.objet(driver, myXpath).click();
-			    System.out.println("Click bouton créaton......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			    System.out.println("Click bouton création......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			    
+			    //Vérification de l'envoi du mail
+			    myXpath = "//h2[contains(text(),\"Nous venons de vous envoyer un courriel à l'adresse "+mail+"\")]";
+			    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			    System.out.println("Accès à la page de vérification de l'envoi du courriel....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			    
 			    
 			    //Succès création
 //			    myXpath = "//button//span[contains(@class,'label') and text()=\"Créer mon compte\"]";
@@ -138,6 +150,8 @@ public class CreationCompteTrc {
 				myXpath = "//button[@class='btn big-outline-button' and text()=\"Compte particulier\"]";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 				MesFonctions.goToDown(driver, myXpath);
+				Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+				Thread.sleep(500);
 				MesFonctions.objet(driver, myXpath).click();
 				System.out.println("Accès formulaire d'inscription particulier......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				myXpath = "//legend[text()=\"Informations personnelles\"]";
@@ -146,7 +160,7 @@ public class CreationCompteTrc {
 				//verification de la présence d'alerte
 				myXpath = "//button//span[@class='label' and text()=\"Créer mon compte\"]";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-				((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,  myXpath));
+				MesFonctions.goToDown(driver, myXpath);
 				MesFonctions.objet(driver, myXpath).click();
 				
 			    myXpath = "//div[@aria-hidden='false']//div[@role='alert']//span";
@@ -165,7 +179,7 @@ public class CreationCompteTrc {
 				//Saisie des différents champs
 			    	//Civilité
 				myXpath = "//select[@id='civilite']";
-				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+//				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 //				mesFonctions.goToUp(driver, myXpath);
 				MesFonctions.selection(driver, myXpath, value);
 				System.out.println("Civilité Ok");
@@ -175,7 +189,7 @@ public class CreationCompteTrc {
 					System.out.println("Date de naissance OK");
 				}else {
 					myXpath = "//input[@id='birthDate']";
-					MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+//					MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 					MesFonctions.objet(driver, myXpath).sendKeys(date);
 					System.out.println("Date de naissance OK");
 					}
@@ -201,49 +215,49 @@ public class CreationCompteTrc {
 				mail = name.toLowerCase()+"@yopmail.com";
 				if(tr<2) {
 					String email = "daniel@yopmail.com";
-					MesFonctions.objet(driver,  myXpath).clear();
-					MesFonctions.objet(driver,  myXpath).sendKeys(email);
+					MesFonctions.objet(driver, myXpath).clear();
+					MesFonctions.objet(driver, myXpath).sendKeys(email);
 					System.err.println("Email : "+email);
 				}else {
-					MesFonctions.objet(driver,  myXpath).clear();
-					MesFonctions.objet(driver,  myXpath).sendKeys(mail);
+					MesFonctions.objet(driver, myXpath).clear();
+					MesFonctions.objet(driver, myXpath).sendKeys(mail);
 					System.out.println("Email Ok");
 				}
 				
 					//Confirmation mail
 				myXpath = "//input[@id='confirmationEmail']";
-				MesFonctions.objet(driver,  myXpath).clear();
-				MesFonctions.objet(driver,  myXpath).sendKeys(mail);
+				MesFonctions.objet(driver, myXpath).clear();
+				MesFonctions.objet(driver, myXpath).sendKeys(mail);
 				System.out.println("Confirmation email Ok");
 				
 					//Mdp
 				myXpath = "//input[@id='password']";
-				MesFonctions.objet(driver,  myXpath).clear();
-				MesFonctions.objet(driver,  myXpath).sendKeys(password);
+				MesFonctions.objet(driver, myXpath).clear();
+				MesFonctions.objet(driver, myXpath).sendKeys(password);
 				System.out.println("Mot de passe Ok");
 				
 					//Confirmation mdp
 				myXpath ="//input[@id='confirmPwd']";
-				MesFonctions.objet(driver,  myXpath).clear();
-				MesFonctions.objet(driver,  myXpath).sendKeys(password);
+				MesFonctions.objet(driver, myXpath).clear();
+				MesFonctions.objet(driver, myXpath).sendKeys(password);
 				System.out.println("Confirmation du mot de passe Ok");
 				
 					//Adresse
 				myXpath = "//input[@id='adresse1']"; 
 				((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,  myXpath));
-				MesFonctions.objet(driver,  myXpath).clear();
-				MesFonctions.objet(driver,  myXpath).sendKeys("2, rue des Indes");
+				MesFonctions.objet(driver, myXpath).clear();
+				MesFonctions.objet(driver, myXpath).sendKeys("2, rue des Indes");
 				
 					//Adresse 1
 				myXpath = "//input[@id='adresse2']";
-				MesFonctions.objet(driver,  myXpath).clear();
-				MesFonctions.objet(driver,  myXpath).sendKeys("BAT 2");
+				MesFonctions.objet(driver, myXpath).clear();
+				MesFonctions.objet(driver, myXpath).sendKeys("BAT 2");
 				System.out.println("Adresse Ok");
 				
 					//Adresse 2
 				myXpath = "//input[@id='adresse3']";
-				MesFonctions.objet(driver,  myXpath).clear();
-				MesFonctions.objet(driver,  myXpath).sendKeys("Porte 136");
+				MesFonctions.objet(driver, myXpath).clear();
+				MesFonctions.objet(driver, myXpath).sendKeys("Porte 136");
 				System.out.println("Adresse 1 Ok");
 				
 					//Code Postal
@@ -254,8 +268,8 @@ public class CreationCompteTrc {
 				
 					//Ville
 				myXpath = "//input[@id='ville']";
-				MesFonctions.objet(driver,  myXpath).clear();
-				MesFonctions.objet(driver,  myXpath).sendKeys("Poullan-sur-Mer");
+				MesFonctions.objet(driver, myXpath).clear();
+				MesFonctions.objet(driver, myXpath).sendKeys("Poullan-sur-Mer");
 				System.out.println("Ville Ok");
 				
 				//Captcha
@@ -266,8 +280,13 @@ public class CreationCompteTrc {
 			    
 			    //Création compte
 			    myXpath = "//span[text()=\"Créer mon compte\"]";
-			    MesFonctions.objet(driver,  myXpath).click();
-			    System.out.println("Click bouton créaton......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			    MesFonctions.objet(driver, myXpath).click();
+			    System.out.println("Click bouton création......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			    
+			    //Vérification de l'envoi du mail
+			    myXpath = "//h2[contains(text(),\"Nous venons de vous envoyer un courriel à l'adresse "+mail+"\")]";
+			    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			    System.out.println("Accès à la page de vérification de l'envoi du courriel....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			    
 			    //Succès création
 //			    myXpath = "//button//span[contains(@class,'label') and text()=\"Créer mon compte\"]";
@@ -291,7 +310,9 @@ public class CreationCompteTrc {
 				myXpath = "//button[@class='btn big-outline-button' and text()=\"Compte personne morale\"]";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 				MesFonctions.goToDown(driver, myXpath);
-				MesFonctions.objet(driver,  myXpath).click();
+				Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+				Thread.sleep(500);
+				MesFonctions.objet(driver, myXpath).click();
 				System.out.println("Accès formulaire d'inscription des personnes morales");
 				myXpath = "//legend[text()=\"Identité de l'organisme\"]";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
@@ -377,11 +398,16 @@ public class CreationCompteTrc {
 			    //Création compte
 			    myXpath = "//span[text()=\"Créer mon compte\"]";
 			    MesFonctions.objet(driver,  myXpath).click();
-			    System.out.println("Click bouton créaton......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			    System.out.println("Click bouton création......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			    
-			    //Succès création
-			    myXpath = "//button//span[@class='label' and text()=\"Créer mon compte\"]";
-			    MesFonctions.objet(driver,  myXpath).click();
+			    //Vérification de l'envoi du mail
+			    myXpath = "//h2[contains(text(),\"Nous venons de vous envoyer un courriel à l'adresse "+mail+"\")]";
+			    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			    System.out.println("Accès à la page de vérification de l'envoi du courriel....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			    
+//			    //Succès création
+//			    myXpath = "//button//span[@class='label' and text()=\"Créer mon compte\"]";
+//			    MesFonctions.objet(driver,  myXpath).click();
 
 			    System.out.println("La création est réussie....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			    
@@ -395,7 +421,7 @@ public class CreationCompteTrc {
 		 return null;
 	 }
 	 
-	 public static String activationCpt(WebDriver driver) throws Throwable {
+	 public static String activationCpt(WebDriver driver, String env) throws Throwable {
 		 //Accès MAilHog
 //		 mail= "margot@yopmail.com";//juste pour le test sinon a commenter
 		 MesFonctions.addTab(driver);
@@ -403,7 +429,7 @@ public class CreationCompteTrc {
 		 onglet =  MesFonctions.getWindow(driver, 2);
 		 String url = driver.getCurrentUrl();
 		 boolean verif = url.contains("int1");
-		 if(!verif) {
+		 if(env=="rec") {
 			 driver.switchTo().window(onglet);
 			 driver.get("https://mail.recette.conseil-etat.fr/"); 
 		 }
@@ -421,10 +447,11 @@ public class CreationCompteTrc {
 		 //Recherche du mail
 		 myXpath = "//div[@class='ng-binding ng-scope' and contains(text(),'"+mail+"')]";
 		 verif = false;
-		 while (MesFonctions.isElementPresent(driver, myXpath, verif)==false) {
+		 while (!MesFonctions.isElementPresent(driver, myXpath, verif)) {
 			 	
 			 String myXpath0 = "//button[@title='Refresh']";
 			 	MesFonctions.objet(driver,  myXpath0).click();
+			 	Thread.sleep(2000);
 //				String myXpath1 = "//span[@class='pull-right']";
 //				mesFonctions.objet(driver,  myXpath1).click();
 			
@@ -486,7 +513,7 @@ public class CreationCompteTrc {
 		 return null; 
 	 }
 	 
-	 public static String modificationCompteTrc(WebDriver driver, String nom) throws Throwable {
+	 public static String modificationCompteTrc(WebDriver driver, String nom, String env) throws Throwable {
 		 
 		 //Accéder à la page "Mon compte"
 		 String myXpath = "//a//span[text()=\"Mon Compte\"]";
@@ -537,6 +564,9 @@ public class CreationCompteTrc {
 		 
 		 //Enregistrement
 		 myXpath = "//button[@type='submit']";
+		 MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		 MesFonctions.goToDown(driver, myXpath);
+		 Thread.sleep(300);
 		 MesFonctions.objet(driver,  myXpath).click();
 		 System.out.println("Soumission du formulaire......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		 
@@ -562,8 +592,7 @@ public class CreationCompteTrc {
 		 onglet =  MesFonctions.getWindow(driver, 1);
 		 driver.switchTo().window(onglet);
 		 String url = driver.getCurrentUrl();
-		 verif = url.contains("int1");
-			 if(!verif) {
+			 if(env=="rec") {
 				 driver.get("https://mail.recette.conseil-etat.fr/");
 				 System.out.println("URL sélectionnée : "+url);
 				 System.out.println("Mail sélectionné : "+mail);
@@ -628,7 +657,7 @@ public class CreationCompteTrc {
 		 return null; 
 	 }
 	 
-	 public static String reinitialisationMdp(WebDriver driver) throws Throwable {
+	 public static String reinitialisationMdp(WebDriver driver, String env) throws Throwable {
 		 //Lien réinitialisation du mot de passe
 		 String myXpath = "//a[contains(text(),\"passe\")]";
 		 MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
@@ -666,9 +695,9 @@ public class CreationCompteTrc {
 		 onglet = MesFonctions.getWindow(driver, 1);
 		 driver.switchTo().window(onglet);
 		 
-		 String url = driver.getCurrentUrl();
-		 boolean verif = url.contains("int1");
-		 if(!verif) {
+//		 String url = driver.getCurrentUrl();
+		 boolean verif = false;
+		 if(env=="rec") {
 			 driver.get("https://mail.recette.conseil-etat.fr/"); 
 		 }
 		 else {
@@ -731,7 +760,7 @@ public class CreationCompteTrc {
 		 MicroFonctions.deconnexionTrc(driver);
 		 
 		 //supprimer les données en base
-		 if(driver.getCurrentUrl().contains("int")) {
+		 if(env!="rec") {
 			 env = "int1";
 		 }else {
 			 env = "rec"; 
@@ -743,9 +772,8 @@ public class CreationCompteTrc {
 		 //effacer les mails
 		 onglet = MesFonctions.getWindow(driver, 1);
 		 driver.switchTo().window(onglet);
-		 url = driver.getCurrentUrl();
-		 verif = url.contains("int1");
-		 if(!verif) {
+		 
+		 if(env=="rec") {
 			 driver.get("https://mail.recette.conseil-etat.fr/"); 
 		 }
 		 else {
@@ -762,7 +790,7 @@ public class CreationCompteTrc {
 		 return null; 
 	 }
 	 
-	 public static String delUser() throws Throwable {
+	 public static String delUser(String env) throws Throwable {
 		name = "Rouafa";
 		mail = "hourma@yopmail.com";
 		System.out.println(name+"  "+mail);

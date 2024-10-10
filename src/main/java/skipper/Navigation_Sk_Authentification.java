@@ -34,12 +34,14 @@ public class Navigation_Sk_Authentification {
 		
 		//Récupération des coordonnées de l'image afin d'en prendre une capture(screenshot)
 		fileImage  = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Selecteur-Lanceur Skipper - BAMO.png";
-		bounds = MesFonctions.setRectangle(fileImage);
+		coords = MesFonctions.waitObject(fileImage);
+		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), 406, 21);
+//		bounds = MesFonctions.setRectangle(fileImage);
 		
 		//pointer le curseur sur l'application via la tabulation
 		Keyboard.keyBoard(KeyEvent.VK_TAB);
 		System.out.println("Positionnement du curseur sur l'application");
-		Thread.sleep(1000);
+		Thread.sleep(700);
 		
 		//choix de la juridiction
 //		String jur = "CE";
@@ -69,6 +71,7 @@ public class Navigation_Sk_Authentification {
 			while(!result.contains("RECETTE SKIPPER CAA75")) {
 				Keyboard.keyBoard(KeyEvent.VK_DOWN);
 				Thread.sleep(50);
+				bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), 406, 21);
 				image = MesFonctions.screenshot(bounds);
 				result = MesFonctions.OCR_decryptage(image);
 				}
@@ -108,6 +111,7 @@ public class Navigation_Sk_Authentification {
 			while(!result.contains("RECETTE SKIPPER TA75")) {
 				Keyboard.keyBoard(KeyEvent.VK_DOWN);
 				Thread.sleep(50);
+				bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), 406, 21);
 				image = MesFonctions.screenshot(bounds);
 				result = MesFonctions.OCR_decryptage(image);
 				}
@@ -147,6 +151,7 @@ public class Navigation_Sk_Authentification {
 			while(!result.contains("RECETTE SKIPPER CTX")) {
 				Keyboard.keyBoard(KeyEvent.VK_DOWN);
 				Thread.sleep(50);
+				bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), 406, 21);
 				image = MesFonctions.screenshot(bounds);
 				result = MesFonctions.OCR_decryptage(image);
 				}

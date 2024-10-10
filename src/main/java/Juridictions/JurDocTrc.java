@@ -43,10 +43,10 @@ public class JurDocTrc {
 	static List<String> str1 = new ArrayList<>();
 	
 	
-	public static String authentification (WebDriver driver, String monUrl, String mail) throws Throwable {
+	public static String authentification (WebDriver driver, String env, String mail) throws Throwable {
 		
 		//Choix de l'environnement
-		switch (monUrl) {
+		switch (env) {
 		case "int1": 
 			String url = "https://citoyens.int1.telerecours.fr/";
 			driver.get(url);
@@ -83,7 +83,7 @@ public class JurDocTrc {
 	
 	
 	
-	public static String docDepotMem (WebDriver driver, boolean verif, String dossier, String jur) throws Throwable {
+	public static String docDepotMem (WebDriver driver, String dossier, String jur) throws Throwable {
  		myXpath = "//cdk-row//span[text()='"+dossier+"']//ancestor::cdk-cell//following-sibling::cdk-cell//span[@class='fa fa-eye']";
 
  		int nbr = driver.findElements(By.xpath(myXpath)).size();
@@ -93,17 +93,17 @@ public class JurDocTrc {
  		myXpath1 = "//h1[contains(text(),\"Historique\")]"; //"//div[@class='titre-timeline']//jhi-abbreviate//span";
  		//String myXpath2 = "//jhi-abbreviate//span[contains(text(),'"+choix+"')]";
  		if(jur=="TA") {
- 			myXpath2 = "//jhi-abbreviate//span[text()[contains(.,'Tribunal')]]";
+ 			myXpath2 = "//span[text()[contains(.,'Tribunal')]]";
  		}else if(jur=="CAA") {
- 			myXpath2 = "//jhi-abbreviate//span[text()[contains(.,'Cour')]]";
+ 			myXpath2 = "//span[text()[contains(.,'Cour')]]";
  		}else {
- 			myXpath2 = "//jhi-abbreviate//span[text()[contains(.,'Conseil')]]";
+ 			myXpath2 = "//span[text()[contains(.,'Conseil')]]";
  		}
  		
  		myXpath3 = "//div[@class='btn btn-primary']";
  		myXpath4 = "//span[text()=\"Accueil\"]";
- 		myXpath5 = "//jhi-file-uploader[@inputname='memoire']//input[@type='file']";
- 		myXpath6 = "//jhi-file-uploader[@inputname='piece-adder']//input[@type='file']";
+ 		myXpath5 = "//trc-file-uploader[@inputname='memoire']//input[@type='file']";
+ 		myXpath6 = "//trc-file-uploader[@inputname='piece-adder']//input[@type='file']";
  		myXpath60 = "//div[@class='form-group required name']//label[(contains(text(),'Nommer la pièce n°1'))]//following-sibling::div/input";
  		myXpath7 = "//div[@class='form-group']/label[text()=\"Pièce complémentaire n°2\"]//parent::div//div/input[2]";
  		myXpath70 = "//div[@class='form-group required name']//label[(contains(text(),'Nommer la pièce n°2'))]//following-sibling::div/input";
@@ -117,27 +117,41 @@ public class JurDocTrc {
  		switch (jur) {
 		case "TA":
 			
-			if(driver.findElements(By.xpath(myXpath)).size() > 1) {
+			if(driver.findElements(By.xpath(myXpath)).size() >= 1) {
+				MesFonctions.goToDown(driver, myXpath);
+				Thread.sleep(700);
 	 			MesFonctions.objet(driver,  myXpath).click();
+	 			boolean verif = false;
 	 			
+	 			String aXpath = "//button[text()='Fermer']";
+	 				while(MesFonctions.isElementPresent(driver, aXpath, verif)) {
+	 					MesFonctions.objet(driver, aXpath).click();
+	 					Thread.sleep(300);
+	 					driver.navigate().refresh();
+	 					MesFonctions.goToDown(driver, myXpath);
+	 					Thread.sleep(700);
+	 					MesFonctions.objet(driver, myXpath).click();
+	 				}
+//	 			
 	 			MesFonctions.waiting2(driver, myXpath1, Duration.ofSeconds(3));
 	 			
-	 			if(MesFonctions.isElementPresent(driver, myXpath2, verif) == true) {
-	 			System.out.println(MesFonctions.objet(driver,  myXpath2).getText().trim());
+	 			
+	 			if(MesFonctions.isElementPresent(driver, myXpath2, verif)) {
+	 			System.out.println(MesFonctions.objet(driver, myXpath2).getText().trim());
 	 				MesFonctions.objet(driver,  myXpath3).click();
 	 			}
 	 			else {
  				MesFonctions.waiting2(driver, myXpath4, Duration.ofSeconds(3));
- 				MesFonctions.objet(driver,  myXpath4).click();
+ 				MesFonctions.objet(driver, myXpath4).click();
  				
  				MesFonctions.waiting2(driver, myXpath0, Duration.ofSeconds(3));
-	 			MesFonctions.objet(driver,  myXpath0).click();
+	 			MesFonctions.objet(driver, myXpath0).click();
 	 			
 	 			MesFonctions.waiting2(driver, myXpath2, Duration.ofSeconds(3));
-	 			System.out.println(MesFonctions.objet(driver,  myXpath2).getText().trim());
+	 			System.out.println(MesFonctions.objet(driver, myXpath2).getText().trim());
 	 			
 	 			MesFonctions.waiting2(driver, myXpath3, Duration.ofSeconds(3));
-	 			MesFonctions.objet(driver,  myXpath3).click();
+	 			MesFonctions.objet(driver, myXpath3).click();
 	 			}	
 	 		}
 	 		else {
@@ -148,16 +162,16 @@ public class JurDocTrc {
 	 			MesFonctions.objet(driver,  myXpath0).click();
 	 			
 	 			MesFonctions.waiting2(driver, myXpath2, Duration.ofSeconds(3));
-	 			System.out.println(MesFonctions.objet(driver,  myXpath2).getText().trim());
+	 			System.out.println(MesFonctions.objet(driver, myXpath2).getText().trim());
 	 			
 	 			MesFonctions.waiting2(driver, myXpath3, Duration.ofSeconds(3));
-	 			MesFonctions.objet(driver,  myXpath3).click();
+	 			MesFonctions.objet(driver, myXpath3).click();
 	 		}
 	 		
 	 		Thread.sleep(300);
 	 		
 	 		//le mémoire
-	 		MesFonctions.objet(driver,  myXpath5).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\1 Mémoire 1.docx");
+	 		MesFonctions.objet(driver, myXpath5).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\1 Mémoire 1.docx");
 	 		Thread.sleep(200);
 	 		System.out.println("Insertion d'une pièce : Mémoire......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 	 		
@@ -217,14 +231,25 @@ public class JurDocTrc {
 			
 		case "CAA":
 			
-			if(driver.findElements(By.xpath(myXpath)).size() > 1) {
-	 			MesFonctions.objet(driver,  myXpath).click();
+			if(driver.findElements(By.xpath(myXpath)).size() >= 1) {
+				MesFonctions.goToDown(driver, myXpath);
+				Thread.sleep(700);
+	 			MesFonctions.objet(driver, myXpath).click();
 	 			
-	 			MesFonctions.waiting2(driver, myXpath1, Duration.ofSeconds(3));
-	 			
-	 			if(MesFonctions.isElementPresent(driver, myXpath2, verif) == true) {
+	 			boolean verif = false;
+	 			String aXpath = "//button[text()='Fermer']";
+	 				while(MesFonctions.isElementPresent(driver, aXpath, verif)) {
+	 					MesFonctions.objet(driver, aXpath).click();
+	 					Thread.sleep(300);
+	 					driver.navigate().refresh();
+	 					MesFonctions.goToDown(driver, myXpath);
+	 					Thread.sleep(700);
+	 					MesFonctions.objet(driver, myXpath).click();
+	 				}
+	 				
+	 			if(MesFonctions.isElementPresent(driver, myXpath2, verif)) {
 	 			System.out.println(MesFonctions.objet(driver,  myXpath2).getText().trim());
-	 				MesFonctions.objet(driver,  myXpath3).click();
+	 			MesFonctions.objet(driver, myXpath3).click();
 	 			}
 	 			else {
  				MesFonctions.waiting2(driver, myXpath4, Duration.ofSeconds(3));
@@ -251,7 +276,7 @@ public class JurDocTrc {
 	 			System.out.println(MesFonctions.objet(driver,  myXpath2).getText().trim());
 	 			
 	 			MesFonctions.waiting2(driver, myXpath3, Duration.ofSeconds(3));
-	 			MesFonctions.objet(driver,  myXpath3).click();
+	 			MesFonctions.objet(driver, myXpath3).click();
 	 		}
 	 		
 	 		Thread.sleep(300);
@@ -315,9 +340,21 @@ public class JurDocTrc {
 			break;
 			
 		case "CTX":
-			
+			MesFonctions.goToDown(driver, myXpath);
+			Thread.sleep(700);
  			MesFonctions.objet(driver,  myXpath).click();
  			Thread.sleep(300);
+ 			
+ 			boolean verif = false;
+ 			String aXpath = "//button[text()='Fermer']";
+ 				while(MesFonctions.isElementPresent(driver, aXpath, verif)) {
+ 					MesFonctions.objet(driver, aXpath).click();
+ 					Thread.sleep(300);
+ 					driver.navigate().refresh();
+ 					MesFonctions.goToDown(driver, myXpath);
+ 					Thread.sleep(700);
+ 					MesFonctions.objet(driver, myXpath).click();
+ 				}
  			
  			MesFonctions.waiting2(driver, myXpath1, Duration.ofSeconds(3));
  			System.out.println(MesFonctions.objet(driver, myXpath2).getText().trim());
@@ -397,7 +434,7 @@ public class JurDocTrc {
 				
 				
 				// Récupération du num du document et des noms des fichiers
-				myXpath = "(//jhi-timeline-element)[1]//child::button//parent::a/span";
+				myXpath = "(//trc-timeline-element)[1]//child::button//parent::a/span";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 				
 				str = MesFonctions.nbrEtNomsObjetBrut(driver, myXpath);
@@ -491,7 +528,7 @@ public class JurDocTrc {
 				   Thread.sleep(100);
 				   MicroFonctions.enrgDoc(driver);
 				   
-				   Thread.sleep(000);
+				   Thread.sleep(100);
 				   str1.clear();
 				   str.clear();
 				   
@@ -503,15 +540,15 @@ public class JurDocTrc {
 				
 				
 				// Récupération du num de requête et des noms des fichiers
-				myXpath = "(//jhi-timeline-element)[1]//child::button//parent::a/span";
+				myXpath = "(//trc-timeline-element)[1]//child::button//parent::a/span";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 				
 				str = MesFonctions.nbrEtNomsObjetBrut(driver, myXpath);
-				 Thread.sleep(1000);
+				 Thread.sleep(100);
 				 System.out.println(str);
 				 driver.findElement(By.xpath("//span[text()=\"Déconnexion\"]")).click();
 				
-				Thread.sleep(2000);
+				Thread.sleep(200);
 				
 				TrUrl = "https://www.telerecours.recette.juradm.fr/CA75";
 				TrUrlInt = "https://www.telerecours.int1.juradm.fr/CA75"; 
@@ -556,7 +593,7 @@ public class JurDocTrc {
 				//nom = mesFonctions.objet(driver,  myXpath).getText();
 				acteur = MesFonctions.leTexte(driver, texte, myXpath).replace("*", "").trim();
 				System.out.println("Auteur du dépôt : "+acteur+"\r");
-				Thread.sleep(1000);
+				Thread.sleep(100);
 				
 				//Vérification fichiers 
 				System.out.println("Vérification des fichiers en cours......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
@@ -569,22 +606,22 @@ public class JurDocTrc {
 			   	myXpath = "//a[contains(@id,'rptPiecesDocument_ctl0"+i+"')]";
 			   	String file = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
 				str1.add(file);
-				Thread.sleep(1000);
+				Thread.sleep(100);
 					}
 				   
 			   myXpath = "//a[@id='fileLinkFichierDocument_hplFichier']";
 				caractSpec = "_";
 				String memoire = MesFonctions.leNom(driver, myXpath, caractSpec).replace("_", " ").trim();
 				str1.add(memoire);
-				Thread.sleep(1000);
+				Thread.sleep(100);
 				
 				myXpath = "//a[@id='fileLinkFichierInventaire_hplFichier']";
 				caractSpec = "_";
 				 String invPcs1 = MesFonctions.leNom(driver, myXpath, caractSpec);
-				   Thread.sleep(1000);
+				   Thread.sleep(100);
 				   
 				   str1.add(invPcs1);
-				   Thread.sleep(1000);
+				   Thread.sleep(100);
 				   
 				   if(str1.equals(str)) {
 					   System.out.println("Tous les fichiers sont présents....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
@@ -594,10 +631,10 @@ public class JurDocTrc {
 				   }
 				   
 				   //Enregistrement de la requête 
-				   Thread.sleep(1000);
+				   Thread.sleep(100);
 				   MicroFonctions.enrgDoc(driver);
 				   
-				   Thread.sleep(2000);
+				   Thread.sleep(200);
 				   str1.clear();
 				   str.clear();
 				   
@@ -609,15 +646,15 @@ public class JurDocTrc {
 				case "CTX" :
 					
 					// Récupération du num de requête et des noms des fichiers
-					myXpath = "(//jhi-timeline-element)[1]//child::button//parent::a/span";
+					myXpath = "(//trc-timeline-element)[1]//child::button//parent::a/span";
 					MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 					
 					str = MesFonctions.nbrEtNomsObjetBrut(driver, myXpath);
-					 Thread.sleep(1000);
+					 Thread.sleep(100);
 					 System.out.println(str);
 					 driver.findElement(By.xpath("//span[text()=\"Déconnexion\"]")).click();
 					
-					Thread.sleep(2000);
+					Thread.sleep(200);
 					
 					TrUrl = "https://www.telerecours.recette.conseil-etat.fr/conseil";
 					TrUrlInt = "https://www.telerecours.int1.conseil-etat.fr/conseil"; 
@@ -659,7 +696,7 @@ public class JurDocTrc {
 					//nom = mesFonctions.objet(driver,  myXpath).getText();
 					acteur = MesFonctions.leTexte(driver, texte, myXpath).replace("*", "").trim();
 					System.out.println("Auteur du dépôt : "+acteur+"\r");
-					Thread.sleep(1000);
+					Thread.sleep(100);
 					
 					//Vérification fichiers 
 					System.out.println("vérification des fichiers en cours....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
@@ -672,22 +709,22 @@ public class JurDocTrc {
 				   	myXpath = "//a[contains(@id,'rptPiecesDocument_ctl0"+i+"')]";
 				   	String file = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
 					str1.add(file);
-					Thread.sleep(1000);
+					Thread.sleep(100);
 						}
 					   
 				   myXpath = "//a[@id='fileLinkFichierDocument_hplFichier']";
 					caractSpec = "_";
 					String memoire1 = MesFonctions.leNom(driver, myXpath, caractSpec).replace("_", " ").trim();
 					str1.add(memoire1);
-					Thread.sleep(1000);
+					Thread.sleep(100);
 					
 					myXpath = "//a[@id='fileLinkFichierInventaire_hplFichier']";
 					caractSpec = "_";
 					 String invPcs2 = MesFonctions.leNom(driver, myXpath, caractSpec);
-					   Thread.sleep(1000);
+					   Thread.sleep(100);
 					   
 					   str1.add(invPcs2);
-					   Thread.sleep(1000);
+					   Thread.sleep(100);
 					   
 					   if(str1.equals(str)) {
 						   System.out.println("Tous les fichiers sont présents......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
@@ -697,10 +734,10 @@ public class JurDocTrc {
 					   }
 					   
 					   //Enregistrement du document 
-					   Thread.sleep(1000);
+					   Thread.sleep(100);
 					   MicroFonctions.enrgDoc(driver);
 					   
-					   Thread.sleep(2000);
+					   Thread.sleep(200);
 					   str1.clear();
 					   str.clear();
 					   

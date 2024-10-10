@@ -627,7 +627,7 @@ public class JurReqTrFlechage {
 		return null;
 	}
 	
-	public static String reqEnreg (WebDriver driver, String choixJur) throws Throwable {
+	public static String reqEnreg (WebDriver driver, String choixJur, String env) throws Throwable {
 		switch (choixJur) {
 		case "Tribunal" :
 			// Récupération du num de reqête

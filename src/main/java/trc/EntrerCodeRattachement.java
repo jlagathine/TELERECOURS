@@ -10,7 +10,7 @@ import lesFonctions.MesFonctions;
 
 public class EntrerCodeRattachement {
 	
-	public static String rattachementTRC(WebDriver driver, String code, String jur) throws Throwable {
+	public static String rattachementTRC(WebDriver driver, String code, String jur, String env) throws Throwable {
 		//Accès au bouton "Entrer un code reçu par courrier"
 		String myXpath = " //span[contains(text(),\"Entrer un code reçu par courrier\")] ";
 		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
@@ -27,26 +27,37 @@ public class EntrerCodeRattachement {
 		System.out.println("Le code a été renseigné....."+MesFonctions.extractCurrentHeure());
 		
 		//verification en BASE TR
-		String env = "rec";
+		String DB_id = "";
+		String DB_mdp = "";
 		switch (jur) {
-		
 		case "TA":
-			JdbcClass.conDBTR("tr2_ta75", "tr2_ta75", env);
-			JdbcClass.sqlVerificationCodeRattachementTr(code.replaceAll(" ", "").replaceAll("-", "").trim());
-			break;
-		case "CAA":
-			JdbcClass.conDBTR("tr2_caa75", "tr2_caa75", env);
-			JdbcClass.sqlVerificationCodeRattachementTr(code.replaceAll(" ", "").replaceAll("-", "").trim());
-			break;
+		if(env=="rec") {
+			DB_id = "tr2_ta75";
+			DB_mdp = "tr2_ta75";
+		}else {
+			DB_id = "tr2_ta69";
+			DB_mdp = "tr2_ta69";
+		}
+		JdbcClass.conDBTR(DB_id, DB_mdp, env);
+		break;
+	case "CAA":
+		if(env=="rec") {
+			DB_id = "tr2_caa75";
+			DB_mdp = "tr2_caa75";
+		}else {
+			DB_id = "tr2_caa69";
+			DB_mdp = "tr2_caa69";
+		}
+		JdbcClass.conDBTR(DB_id, DB_mdp, env);
+		break;
 		case "CTX":
 			JdbcClass.conDBTR("telerecours", "telerecours", env);
-			JdbcClass.sqlVerificationCodeRattachementTr(code.replaceAll(" ", "").replaceAll("-", "").trim());
 			break;
 
-		default:
+		default:  System.err.println("Aucune juridiction à ce nom");
 			break;
 		}
-					
+		JdbcClass.sqlVerificationCodeRattachementTr(code.replaceAll(" ", "").replaceAll("-", "").trim());			
 	
 		//Bouton rattacher dossier
 		myXpath = " //span[contains(text(),\"Rattacher le dossier\")] ";

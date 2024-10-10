@@ -3,11 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="inscription.mdpValidite">
+      <class name="skipper.sk_transmission_code_TRC">
         <methods>
-          <include name="déconnexion"/>
+          <include name="Trc_depot_documents"/>
+          <include name="trc_enregistrement_doc"/>
         </methods>
-      </class> <!-- inscription.mdpValidite -->
+      </class> <!-- skipper.sk_transmission_code_TRC -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -23,7 +23,7 @@ public class Navigation_Skipper_Code_RattachementTRC {
 	static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>  coords;
 	static Pair<Pair<Integer, Integer>, Pair<Integer, Integer>> coords1;
 	
-	public static Object creationActeurRequerant_Defendeur(String jur) throws Throwable {
+	public static Object creationActeurRequerant_Defendeur(String jur, String env) throws Throwable {
 		switch (jur) {
 		case "CAA":
 			//Accès onglet acteur
@@ -41,7 +41,7 @@ public class Navigation_Skipper_Code_RattachementTRC {
 			System.out.println("Ajout d'un acteur - Click sur le bouton \"Créer\" ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Remplissage de la fiche acteur
-			Navigation_Skipper_Code_RattachementTRC.ficheActeurPhysiqueMoral(jur);
+			Navigation_Skipper_Code_RattachementTRC.ficheActeurPhysiqueMoral(jur, env);
 			
 			break;
 			
@@ -61,7 +61,7 @@ public class Navigation_Skipper_Code_RattachementTRC {
 			System.out.println("Ajout d'un acteur - Click sur le bouton \"Créer\" ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Remplissage de la fiche acteur
-			Navigation_Skipper_Code_RattachementTRC.ficheActeurPhysiqueMoral(jur);
+			Navigation_Skipper_Code_RattachementTRC.ficheActeurPhysiqueMoral(jur, env);
 			
 			break;
 			
@@ -81,7 +81,7 @@ public class Navigation_Skipper_Code_RattachementTRC {
 			System.out.println("Ajout d'un acteur - Click sur le bouton \"Créer\" ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Remplissage de la fiche acteur
-			Navigation_Skipper_Code_RattachementTRC.ficheActeurPhysiqueMoral(jur);
+			Navigation_Skipper_Code_RattachementTRC.ficheActeurPhysiqueMoral(jur, env);
 			
 			break;
 
@@ -91,7 +91,7 @@ public class Navigation_Skipper_Code_RattachementTRC {
 		return null;
 	}
 	
-	public static Object ficheActeurPhysiqueMoral(String jur) throws Throwable {
+	public static Object ficheActeurPhysiqueMoral(String jur, String env) throws Throwable {
 		Navigation_Skipper_Code_RattachementTRC.selectionQualiteActeurMoral(jur);
 		Navigation_Skipper_Code_RattachementTRC.nomActeurMoral(jur);
 		if(jur=="CTX" || jur=="CAA") {
@@ -108,7 +108,7 @@ public class Navigation_Skipper_Code_RattachementTRC {
 		Keyboard.keyBoard(KeyEvent.VK_ENTER);
 		System.out.println("Fiche acteur validée ....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		
-		if(jur=="TA") {
+		if(jur=="TA" && env=="rec") {
 			Thread.sleep(100);
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\TA2 - bouton_Annuler - Skipper - Liste des dossiers rapprochés.png";
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
@@ -428,7 +428,7 @@ public class Navigation_Skipper_Code_RattachementTRC {
 			
 			Keyboard.keyBoard(KeyEvent.VK_DOWN);
 			
-			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Mesure1.png";
+			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Top_famile_mesure_CAA.png";
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 			coords = MesFonctions.waitObject(fileImage);
 			bounds = MesFonctions.setRectangle(fileImage);

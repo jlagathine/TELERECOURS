@@ -57,8 +57,8 @@ public class JurIdentMdpOublie {
 		return null;
 	}
 
-	public static String recupIndentMdp (WebDriver driver, String choixJur, String mail) throws Throwable {
-		switch (choixJur) {
+	public static String recupIndentMdp (WebDriver driver, String jur, String mail) throws Throwable {
+		switch (jur) {
 		case "TACAA":
 		   //Renseigner son mail
 		   String myXpath = "//input[@id='Email']";
@@ -91,7 +91,7 @@ public class JurIdentMdpOublie {
 		   MicroFonctions.mailYopRecovery(driver, mail);
 		   
 		   //Récupération de ses codes
-		   MicroFonctions.InscriptionRecovery(driver);
+		   MicroFonctions.InscriptionRecovery(driver, jur);
 			
 		   //Choix de la juridiction
 		   MicroFonctions.choixJuridictionTA(driver);
@@ -134,7 +134,7 @@ public class JurIdentMdpOublie {
 		   MicroFonctions.mailYopRecovery(driver, mail);
 		   
 		   //Récupération de ses codes
-		   MicroFonctions.InscriptionRecovery(driver);
+		   MicroFonctions.InscriptionRecovery(driver, jur);
 			
 		   name = "Télérecours - Conseil d'Etat";
 		   myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
@@ -156,8 +156,8 @@ public class JurIdentMdpOublie {
 	return null;
 	}
 		   
-   	public static String recupIndentLienInvalideMdp (WebDriver driver, WebElement element, String choixJur, String mail) throws Throwable {
-		switch (choixJur) {
+   	public static String recupIndentLienInvalideMdp (WebDriver driver, WebElement element, String jur, String mail) throws Throwable {
+		switch (jur) {
 		case "TACAA":
 		   
 		   //Page mail
@@ -200,21 +200,21 @@ public class JurIdentMdpOublie {
 		   MicroFonctions.recoveryII(driver, mail, email);
 		   
 		   //Récupération de ses codes
-		   MicroFonctions.InscriptionRecovery(driver);
+		   MicroFonctions.InscriptionRecovery(driver, jur);
 			
-		   //Choix de la juridiction
-		   MicroFonctions.choixJuridictionTA(driver);
-		   Thread.sleep(100);
-			
-		   name = "TA";
-		   myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
-		   verif = (MesFonctions.objet(driver,  myXpath).getText()).contains(name);
-		   Thread.sleep(1500);
-		   System.out.println(verif);
-		   if (!verif) {
-				System.err.println("la redirection n\'a pas bien fonctionné");
-			}
-		   Thread.sleep(3000);
+//		   //Choix de la juridiction
+//		   MicroFonctions.choixJuridictionTA(driver);
+//		   Thread.sleep(100);
+//			
+//		   name = "TA";
+//		   myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
+//		   verif = (MesFonctions.objet(driver,  myXpath).getText()).contains(name);
+//		   Thread.sleep(1500);
+//		   System.out.println(verif);
+//		   if (!verif) {
+//				System.err.println("la redirection n\'a pas bien fonctionné");
+//			}
+//		   Thread.sleep(3000);
 				
 		break;
 				
@@ -254,19 +254,19 @@ public class JurIdentMdpOublie {
 		   MicroFonctions.mailYopRecovery(driver, mail);
 		   
 		   //Récupération de ses codes
-		   MicroFonctions.InscriptionRecovery(driver);
+		   MicroFonctions.InscriptionRecovery(driver, jur);
 			
-		   name = "Télérecours - Conseil d'Etat";
-		   myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
-		   verif = name.equals(MesFonctions.objet(driver,  myXpath).getText());
-		   Thread.sleep(1500);
-		   System.out.println(verif);
-		   if (!verif) {
-				System.err.println("la redirection n\'a pas bien fonctionné");
-			}else {
-				System.out.println("la redirection a bien fonctionné");
-			}
-			Thread.sleep(3000);
+//		   name = "Télérecours - Conseil d'Etat";
+//		   myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
+//		   verif = name.equals(MesFonctions.objet(driver,  myXpath).getText());
+//		   Thread.sleep(1500);
+//		   System.out.println(verif);
+//		   if (!verif) {
+//				System.err.println("la redirection n\'a pas bien fonctionné");
+//			}else {
+//				System.out.println("la redirection a bien fonctionné");
+//			}
+//			Thread.sleep(3000);
 			
 		   break;
 

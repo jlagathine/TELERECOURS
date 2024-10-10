@@ -202,7 +202,7 @@ public class JurDocTr {
 				// Envoyer
 				myXpath = "//a[@id='Mstr_cpMain_btDeposerDocument']/span[@class='button-text' and (text()='Envoyer')]";
 				MesFonctions.objet(driver, myXpath).click();// Vérification
-				Thread.sleep(2000);
+				Thread.sleep(200);
 				
 				// Vérification des fichiers téléchargés
 					//mémoire
@@ -379,7 +379,7 @@ public class JurDocTr {
 			case "TA" :
 				// Récupération du num de reqête
 				dossier = MicroFonctions.recupEnvoiNumDocTr(driver);
-				Thread.sleep(2000);
+				Thread.sleep(200);
 				
 				// Déconnexion
 				MicroFonctions.deconnexionTrExt(driver);
@@ -645,6 +645,124 @@ public class JurDocTr {
 				break;
 			}
 			return dossier;
+		}
+		
+		public static void Enregistrement_Doc_Constitution(WebDriver driver, String dossier, String jur, String env) throws Throwable {
+			// Récupération du num de reqête
+			dossier = MicroFonctions.recupEnvoiNumDocTr(driver);
+			Thread.sleep(200);
+			
+			// Déconnexion
+			MicroFonctions.deconnexionTrExt(driver);
+			Thread.sleep(200);
+			
+			switch (jur) {
+			case "TA":
+				
+				if(env=="rec") {
+					identifiant = "lb";
+					mdp = "lb";
+					
+					// Authentification
+					driver.get("https://www.telerecours.recette.juradm.fr/TA75");
+					Thread.sleep(200);
+					MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				}else {
+					identifiant = "sice";
+					mdp = "sice";
+					
+					// Authentification
+					driver.get("https://www.telerecours.int1.juradm.fr/TA75");
+					Thread.sleep(200);
+					MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				}
+			
+				break;
+				
+			case "CAA" :
+				
+				if(env=="rec") {
+					identifiant = "lb";
+					mdp = "lb";
+					
+					// Authentification
+					driver.get("https://www.telerecours.recette.juradm.fr/CA75");
+					Thread.sleep(200);
+					MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				}else {
+					identifiant = "sice";
+					mdp = "sice";
+					
+					// Authentification
+					driver.get("https://www.telerecours.int1.juradm.fr/CA75");
+					Thread.sleep(200);
+					MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				}
+				break;
+				
+			case "CTX" :
+				
+				if(env=="rec") {
+					identifiant = "lb";
+					mdp = "lb";
+					
+					// Authentification
+					driver.get("https://www.telerecours.recette.conseil-etat.fr/conseil");
+					Thread.sleep(200);
+					MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				}else {
+					identifiant = "sice";
+					mdp = "sice";
+					
+					// Authentification
+					driver.get("https://www.telerecours.int1.conseil-etat.fr/conseil");
+					Thread.sleep(200);
+					MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
+				}
+				break;
+				
+			default:System.err.println("Aucune juridiction sélectionnée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				break;
+			}
+			
+			
+			// Enregistrer le document
+			myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
+			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			MesFonctions.verifyPresenceOfElement(driver, myXpath, jur);
+			System.out.println(MesFonctions.objet(driver, myXpath).getText().trim());
+			
+			driver.findElement(By.xpath("//td[@id='Entete1_MenuActeur1_im1_AE']")).click();
+			Thread.sleep(200);
+			if(!jur.equals("CTX")) {
+				driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier + "')]")).click();
+			}
+			else {
+				driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier.replace("  /  ", " / ").trim() + "')]")).click();
+			}
+			
+			myXpath = "//td[contains(text(),'Déposé sur Télérecours par')]//following-sibling::td";
+			caractSpec = " ";
+			String strg = MesFonctions.leNom(driver, myXpath, caractSpec);
+			int fin = strg.indexOf(strg.split(" ")[2]);
+			acteur = strg.substring(0, fin).trim();
+			System.out.println(acteur);
+			
+			// Rattachement
+			MicroFonctions.rattachement(driver, verif, acteur);
+			
+			//Vérification fichiers 
+			myXpath = "//a[@id='fileLinkFichierCourrier_hplFichier']";
+			caractSpec = "_";
+			String verifFile1 = MesFonctions.leNom(driver, myXpath, caractSpec);
+			System.out.println("Le fichier : "+verifFile1+" est bien présent......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			
+			   
+		   //Enregistrement du document 
+		   Thread.sleep(100);
+		   MicroFonctions.enrgDoc(driver);
+		   System.out.println("Dépôt et enregistrement TRC TA terminés");
+			
 		}
 		
 		public static void acces_PAM(WebDriver driver) {

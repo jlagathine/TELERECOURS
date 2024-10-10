@@ -108,7 +108,7 @@ public class JurReqTrc {
 				   //dépôt fichiers (1 REQ, 1 DECACT, 4PC ou 97PC <= 99)
 				   MicroFonctions.depotFilesReqTrc(driver);//depotFilesReqTrc_99Pieces ou depotFilesReqTrc
 				   System.out.println("Dépôt de fichiers réalisé......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-				   Thread.sleep(1000);
+				   Thread.sleep(100);
 				   
 				   //Récapitulation de l'envoi
 				   MicroFonctions.recapitulatifTRC(driver);
@@ -573,7 +573,7 @@ public class JurReqTrc {
 		
 	}
 	
-	public static String reqEnrgTrcJmeter (WebDriver driver, String jur, int dossier) throws Throwable {
+	public static String reqEnrgTrcJmeter (WebDriver driver, String jur, int dossier, String env) throws Throwable {
 		switch (jur) {
 		
 		case "TA":
@@ -873,7 +873,7 @@ public class JurReqTrc {
 		return requete;
 	}
 	
-	public static String reqEnrgTrc (WebDriver driver, String jur, String numDos) throws Throwable {
+	public static String reqEnrgTrc (WebDriver driver, String jur, String dossier, String env) throws Throwable {
 		switch (jur) {
 		
 		case "TA":
@@ -885,7 +885,7 @@ public class JurReqTrc {
 			   //trouver le numero de la requête
 //			   myXpath = "//jhi-numero-dossier//span";
 //			   numReqTrc = mesFonctions.leTexte(driver, texte, myXpath);
-			   Thread.sleep(1000); 
+			   Thread.sleep(100); 
 //	 		   System.out.println(numReqTrc);
 	 		  
 			   MicroFonctions.verifEnvoiTrc(driver);
@@ -906,8 +906,8 @@ public class JurReqTrc {
 				String currentUrl = "int1";
 			   //Authentification TA
 						
-				boolean verif = driver.getCurrentUrl().contains(currentUrl);
-				if(verif) {
+//				boolean verif = driver.getCurrentUrl().contains(currentUrl);
+				if(env == "int1") {
 					driver.get(TrUrlInt);
 					identifiant = "sice";
 					mdp = "sice";
@@ -933,7 +933,7 @@ public class JurReqTrc {
 			   
 			   myXpath = "//td[@id='Entete1_MenuActeur1_im1_AC']";
 			   MesFonctions.objet(driver,  myXpath).click(); 
-			   myXpath = "//a[@class='numDossier' and (text()='" + numDos +" (TRC)')]";
+			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
 			   MesFonctions.objet(driver,  myXpath).click();
 			   Thread.sleep(200);
 			   System.out.println("Onglet \"Requêtes\" sélectionné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
@@ -1016,7 +1016,7 @@ public class JurReqTrc {
 			   MicroFonctions.sauvReq(driver);
 			   Thread.sleep(100);
 			   
-			   myXpath = "//a[@class='numDossier' and (text()='" + numDos +" (TRC)')]";
+			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
 			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
 			   Thread.sleep(200);
@@ -1089,7 +1089,7 @@ public class JurReqTrc {
 			   myXpath = "//td[@id='Entete1_MenuActeur1_im1_AC']";
 			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
-			   myXpath = "//a[@class='numDossier' and (text()='" + numDos +" (TRC)')]";
+			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
 			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
 			   Thread.sleep(200);
@@ -1173,7 +1173,7 @@ public class JurReqTrc {
 			   MicroFonctions.sauvReq(driver);
 			   Thread.sleep(100);
 			   
-			   myXpath = "//a[@class='numDossier' and (text()='" + numDos +" (TRC)')]";
+			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
 			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
 			   Thread.sleep(200);
@@ -1245,7 +1245,7 @@ public class JurReqTrc {
 			   
 			   myXpath = "//td[@id='Entete1_MenuActeur1_im1_AC']";
 			   MesFonctions.objet(driver,  myXpath).click();
-			   myXpath = "//a[@class='numDossier' and (text()='" + numDos +" (TRC)')]";
+			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
 			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
 			   Thread.sleep(200);
@@ -1328,7 +1328,7 @@ public class JurReqTrc {
 			   MicroFonctions.sauvReq(driver);
 			   Thread.sleep(300);
 			   
-			   myXpath = "//a[@class='numDossier' and (text()='" + numDos +" (TRC)')]";
+			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
 			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
 			   Thread.sleep(200);

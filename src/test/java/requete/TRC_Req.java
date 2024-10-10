@@ -1,5 +1,7 @@
 package requete;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -27,10 +29,10 @@ public class TRC_Req {
 
 
 	   @BeforeSuite
-	   public void InitialisationDoc() {
+	   public void InitialisationDoc() throws IOException {
 	   browserName = "chrome";
 	   recours = "seulRequerant";//les types de recours = "seulRequerant"; "autresRequerant"; "mandataire"
-	   jur = "CAA"; //les types de dépôt sont : "TA" ou "CAA" et "CTX"
+	   jur = "TA"; //les types de dépôt sont : "TA" ou "CAA" et "CTX"
 	   formulaire = "NoForm"; //NoForm/Form /Form1 avec ou sans formulaire 
 	   env = "rec";//int1 ou rec
 	   
@@ -44,7 +46,7 @@ public class TRC_Req {
 			if(env == "int1") {
 				mail = "zaire@yopmail.com";//mail = "zaire@yopmail.com";//"zaire@yopmail.com" pour l'INT1; "delvy@yopmail.com" pour la recette 
 			}else {
-				mail = "talon@yopmail.com";
+				mail = "martial@yopmail.com";
 			}
 			
 		JurReqTrc.firstSteps(driver, recours, env, mail);
@@ -79,7 +81,7 @@ public class TRC_Req {
 		
 		
 		//Enregistrement de la req
-		JurReqTrc.reqEnrgTrc(driver, jur, dossier);
+		JurReqTrc.reqEnrgTrc(driver, jur, dossier, env);
 	   
    		//Vérification des mail
  		JurReqTrc.verification_Mail_Enreg_Req_TRC(driver, mail, env);

@@ -1,5 +1,6 @@
 package rpva;
 
+import java.io.IOException;
 import java.text.ParseException;
 
 import org.openqa.selenium.WebDriver;
@@ -26,7 +27,7 @@ public class xmlFileLoadRPVA {
 	
 	 
 	   @BeforeSuite
-	   public void Initialisation () {
+	   public void Initialisation () throws IOException {
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);

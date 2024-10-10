@@ -3,7 +3,6 @@ package Juridictions;
 import org.openqa.selenium.WebDriver;
 
 import fonctionnalites.MicroFonctions;
-import lesFonctions.MesFonctions;
 
 public class JurInvitIsnscriptConsult {
 	static String nomCE;
@@ -11,9 +10,9 @@ public class JurInvitIsnscriptConsult {
 	static String name;
 	static String myXpath;
 	
-	public static String ConsultationInscription (WebDriver driver, String choixJur, String code, String mdp, String nom, String prenom) throws Throwable {
+	public static String ConsultationInscription (WebDriver driver, String jur, String code, String mdp, String nom, String prenom) throws Throwable {
 		
-		switch (choixJur) {
+		switch (jur) {
 		case "TACAA":
 			//Connexion	
 			MicroFonctions.obtenirCodeTACAA(driver, code, mdp);
@@ -30,21 +29,21 @@ public class JurInvitIsnscriptConsult {
 			MicroFonctions.mailYop(driver, mail);
 			
 			//Récupération de ses codes
-			MicroFonctions.Inscription(driver);
+			MicroFonctions.Inscription(driver, jur);
 			
-			//Choix de la juridiction
-			MicroFonctions.choixJuridictionTA(driver);
-			Thread.sleep(200);
-			
-			name = "Paris";
-			myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
-			verif = name.contains(MesFonctions.objet(driver, myXpath).getText());
-			Thread.sleep(500);
-			System.out.println(verif);
-			if (verif==true) {
-				System.err.println("la redirection n'a pas bien fonctionné");
-			}
-			Thread.sleep(300);
+//			//Choix de la juridiction
+//			MicroFonctions.choixJuridictionTA(driver);
+//			Thread.sleep(200);
+//			
+//			name = "Paris";
+//			myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
+//			verif = name.contains(MesFonctions.objet(driver, myXpath).getText());
+//			Thread.sleep(500);
+//			System.out.println(verif);
+//			if (verif==true) {
+//				System.err.println("la redirection n'a pas bien fonctionné");
+//			}
+//			Thread.sleep(300);
 			
 			break;
 			
@@ -64,19 +63,19 @@ public class JurInvitIsnscriptConsult {
 			MicroFonctions.mailYop(driver, mail);
 			
 			//Récupération de ses codes
-			MicroFonctions.Inscription(driver);
+			MicroFonctions.Inscription(driver, jur);
 			
-			name = "Télérecours - Conseil d'Etat";
-			myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
-			verif = name.equals(MesFonctions.objet(driver, myXpath).getText());
-			Thread.sleep(300);
-			System.out.println(verif);
-			if (!verif) {
-				System.err.println("la redirection n'a pas bien fonctionné");
-			}else {
-				System.out.println("la redirection a pas bien fonctionné");
-			}
-			Thread.sleep(300);
+//			name = "Télérecours - Conseil d'Etat";
+//			myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
+//			verif = name.equals(MesFonctions.objet(driver, myXpath).getText());
+//			Thread.sleep(300);
+//			System.out.println(verif);
+//			if (!verif) {
+//				System.err.println("la redirection n'a pas bien fonctionné");
+//			}else {
+//				System.out.println("la redirection a pas bien fonctionné");
+//			}
+//			Thread.sleep(300);
 		
 			break;
 		

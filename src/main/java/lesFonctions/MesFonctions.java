@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -291,10 +292,9 @@ public class MesFonctions {
 		return str;
 	}
 		
-		public static Actions echappe (WebDriver driver) {
+		public static void echappe (WebDriver driver) {
 			Actions action = new Actions(driver);
 			action.sendKeys(Keys.ESCAPE).perform();
-			return null;
 		}
 		
 		public static String formatNameObject (String name, String caractSpec, int index) throws Throwable {
@@ -306,12 +306,16 @@ public class MesFonctions {
 			return nomNew;
 		}
 		
-		public static Action souriOver (WebDriver driver, String myXpath) {
+		public static void souriOver (WebDriver driver, String myXpath) {
 			Actions action = new Actions(driver);
 			WebElement element  = MesFonctions.objet(driver, myXpath);
 			action.moveToElement(element).build().perform();
-			
-			return null;
+		}
+		
+		public static Actions souris_mvt(WebDriver driver, String myXpath) {
+			Actions action = new Actions(driver);
+			WebElement element  = MesFonctions.objet(driver, myXpath);
+			return action.moveToElement(element);
 		}
 		
 		
@@ -390,16 +394,40 @@ public class MesFonctions {
 			return dateActuelle;
 		}
 		
-		//Rendre visible un élément en haut de page
-		public static Object goToUp(WebDriver driver, String myXpath) {
-			((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(false);", MesFonctions.objet(driver, myXpath));
-			return null;
+		public static String ajouter_jour_date(Integer nbr) {
+			
+			Date date2 = new Date(System.currentTimeMillis());
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(date2);
+			calendar.add(Calendar.DATE, nbr);
+			date2 = calendar.getTime();
+			
+			String pattern = "dd/MM/yyyy";
+			DateFormat sdf = new SimpleDateFormat(pattern);
+			String myDate = sdf.format(date2);
+			
+			return myDate;
 		}
 		
 		//Rendre visible un élément en haut de page
-		public static Object goToDown(WebDriver driver, String myXpath) {
+		public static void goToUp(WebDriver driver, String myXpath) {
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(false);", MesFonctions.objet(driver, myXpath));	
+		}
+		
+		//Rendre visible un élément en haut de page
+		public static void goToDown(WebDriver driver, String myXpath) {
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", MesFonctions.objet(driver, myXpath));
-			return null;
+
 		}
 		
 		//capture d'écran 

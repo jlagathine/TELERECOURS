@@ -1,5 +1,7 @@
 package inscription;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,7 +34,7 @@ public class InscriptAdministration {
 	String env;
 
 	 @BeforeSuite
-	   public void navigateur () {
+	   public void navigateur () throws IOException {
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);

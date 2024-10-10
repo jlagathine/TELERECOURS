@@ -1,5 +1,7 @@
 package referentiel_poco;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 
 import browser.Navigateur;
@@ -19,7 +21,7 @@ public class Referentiel_Authentication_Test {
 		
 		
 		@Given("Je me connecte")
-		public void connexion() {
+		public void connexion() throws IOException {
 			browserName = "chrome";
 			   driver = Navigateur.choixBrowser(browserName);
 			   System.out.println(driver);

@@ -1,5 +1,7 @@
 package browser;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import captureTool.My_SreenShot;
 import lesFonctions.MesFonctions;
 
 public class Navigateur {
@@ -17,27 +20,33 @@ public class Navigateur {
 	   public static WebDriver driver;
 	   
 	   
-	   public static WebDriver choixBrowser(String browserName) {
+	   public static WebDriver choixBrowser(String browserName) throws IOException {
 
 		   switch (browserName) {
 		   case "chrome":
-			   caps = new DesiredCapabilities();
-			   System.setProperty("webdriver.chrome.driver",
-					   "C:\\APPLIS\\drivers\\chromedriver-win64\\chromedriver.exe");
+			   try {
+				   caps = new DesiredCapabilities();
+				   System.setProperty("webdriver.chrome.driver",
+						   "C:\\APPLIS\\drivers\\chromedriver-win64\\chromedriver.exe");
 
-			   ChromeOptions options = new ChromeOptions();
-			   options.merge(caps);
-//			   options.addArguments("--headless");
-			   options.addArguments("--start-maximized");
-			   options.addArguments("--disable-popup-blocking");
-			   options.addArguments("--remote-allow-origins=*");
-			   options.addArguments("--incognito");//navigation privée
-			   options.addArguments("--disable-search-engine-choice-screen");
+				   ChromeOptions options = new ChromeOptions();
+				   options.merge(caps);
+//				   options.addArguments("--headless");
+				   options.addArguments("--start-maximized");
+				   options.addArguments("--disable-popup-blocking");
+				   options.addArguments("--remote-allow-origins=*");
+				   options.addArguments("--incognito");//navigation privée
+				   options.addArguments("--disable-search-engine-choice-screen");
 
-			   driver = new ChromeDriver(options);
-			   System.out.println("Initialisation réussie....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				   driver = new ChromeDriver(options);
+				   System.out.println("Initialisation réussie....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				   
+				   System.out.println("Début Testcase......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			} catch (Exception e) {
+				My_SreenShot.takeScreenshot(driver);
+				e.printStackTrace();
+			}
 			   
-			   System.out.println("Début Testcase......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			   
 
 			   break;

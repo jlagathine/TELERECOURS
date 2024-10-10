@@ -1,5 +1,7 @@
 package trc;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -23,7 +25,7 @@ public class DepotEnregistrementBrouillon {
 	
 	
 	@BeforeSuite
-	 public void InitialisationReqTrc() {
+	 public void InitialisationReqTrc() throws IOException {
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);

@@ -1,5 +1,7 @@
 package telechargement_archive;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,7 +32,7 @@ public class DemArch {
 	   String dossier;
 
 	 @BeforeSuite
-	   public void navigateur () {
+	   public void navigateur () throws IOException {
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);

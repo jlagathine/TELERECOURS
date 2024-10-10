@@ -1677,9 +1677,98 @@ public class JdbcClass {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		 System.out.println("L'ensemble des dossiers enregistrés ont été sélectionnés....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-		System.out.println(num); 
+		 System.out.println("L'ensemble des dossiers enregistrés ont été sélectionnés....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure());
+//		System.out.println(num+"\r"); 
 		return num;
 	 }
+	 
+	 public static void verification_replication_acteur(String dossier, String nom) throws SQLException {
+		 stmt = con.createStatement();
+		 String sql = "SELECT DISTINCT (SELECT 1 FROM ACT A WHERE A.REQ_ID = '"+dossier+"' AND A.ACT_NOM = '"+nom+"')AS ACTEUR\r\n"
+		 		+ "FROM ACT ";
+		 
+		 System.out.println("Exécution de la requête : "+sql);
+		 try {
+			 rs = stmt.executeQuery(sql);
+			 
+			 while(rs.next()){
+				 while(rs.getString(1)== null) {
+					 System.out.println("aucune information disponible....."+MesFonctions.extractCurrentHeure()+"\r");
+						Thread.sleep(2000);
+						rs = stmt.executeQuery(sql);
+						if(rs.next()) {
+						System.out.println("CODE_RETOUR=0");
+						}
+						else {
+							System.err.println("CODE_RETOUR=-1");
+							}
+						}
+				 System.out.println("L'acteur "+nom+" est rattaché au dossier : "+dossier+"....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				 }
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 stmt.close(); 
+	 } 
+	 
+	 public static void TRC_Verification_creation_dossier_BDTR(String dossier) throws SQLException {
+		 stmt = con.createStatement();
+		 String sql = "SELECT DISTINCT (SELECT A.REQ_ID  FROM ACT A WHERE A.REQ_ID = '"+dossier+"' AND A.ACT_TRC_AEXID IS NOT NULL) AS DOSSIER\r\n"
+		 		+ "FROM ACT ";
+		 System.out.println("Exécution de la requête : "+sql);
+		 try {
+			 rs = stmt.executeQuery(sql);
+			 
+			 while(rs.next()){
+				 while(rs.getString(1)== null) {
+					 System.out.println("aucune information disponible....."+MesFonctions.extractCurrentHeure()+"\r");
+						Thread.sleep(2000);
+						rs = stmt.executeQuery(sql);
+						if(rs.next()) {
+						System.out.println("CODE_RETOUR=0");
+						}
+						else {
+							System.err.println("CODE_RETOUR=-1");
+							}
+						}
+				 System.out.println("Le dossier : "+dossier+" est créé dans la table ACT......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				 }
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 stmt.close(); 
+	 }
+	 
+	 public static void TRC_Verification_creation_dossier_BDTRC(String dossier) throws SQLException {
+		 stmt = con2.createStatement();
+		 String sql = "SELECT DISTINCT (SELECT r2.numero_requete  FROM requete r2 WHERE r2.numero_requete ='"+dossier+"') AS DOSSIER\r\n"
+		 		+ "FROM requete r ";
+		 System.out.println("Exécution de la requête : "+sql);
+		 try {
+			 rs = stmt.executeQuery(sql);
+			 
+			 while(rs.next()){
+				 while(rs.getString(1)== null) {
+					 System.out.println("aucune information disponible....."+MesFonctions.extractCurrentHeure()+"\r");
+						Thread.sleep(2000);
+						rs = stmt.executeQuery(sql);
+						if(rs.next()) {
+						System.out.println("CODE_RETOUR=0");
+						}
+						else {
+							System.err.println("CODE_RETOUR=-1");
+							}
+						}
+				 System.out.println("Le dossier : "+dossier+" est créé dans la table requete(TRC)......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				 }
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 stmt.close(); 
+	 }
+	 
 }
 

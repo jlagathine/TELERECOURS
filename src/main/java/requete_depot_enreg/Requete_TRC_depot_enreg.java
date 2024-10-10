@@ -1,10 +1,10 @@
 package requete_depot_enreg;
 
-import org.jgrapht.alg.util.Pair;
 import org.openqa.selenium.WebDriver;
 
 import Juridictions.JurReqTrc;
 import browser.Navigateur;
+import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
 
 public class Requete_TRC_depot_enreg {
@@ -16,7 +16,7 @@ public class Requete_TRC_depot_enreg {
 	   static String formulaire;
 	   static String req;
 	   
-	   public static Pair<String, String> TRC_depot_enreg(String jur, String navigateur, String env) throws Throwable {
+	   public static String TRC_depot_enreg(String jur, String navigateur, String env) throws Throwable {
 	   //Connection
 		   driver = Navigateur.choixBrowser(navigateur);
 		   System.out.println(driver);
@@ -29,38 +29,44 @@ public class Requete_TRC_depot_enreg {
 				}else {
 					mail = "martial@yopmail.com";
 				}
-	
-		   //Authentification
-		   JurReqTrc.firstSteps(driver, recours, env, mail);
-			
-		   //Dépôt de req
-		   JurReqTrc.reqDepotTrc(driver, jur, formulaire);
-		   
-		   
-		   //Vérification des mail
-		   JurReqTrc.verification_Mail_Depot_Req_TRC(driver, mail, env);
+			   
+			   try {
+				   
+				 //Authentification
+				   JurReqTrc.firstSteps(driver, recours, env, mail);
+					
+				   //Dépôt de req
+				   JurReqTrc.reqDepotTrc(driver, jur, formulaire);
+				   
+				   
+				   //Vérification des mail
+				   JurReqTrc.verification_Mail_Depot_Req_TRC(driver, mail, env);
+						
+				   //Suppression mail
+				   MicroFonctions.suppression_Mail_MailHog(driver, mail, env);
+						
+				   //Vérification de la notification de la requête
+				   req = JurReqTrc.Verification_Req_Async_DB(env, jur, mail);
+					
+				   //Enregistrement de la req
+				   dossier = JurReqTrc.reqEnrgTrc(driver, jur, req, env);
+				 	   
+				   //Vérification des mail
+				   JurReqTrc.verification_Mail_Enreg_Req_TRC(driver, mail, env);
+				  		
+				   //Suppression mail
+				   MicroFonctions.suppression_Mail_MailHog(driver, mail, env);
+				   
+				   //Déconnexion
+				   MicroFonctions.deconnexionTrInt(driver);
+				   driver.close();
 				
-		   //Suppression mail
-		   MicroFonctions.suppression_Mail_MailHog(driver, mail, env);
-				
-		   //Vérification de la notification de la requête
-		   dossier = JurReqTrc.Verification_Req_Async_DB(env, jur, mail);
-			
-		   //Enregistrement de la req
-		   req = JurReqTrc.reqEnrgTrc(driver, jur, dossier);
-		 	   
-		   //Vérification des mail
-		   JurReqTrc.verification_Mail_Enreg_Req_TRC(driver, mail, env);
-		  		
-		   //Suppression mail
-		   MicroFonctions.suppression_Mail_MailHog(driver, mail, env);
+			} catch (Exception e) {
+				My_SreenShot.takeScreenshot(driver);
+				e.printStackTrace();
+			}
 		   
-		   //Déconnexion
-		   MicroFonctions.deconnexionTrInt(driver);
-		   driver.close();
 		   
-		   Pair<String, String> dossier_req = new Pair<String, String>(dossier, req);
-
-		   return dossier_req;
+		   return dossier;
 	   }
 }

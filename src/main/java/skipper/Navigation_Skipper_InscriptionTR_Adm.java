@@ -62,46 +62,74 @@ public class Navigation_Skipper_InscriptionTR_Adm {
 		case "avocat":
 			//Sélectionner la qualité
 			//click bouton selecteur
-		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\bouton_Selecteur_qualite - Fiche acteur.png";
-		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
-		coords = MesFonctions.waitObject(fileImage);
-		bounds = new Rectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), coords.getSecond().getFirst(), coords.getSecond().getSecond());
-		
-		//Créer un défendeur
-		result = "";
-		while(!result.contains("Avocat")) {
-			Keyboard.keyBoard(KeyEvent.VK_DOWN);
-			Thread.sleep(100);
-			image = MesFonctions.screenshot(bounds);
-			Thread.sleep(100);
-			result = MesFonctions.OCR_decryptage(image);
+//		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\bouton_Selecteur_qualite - Fiche acteur.png";
+//		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+//		coords = MesFonctions.waitObject(fileImage);
+//		bounds = new Rectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), coords.getSecond().getFirst(), coords.getSecond().getSecond());
+//		
+//		//Créer un défendeur
+//		result = "";
+//		while(!result.contains("Avocat")) {
+//			Keyboard.keyBoard(KeyEvent.VK_DOWN);
+//			Thread.sleep(100);
+//			image = MesFonctions.screenshot(bounds);
+//			Thread.sleep(100);
+//			result = MesFonctions.OCR_decryptage(image);
+//			}
+//		System.out.println("La qualité requérant est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+//		
+//		Keyboard.keyBoard(KeyEvent.VK_TAB);
+			
+			if(jur=="CTX") {
+				int nbr = 3;
+				for(int i=0; i<nbr; i++) {
+					Keyboard.keyBoard(KeyEvent.VK_DOWN);
+				}
+			}else if(jur=="TA" || jur=="CAA") {
+					int nbr = 10;
+					for(int i=0; i<nbr; i++) {
+						Keyboard.keyBoard(KeyEvent.VK_DOWN);
+					}
 			}
-		System.out.println("La qualité requérant est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-		
-		Keyboard.keyBoard(KeyEvent.VK_TAB);
+					
+		System.out.println("La qualité avocat est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			
 			break;
 			
 			
 		case "defendeur":
 			//Sélectionner la qualité
 			//click bouton selecteur
-		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\bouton_Selecteur_qualite - Fiche acteur.png";
-		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
-		coords = MesFonctions.waitObject(fileImage);
-		bounds = new Rectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), coords.getSecond().getFirst(), coords.getSecond().getSecond());
-		
-		//Créer un défendeur
-		result = "";
-		while(!result.contains("Defendeur")) {
-			Keyboard.keyBoard(KeyEvent.VK_DOWN);
-			Thread.sleep(100);
-			image = MesFonctions.screenshot(bounds);
-			Thread.sleep(100);
-			result = MesFonctions.OCR_decryptage(image);
-			}
-		System.out.println("La qualité requérant est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-		
-		Keyboard.keyBoard(KeyEvent.VK_TAB);
+//		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\bouton_Selecteur_qualite - Fiche acteur.png";
+//		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+//		coords = MesFonctions.waitObject(fileImage);
+//		bounds = new Rectangle(coords.getFirst().getFirst(), coords.getFirst().getSecond(), coords.getSecond().getFirst(), coords.getSecond().getSecond());
+//		
+//		//Créer un défendeur
+//		result = "";
+//		while(!result.contains("Defendeur")) {
+//			Keyboard.keyBoard(KeyEvent.VK_DOWN);
+//			Thread.sleep(100);
+//			image = MesFonctions.screenshot(bounds);
+//			Thread.sleep(100);
+//			result = MesFonctions.OCR_decryptage(image);
+//			}
+//		System.out.println("La qualité requérant est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+//		
+//		Keyboard.keyBoard(KeyEvent.VK_TAB);
+			
+			if(jur=="CTX") {
+				int nbr = 2;
+				for(int i=0; i<nbr; i++) {
+					Keyboard.keyBoard(KeyEvent.VK_DOWN);
+				}
+			}else if(jur=="TA" || jur=="CAA") {
+					int nbr = 3;
+					for(int i=0; i<nbr; i++) {
+						Keyboard.keyBoard(KeyEvent.VK_DOWN);
+					}
+		}
+			System.out.println("La qualité défendeur est sélectionnée ...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			break;
 
@@ -111,9 +139,9 @@ public class Navigation_Skipper_InscriptionTR_Adm {
 		return null;
 	}
 	
-	public static String fiche_acteur(String jur, String nomAdm) throws TesseractException, Throwable {
+	public static String fiche_acteur(String jur, String nomAdm, String type) throws TesseractException, Throwable {
 		Navigation_Skipper_InscriptionTR_Adm.boutonAnnuaire(jur);
-		nom = Navigation_Skipper_InscriptionTR_Adm.recherche_acteur(jur, nomAdm);
+		nom = Navigation_Skipper_InscriptionTR_Adm.recherche_acteur(jur, nomAdm, type);
 		return nom;
 	}
 	
@@ -133,7 +161,7 @@ public class Navigation_Skipper_InscriptionTR_Adm {
 		return null;
 	}
 	
-	public static String recherche_acteur(String jur, String nomAdm) throws TesseractException, Throwable {
+	public static String recherche_acteur(String jur, String nomAdm, String type) throws TesseractException, Throwable {
 		//Inscrit à TR décoché
 		if(jur=="CAA") {
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\InscritaTr-coche_CAA.png";
@@ -150,7 +178,40 @@ public class Navigation_Skipper_InscriptionTR_Adm {
 		MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
 		System.out.println("\"Inscrit à TR\" décoché...."+MesFonctions.extractCurrentHeure());
 		
-		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_Rechercher_Nom-Recherche d'une grande partie dans l'annuaire.png";
+		
+			//Type juridiction
+			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Type_Admin - Recherche d'une grande partie dans l'annuaire.png";
+			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+			coords = MesFonctions.waitObject(fileImage);
+			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2 + 31, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+			MesFonctions.mouveSouris(1, 1);
+			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+34, coords.getFirst().getSecond(), 127, 15);
+			image = MesFonctions.screenshot(bounds);
+			result = MesFonctions.OCR_decryptage(image);
+			
+			//Accéder à la liste des destinataires
+			int count = 0;
+			while(!result.contains(type)) {
+				//Déplacement du curseur
+				Thread.sleep(70);
+				if(count == 0 ) {
+				Keyboard.keyBoard(KeyEvent.VK_UP);
+				}else {
+					Keyboard.keyBoard(KeyEvent.VK_DOWN);
+				}
+				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Type_Admin - Recherche d'une grande partie dans l'annuaire.png";
+				coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
+				coords = MesFonctions.waitObject(fileImage);
+				bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+34, coords.getFirst().getSecond(), 127, 15);
+				image = MesFonctions.screenshot(bounds);
+				result = MesFonctions.OCR_decryptage(image);
+			}
+			
+			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2 + 31, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
+			System.out.println("Le type de la juridiction est sélectionné ....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		
+//		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_Rechercher_Nom-Recherche d'une grande partie dans l'annuaire.png";
+		fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_Rechercher_Nom1-Recherche d'une grande partie dans l'annuaire.png";
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
 		MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
@@ -312,15 +373,14 @@ public class Navigation_Skipper_InscriptionTR_Adm {
 		
 		//Accéder à la liste des destinataires
 		while(!result.contains(nom.trim())) {
+			Keyboard.keyBoard(KeyEvent.VK_DOWN);
 			//Déplacement du curseur
-			Thread.sleep(100);
-			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Pointer-destinataire-Communication du code Télérecours citoyens.png";
+			Thread.sleep(500);
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+12, coords.getFirst().getSecond(), 221, 18);
 			image = MesFonctions.screenshot(bounds);
 			result = MesFonctions.OCR_decryptage(image);
-			System.out.println(result+" ****** "+nom);
-			Keyboard.keyBoard(KeyEvent.VK_DOWN);
+			System.out.println(result+"******"+nom);
 			}
 		
 		System.out.println("L'acteur est selectionné....."+MesFonctions.extractCurrentHeure());

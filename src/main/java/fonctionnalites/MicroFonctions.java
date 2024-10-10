@@ -1,6 +1,5 @@
 package fonctionnalites;
 
-import java.awt.Font;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.FileOutputStream;
@@ -15,11 +14,10 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.swing.text.StyledEditorKit.ItalicAction;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,6 +29,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import lesFonctions.MesFonctions;
+import myKeyboard.Keyboard;
 
 	
 
@@ -374,69 +373,78 @@ public class MicroFonctions {
 		   
 		   //Votre identité et vos coordonées
 		   String myXpath1 = "//input[@id='ctl00_cphBody_rblTypePersonne_0']";
+		   MesFonctions.waiting2(driver, myXpath1, Duration.ofSeconds(3));
 		   MesFonctions.objet(driver,myXpath1).click();
-		   Thread.sleep(1000);
+		   Thread.sleep(100);
 		   
 			//SIREN
 		   Random rand = new Random();
 		   int min = 590000000;
 		   int max = 999999999;
 		   int siren = rand.nextInt((max - min)+1) + min;
-		   Thread.sleep(2000);
+		   Thread.sleep(200);
 		   String myXpath6 = "//input[@id='ctl00_cphBody_tbSirenSiret']";
+		   MesFonctions.waiting2(driver, myXpath6, Duration.ofSeconds(3));
 		   String sir = Integer.toString(siren);
 		   
 		   if(sir.length()<9) {
 				  String sire = "0"+sir ;
-				  MesFonctions.objet(driver,myXpath6).sendKeys(sire);
+				  MesFonctions.objet(driver, myXpath6).sendKeys(sire);
 			   }else {
-				   MesFonctions.objet(driver,myXpath6).sendKeys(sir); 
+				   MesFonctions.objet(driver, myXpath6).sendKeys(sir); 
 			   } 
-		   System.out.println("SIREN renseigné...."+MesFonctions.extractCurrentHeure());
-		   Thread.sleep(1000);
+		   System.out.println("SIREN renseigné : "+sir+"......"+MesFonctions.extractCurrentHeure());
+		   Thread.sleep(100);
 		   
 	   		//NIC
 		   min = 00200;
 		   max = 99999;
 		   int nic = rand.nextInt((max - min)+1) + min;
-		   Thread.sleep(2000);
+		   Thread.sleep(200);
 		   String myXpath7 = "//input[@id='ctl00_cphBody_tbNIC']";
+		   MesFonctions.waiting2(driver, myXpath7, Duration.ofSeconds(3));
 		   String nc = Integer.toString(nic);
-		   Thread.sleep(1000);
+		   Thread.sleep(100);
 		   
 		   if(nc.length()<5) {
 			  String numic = "0"+nc ;
-			  MesFonctions.objet(driver,myXpath7).sendKeys(numic);
+			  MesFonctions.objet(driver, myXpath7).sendKeys(numic);
 		   }else {
-			   MesFonctions.objet(driver,myXpath7).sendKeys(nc); 
+			   MesFonctions.objet(driver, myXpath7).sendKeys(nc); 
 		   } 
-		   System.out.println("NIC renseigné...."+MesFonctions.extractCurrentHeure());
+		   System.out.println("NIC renseigné : "+nc+"......"+MesFonctions.extractCurrentHeure());
 		   Thread.sleep(1000);
 		   
 			//Civilité
 		   String myXpath2 = "//select[@id='ctl00_cphBody_ddlDestCaCivilite']";
+		   MesFonctions.waiting2(driver, myXpath2, Duration.ofSeconds(3));
 		   String value = "1" ;//madame (1) monsieur(2);
 		   MesFonctions.selection(driver, myXpath2, value);
 		   System.out.println("CIVILTE renseigné...."+MesFonctions.extractCurrentHeure());
-		   Thread.sleep(1000);
+		   Thread.sleep(100);
 		   		//Nom
 		   String myXpath3 = "//input[@id='ctl00_cphBody_tbDestCaNom']";
+		   MesFonctions.waiting2(driver, myXpath3, Duration.ofSeconds(3));
 		   MesFonctions.objet(driver,myXpath3).sendKeys(nom);
 		   System.out.println("NOM renseigné...."+MesFonctions.extractCurrentHeure());
 		   		//Prenom
 		   String myXpath4 = "//input[@id='ctl00_cphBody_tbDestCaPrenom']";
+		   MesFonctions.waiting2(driver, myXpath4, Duration.ofSeconds(3));
 		   MesFonctions.objet(driver,myXpath4).sendKeys(prenom);
 		   System.out.println("PRENOM renseigné...."+MesFonctions.extractCurrentHeure());
 		   
 			//Email
 		   String myXpath8 = "//input[@id='ctl00_cphBody_tbDestCaCourriel']";
+		   MesFonctions.waiting2(driver, myXpath8, Duration.ofSeconds(3));
 		   String mail = nom.toLowerCase()+prenom.toLowerCase()+"@yopmail.com";
 		   String email = MesFonctions.sansAccents(mail);
 		   Thread.sleep(1000);
-		   MesFonctions.objet(driver,myXpath8).sendKeys(email);
+		   MesFonctions.objet(driver, myXpath8).sendKeys(email);
+		   
 		   System.out.println("mail de l'utilisateur : "+ email+" renseigné...."+MesFonctions.extractCurrentHeure());
 		   
 		   String myXpath9 = "//input[@id='ctl00_cphBody_tbDestCaCourrielConfirmation']";
+		   MesFonctions.waiting2(driver, myXpath9, Duration.ofSeconds(3));
 		   MesFonctions.objet(driver,myXpath9).sendKeys(email);
 		   Thread.sleep(1000);
 		   System.out.println("MAIL confirmé...."+MesFonctions.extractCurrentHeure());
@@ -1041,7 +1049,7 @@ public class MicroFonctions {
 		   return null;
 	   }
 	   
-	   	public static String Inscription (WebDriver driver) throws Throwable {
+	   	public static String Inscription (WebDriver driver, String jur) throws Throwable {
 //		   String myXpath = "//button[@id='refresh']";
 //		   mesFonctions.objet(driver,myXpath).click();
 //		   Thread.sleep(2000);
@@ -1071,11 +1079,11 @@ public class MicroFonctions {
 		   String myXpath3 = "//h1[text()='Se connecter']";
 		   MesFonctions.waiting2(driver, myXpath3, Duration.ofSeconds(3));
 		   //Fin de la procédure d'inscription
-		   MicroFonctions.inscriptionFin(driver, id, mdp);
+		   MicroFonctions.inscriptionFin(driver, jur, id, mdp);
 		   return id;
 	   }
 	   
-	   	public static String InscriptionRecovery (WebDriver driver) throws Throwable {
+	   	public static String InscriptionRecovery (WebDriver driver, String jur) throws Throwable {
 		   //Changement de page -> page des codes provisoires
 		   String onglet1 = MesFonctions.childWindow(driver);
 		   driver.switchTo().window(onglet1);
@@ -1105,20 +1113,20 @@ public class MicroFonctions {
 		   MesFonctions.waiting2(driver, myXpath3, Duration.ofSeconds(3));
 		   System.out.println("Page d'authentification");
 		   //Fin de la procédure d'inscription
-		   MicroFonctions.inscriptionFin(driver, id, mdp);
+		   MicroFonctions.inscriptionFin(driver, jur, id, mdp);
 		   return id;
 	   }
 	   
-	   	public static String inscriptionFin (WebDriver driver, String id, String mdp) throws Throwable {
+	   	public static String inscriptionFin (WebDriver driver, String jur, String id, String mdp) throws Throwable {
 		  //Authentification avec les codes provisoire
 		  MicroFonctions.AuthentificationTaCaaCeExt(driver, id, mdp);
 		  String mdp2 = "Lhommeest2019*";
-		  MicroFonctions.changementMdp(driver, mdp, mdp2, id);
+		  MicroFonctions.changementMdp(driver, jur, mdp, mdp2, id);
 		  
 		  return null;
 	   }
 	   	
-	   	public static void changementMdp(WebDriver driver, String mdp, String mdp2, String id) throws Throwable {
+	   	public static void changementMdp(WebDriver driver, String jur, String mdp, String mdp2, String id) throws Throwable {
 	   		String myXpath = "//h1[@id='staticBackdropLabel']";
 			  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			  //Ouverture de la PopUp de modification de ses codes
@@ -1176,7 +1184,25 @@ public class MicroFonctions {
 			  }
 			  
 			  //Choix de la juridiction
-			  MicroFonctions.choixJuridictionTA(driver);
+			  if(jur=="TA" || jur=="TACAA") {
+				  MicroFonctions.choixJuridictionTA(driver);
+			  		}else if (jur=="CAA" || jur=="TACAA") {
+			  			MicroFonctions.choixJuridictionCAA(driver);
+			  	}
+			  		else {
+			  			String name = "Télérecours - Conseil d'Etat";
+						myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
+						verif = name.equals(MesFonctions.objet(driver, myXpath).getText());
+						Thread.sleep(300);
+						System.out.println(verif);
+						if (!verif) {
+							System.err.println("la redirection n'a pas bien fonctionné");
+						}else {
+							System.out.println("la redirection a pas bien fonctionné");
+						}
+						Thread.sleep(300);
+			  		}
+			  
 	   	}
 	  
 	 
@@ -1279,35 +1305,37 @@ public class MicroFonctions {
 		   MesFonctions.waiting2(driver, myXpath0, Duration.ofSeconds(3));
 		   String myXpath1 = "//span[contains(text(),\"Supprimer mon brouillon\")]";
 		   String myXpath = "//span[contains(text(),\"supprime mon brouillon\")]";
-		   MesFonctions.objet(driver,myXpath0).click();
+		   MesFonctions.objet(driver, myXpath0).click();
 		   		//vérification s'il y a un brouillon en cours (ne pas l'utiliser)
 		   boolean verif = false;
 		   if(MesFonctions.isElementPresent(driver, myXpath1, verif) == false) {
-			   Thread.sleep(1000);
+			   Thread.sleep(100);
 			   System.out.println("Il n'y a aucun brouillon présent "+MesFonctions.extractCurrentHeure()+"\r");
 		   }else {
-			   MesFonctions.objet(driver,myXpath1).click();
+			   MesFonctions.objet(driver, myXpath1).click();
 			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			   MesFonctions.objet(driver,myXpath).click();
+			   MesFonctions.objet(driver, myXpath).click();
 			   String myXpath3 = "//div[@role='alert']";
 			   MesFonctions.verifyPresenceOfAttribute1(driver, myXpath3, "class", "alert text-success border border-success");
 			   System.out.println("Le brouillon a bien été supprimé");
-//			   Thread.sleep(1000);
+
 			   MesFonctions.waiting2(driver, myXpath0, Duration.ofSeconds(3));
-			   MesFonctions.objet(driver,myXpath0).click();
+			   MesFonctions.objet(driver, myXpath0).click();
 			   System.out.println("Accès à la page de validation des conditions générales......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		   }
 		   
 		   //accepter les conditions générales
 		   String myXpath2 = "//input[@id='teleprocedureCheckbox']";
 		   MesFonctions.waiting2(driver, myXpath2, Duration.ofSeconds(3));
-		   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,myXpath2));
-		   MesFonctions.objet(driver,myXpath2).click();
-//		   Thread.sleep(1000);
+//		   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver, myXpath2));
+		   Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+		   Thread.sleep(700);
+		   MesFonctions.objet(driver, myXpath2).click();
+
 		   String myXpath3 = "//input[@id='cguCheckbox']";
 		   MesFonctions.waiting2(driver, myXpath3, Duration.ofSeconds(3));
-		   MesFonctions.objet(driver,myXpath3).click();
-//		   Thread.sleep(1000);
+		   MesFonctions.objet(driver, myXpath3).click();
+
 		 
 		   //Valider (suivant)
 		   String myXpath4 = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
@@ -1320,20 +1348,21 @@ public class MicroFonctions {
 	  	
 	  	public static String conditionsGeneralesTrc(WebDriver driver) throws Throwable {
 			   //accepter les conditions générales
-			   String myXpath2 = "//input[@id='teleprocedureCheckbox']";
-			   MesFonctions.waiting2(driver, myXpath2, Duration.ofSeconds(3));
-			   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,myXpath2));
-			   MesFonctions.objet(driver,myXpath2).click();
-//			   Thread.sleep(1000);
-			   String myXpath3 = "//input[@id='cguCheckbox']";
-			   MesFonctions.waiting2(driver, myXpath3, Duration.ofSeconds(3));
-			   MesFonctions.objet(driver,myXpath3).click();
-//			   Thread.sleep(1000);
+			   String myXpath = "//input[@id='teleprocedureCheckbox']";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			   MesFonctions.goToDown(driver, myXpath);
+			   Keyboard.keyBoardShortCut1(driver, Keys.CONTROL, Keys.END);
+			   Thread.sleep(500);
+			   MesFonctions.objet(driver, myXpath).click();
+
+			   myXpath = "//input[@id='cguCheckbox']";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			   MesFonctions.objet(driver, myXpath).click();
 			 
 			   //Valider (suivant)
-			   String myXpath4 = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
-			   MesFonctions.waiting2(driver, myXpath4, Duration.ofSeconds(3));
-			   MesFonctions.objet(driver,myXpath4).click();
+			   myXpath = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
+			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			   MesFonctions.objet(driver, myXpath).click();
 			   System.out.println("Accès à la page suivante : "+MesFonctions.extractCurrentHeure());
 			   
 			   return null;
@@ -1485,34 +1514,36 @@ public class MicroFonctions {
 		   
 			switch (recours) {
 			case "seulRequerant":
-				String myXpath0 = "//input[@id='radio-REQUERANT_SEUL']";
-				MesFonctions.waiting2(driver, myXpath0, Duration.ofSeconds(3));
-				MesFonctions.objet(driver,myXpath0).click();
+				String myXpath = "//input[@id='radio-REQUERANT_SEUL']";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.objet(driver,myXpath).click();
 				
-				String myXpath100  = "//input[@id='captcha-input']"; 
-				if (MesFonctions.isElementPresent(driver, myXpath100, verif) == false) {
-					Thread.sleep(1000);
+				myXpath = "//input[@id='captcha-input']"; 
+				if (MesFonctions.isElementPresent(driver, myXpath, verif) == false) {
+					Thread.sleep(100);
 				}else {System.out.println("Captcha présent; 15s pour le renseigner");
-				((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,myXpath100));
+				((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver, myXpath));
 				Thread.sleep(15000);
 				}
-				
-				 String myXpath01 = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
-				 MesFonctions.waiting2(driver, myXpath01, Duration.ofSeconds(3));
-				 MesFonctions.objet(driver,myXpath01).click();
+				Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+				 myXpath = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
+				 MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				 MesFonctions.goToDown(driver, myXpath);
+				 MesFonctions.objet(driver, myXpath).click();
 				
 				break;
 				
 			case "autresRequerant":
-				String myXpath1 = "//input[@id='radio-COLLECTIVE']";
-				MesFonctions.waiting2(driver, myXpath1, Duration.ofSeconds(3));
-				MesFonctions.objet(driver,myXpath1).click();
-				Thread.sleep(1000);
+				myXpath = "//input[@id='radio-COLLECTIVE']";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.objet(driver,myXpath).click();
+				Thread.sleep(100);
 				
-				String myXpath11 = "//span[contains(@class,'label') and (contains(text(),\"Ajouter un requérant\"))]";
-				MesFonctions.waiting2(driver, myXpath11, Duration.ofSeconds(3));
-				MesFonctions.objet(driver,myXpath11).click();
-				Thread.sleep(1500);
+				Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+				myXpath = "//span[contains(@class,'label') and (contains(text(),\"Ajouter un requérant\"))]";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.objet(driver,myXpath).click();
+				Thread.sleep(150);
 				
 				String myXpath12 = "(//select[@class])[1]";
 				String myXpath13 = "(//select[@class])[2]";
@@ -1663,18 +1694,18 @@ public class MicroFonctions {
 				MesFonctions.objet(driver,myXpath112).click();
 //				Thread.sleep(1200);
 				
-				myXpath100  = "//input[@id='captcha-input']"; 
-				if (MesFonctions.isElementPresent(driver, myXpath100, verif) == false) {
+				myXpath  = "//input[@id='captcha-input']"; 
+				if (MesFonctions.isElementPresent(driver, myXpath, verif) == false) {
 					Thread.sleep(1000);
 				}else {System.out.println("Captcha présent; 15s pour le renseigner......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-				((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,myXpath100));
+				((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,myXpath));
 				Thread.sleep(15000);
 				}
 				
-				String myXpath123 = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
-				MesFonctions.waiting2(driver, myXpath123, Duration.ofSeconds(3));
-				MesFonctions.goToDown(driver, myXpath123);
-				MesFonctions.objet(driver,myXpath123).click();
+				myXpath = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.goToDown(driver, myXpath);
+				MesFonctions.objet(driver,myXpath).click();
 				System.out.println("Formulaires des requérants renseignés....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\rAjout d'un autre formulaire....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure());
 				
 				break;
@@ -1702,7 +1733,7 @@ public class MicroFonctions {
 				System.out.println("Choix du type de dépôt \"Mandataire\"......"+MesFonctions.extractCurrentHeure());
 //				Thread.sleep(2000);
 				
-				String myXpath = "//button//span[contains(text(),\"Ajouter un requérant\")]";//span[contains(text(),'Ajouter un requérant')]//parent::button ; //button//span[contains(text(),"Ajouter un requérant")]
+				myXpath = "//button//span[contains(text(),\"Ajouter un requérant\")]";//span[contains(text(),'Ajouter un requérant')]//parent::button ; //button//span[contains(text(),"Ajouter un requérant")]
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 				Thread.sleep(300);
 				MesFonctions.goToUp(driver, myXpath);
@@ -1741,17 +1772,18 @@ public class MicroFonctions {
 				System.out.println("Validdation - Ajout du requérant......"+MesFonctions.extractCurrentHeure()+"\r");
 				Thread.sleep(1000);
 				
-				myXpath100  = "//input[@id='captcha-input']"; 
-				if (MesFonctions.isElementPresent(driver, myXpath100, verif) == false) {
-					Thread.sleep(1000);
+				myXpath = "//input[@id='captcha-input']"; 
+				if (MesFonctions.isElementPresent(driver, myXpath, verif) == false) {
+					Thread.sleep(100);
 				}else {System.out.println("Captcha présent; 15s pour le renseigner");
-				((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,myXpath100));
+				((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver, myXpath));
 				Thread.sleep(15000);
 				}
 				
-				myXpath123 = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
-				MesFonctions.waiting2(driver, myXpath123, Duration.ofSeconds(3));
-				MesFonctions.objet(driver,myXpath123).click();
+				myXpath = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.goToDown(driver, myXpath);
+				MesFonctions.objet(driver, myXpath).click();
 				
 				break;
 
@@ -1829,6 +1861,8 @@ public class MicroFonctions {
 		   
 		    myXpath = "//button[@type]//span[contains(text(),'Page suivante - Requête')]";
 		    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		    MesFonctions.goToDown(driver, myXpath);
+		    Thread.sleep(500);
 		    MesFonctions.objet(driver,  myXpath).click();
  			
  			return null;
@@ -1860,6 +1894,8 @@ public class MicroFonctions {
 		   
 		    myXpath = "//button[@type]//span[contains(text(),'Page suivante - Requête')]";
 		    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		    MesFonctions.goToDown(driver, myXpath);
+		    Thread.sleep(500);
 		    MesFonctions.objet(driver,  myXpath).click();
 			    
 			return null;
@@ -1869,12 +1905,16 @@ public class MicroFonctions {
  			//choix du niveau juridiction
 			String myXpath = "//label[@for='radio-CE' and(contains(text(),\"Conseil\"))]";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			MesFonctions.goToDown(driver, myXpath);
+			Thread.sleep(500);
 			MesFonctions.objet(driver,  myXpath).click();
 //			Thread.sleep(1000);
 			System.out.println("Choix de juridition : CE......"+MesFonctions.extractCurrentHeure());
 			   
 			myXpath = "//button[@type]//span[contains(text(),'Page suivante - Requête')]";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		    MesFonctions.goToDown(driver, myXpath);
+		    Thread.sleep(500);
 			MesFonctions.objet(driver,  myXpath).click();
  			return null;
  		}
@@ -1884,6 +1924,7 @@ public class MicroFonctions {
 		    String myXpath = "//select[@id='urgence-requete-id']";
 		    String value = "1";
 		    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		    MesFonctions.goToDown(driver, myXpath);
 		    MesFonctions.selection(driver, myXpath, value);
 		    System.out.println("Une procédure normale......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 //		    Thread.sleep(1000);
@@ -1891,13 +1932,16 @@ public class MicroFonctions {
 		    //Votre requête concerne-t-elle un contentieux social ? 
 	   		myXpath = "//input[@id='csr-non']";
 	   		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+	   		MesFonctions.goToDown(driver, myXpath);
 	   		MesFonctions.objet(driver,  myXpath).click();
 	   		System.out.println("La requête concerne un contentieux social......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		   		
 		    //Valider (suivant)
 		    myXpath = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
-		    MesFonctions.objet(driver,  myXpath).click();
-//		    Thread.sleep(1500);
+		    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+	   		Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+	   		Thread.sleep(100);
+		    MesFonctions.objet(driver, myXpath).click();
 		
  			return null;
  		}
@@ -1907,6 +1951,7 @@ public class MicroFonctions {
 		    String myXpath = "//select[@id='urgence-requete-id']";
 		    String value = "7";
 		    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		    MesFonctions.goToDown(driver, myXpath);
 		    MesFonctions.selection(driver, myXpath, value);
 		    System.out.println("Une procédure normale......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 //		    Thread.sleep(1000);
@@ -1914,13 +1959,16 @@ public class MicroFonctions {
 		    //Votre requête concerne-t-elle un contentieux social ? 
 	   		myXpath = "//input[@id='csr-non']";
 	   		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+	   		MesFonctions.goToDown(driver, myXpath);
 	   		MesFonctions.objet(driver,  myXpath).click();
 	   		System.out.println("La requête concerne un contentieux social......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		   
 		    //Valider (suivant)
 		    myXpath = "//button[@type='button']//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
-		    MesFonctions.objet(driver,  myXpath).click();
-//		    Thread.sleep(1500);
+		    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+	   		Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+	   		Thread.sleep(100);
+		    MesFonctions.objet(driver, myXpath).click();
 		
  			return null;
  		}
@@ -1943,8 +1991,9 @@ public class MicroFonctions {
 		    //Valider (suivant)
 		    myXpath = "//button[@type='button']//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
 		    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		    MesFonctions.objet(driver,  myXpath).click();
-//		    Thread.sleep(500);
+	   		Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+	   		Thread.sleep(100);
+		    MesFonctions.objet(driver, myXpath).click();
 		
  			return null;
  		}
@@ -1955,7 +2004,7 @@ public class MicroFonctions {
 		   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 		   MesFonctions.goToDown(driver, myXpath);
 		   MicroFonctions.recapDepotReqTrc(driver);
-		   Thread.sleep(1000);
+		   Thread.sleep(100);
 		   System.out.println("Vérification réalisée......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");	
  		return null;
  		}
@@ -2562,7 +2611,7 @@ public class MicroFonctions {
  			
 		String myXpath = "//a[@id='Mstr_cpMain_btSignerEnvoyer']/span[@class='button-text' and (text()='Envoyer')]";
 		((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", MesFonctions.objet(driver,myXpath));
-		MesFonctions.objet(driver,myXpath).click();
+		MesFonctions.objet(driver, myXpath).click();
 		Thread.sleep(300);
 		
 		// Vérification succès envoi
@@ -2571,12 +2620,12 @@ public class MicroFonctions {
 				//alerte 1
 			myXpath = "//span[@class='ui-button-text' and text()='OK']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			MesFonctions.objet(driver,myXpath).click();
+			MesFonctions.objet(driver, myXpath).click();
 //				Alert alert = driver.switchTo().alert();
 //				alert.accept();
 //				mesFonctions.waiting1(driver, Duration.ofSeconds(3));
 				//alerte 2
-			myXpath = "//div[@id='ui-id-3']";
+			myXpath = "//div[contains(@id,'ui-id')]";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			mess = MesFonctions.objet(driver,myXpath).getText();
 //			Thread.sleep(1000);
@@ -2757,7 +2806,7 @@ public class MicroFonctions {
 	 		((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,myXpath2));
 	 		Thread.sleep(100);
 	 		MesFonctions.objet(driver,myXpath2).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\Avis d'imposition 2020 - 2022.pdf");
-	 		Thread.sleep(200);
+	 		Thread.sleep(300);
 	 		System.out.println("Insertion d'une pièce complémentaire......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 	 			//nom de la pièce 1
 		 		String myXpath200 = "//label[@class='nommer-piece-label']//following-sibling::div[@class='input-group']/input";
@@ -2768,7 +2817,7 @@ public class MicroFonctions {
 		 		
 		 		
 	 		String myXpath21 = "//input[@id='piece-complementaire-adder-11']";
-	 		Thread.sleep(200);
+	 		Thread.sleep(300);
 	 		MesFonctions.objet(driver,myXpath21).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\Aide_Juridictionnelle.pdf");
 	 		System.out.println("Insertion d'une pièce complémentaire......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 	 			//nom de la pièce 2
@@ -2781,7 +2830,7 @@ public class MicroFonctions {
 		 		
 	 		String myXpath22 = "//input[@id='piece-complementaire-adder-21']";
 	 		MesFonctions.objet(driver,myXpath22).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\3 Mémoire 1.docx");
-	 		Thread.sleep(1200);
+	 		Thread.sleep(300);
 	 		System.out.println("Insertion d'une pièce complémentaire......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 	 			//nom de la pièce 3
 		 		String myXpath220 = "//label[@class='nommer-piece-label']//following-sibling::div[@class='input-group']/input";
@@ -2805,14 +2854,18 @@ public class MicroFonctions {
 		 		
 	 		//Cocher la case de vérification
 		 	String	myXpath3 = "//input[@id='conditionRenommageCheckbox']//following-sibling::label";
-		 	Thread.sleep(100);
-		 	MesFonctions.objet(driver,myXpath3).click();
+		 	MesFonctions.waiting2(driver, myXpath3, Duration.ofSeconds(3));
+		 	MesFonctions.goToDown(driver, myXpath3);
+		 	MesFonctions.objet(driver, myXpath3).click();
 		 	
 		 	
 		 	//Valider (suivant)
 		 	String myXpath4 = "//button[@type='button']//span[contains(@class,'label') and (contains(text(),\"Page suivant\"))]";
-		 	Thread.sleep(200);
-			MesFonctions.objet(driver,myXpath4).click();
+		 	MesFonctions.waiting2(driver, myXpath4, Duration.ofSeconds(3));
+		 	Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+		 	Thread.sleep(100);
+//		 	MesFonctions.goToDown(driver, myXpath3);
+			MesFonctions.objet(driver, myXpath4).click();
 			
 			System.out.println("Validation de l'envoi avant vérification......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 	 			return null;
@@ -2876,10 +2929,10 @@ public class MicroFonctions {
 	 		int nbr = 10;
 	 		for(int i=0;i<nbr;i++ ) {
 	 			int pcs = i+2;
-	 		String myXpath2 = "(//jhi-file-uploader[@inputname='piece-adder']//input[@type='file'])[last()]";
+	 		String myXpath2 = "(//trc-file-uploader[@inputname='piece-adder']//input[@type='file'])[last()]";
 	 		((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,myXpath2));
 	 		Thread.sleep(100);
-	 		MesFonctions.objet(driver,myXpath2).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\Le mémoire 5\\Le Mémoire 5 - Copie ("+pcs+").pdf");
+	 		MesFonctions.objet(driver, myXpath2).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\Le mémoire 5\\Le Mémoire 5 - Copie ("+pcs+").pdf");
 	 		Thread.sleep(200);
 	 			//nom de la pièce 1
 		 		String myXpath = "(//div[@class='form-group required name']//label//following-sibling::div/input)[last()]";
@@ -2911,11 +2964,13 @@ public class MicroFonctions {
  			
  		}
 	 		
- 		public static String recapDepotReqTrc(WebDriver driver) throws InterruptedException {
+ 		public static String recapDepotReqTrc(WebDriver driver) throws InterruptedException, Throwable {
  			//avertissement
  			String	myXpath = "//input[@id='avertissement']//following-sibling::label";
  			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		 	MesFonctions.objet(driver,myXpath).click();
+	   		Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+	   		Thread.sleep(100);
+		    MesFonctions.objet(driver, myXpath).click();
 		 	Thread.sleep(100);
 		 	
 		 	myXpath = "//input[@id='requeteAbusifCheckbox']//following-sibling::label";
@@ -3083,13 +3138,13 @@ public class MicroFonctions {
 					Thread.sleep(200);
 								
 					//alerte 2
-					myXpath = "//div[@id='ui-id-3']";
+					myXpath = "//div[contains(@id,'ui-id')]";	
 					String mess = MesFonctions.objet(driver,myXpath).getText();
 					System.out.println(mess+"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 					String mess1 = "Requête sauvegardée";
 					Thread.sleep(100);
 					myXpath = "//span[@class='ui-button-text' and text()='OK']";
-					MesFonctions.objet(driver,myXpath).click();
+					MesFonctions.objet(driver, myXpath).click();
 
 					if (mess.equals(mess1)) {
 						Thread.sleep(100);
@@ -3105,7 +3160,7 @@ public class MicroFonctions {
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", MesFonctions.objet(driver,myXpath));
 			Thread.sleep(100);
 
-			MesFonctions.objet(driver,myXpath).click();
+			MesFonctions.objet(driver, myXpath).click();
 			Thread.sleep(100);
 			
 					//Première alerte
@@ -3114,7 +3169,7 @@ public class MicroFonctions {
 					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", MesFonctions.objet(driver,myXpath));
 					MesFonctions.objet(driver,myXpath).click();
 						//alerte 2
-					myXpath = "//div[@id='ui-id-3']";
+					myXpath = "//div[contains(@id,'ui-id')]";
 					MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 					String mess = MesFonctions.objet(driver,myXpath).getText();
 					Thread.sleep(100);
@@ -3161,13 +3216,14 @@ public class MicroFonctions {
 			MesFonctions.objet(driver,myXpath).click();
 			
 			//alerte 2 
-			myXpath = "//div[@id='ui-id-3']";
+			myXpath = "//div[contains(@id,'ui-id')]";
+			
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			String mess = MesFonctions.objet(driver,myXpath).getText();
 			Thread.sleep(200);
 			System.out.println(mess+"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			myXpath = "//span[@class='ui-button-text' and text()='OK']";
-			MesFonctions.objet(driver,myXpath).click();
+			MesFonctions.objet(driver, myXpath).click();
 			Thread.sleep(200);
 			
 					int deb = mess.indexOf(mess.split(":")[1]);
@@ -3199,27 +3255,22 @@ public class MicroFonctions {
 			Thread.sleep(1000);
 			
 					//Première alerte
-//					Alert alert = driver.switchTo().alert();
-//					alert.accept();
-//					mesFonctions.waiting1(driver, Duration.ofSeconds(3));
 					myXpath = "//span[@class='ui-button-text' and text()='OK']";
 					MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 					MesFonctions.objet(driver,myXpath).click();					
 					Thread.sleep(200);
 								
 					//alerte 2
-//					String mess = alert.getText();
-//					System.out.println(mess);
-					myXpath = "//div[@id='ui-id-2']";
+
+					myXpath = "//div[contains(@id,'ui-id')]";
 					MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 					String mess = MesFonctions.objet(driver,myXpath).getText();
 					Thread.sleep(100);
 					System.out.println(mess+"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 					myXpath = "//span[@class='ui-button-text' and text()='OK']";
-					MesFonctions.objet(driver,myXpath).click();
+					MesFonctions.objet(driver, myXpath).click();
 					Thread.sleep(200);
 					
-//					alert.accept();
 					String mess1 = "Le document a été enregistré avec succès.";
 
 					if (mess.equals(mess1)) {
@@ -3232,23 +3283,22 @@ public class MicroFonctions {
 	 		return null;
 	 	}
 	 	
-	 	public static String deconnexionTrExt (WebDriver driver) throws InterruptedException {
+	 	public static void deconnexionTrExt (WebDriver driver) throws InterruptedException {
 	 		String myXpath = "//a[@id='lnkdeconnecter']";
 	 		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-	 		MesFonctions.objet(driver,myXpath).click();
+	 		MesFonctions.objet(driver ,myXpath).click();
 			myXpath = "//a[@class='alert-link ' and (text()='ici')]";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			MesFonctions.objet(driver,myXpath).click();
+			MesFonctions.objet(driver, myXpath).click();
 			System.out.println("Déconnextion TR_LEG_EXT réussie....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-	 			return null;
+
 	 		}
 	 	
-	 	public static String deconnexionTrInt (WebDriver driver) throws InterruptedException {
+	 	public static void deconnexionTrInt (WebDriver driver) throws InterruptedException {
 	 		String myXpath = "//a[@id='lnkdeconnecter']";
 	 		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 	 		MesFonctions.objet(driver, myXpath).click();
 			System.out.println("Déconnextion TR_LEG_INTERNE réussie....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-	 			return null;
 	 		}
 	 	
 	 	public static boolean verifUrgence (WebDriver driver, String urg) throws Throwable{
@@ -3642,8 +3692,8 @@ public class MicroFonctions {
 	 		return null;
 	 	}
 	 	
-	 	public static String mdpFinValidite(WebDriver driver, String id, String mdp, String choixJur) throws Throwable {
-	 		switch (choixJur) {
+	 	public static String mdpFinValidite(WebDriver driver, String id, String mdp, String jur) throws Throwable {
+	 		switch (jur) {
 			case "TACAA":
 				//Connexion à la page juradfm.fr
 		 		driver.get("https://www.telerecours.recette.juradm.fr/ ");
@@ -3669,7 +3719,7 @@ public class MicroFonctions {
 		 			MicroFonctions.choixJuridictionTA(driver);
 		 		}
 		 		else {
-		 			MicroFonctions.changementMdp(driver, mdp, "Lhommeest2019**", id);
+		 			MicroFonctions.changementMdp(driver, jur,  mdp, "Lhommeest2019**", id);
 		 			}
 		 		
 				break;
@@ -3699,7 +3749,7 @@ public class MicroFonctions {
 		 			//Choix de juridiction CE et Vérification de la page
 		 			MicroFonctions.choixJuridcitionCE(driver);
 		 		}else {
-		 			MicroFonctions.changementMdp(driver, mdp, "Lhommeest2019**", id);
+		 			MicroFonctions.changementMdp(driver, jur, mdp, "Lhommeest2019**", id);
 		 			}
 		 		
 		 		
@@ -3712,8 +3762,8 @@ public class MicroFonctions {
 	 		return null;
 	 	}
 	 	
-	 	public static String mdpExpire(WebDriver driver, String id, String mdp, String choixJur) throws Throwable{
-	 		switch (choixJur) {
+	 	public static String mdpExpire(WebDriver driver, String id, String mdp, String jur) throws Throwable{
+	 		switch (jur) {
 			case "TACAA":
 				//Connexion à la page juradfm.fr
 		 		driver.get("https://www.telerecours.recette.juradm.fr/ ");
@@ -3725,7 +3775,7 @@ public class MicroFonctions {
 		 		//Authentification  
 		 		MicroFonctions.AuthentificationTaCaaCeExt(driver, id, mdp);
 		 		String mdp2 = "Lhommeest2019**";
-		 		MicroFonctions.changementMdp(driver, mdp, mdp2, id);
+		 		MicroFonctions.changementMdp(driver, jur, mdp, mdp2, id);
 		 		
 		 		//Choix de juridiction 
 		 		MicroFonctions.choixJuridictionCAA(driver);
@@ -3742,7 +3792,7 @@ public class MicroFonctions {
 		 		//Authentification  
 		 		MicroFonctions.AuthentificationTaCaaCeExt(driver, id, mdp);
 		 		mdp2 = "Lhommeest2019**";
-		 		MicroFonctions.changementMdp(driver, mdp, mdp2, id);
+		 		MicroFonctions.changementMdp(driver, jur,  mdp, mdp2, id);
 		 		
 		 		//Choix de juridiction CE et Vérification de la page
 	 			MicroFonctions.choixJuridcitionCE(driver);
@@ -4266,12 +4316,12 @@ public class MicroFonctions {
 			 return null;
 		 }
 		 
- 		public static String accueilPageTrcInt(WebDriver driver, WebElement element) {
+ 		public static String accueilPageTrcInt(WebDriver driver) {
 			 //aller vers l'url de TRC
 			 driver.get("https://citoyens.int1.telerecours.fr/");
 			 String myXpath = "//h1[text()=\"Télérecours citoyens\"]";
 			 MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			 System.out.println("Page TRC......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			 System.out.println("Page TRC2......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			 return null;
 		 }
 		 

@@ -1,5 +1,7 @@
 package requete;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -20,7 +22,7 @@ public class TR_ReqFlechage {
 	   String choixJur;
 	
 	   @BeforeSuite
-	   public void InitialisationDoc (){
+	   public void InitialisationDoc () throws IOException{
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);
@@ -37,7 +39,7 @@ public class TR_ReqFlechage {
 				
 		   JurReqTrFlechage.reqDepotFlec(driver, choixJur);
 		   
-		   JurReqTrFlechage.reqEnreg(driver, choixJur);
+		   JurReqTrFlechage.reqEnreg(driver, choixJur, env);
 		   
 		   JurReqTrFlechage.reqJurVer(driver, choixJur);
 		   }

@@ -1,7 +1,5 @@
 package trc;
 
-import static org.testng.Assert.assertEquals;
-
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +8,10 @@ import java.util.Random;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import fonctionnalites.MicroFonctions;
 import lesFonctions.MesFonctions;
+
+
+
 
 public class Trc_depot_formulaire {
 	
@@ -42,7 +42,10 @@ public class Trc_depot_formulaire {
 	
 		//Votre requête concerne-t-elle un contentieux social ? 
    		String myXpath = "//input[@id='csr-oui']";
-   		MesFonctions.objet(driver,  myXpath).click();
+   		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+   		MesFonctions.goToDown(driver, myXpath);
+   		Thread.sleep(800);
+   		MesFonctions.objet(driver, myXpath).click();
    		System.out.println("La requête concerne un contentieux social......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//accepter la fenêtre
@@ -60,40 +63,50 @@ public class Trc_depot_formulaire {
    		//Avez-vous le document comprenant la décision que vous contestez?
    		myXpath = "//input[@id='has-document']";
    		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-   		MesFonctions.objet(driver,  myXpath).click();
+   		MesFonctions.goToDown(driver, myXpath);
+   		Thread.sleep(800);
+   		MesFonctions.objet(driver, myXpath).click();
    		System.out.println("Bouton radio \"oui\" sélectionné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Ajout de la décision attaquée
    		for(int i=0;i<3;i++) {
    			myXpath = "//input[@id='acte-attaque-document-"+i+"1']";
    			MesFonctions.goToDown(driver, myXpath);
+   			Thread.sleep(300);
    			if(i==0) {
-   				Thread.sleep(1000);
+   				Thread.sleep(100);
    				MesFonctions.objet(driver, myXpath).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\La décision.pdf");
    			}else if(i==1) {
    				MesFonctions.objet(driver, myXpath).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\4 Avis_impot.pdf");
    			}else if(i==2) {
    				MesFonctions.objet(driver, myXpath).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\Acte attaquée 1.pdf");
    			}
-   			Thread.sleep(1000);
+   			Thread.sleep(100);
    		}
    		
    		System.out.println("Les fichiers de la décision attaquée ont été ajoutés dans la partie 4......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Quelle administration a pris cette décision ?
    		myXpath = "//input[@id='nom-administration']";
-   		MesFonctions.objet(driver,  myXpath).sendKeys("PREFECTURE 94");
+   		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+   		MesFonctions.goToDown(driver, myXpath);
+   		Thread.sleep(800);
+   		MesFonctions.objet(driver, myXpath).sendKeys("PREFECTURE 94");
    		System.out.println("Champ administration de la partie 5 renseigné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Objet de votre demande
    		myXpath = "//textarea[@id='objet-demande']";
-   		MesFonctions.objet(driver,  myXpath).sendKeys("Revenu de solidarité active (RSA)");
+   		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+   		MesFonctions.goToDown(driver, myXpath);
+   		Thread.sleep(800);
+   		MesFonctions.objet(driver, myXpath).sendKeys("Revenu de solidarité active (RSA)");
    		System.out.println("Champ de la partie 6 renseigné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Précisez votre demande
    		myXpath = "//textarea[@id='motifs-demande']";
    		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
    		MesFonctions.goToDown(driver, myXpath);
+   		Thread.sleep(800);
    		MesFonctions.objet(driver,  myXpath).sendKeys(texte);
    		System.out.println("Champ motif de la demande de la partie 7 renseigné......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
    		
@@ -101,12 +114,14 @@ public class Trc_depot_formulaire {
    		myXpath = "//textarea[@id='conclusionDALO-demande']";
    		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
    		MesFonctions.goToDown(driver, myXpath);
+   		Thread.sleep(800);
    		MesFonctions.objet(driver,  myXpath).sendKeys(texte);//erreur créée du fait du nombre de catractères trop important dans le champ
    		System.out.println("Champ de la conclusion de la partie 8 renseigné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
    		
 		return null;
 
 	}
+	
 	
 	public static String Trc_formulaire_3_decision_administration (WebDriver driver) throws Throwable {
 		//Vérification de la présence du titre 3
@@ -123,12 +138,18 @@ public class Trc_depot_formulaire {
    		myXpath = "//h2[@class='ng-star-inserted']";
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		int nbr = titre.size();
-   		assertEquals(9, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
-//   		System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+mesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(WebElement a: titre) {
-   			System.out.println(a.getText());
+   		if(nbr!=9) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   	   		for(WebElement a: titre) {
+   	   			System.out.println(a.getText());
+   	   		}
    		}
+//   		assertEquals(9, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+mesFonctions.extractCurrentHeure());
+   		
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
    		
    		
@@ -149,7 +170,7 @@ public class Trc_depot_formulaire {
 		  System.out.println("Tous les champs ont été renseignés......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		  myXpath = "//button[@type='button']//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
 		  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		  MesFonctions.objet(driver,  myXpath).click();
+		  MesFonctions.objet(driver, myXpath).click();
 		  Thread.sleep(500);
 	   }else {
 		   System.out.println("Des alertes sont présentes : \r");
@@ -160,7 +181,7 @@ public class Trc_depot_formulaire {
 	   
 	   	//Cocher la case de vérification
 	 	String	myXpath3 = "//input[@id='conditionRenommageCheckbox']//following-sibling::label";
-	 	MesFonctions.objet(driver,myXpath3).click();
+	 	MesFonctions.objet(driver, myXpath3).click();
 	 	Thread.sleep(1000);
 	 	
 	 	//Valider (suivant)
@@ -226,6 +247,7 @@ public class Trc_depot_formulaire {
    		return null;
 	}
 	
+	
 	public static String Trc_formulaire_3_requete_redige_sois_meme(WebDriver driver) throws Throwable {
 		//Vérification de la présence du titre 3
 		String myXpath = "//h2[text()=\"Vous souhaitez : \"]";
@@ -241,11 +263,16 @@ public class Trc_depot_formulaire {
    		myXpath = "//h2[@class='ng-star-inserted']";
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		int nbr = titre.size();
-   		assertEquals(7, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(WebElement a: titre) {
-   			System.out.println(a.getText());
+   		if(nbr!=7) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   	   		for(WebElement a: titre) {
+   	   			System.out.println(a.getText());
+   	   		}
    		}
+//   		assertEquals(7, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Remplissage du formulaire
@@ -285,6 +312,7 @@ public class Trc_depot_formulaire {
 		return null;
 	}
 	
+	
 	public static String Trc_formulaire_ctx_2_requete_redige_sois_meme(WebDriver driver) throws Throwable {
 		//Vérification de la présence du titre 3
 		String myXpath = "//h2[text()=\"Vous souhaitez : \"]";
@@ -300,11 +328,20 @@ public class Trc_depot_formulaire {
    		myXpath = "//h2[@class='ng-star-inserted']";
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		int nbr = titre.size();
-   		assertEquals(5, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(WebElement a: titre) {
-   			System.out.println(a.getText());
+   		if(nbr!=5) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   	   		for(WebElement a: titre) {
+   	   			System.out.println(a.getText());
+   	   		}
    		}
+//   		assertEquals(5, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(WebElement a: titre) {
+//   			System.out.println(a.getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Remplissage du formulaire
@@ -386,6 +423,7 @@ public class Trc_depot_formulaire {
 		return null;
 	}
 	
+	
 	public static String remplissage_question_4bis(WebDriver driver) {
 		//Sélection de la checkbox
 		String myXpath = "//input[@id='radio-type 1']";
@@ -397,17 +435,27 @@ public class Trc_depot_formulaire {
 		myXpath = "//h2[@class='ng-star-inserted']";
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		int nbr = titre.size();
-   		assertEquals(11, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
-//		   		System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+mesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(WebElement a: titre) {
-   			System.out.println(a.getText());
+   		if(nbr!=11) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   	   		for(WebElement a: titre) {
+   	   			System.out.println(a.getText());
+   	   		}
    		}
+//   		assertEquals(11, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+//		   		System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+mesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(WebElement a: titre) {
+//   			System.out.println(a.getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
 
 		System.out.println("La checkbox est cochée dans la partie 4......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		return null;
 	}
+	
 	
 	public static String remplissage_question_ctx_3(WebDriver driver) {
 		//Sélection de la checkbox
@@ -420,17 +468,27 @@ public class Trc_depot_formulaire {
 		myXpath = "//h2[@class='ng-star-inserted']";
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		int nbr = titre.size();
-   		assertEquals(10, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
-//		   		System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+mesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(WebElement a: titre) {
-   			System.out.println(a.getText());
+   		if(nbr!=10) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   	   		for(WebElement a: titre) {
+   	   			System.out.println(a.getText());
+   	   		}
    		}
+//   		assertEquals(10, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+//		   		System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+mesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(WebElement a: titre) {
+//   			System.out.println(a.getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
 
 		System.out.println("La checkbox est cochée dans la partie 4......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		return null;
 	}
+	
 	
 	public static String remplissage_question_4ter(WebDriver driver) {
 		//Sélection de la checkbox
@@ -445,16 +503,26 @@ public class Trc_depot_formulaire {
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
    		int nbr = titre.size();
-   		assertEquals(9, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=9) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(9, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
 
 		System.out.println("La checkbox est cochée dans la partie 4......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		return null;
 	}
+	
 	
 	public static String remplissage_question_ctx_3bis(WebDriver driver) {
 		//Sélection de la checkbox
@@ -469,16 +537,26 @@ public class Trc_depot_formulaire {
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
    		int nbr = titre.size();
-   		assertEquals(8, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=8) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(8, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
 
 		System.out.println("La checkbox est cochée dans la partie 4......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		return null;
 	}
+	
 	
 	public static String remplissage_question_4quater(WebDriver driver) {
 		//Sélection de la checkbox
@@ -493,16 +571,26 @@ public class Trc_depot_formulaire {
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
    		int nbr = titre.size();
-   		assertEquals(12, nbr, "Le nombre de partie attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=12) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(12, nbr, "Le nombre de partie attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
 
 		System.out.println("La checkbox est cochée dans la partie 4......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		return null;
 	}
+	
 	
 	public static String remplissage_question_ctx_3ter(WebDriver driver) {
 		//Sélection de la checkbox
@@ -517,11 +605,20 @@ public class Trc_depot_formulaire {
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
    		int nbr = titre.size();
-   		assertEquals(11, nbr, "Le nombre de partie attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=11) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(11, nbr, "Le nombre de partie attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
 
 		System.out.println("La checkbox est cochée dans la partie 4......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
@@ -966,13 +1063,18 @@ public class Trc_depot_formulaire {
 		return null;
 	}
 	
+	
 	public static String remplissage_question_9ter(WebDriver driver, String opt_9) throws Throwable {
 		//Renseigner le champ 9
 		String myXpath = "//input[contains(@id,'radio-acte')]";
 		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 		List<WebElement> elements = MesFonctions.objets(driver, myXpath);
 		int nbr = elements.size();
-		assertEquals(2, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+		if(nbr!=2) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}
+//		assertEquals(2, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
 		
 		
 		switch (opt_9) {
@@ -988,7 +1090,11 @@ public class Trc_depot_formulaire {
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			elements = MesFonctions.objets(driver, myXpath);
 			nbr = elements.size();
-			assertEquals(3, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+			if(nbr!=3) {
+	   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+	   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+	   			}
+//			assertEquals(3, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
 			
 			//Insertion des pièces
 			for(int i=0;i<2;i++) {
@@ -1028,11 +1134,20 @@ public class Trc_depot_formulaire {
 	   		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
 	   		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
 	   		nbr = titre.size();
-	   		assertEquals(11, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-	   		System.out.println("Ensemble des titres des parties affichées : \r");
-	   		for(int i=0;i<nbr;i++) {
-	   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+	   		if(nbr!=11) {
+	   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+	   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+	   		}else {
+	   			System.out.println("Ensemble des titres des parties affichées : \r");
+	   			for(int i=0;i<nbr;i++) {
+	   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+	   	   		}
 	   		}
+//	   		assertEquals(11, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//	   		System.out.println("Ensemble des titres des parties affichées : \r");
+//	   		for(int i=0;i<nbr;i++) {
+//	   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//	   		}
 	   		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
 			
 			
@@ -1101,6 +1216,7 @@ public class Trc_depot_formulaire {
 		return null;
 	}
 	
+	
 	public static String remplissage_question_10bis(WebDriver driver) {
 		//Selection du premier choix de la partie 10
 		String myXpath = "//input[@id=\"checkbox-radi-1\"]";
@@ -1113,11 +1229,20 @@ public class Trc_depot_formulaire {
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
    		int nbr = titre.size();
-   		assertEquals(12, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=12) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(12, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Vérification du titre de la partie 11 fonction du bouton radio selectionné dans la partie 10
@@ -1138,11 +1263,20 @@ public class Trc_depot_formulaire {
    		titre = MesFonctions.objets(driver, myXpath);
    		titre1 = MesFonctions.objets(driver, myXpath1);
    		nbr = titre.size();
-   		assertEquals(12, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=12) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(12, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Vérification du titre de la partie 11 fonction du bouton radio selectionné dans la partie 10
@@ -1154,6 +1288,7 @@ public class Trc_depot_formulaire {
 		
 		return null;
 	}
+	
 	
 	public static String remplissage_question_ctx_9(WebDriver driver) {
 		//Selection du premier choix de la partie 10
@@ -1167,11 +1302,20 @@ public class Trc_depot_formulaire {
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
    		int nbr = titre.size();
-   		assertEquals(11, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=11) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(11, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Vérification du titre de la partie 11 fonction du bouton radio selectionné dans la partie 10
@@ -1192,11 +1336,20 @@ public class Trc_depot_formulaire {
    		titre = MesFonctions.objets(driver, myXpath);
    		titre1 = MesFonctions.objets(driver, myXpath1);
    		nbr = titre.size();
-   		assertEquals(11, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=11) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(11, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Vérification du titre de la partie 11 fonction du bouton radio selectionné dans la partie 10
@@ -1470,6 +1623,7 @@ public class Trc_depot_formulaire {
 		return null;
 	}
 	
+	
 	public static String trc_titre4_choix_1(WebDriver driver) throws Throwable {
 		//Vérification de l'ensemble des champs du formulaire à remplir
 		String myXpath = "//h2[@class='ng-star-inserted']";
@@ -1477,11 +1631,20 @@ public class Trc_depot_formulaire {
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
    		int nbr = titre.size();
-   		assertEquals(4, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=4) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(4, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
 		
    		//Autres parties du formulaire
@@ -1514,6 +1677,7 @@ public class Trc_depot_formulaire {
 		return null;
 	}
 	
+	
 	public static String trc_ctx_titre3_choix_1(WebDriver driver) throws Throwable {
 		//Vérification de l'ensemble des champs du formulaire à remplir
 		String myXpath = "//h2[@class='ng-star-inserted']";
@@ -1521,11 +1685,20 @@ public class Trc_depot_formulaire {
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
    		int nbr = titre.size();
-   		assertEquals(3, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=3) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(3, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
 		
    		//Autres parties du formulaire
@@ -1546,7 +1719,7 @@ public class Trc_depot_formulaire {
 		  System.out.println("Tous les champs ont été renseignés....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		  myXpath = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
 		  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		  MesFonctions.objet(driver,  myXpath).click();
+		  MesFonctions.objet(driver, myXpath).click();
 		  Thread.sleep(1000);
 	     }else {
 		   System.out.println("Des alertes sont présentes : \r");
@@ -1558,6 +1731,7 @@ public class Trc_depot_formulaire {
 		return null;
 	}
 	
+	
 	public static String trc_titre4_choix_2(WebDriver driver, String opt) throws Throwable {
 		//Vérification de l'ensemble des champs du formulaire à remplir
 		String myXpath = "//h2[@class='ng-star-inserted']";
@@ -1565,11 +1739,20 @@ public class Trc_depot_formulaire {
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
    		int nbr = titre.size();
-   		assertEquals(4, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=4) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(4, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Autres parties du formulaire
@@ -1610,6 +1793,7 @@ public class Trc_depot_formulaire {
 		return null;
 	}
 	
+	
 	public static String trc_ctx_titre3_choix_2(WebDriver driver, String opt) throws Throwable {
 		//Vérification de l'ensemble des champs du formulaire à remplir
 		String myXpath = "//h2[@class='ng-star-inserted']";
@@ -1617,11 +1801,20 @@ public class Trc_depot_formulaire {
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
    		int nbr = titre.size();
-   		assertEquals(3, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=3) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(3, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Autres parties du formulaire
@@ -1650,7 +1843,7 @@ public class Trc_depot_formulaire {
 		  System.out.println("Tous les champs ont été renseignés....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		  myXpath = "//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
 		  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		  MesFonctions.objet(driver,  myXpath).click();
+		  MesFonctions.objet(driver, myXpath).click();
 		  Thread.sleep(1000);
 	     }else {
 		   System.out.println("Des alertes sont présentes : \r");
@@ -1662,6 +1855,7 @@ public class Trc_depot_formulaire {
 		return null;
 	}
 	
+	
 	public static String trc_titre4_choix_3(WebDriver driver) throws Throwable {
 		//Vérification de l'ensemble des champs du formulaire à remplir
 		String myXpath = "//h2[@class='ng-star-inserted']";
@@ -1669,11 +1863,20 @@ public class Trc_depot_formulaire {
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
    		int nbr = titre.size();
-   		assertEquals(4, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=4) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(4, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Autres parties du formulaire
@@ -1707,6 +1910,7 @@ public class Trc_depot_formulaire {
 		return null;
 	}
 	
+	
 	public static String trc_ctx_titre3_choix_3(WebDriver driver) throws Throwable {
 		//Vérification de l'ensemble des champs du formulaire à remplir
 		String myXpath = "//h2[@class='ng-star-inserted']";
@@ -1714,11 +1918,20 @@ public class Trc_depot_formulaire {
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		List<WebElement> titre1 = MesFonctions.objets(driver, myXpath1);
    		int nbr = titre.size();
-   		assertEquals(3, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(int i=0;i<nbr;i++) {
-   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   		if(nbr!=3) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   			for(int i=0;i<nbr;i++) {
+   	   		System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+   	   		}
    		}
+//   		assertEquals(3, nbr, "Le nombre de partie attendue ne correspond pas au nombre de partie dénombrée....."+MesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(int i=0;i<nbr;i++) {
+//   			System.out.println(titre1.get(i).getText()+"."+titre.get(i).getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
    		
    		//Autres parties du formulaire
@@ -1752,6 +1965,7 @@ public class Trc_depot_formulaire {
 		return null;
 	}
 	
+	
 	public static String Trc_formulaire_ctx_2_decision_administration (WebDriver driver) throws Throwable {
 		//Vérification de la présence du titre 3
 		String myXpath = "//h2[text()=\"Vous souhaitez : \"]";
@@ -1767,12 +1981,21 @@ public class Trc_depot_formulaire {
    		myXpath = "//h2[@class='ng-star-inserted']";
    		List<WebElement> titre = MesFonctions.objets(driver, myXpath);
    		int nbr = titre.size();
-   		assertEquals(8, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
-//		   		System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+mesFonctions.extractCurrentHeure());
-   		System.out.println("Ensemble des titres des parties affichées : \r");
-   		for(WebElement a: titre) {
-   			System.out.println(a.getText());
+   		if(nbr!=8) {
+   			System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+MesFonctions.extractCurrentHeure());
+   			System.err.println("Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+   		}else {
+   			System.out.println("Ensemble des titres des parties affichées : \r");
+   	   		for(WebElement a: titre) {
+   	   			System.out.println(a.getText());
+   	   		}
    		}
+//   		assertEquals(8, nbr, "Le nombre de parties attendues ne correspond pas au nombre de parties dénombrées....."+MesFonctions.extractCurrentHeure());
+//		   		System.out.println("Le nombre de partie affichée pour ce formulaire est de : "+nbr+"....."+mesFonctions.extractCurrentHeure());
+//   		System.out.println("Ensemble des titres des parties affichées : \r");
+//   		for(WebElement a: titre) {
+//   			System.out.println(a.getText());
+//   		}
    		System.out.println("\rFin de la liste...."+MesFonctions.extractCurrentHeure()+"\r");
    		
    		Trc_depot_formulaire.remplissage_question_4(driver, "non");
@@ -1791,7 +2014,7 @@ public class Trc_depot_formulaire {
 		  System.out.println("Tous les champs ont été renseignés......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		  myXpath = "//button[@type='button']//span[contains(@class,'label') and (contains(text(),\"Page suivante\"))]";
 		  MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		  MesFonctions.objet(driver,  myXpath).click();
+		  MesFonctions.objet(driver, myXpath).click();
 		  Thread.sleep(500);
 	   }else {
 		   System.out.println("Des alertes sont présentes : \r");

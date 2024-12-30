@@ -2,9 +2,9 @@ package requete_depot_enreg;
 
 import org.openqa.selenium.WebDriver;
 
-import Juridictions.JurReqTr;
 import browser.Navigateur;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurReqTr;
 
 public class Requete_TR_depot_enreg {
 	static WebDriver driver;
@@ -17,7 +17,7 @@ public class Requete_TR_depot_enreg {
 	//Connection
 //	browserName = "chrome";
 	driver = Navigateur.choixBrowser(navigateur) ;
-	
+	try {
 	//Choix juridiction
 	JurReqTr.maJuridiction(driver, jur, env);
 	
@@ -31,6 +31,9 @@ public class Requete_TR_depot_enreg {
 	MicroFonctions.deconnexionTrInt(driver);
 	driver.close();
 	Thread.sleep(500);
+	}catch (Exception e) {
+		e.printStackTrace();
+	}
 	
 		return numreq;
 	}

@@ -1,5 +1,7 @@
 package referentiel_poco;
 
+import org.openqa.selenium.WebDriver;
+
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import io.cucumber.java.en.And;
@@ -7,8 +9,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import referentiel.Creer_Referenciel_Civilite;
 
+
 public class Referentiel_Creation_Civilite extends Navigateur {
-	
+	WebDriver driver;
 
 	@Given("Je clique sur le référentiel CIVILITE")
 	public void je_clique_sur_le_référentiel_civilite() throws Throwable {

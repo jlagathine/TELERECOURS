@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test thread-count="5" name="Testdepotdoc">
-  </test> <!-- Testdepotdoc -->
-</suite> <!-- Suite -->
+<suite parallel="false" name="Suite">
+	  	<test name ="MyTest1">
+	    	<classes>
+	      		<class name="TR_Req">
+	      			<methods>
+	  					<include name = "depotReq"/>
+	      			</methods>
+	      		</class>
+	    	</classes>
+	  	</test> 
+</suite> 

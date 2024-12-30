@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import captureTool.My_SreenShot;
+import lesFonctions.MesFonctions;
 import net.sourceforge.tess4j.TesseractException;
 import requete_depot_enreg.Requete_TR_depot_enreg;
 
@@ -30,18 +31,24 @@ public class Skipper_Ajout_Defendeur {
 	@BeforeSuite
 	public void creation_dossier() throws TesseractException, Throwable {
 	try {
+			//Paramétrage
 			jur = "CAA";
-			id = "lb";
-			mdp = "lb";
-			env = "rec";
-			browserName = "chrome";
+			id = "lb"; //"sice" ; "lb"
+			mdp = "lb"; //"sice" ; "lb"
+			env = "rec"; //"rec" ; "int1"
+			browserName = "chrome_git";
 			saisine = "Jugement";
-			numdoc = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);//366478, 22478
+			numdoc = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
 			
+			//Ajout défendeur
+			qualite = "defendeur"; //defendeur
+			nom = "AEROPORTS"; //"UR_24871"CAA; "JUR_10238"TA; "AEROPORTS"
+			type = "Autres";
 			
 		} catch (Exception e) {
 			My_SreenShot.takeScreenshot(driver);
 			   e.printStackTrace();
+			   throw new Exception("Test interrompu....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		}
 	}
 	
@@ -49,11 +56,6 @@ public class Skipper_Ajout_Defendeur {
 	public void Ajout_defendeur_dossier() throws Throwable {
 		//SKIPPER
 	try {
-		
-		//Ajout défendeur
-			qualite = "defendeur"; //defendeur
-			nom ="AEROPORTS";
-			type = "Autres";
 			
 			//Authentification
 			Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);
@@ -71,10 +73,12 @@ public class Skipper_Ajout_Defendeur {
 			Navigation_Sk_Ajout_Mesure.Mesure_Contextuelle_Communication_Req(jur);
 			Navigation_Sk_Ajout_Mesure.acces_onglet_synthese(jur);
 			
+			
+			
 		} catch (Exception e) {
-
 			My_SreenShot.screenshot();
 			e.printStackTrace();
+			throw new Exception("Test interrompu....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		}	
 	}
 		

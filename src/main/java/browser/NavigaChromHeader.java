@@ -1,7 +1,7 @@
 package browser;
 
 import java.io.File;
-import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -39,7 +39,7 @@ public class NavigaChromHeader {
 		   
 		   
 	
-		return driver;
+		return null;//driver;
 	}
 	
 	public static String extension (WebDriver driver, String cnbf, String value) throws Throwable {

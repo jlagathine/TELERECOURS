@@ -177,7 +177,7 @@ public class Transmission_TR_expediteur {
 		
 		//Choix de la juridiction
 		Transmission_TR_expediteur.choix_juridiction(driver, jur);
-		System.out.println("La juridiction a été sélectionné....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+		System.out.println("La juridiction a été sélectionnée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		
 		//Dossier de destinantion
 		if(type.equals("DPI/DPA")) {
@@ -187,9 +187,10 @@ public class Transmission_TR_expediteur {
 			Thread.sleep(200);
 			Keyboard.keyBoard(KeyEvent.VK_ENTER); 
 			
+			Thread.sleep(200);
 			String myXpath1 = "//label[@id='Mstr_cpMain_ucDetailDossierDestination_labelRequerant']";
 			myXpath = "//span[@id='Mstr_cpMain_ucDetailDossierDestination_splitRequerant']";
-			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			MesFonctions.waiting2(driver, myXpath1, Duration.ofSeconds(3));
 			System.out.println("Le dossier de destination est renseigné : "+MesFonctions.objet(driver, myXpath1).getText()+""+MesFonctions.objet(driver, myXpath).getText().trim());
 		}
 		
@@ -240,7 +241,7 @@ public class Transmission_TR_expediteur {
 		Thread.sleep(500);
 		for(int i=0; i<nbr_file; i++) {
 			int pcs = i+2;
-			MesFonctions.objet(driver, myXpath).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\Le mémoire 5\\Le Mémoire 5 - Copie ("+pcs+").pdf");
+			MesFonctions.objet(driver, myXpath).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\Le mémoire 5\\00"+pcs+" Le Mémoire.pdf");
 			Thread.sleep(200);
 			System.out.println("La pièce : "+pcs+"....."+MesFonctions.extractCurrentHeure());
 		}

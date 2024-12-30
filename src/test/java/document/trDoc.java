@@ -9,30 +9,30 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
-import Juridictions.JurDocTr;
 import browser.Navigateur;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurDocTr;
 import requete_depot_enreg.Requete_TR_depot_enreg;
 
 	public class trDoc {
 		
-		   WebDriver driver;
-		   WebElement element; 
-		   String browserName;
-		   String choiJur;
-		   String dossier;
-		   String saisine;
-		   String env;
-		   String DB_id;
-		   String DB_mdp;
-		   
-		   @BeforeSuite
-		   public void InitialisationDoc () throws Throwable {
-		   browserName = "chrome";
-		   env = "rec"; 
-		   saisine = "Jugement";
-		   choiJur = "CAA"; //Ne pas oublier de mettre les autres juridiction en commentaire
-		   dossier = "2400260";//Requete_TR_depot_enreg.TR_depot(choiJur, browserName, saisine, env);
+	   WebDriver driver;
+	   WebElement element; 
+	   String browserName;
+	   String choiJur;
+	   String dossier;
+	   String saisine;
+	   String env;
+	   String DB_id;
+	   String DB_mdp;
+	   
+	   @BeforeSuite
+	   public void InitialisationDoc () throws Throwable {
+	   browserName = "chrome";
+	   env = "rec"; 
+	   saisine = "Jugement";
+	   choiJur = "TA"; //Ne pas oublier de mettre les autres juridiction en commentaire
+		   dossier = Requete_TR_depot_enreg.TR_depot(choiJur, browserName, saisine, env);
 		   
 		   switch (choiJur) {
 			case "TA":

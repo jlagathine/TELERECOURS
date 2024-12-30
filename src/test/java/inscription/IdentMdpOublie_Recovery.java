@@ -7,26 +7,18 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
 
-import Juridictions.JurIdentMdpOublie;
 //la réalisation de ce test nécessite qu'un mail de récupération d'identifiant soit envoyé et que ce dernier
 //arrive à expiration (vérifier dans les paramêtre le temps de validité du jeton) 
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurIdentMdpOublie;
 
 public class IdentMdpOublie_Recovery {
-	WebDriver driver;
-	   DesiredCapabilities caps;
-	   WebElement element; 
-	   String username;
-	   String password;
-	   boolean verif;
-	   String myXpath;
+	WebDriver driver; 
 	   String browserName;
-	   String value;
-	   String identifiant;
 	   String mail;
-	   String choixJur;
+	   String jur;
 	
 	
 	   @Test//(invocationCount = 5)==loop i=5
@@ -37,8 +29,8 @@ public class IdentMdpOublie_Recovery {
 		   System.out.println(driver);
 		   
 			mail = "gianis@yopmail.com";
-			choixJur = "TACAA";
-		   JurIdentMdpOublie.recupIndentLienInvalideMdp(driver, element, choixJur, mail);
+			jur = "TACAA";
+		   JurIdentMdpOublie.recupIndentLienInvalideMdp(driver, jur, mail);
 		   } 
 		   catch (Exception e) {
 			   My_SreenShot.takeScreenshot(driver);

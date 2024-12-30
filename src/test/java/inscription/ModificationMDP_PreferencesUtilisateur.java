@@ -9,16 +9,16 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import Juridictions.JurReqTr;
 import browser.Navigateur;
 import changement_PreferencesUtilisateur.Preferences_Utilisateur;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurReqTr;
 
 public class ModificationMDP_PreferencesUtilisateur {
 
 	WebDriver driver;
 	String browserName;
-	String choixJur;
+	String jur;
 	String env;
 	
 	
@@ -32,13 +32,13 @@ public class ModificationMDP_PreferencesUtilisateur {
 	
 	@BeforeMethod
     public void connexionTr() throws Throwable  {
-	choixJur = "Tribunal";
-	JurReqTr.maJuridiction(driver, choixJur, env);
+	jur = "TA";
+	JurReqTr.maJuridiction(driver, jur, env);
 	   }
 	
 	@Test
 	public void changemetMDP() throws Throwable {
-	Preferences_Utilisateur.preferences_MDP(driver);
+	Preferences_Utilisateur.preferences_MDP(driver, jur);
 	}
 	
 	

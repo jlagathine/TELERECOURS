@@ -1,6 +1,11 @@
 package demoTest;
 
 
+import java.io.File;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
@@ -24,6 +29,7 @@ import browser.Navigateur;
 import fonctionnalites.MicroFonctions;
 import lesFonctions.MesFonctions;
 import requete.TR_Req;
+
 
 
 
@@ -75,6 +81,7 @@ public class test {
 	static List<Integer> nbr = new ArrayList<Integer>();
 	static List<String> str = new ArrayList<>();
 	static List<String> str1 = new ArrayList<>();
+	
 	
 
 	public static void main(String[] args) throws Throwable {
@@ -334,9 +341,21 @@ public class test {
 //		System.out.println(object.accumulate(str.get(i), js));
 //		}
 		
-		String mail = "avo_1louis1081@yopmail.com";
-		driver = Navigateur.choixBrowser("chrome");
-		MicroFonctions.mailYop(driver, mail);
+		System.out.println(System.getenv("file_DEC"));
+		System.out.println();
+		
+		Path resourceDirectory = Paths.get("1 Acte attaque.pdf");
+		String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+
+		System.out.println(absolutePath);
+		
+		String resourceName = "1 Acte attaque.pdf";
+
+		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+		File file = new File(classLoader.getResource(resourceName).getFile());
+		absolutePath = file.getAbsolutePath();
+
+		System.out.println(absolutePath);
 
 	}
 			

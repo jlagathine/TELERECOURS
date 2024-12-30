@@ -7,11 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
-import Juridictions.JurInscripTr;
-import Juridictions.JurInvitIsnscriptConsult;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurInscripTr;
+import juridictions.JurInvitIsnscriptConsult;
 import lesFonctions.MesFonctions;
 import pdfGeneration.PdfCreationEtEcriture;
 import skipper.Navigation_Sk_Authentification;

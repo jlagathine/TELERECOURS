@@ -11,21 +11,22 @@ public class Authentication {
 	public static Object seConnecter_referentiel(WebDriver driver, String username, String mdp) throws Throwable {
 		String url = "https://referentiels.int2.conseil-etat.fr/";
 		driver.get(url);
-		Thread.sleep(1000);
+		Thread.sleep(100);
+		System.out.println("Accès page "+driver.getCurrentUrl()+"......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		
-		//Clic paramètres avancés
-		String myXpath = "//button[@id='details-button']";
-		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-	    MesFonctions.objet(driver,  myXpath).click();
-	    
-	    myXpath = "//a[@id='proceed-link']";
-	    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-	    MesFonctions.objet(driver,  myXpath).click();
-	    
-	    System.out.println("Accès page "+driver.getCurrentUrl()+"......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+//		//Clic paramètres avancés
+//		String myXpath = "//button[@id='details-button']";
+//		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+//	    MesFonctions.objet(driver,  myXpath).click();
+//	    
+//	    myXpath = "//a[@id='proceed-link']";
+//	    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+//	    MesFonctions.objet(driver,  myXpath).click();
+//	    
+//	    System.out.println("Accès page "+driver.getCurrentUrl()+"......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 	    
 	    //Entrer username
-	    myXpath = "//input[@id='user_0_login']";
+	    String myXpath = "//input[@id='user_0_login']";
 	    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 	    MesFonctions.objet(driver,  myXpath).sendKeys(username);
 	    System.out.println("le login est renseigné....."+MesFonctions.extractCurrentHeure());

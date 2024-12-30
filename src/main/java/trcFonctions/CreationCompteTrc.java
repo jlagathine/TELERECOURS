@@ -161,9 +161,11 @@ public class CreationCompteTrc {
 				myXpath = "//button//span[@class='label' and text()=\"Créer mon compte\"]";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 				MesFonctions.goToDown(driver, myXpath);
+				Thread.sleep(800);
 				MesFonctions.objet(driver, myXpath).click();
 				
-			    myXpath = "//div[@aria-hidden='false']//div[@role='alert']//span";
+			    myXpath = "//div[@aria-hidden='false']//div[@role='alert']//div[@trctranslate and contains(text(),\"Le champ\")]";
+			    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			    List<WebElement> elts = driver.findElements(By.xpath(myXpath));
 			    int nbr = elts.size();
 			    
@@ -217,6 +219,7 @@ public class CreationCompteTrc {
 					String email = "daniel@yopmail.com";
 					MesFonctions.objet(driver, myXpath).clear();
 					MesFonctions.objet(driver, myXpath).sendKeys(email);
+					mail = email;
 					System.err.println("Email : "+email);
 				}else {
 					MesFonctions.objet(driver, myXpath).clear();
@@ -283,25 +286,25 @@ public class CreationCompteTrc {
 			    MesFonctions.objet(driver, myXpath).click();
 			    System.out.println("Click bouton création......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			    
-			    //Vérification de l'envoi du mail
-			    myXpath = "//h2[contains(text(),\"Nous venons de vous envoyer un courriel à l'adresse "+mail+"\")]";
-			    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			    System.out.println("Accès à la page de vérification de l'envoi du courriel....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-			    
 			    //Succès création
 //			    myXpath = "//button//span[contains(@class,'label') and text()=\"Créer mon compte\"]";
 //			    mesFonctions.objet(driver,  myXpath).click();
 
 			    System.out.println("La création est réussie......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			    
-			    myXpath = "//div[@aria-hidden='false']//div[@role='alert']//span";
+			    myXpath = "//div[@aria-hidden='false']//div[@role='alert']//div[@trctranslate and contains(text(),\"Le champ\")]";
 			    elts = driver.findElements(By.xpath(myXpath));
 			    nbr = elts.size();
 			    System.err.println("Nombre d'alertes présentes après validation : "+nbr+"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			    
 			    tr++;
-			    Thread.sleep(1500);
+			    Thread.sleep(500);
 			    }
+			    
+			    //Vérification de l'envoi du mail
+			    myXpath = "//h2[contains(text(),\"Nous venons de vous envoyer un courriel à l'adresse "+mail+"\")]";
+			    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			    System.out.println("Accès à la page de vérification de l'envoi du courriel....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			    
 			    break;
 			    
@@ -320,7 +323,7 @@ public class CreationCompteTrc {
 				//Saisie des différents champs
 				 	//Forme sociale
 				myXpath = "//input[@id='nomEntreprise']";
-				MesFonctions.objet(driver,  myXpath).sendKeys(compagnie+" SARL");		
+				MesFonctions.objet(driver, myXpath).sendKeys(compagnie+" SARL");		
 				
 					//Civilité
 				myXpath = "//select[@id='civilite']";
@@ -662,7 +665,7 @@ public class CreationCompteTrc {
 		 String myXpath = "//a[contains(text(),\"passe\")]";
 		 MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 		 Thread.sleep(100);
-		 ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,  myXpath));
+		 MesFonctions.goToDown(driver, myXpath);
 		 MesFonctions.objet(driver,  myXpath).click();
 //		 mesFonctions.objet(driver,  myXpath).click();//pas de clic réalisé---à corriger
 		 System.out.println("Click sur le lien mot de passe oublié......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");

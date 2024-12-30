@@ -62,7 +62,7 @@ public class Transmission_type_dpi_dpa_creation_mesure {
 		try {
 		browserName = "chrome";
 		jur = "TA";
-		jur_dest = "CAA";
+		jur_dest = "CTX";
 		id = "lb";
 		mdp = "lb";
 		env = "rec";
@@ -71,7 +71,7 @@ public class Transmission_type_dpi_dpa_creation_mesure {
 		dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
 		type = "DPI/DPA";
 		type_jur = "Juridictions";
-		jur_annuaire = "TRIBUNAL ADMINISTRATIF DE PARIS";
+		jur_annuaire = "Juridictions CE";
 		
 		
 			//SKIPPER_ouverture

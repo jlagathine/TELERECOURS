@@ -1,4 +1,4 @@
-package Juridictions;
+package juridictions;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -189,7 +189,7 @@ public class JurDocTr {
 				
 				//Verifier nombre de fichiers chargés
 				charge = 5;
-				MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+				MicroFonctions.nombreFichiersCharges(nbr, charge);
 				
 				//Convertion des fichiers en PDF
 				MicroFonctions.conversionPDF(driver);
@@ -794,10 +794,10 @@ public class JurDocTr {
 			for(int i=0;i<5;i++) {
 			//Ajout de pièces
 			myXpath = "//input[@id='fuAjouterFichier']";
-			int pcs = i+2;
-			MesFonctions.objet(driver, myXpath).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\Le mémoire 5\\Le Mémoire 5 - Copie ("+pcs+").pdf");
+			int pcs = i+1;
+			MesFonctions.objet(driver, myXpath).sendKeys("C:\\Users\\jagathine\\Desktop\\Cas de tets et JDD\\Le mémoire 5\\00"+pcs+" Le Mémoire.pdf");
 			
-			System.out.println("La picèes est chargée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			System.out.println("La pièces est chargée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Renseigner le type de pièce
 			myXpath = "//select[@id='ddlTypeFichier']";
@@ -863,7 +863,8 @@ public class JurDocTr {
 			 
 			nom_fichier.add(MesFonctions.objet(driver, myXpath).getText().trim());
 			}
-		String str = nom_fichier.get(0).substring(nom_fichier.get(0).indexOf(nom_fichier.get(0).split("_")[6]), nom_fichier.get(0).indexOf("."));
+		String str = nom_fichier.get(0).substring(nom_fichier.get(0).indexOf(nom_fichier.get(0).split("_")[3]), nom_fichier.get(0).indexOf("."));
+		System.out.println(str);
 		System.out.println("Toutes les pièces ont été ajoutées....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		return str;
 		}

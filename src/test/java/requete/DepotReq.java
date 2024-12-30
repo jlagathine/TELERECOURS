@@ -42,7 +42,7 @@ public class DepotReq {
 		options.addArguments("--disable-popup-blocking");
 		
 		
-		driver = new ChromeDriver(options);
+		driver = new ChromeDriver(options); 
 		System.out.println("Initialisation réussie");
 	}
 
@@ -123,7 +123,7 @@ public class DepotReq {
 		// Urgence et Matière
 		driver.findElement(By.xpath("//input[@id='Mstr_cpMain_RadioButtonUrgence_0']")).click();
 		String urg = driver.findElement(By.xpath("//input[@id='Mstr_cpMain_RadioButtonUrgence_0']"))
-				.getAttribute("value");
+				.getDomAttribute("value");
 		WebElement matiere = driver.findElement(By.xpath("//select[@id='Mstr_cpMain_ddlMatiere']"));
 		Select select1 = new Select(matiere);
 		String value = "01";
@@ -747,7 +747,7 @@ public class DepotReq {
 		// Urgence et Matière
 		driver.findElement(By.xpath("//input[@id='Mstr_cpMain_RadioButtonUrgence_0']")).click();
 		String urg = driver.findElement(By.xpath("//input[@id='Mstr_cpMain_RadioButtonUrgence_0']"))
-				.getAttribute("value");
+				.getDomAttribute("value");
 		WebElement matiere = driver.findElement(By.xpath("//select[@id='Mstr_cpMain_ddlMatiere']"));
 		Select select1 = new Select(matiere);
 		String value = "31";
@@ -1365,7 +1365,7 @@ public class DepotReq {
 		// Urgence et Matière
 		driver.findElement(By.xpath("//input[@id='Mstr_cpMain_RadioButtonUrgence_0']")).click();
 		String urg = driver.findElement(By.xpath("//input[@id='Mstr_cpMain_RadioButtonUrgence_0']"))
-				.getAttribute("value");
+				.getDomAttribute("value");
 		WebElement matiere = driver.findElement(By.xpath("//select[@id='Mstr_cpMain_ddlMatiere']"));
 		Select select1 = new Select(matiere);
 		String value = "06";
@@ -1690,7 +1690,7 @@ public class DepotReq {
 		driver.findElement(By.xpath("//input[@value ='" + date + "']"));
 		System.out.println("trouvé : " + date);
 		Thread.sleep(1000);
-		String myXpath = driver.findElement(By.xpath("//input[@name ='txtAuteurDecAtt']")).getAttribute("value");
+		String myXpath = driver.findElement(By.xpath("//input[@name ='txtAuteurDecAtt']")).getDomAttribute("value");
 		boolean xpathTrue = juridiction.equals(myXpath);
 		System.out.println(xpathTrue);
 		System.out.println("trouvé : " + juridiction + "/" + myXpath);

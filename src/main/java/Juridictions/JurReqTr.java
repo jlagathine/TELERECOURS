@@ -1,4 +1,4 @@
-package Juridictions;
+package juridictions;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -46,7 +46,6 @@ public class JurReqTr {
 	static String dossier;
 	static String URL;
 	static int charge;
-	static int sum;
 	static int nombre;
 	static List<Integer> nbr = new ArrayList<Integer>();
 	static List<String> str = new ArrayList<>();
@@ -297,7 +296,8 @@ public class JurReqTr {
 			auteur = MicroFonctions.choixSaisine(driver, value);
 			
 			dateDec = "22/06/2023";
-			driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtDateDecAttCAA']")).sendKeys(dateDec);// Date de décision
+//			driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtDateDecAttCAA']")).sendKeys(dateDec);// Date de décision
+			MicroFonctions.date_picker_Tr(driver, dateDec);
 			
 			if(env=="rec") {
 				value = "11027";
@@ -307,8 +307,13 @@ public class JurReqTr {
 				juridiction = MicroFonctions.choixJuridiction(driver, value, choixJur);	
 			}
 			
+			String myXpath = "//input[@id='Mstr_cpMain_txtNumeroDecision']";
+			
 			numero = "2300541";
-			driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtNumeroDecision']")).sendKeys(numero);// numéro
+			MesFonctions.goToDown(driver, myXpath);
+			Thread.sleep(300);
+			MesFonctions.objet(driver, myXpath).sendKeys(numero);// numéro
+			
 			
 			//fichier de décision attaquée
 			nbrMem = MicroFonctions.depotFilesReqTr_Dec(driver);
@@ -320,24 +325,24 @@ public class JurReqTr {
 					}
 			
 			// Requête
-			int nbrMem1 =MicroFonctions.depotFilesReqTr_req(driver);
+			int nbrMem1 = MicroFonctions.depotFilesReqTr_req(driver);
 			nbr.add(nbrMem1);
 
 			// Pièces complémentaires
-			int nbrMem2 =MicroFonctions.depotFilesReqTr_pics(driver);
+			int nbrMem2 = MicroFonctions.depotFilesReqTr_pics(driver);
 			nbr.add(nbrMem2);
 
 			// AJ
-			int nbrMem3 =MicroFonctions.depotFilesReqTr_JA(driver);
+			int nbrMem3 = MicroFonctions.depotFilesReqTr_JA(driver);
 			nbr.add(nbrMem3);
 
 			// Inventaire
-			int nbrMem4 =MicroFonctions.depotFilesReqTr_inv(driver);
+			int nbrMem4 = MicroFonctions.depotFilesReqTr_inv(driver);
 			nbr.add(nbrMem4);
 			
 			//Verifier nombre de fichiers chargés
 			charge = 8;
-			MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+			MicroFonctions.nombreFichiersCharges(nbr, charge);
 			
 			// information par courriel
 			MicroFonctions.actInfoCourriel(driver);
@@ -351,7 +356,7 @@ public class JurReqTr {
 			
 			// Envoyer
 			myXpath = "//input[@id='Mstr_cpMain_btDeposerRequete2']";
-			MesFonctions.objet(driver,  myXpath).click();// Vérification
+			MesFonctions.objet(driver, myXpath).click();// Vérification
 			Thread.sleep(200);
 			
 			// Modification du fichier de la requête
@@ -359,7 +364,7 @@ public class JurReqTr {
 			
 			// Envoyer
 			myXpath = "//input[@id='Mstr_cpMain_btDeposerRequete2']";
-			MesFonctions.objet(driver,  myXpath).click();// Vérification
+			MesFonctions.objet(driver, myXpath).click();// Vérification
 			Thread.sleep(200);
 
 			// Vérification des fichiers téléchargés
@@ -463,7 +468,7 @@ public class JurReqTr {
 			
 			//Verifier nombre de fichiers chargés
 			charge = 8;
-			MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+			MicroFonctions.nombreFichiersCharges(nbr, charge);
 			
 			// information par courriel
 			MicroFonctions.actInfoCourriel(driver);
@@ -560,14 +565,19 @@ public class JurReqTr {
 			value = "10";
 			auteur = MicroFonctions.choixSaisine(driver, value);
 			
-			dateDec = "07/06/2022";
-			driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtDateDecAttCAA']")).sendKeys(dateDec);// Date de décision
+			dateDec = "17/06/2022";
+			
+//			MesFonctions.objet(driver, myXpath).sendKeys(dateDec);// Date de décision
+			MicroFonctions.date_picker_Tr(driver, dateDec);
 			
 			value = "11074";
 			juridiction = MicroFonctions.choixJuridiction(driver, value, choixJur);
 			
 			numero = "2002541";
-			driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtNumeroDecision']")).sendKeys(numero);// numéro
+			myXpath = "//input[@id='Mstr_cpMain_txtNumeroDecision']";
+			MesFonctions.goToDown(driver, myXpath);
+			MesFonctions.objet(driver, myXpath).sendKeys(numero);// numéro
+			
 			
 			nbrMem = MicroFonctions.depotFilesReqTr_Dec(driver);
 			nbr.add(nbrMem);
@@ -594,7 +604,7 @@ public class JurReqTr {
 			
 			//Verifier nombre de fichiers chargés
 			charge = 8;
-			MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+			MicroFonctions.nombreFichiersCharges(nbr, charge);
 			
 			// information par courriel
 			MicroFonctions.actInfoCourriel(driver);
@@ -734,7 +744,7 @@ public static String reqAdmDepot (WebDriver driver, String choixJur, String env)
 			
 			//Verifier nombre de fichiers chargés
 			charge = 8;
-			MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+			MicroFonctions.nombreFichiersCharges(nbr, charge);
 			
 			// information par courriel
 			MicroFonctions.actInfoCourriel(driver);
@@ -847,7 +857,7 @@ public static String reqAdmDepot (WebDriver driver, String choixJur, String env)
 			
 			//Verifier nombre de fichiers chargés
 			charge = 8;
-			MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+			MicroFonctions.nombreFichiersCharges(nbr, charge);
 			
 			// information par courriel
 			MicroFonctions.actInfoCourriel(driver);
@@ -963,7 +973,7 @@ public static String reqAdmDepot (WebDriver driver, String choixJur, String env)
 			
 			//Verifier nombre de fichiers chargés
 			charge = 8;
-			MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+			MicroFonctions.nombreFichiersCharges(nbr, charge);
 			
 			// information par courriel
 			MicroFonctions.actInfoCourriel(driver);

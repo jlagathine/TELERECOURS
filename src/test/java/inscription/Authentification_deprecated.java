@@ -16,7 +16,7 @@ import browser.Navigateur;
 
 
 
-	 public class Authentification {
+	 public class Authentification_deprecated {
 				
 			WebDriver driver;
 			public String browserName;

@@ -11,8 +11,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import Juridictions.JurInscripTr;
 import browser.Navigateur;
+import juridictions.JurInscripTr;
 
 public class inscriptAvo {
 	

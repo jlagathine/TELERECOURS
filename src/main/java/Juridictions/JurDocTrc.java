@@ -1,4 +1,4 @@
-package Juridictions;
+package juridictions;
 
 import java.time.Duration;
 import java.util.ArrayList;

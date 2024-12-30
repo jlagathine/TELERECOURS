@@ -1,4 +1,3 @@
-
 Feature: Vérification
 
   @tag1

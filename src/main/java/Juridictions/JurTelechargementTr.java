@@ -1,4 +1,4 @@
-package Juridictions;
+package juridictions;
 
 import java.sql.SQLException;
 import java.time.Duration;

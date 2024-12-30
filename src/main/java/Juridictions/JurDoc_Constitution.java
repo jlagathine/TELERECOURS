@@ -1,4 +1,4 @@
-package Juridictions;
+package juridictions;
 
 import java.time.Duration;
 
@@ -85,9 +85,10 @@ public class JurDoc_Constitution {
 				
 				String alerte = "Ce dossier ne fait pas partie des dossiers dans lesquels vous êtes constitué. Souhaitez-vous vous constituer pour ce dossier et effectuer un versement ?";
 				
-				myXpath = "//div[@id='ui-id-3']";
+				myXpath = "//div[@id='ui-id-2']";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 				String mess = MesFonctions.objet(driver, myXpath).getText();
+				System.out.println(mess);
 				
 				if(mess.contains(alerte)) {
 					myXpath = "//span[@class='ui-button-text' and text()='OK']";
@@ -105,10 +106,11 @@ public class JurDoc_Constitution {
 			}
 
 			//Renseigner la partie représentée
-//			myXpath = "//textarea[@id='Mstr_cpMain_txtReqPrincip']";
-//			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-//			MesFonctions.objet(driver, myXpath).sendKeys("DEFENDEUR");
-//			System.out.println("La partie représentée est renseignée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			myXpath = "//textarea[@id='Mstr_cpMain_txtReqPrincip']";
+			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+			MesFonctions.objet(driver, myXpath).clear();
+			MesFonctions.objet(driver, myXpath).sendKeys("DEFENDEUR");
+			System.out.println("La partie représentée est renseignée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Choix du document
 			myXpath = "//input[@id='Mstr_cpMain_rbPj_2']";

@@ -1,5 +1,6 @@
 package referentiel;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,6 +16,7 @@ public class List_Referentiel {
 	public static Object Classement_ordre_alphabetique(WebDriver driver) {
 		//Identifier la liste des référentiels
 		String myXpath = "//span[@id='ref_name']";
+		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 		List<WebElement> elt = driver.findElements(By.xpath(myXpath));
 		List<String> str = new ArrayList<>();
 		int nbr = elt.size();

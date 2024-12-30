@@ -10,8 +10,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import Juridictions.JurRefusReqTR;
 import browser.Navigateur;
+import juridictions.JurRefusReqTR;
 
 public class RefusReqTR {
 

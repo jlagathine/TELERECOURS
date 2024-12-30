@@ -35,7 +35,7 @@ public class Navigation_Sk_Ouverture_Dossier {
 			
 			//Valider le choix du dossier
 			Thread.sleep(200);
-			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_valider_dossier3-Skipper - Ouverture de dossier.png";
+			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_valider_dossier3-Skipper - Ouverture de dossier.png";//Bouton_valider_dossier3-Skipper - Ouverture de dossier_bis.png
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 			coords = MesFonctions.waitObject(fileImage);
 			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
@@ -58,7 +58,7 @@ public class Navigation_Sk_Ouverture_Dossier {
 			
 			//Valider le choix du dossier
 			Thread.sleep(200);
-			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_valider_dossier3-Skipper - Ouverture de dossier.png";
+			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_valider_dossier3-Skipper - Ouverture de dossier.png";//Bouton_valider_dossier3-Skipper - Ouverture de dossier_bis.png
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 			coords = MesFonctions.waitObject(fileImage);
 			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
@@ -80,7 +80,7 @@ public class Navigation_Sk_Ouverture_Dossier {
 			
 			//Valider le choix du dossier
 			Thread.sleep(200);
-			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_valider_dossier3-Skipper - Ouverture de dossier.png";
+			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_valider_dossier3-Skipper - Ouverture de dossier_bis.png";//Bouton_valider_dossier3-Skipper - Ouverture de dossier_bis.png ; //Bouton_valider_dossier3-Skipper - Ouverture de dossier.png
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 			coords = MesFonctions.waitObject(fileImage);
 			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);

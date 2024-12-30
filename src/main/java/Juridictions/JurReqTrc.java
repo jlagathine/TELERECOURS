@@ -1,4 +1,4 @@
-package Juridictions;
+package juridictions;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -115,7 +115,10 @@ public class JurReqTrc {
 				   
 				   //Envoyer
 				   myXpath = "//span[contains(@class,'label') and (contains(text(),\"Envoyer\"))]";
-				   MesFonctions.objet(driver,  myXpath).click();
+				   MesFonctions.objet(driver, myXpath).click();
+				   Thread.sleep(200);
+				   myXpath = "//div[contains(text(),\"En cours d'envoi\")]";
+				   MesFonctions.goToUp(driver, myXpath);
 				   Thread.sleep(200);
 				   System.out.println("Envoi réussi......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				   
@@ -141,6 +144,9 @@ public class JurReqTrc {
 				   myXpath = "//span[contains(@class,'label') and (contains(text(),\"Envoyer\"))]";
 				   MesFonctions.objet(driver,  myXpath).click();
 				   Thread.sleep(200);
+				   myXpath = "//div[contains(text(),\"En cours d'envoi\")]";
+				   MesFonctions.goToUp(driver, myXpath);
+				   Thread.sleep(200);
 				   System.out.println("Envoi réussi......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				   
 				  
@@ -164,6 +170,9 @@ public class JurReqTrc {
 				   //Envoyer
 				   myXpath = "//span[contains(@class,'label') and (contains(text(),\"Envoyer\"))]";
 				   MesFonctions.objet(driver,  myXpath).click();
+				   Thread.sleep(200);
+				   myXpath = "//div[contains(text(),\"En cours d'envoi\")]";
+				   MesFonctions.goToUp(driver, myXpath);
 				   Thread.sleep(200);
 				   System.out.println("Envoi réussi......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				   
@@ -190,9 +199,10 @@ public class JurReqTrc {
 			   //choix de la juridiction
 			   myXpath = "//select[@id='site-juridiction-id']";
 			   value = "1";
+			   MesFonctions.goToDown(driver, myXpath);
+			   Thread.sleep(500);
 			   MesFonctions.selection(driver, myXpath, value);
-			   Thread.sleep(300);
-			   System.out.println("TA PARIS");
+			   System.out.println(MesFonctions.objet(driver, "//select[@id='site-juridiction-id']//option[@value='1']").getText());
 			   
 			   myXpath = "//button[@type]//span[contains(text(),'Page suivante - Requête')]";
 			   MesFonctions.objet(driver,  myXpath).click();
@@ -934,8 +944,8 @@ public class JurReqTrc {
 			   myXpath = "//td[@id='Entete1_MenuActeur1_im1_AC']";
 			   MesFonctions.objet(driver,  myXpath).click(); 
 			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
-			   MesFonctions.objet(driver,  myXpath).click();
-			   Thread.sleep(200);
+			   MesFonctions.objet(driver, myXpath).click();
+			   Thread.sleep(500);
 			   System.out.println("Onglet \"Requêtes\" sélectionné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			   
 			   myXpath = "//td[contains(text(),'Déposé sur Télérecours par')]//following-sibling::td";
@@ -1092,7 +1102,7 @@ public class JurReqTrc {
 			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
 			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
-			   Thread.sleep(200);
+			   Thread.sleep(500);
 			   System.out.println("Onglet \"Requête\" sélectionné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			   
 			   myXpath = "//td[contains(text(),'Déposé sur Télérecours par')]//following-sibling::td";
@@ -1248,7 +1258,7 @@ public class JurReqTrc {
 			   myXpath = "//a[@class='numDossier' and (text()='" + dossier +" (TRC)')]";
 			   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			   MesFonctions.objet(driver,  myXpath).click();
-			   Thread.sleep(200);
+			   Thread.sleep(500);
 			   System.out.println("Onglet \"Requête\" sélectionné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			   
 			   myXpath = "//td[contains(text(),'Déposé sur Télérecours par')]//following-sibling::td";

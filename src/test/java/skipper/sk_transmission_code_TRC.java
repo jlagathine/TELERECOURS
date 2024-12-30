@@ -4,10 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
-import Juridictions.JurDocTrc;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurDocTrc;
 import lesFonctions.MesFonctions;
 import pdfGeneration.PdfCreationEtEcriture;
 import requete_depot_enreg.Requete_TR_depot_enreg;
@@ -31,7 +31,7 @@ public class sk_transmission_code_TRC {
 	
 	@Test(priority=1)
 	public void navigation_skipper() throws Throwable {
-		browserName = "chrome";
+		browserName = "edge";
 		env = "int1";
 		jur = "CTX";
 		saisine = "Jugement";
@@ -41,8 +41,8 @@ public class sk_transmission_code_TRC {
 			mail = "martial@yopmail.com";
 		}
 		password = "Lhommeest2019*";
-		id = "sice";
-		mdp = "sice";
+		id = "sice";//lb
+		mdp = "sice";//lb
 		dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env); //CAA 2400070; CE 367628; TA 2400152
 		
 		try {
@@ -161,6 +161,11 @@ public class sk_transmission_code_TRC {
 	
 	@Test(priority=5)
 	   public void Trc_depot_documents() throws Throwable {
+//		dossier = "412238";
+//		mail = "zaire@yopmail.com";
+//		jur = "CTX";
+//		browserName = "edge";
+//		env = "int1";
 		
 		driver = Navigateur.choixBrowser(browserName);
 	   try {
@@ -196,7 +201,6 @@ public class sk_transmission_code_TRC {
 		MicroFonctions.suppression_Mail_MailHog(driver, mail, env);
 		
 			}catch (Exception e) {
-		
 			My_SreenShot.takeScreenshot(driver);
 			e.printStackTrace();
 			throw new Exception("Test interrompu....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");

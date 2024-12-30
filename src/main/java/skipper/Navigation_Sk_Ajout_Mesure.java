@@ -43,8 +43,14 @@ public class Navigation_Sk_Ajout_Mesure {
 		//Déplacement du curseur vers le haut de l'historique - > Recherche ligne "requête nouvelle"
 		String nomHist = "ouvel";
 		if(jur=="TA" || jur=="CAA") {
+			if(jur=="TA") {
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Pointeur1-Skipper.png";
 			MesFonctions.OCR_champ_text_up(fileImage, coords, bounds, image, result, nomHist, 89, 185, 12);
+			}
+			if(jur=="CAA") {
+				fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Pointeur1-Skipper.png";
+				MesFonctions.OCR_champ_text_up(fileImage, coords, bounds, image, result, nomHist, 79, 185, 12);
+				}
 		
 		//click MESURES CONTEXTUELLES
 		if(jur=="TA") {
@@ -448,14 +454,14 @@ public class Navigation_Sk_Ajout_Mesure {
 			//Choix d'une de la mesure
 		switch (jur) {
 		case "TA":
-			nbr = 47;
+			nbr = 48;
 			for(int i=0; i<nbr; i++) {
 				Keyboard.keyBoard(KeyEvent.VK_DOWN);
 				}
 			break;
 			
 		case "CAA":
-			nbr = 25;
+			nbr = 26;
 			for(int i=0; i<nbr; i++) {
 				Keyboard.keyBoard(KeyEvent.VK_DOWN);
 				}
@@ -645,7 +651,7 @@ public class Navigation_Sk_Ajout_Mesure {
 			//Choix d'une de la mesure
 		switch (jur) {
 		case "TA":
-			nbr = 31;
+			nbr = 32;
 			for(int i=0; i<nbr; i++) {
 				Keyboard.keyBoard(KeyEvent.VK_DOWN);
 				}

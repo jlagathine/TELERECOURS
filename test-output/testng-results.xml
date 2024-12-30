@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-10T10:18:11 CEST" name="Default suite" finished-at="2024-10-10T10:18:59 CEST" duration-ms="48447">
+  <suite started-at="2024-12-20T17:56:29 CET" name="Default suite" finished-at="2024-12-20T17:57:22 CET" duration-ms="53138">
     <groups>
     </groups>
-    <test started-at="2024-10-10T10:18:11 CEST" name="Default test" finished-at="2024-10-10T10:18:59 CEST" duration-ms="48447">
-      <class name="trc.InscriptionTrc">
-        <test-method is-config="true" signature="navigateur()[pri:0, instance:trc.InscriptionTrc@302552ec]" started-at="2024-10-10T10:18:09 CEST" name="navigateur" finished-at="2024-10-10T10:18:11 CEST" duration-ms="1609" status="PASS">
+    <test started-at="2024-12-20T17:56:29 CET" name="Default test" finished-at="2024-12-20T17:57:22 CET" duration-ms="53138">
+      <class name="document.trDoc">
+        <test-method is-config="true" signature="InitialisationDoc()[pri:0, instance:document.trDoc@65d09a04]" started-at="2024-12-20T17:55:32 CET" name="InitialisationDoc" finished-at="2024-12-20T17:56:29 CET" duration-ms="57327" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- navigateur -->
-        <test-method is-config="true" signature="getPageTrc()[pri:0, instance:trc.InscriptionTrc@302552ec]" started-at="2024-10-10T10:18:11 CEST" name="getPageTrc" finished-at="2024-10-10T10:18:11 CEST" duration-ms="384" status="PASS">
+        </test-method> <!-- InitialisationDoc -->
+        <test-method is-config="true" signature="connexionTr()[pri:0, instance:document.trDoc@65d09a04]" started-at="2024-12-20T17:56:29 CET" name="connexionTr" finished-at="2024-12-20T17:56:32 CET" duration-ms="2815" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getPageTrc -->
-        <test-method signature="formulaireMoralTrc()[pri:2, instance:trc.InscriptionTrc@302552ec]" started-at="2024-10-10T10:18:11 CEST" name="formulaireMoralTrc" finished-at="2024-10-10T10:18:59 CEST" duration-ms="48033" status="PASS">
+        </test-method> <!-- connexionTr -->
+        <test-method signature="depotDoc()[pri:0, instance:document.trDoc@65d09a04]" started-at="2024-12-20T17:56:32 CET" name="depotDoc" finished-at="2024-12-20T17:57:22 CET" duration-ms="50076" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- formulaireMoralTrc -->
-        <test-method is-config="true" signature="fin()[pri:0, instance:trc.InscriptionTrc@302552ec]" started-at="2024-10-10T10:18:59 CEST" name="fin" finished-at="2024-10-10T10:19:00 CEST" duration-ms="951" status="PASS">
+        </test-method> <!-- depotDoc -->
+        <test-method is-config="true" signature="déconnexion()[pri:0, instance:document.trDoc@65d09a04]" started-at="2024-12-20T17:57:22 CET" name="déconnexion" finished-at="2024-12-20T17:57:22 CET" duration-ms="206" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- déconnexion -->
+        <test-method is-config="true" signature="fin()[pri:0, instance:document.trDoc@65d09a04]" started-at="2024-12-20T17:57:23 CET" name="fin" finished-at="2024-12-20T17:57:23 CET" duration-ms="186" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- fin -->
-      </class> <!-- trc.InscriptionTrc -->
+      </class> <!-- document.trDoc -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -10,6 +10,7 @@ import JDBC.JdbcClass;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import lesFonctions.MesFonctions;
 import requete_depot_enreg.Requete_TR_depot_enreg;
 import skipper.Navigation_Sk_Authentification;
 import skipper.Navigation_Sk_Fermeture_Application;
@@ -44,12 +45,12 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 	//Identifiant de connexion juridiction émétrice
 	id = "lb";
 	mdp = "lb";
-	jur = "CTX";
+	jur = "TA";
 	saisine = "Jugement";
 	dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
 	
 	//JDD - juridiction de transmission
-	jur_trans = "CAA";
+	jur_trans = "CTX";
 	type = "renvoi";
 	
 	
@@ -112,6 +113,7 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 	} catch (Exception e) {
 		My_SreenShot.takeScreenshot(driver);
 		e.printStackTrace();
+		throw new Exception("Test interrompu....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 	}	
 	
 	}
@@ -162,6 +164,7 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 		} catch (Exception e) {
 			My_SreenShot.screenshot();
 			e.printStackTrace();
+			throw new Exception("Test interrompu....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		}
 	}
 	
@@ -217,7 +220,7 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 		Transmission_TR_reception.choix_mesure_transmission(driver);
 		
 		//Selection du requérant si dossier TRC
-		Transmission_TR_reception.transmission_trc_rattachement(driver);
+//		Transmission_TR_reception.transmission_trc_rattachement(driver);
 		
 		//Enregistrer la transmission
 		Transmission_TR_reception.enregister_transmission(driver);
@@ -229,6 +232,7 @@ public class Transmission_type_renvoi_creation_dossier_sk {
 		} catch (Exception e) {
 		My_SreenShot.takeScreenshot(driver);
 		e.printStackTrace();
+		throw new Exception("Test interrompu....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		}
 	}
 }

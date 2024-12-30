@@ -10,9 +10,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import Juridictions.JurReqTr;
-import Juridictions.JurReqTrFlechage;
 import browser.Navigateur;
+import juridictions.JurReqTr;
+import juridictions.JurReqTrFlechage;
 
 public class TR_ReqFlechage {
 	

@@ -9,10 +9,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import Juridictions.JurReqTr;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurReqTr;
 
 public class TR_Req {
 
@@ -20,30 +20,29 @@ public class TR_Req {
 	   String browserName;
 	   String env;
 	   String dossier;
-	   String choixJur;
+	   String jur;
 	   String saisine;
 	
 	   @BeforeSuite
 	   public void InitialisationDoc() throws IOException{
 	   browserName = "chrome";
 	   env = "rec";
-	   choixJur = "CTX";//CAA, CTX, TA
+	   jur = "TA";//CAA, CTX, TA
 	   saisine = "Jugement"; //Premier ressort ; Jugement
 	   driver = Navigateur.choixBrowser(browserName);
-	   
 	   System.out.println(driver);
 	   }
 	   
 	   @BeforeMethod
 	   public void connexionTr() throws Throwable  {
-		  JurReqTr.maJuridiction(driver, choixJur, env);
+		  JurReqTr.maJuridiction(driver, jur, env);
 	   }
 	   
 	   @Test
 		public void depotReq() throws Throwable {
 	    try {
-			   dossier = JurReqTr.reqDepot(driver, choixJur, saisine, env);
-			   JurReqTr.reqEnreg(driver, choixJur, dossier, env);//attention à la méthode "refusEnrgReq()" et "reqEnreg()"
+			   dossier = JurReqTr.reqDepot(driver, jur, saisine, env);
+			   JurReqTr.reqEnreg(driver, jur, dossier, env);//attention à la méthode "refusEnrgReq()" et "reqEnreg()"
 			   
 		} catch (Exception e) {
 			
@@ -60,8 +59,7 @@ public class TR_Req {
 				
 		@AfterSuite
 		public void fin() {
-			System.out.println("LE TEST EST TERMINE !!!");
+			System.out.println("LE TEST EST TERMINE - !!!!");
 			driver.quit();
 		}
-	
 }

@@ -34,6 +34,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -241,10 +242,17 @@ public class MesFonctions {
 		   return fichiers;
 		}
 		
-		public static JavascriptExecutor addTab (WebDriver driver) {
+		public static void addTab (WebDriver driver) {
 			((JavascriptExecutor)driver).executeScript("window.open();");
+			System.out.println("Un onglet supplémentaire a été ouvert....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
-			return null;
+		}
+		
+		public static void addTabII (WebDriver driver) {
+			System.out.println(driver);
+			driver.switchTo().newWindow(WindowType.TAB);
+			System.out.println("Un onglet supplémentaire a été ouvert....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			
 		}
 		
 		public static void clickOn (WebDriver driver, String myXpath) {
@@ -655,5 +663,20 @@ public class MesFonctions {
 		return txt;
 	}
 	
+	public static void insertion_file(WebDriver driver, String myXpath, String name) {
+		
+		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+		File file = new File(classLoader.getResource(name).getFile());
+		
+		String absolutePath = file.getAbsolutePath().replace("%20", " ");
+		System.out.println("Chemin du fichier : "+absolutePath);
+		MesFonctions.objet(driver, myXpath).sendKeys(absolutePath);
+		System.out.println("Le fichier : "+name+" a été inseré....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+	}
+	
+	
+	public static Integer convertStringTo_Integer(String str) {
+		return Integer.parseInt(str);
+	}
 }
 

@@ -6,10 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
-import Juridictions.JurDocTr;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurDocTr;
 import requete_depot_enreg.Requete_TR_depot_enreg;
 import skipper.Navigation_Sk_Ajout_Mesure;
 import skipper.Navigation_Sk_Authentification;
@@ -38,7 +38,7 @@ public class Ajout_PAM {
 	public void navigation_sk() throws Throwable {
 	//Ajout de la mesure mémoire en défense
 	try {
-		browserName = "chrome";
+		browserName = "edge";
 		jur = "TA";
 		id = "lb";
 		mdp = "lb";

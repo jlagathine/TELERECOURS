@@ -7,10 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
-import Juridictions.JurInscripTr;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurInscripTr;
 import net.sourceforge.tess4j.TesseractException;
 import pdfGeneration.PdfCreationEtEcriture;
 import requete_depot_enreg.Requete_TRC_depot_enreg;

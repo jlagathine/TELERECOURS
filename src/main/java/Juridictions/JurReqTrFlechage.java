@@ -1,4 +1,4 @@
-package Juridictions;
+package juridictions;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -52,7 +52,6 @@ public class JurReqTrFlechage {
 	static String requete;
 	static String requete1;
 	static String requete2;
-	static int sum;
 	static int charge;
 	static int nombre;
 	static List<String> fil3 = new ArrayList<>(); 
@@ -205,7 +204,7 @@ public class JurReqTrFlechage {
 			
 			//Verifier nombre de fichiers chargés
 			charge = 8;//nombre de fichiers chargés
-			MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+			MicroFonctions.nombreFichiersCharges(nbr, charge);
 			
 			
 			// information par courriel
@@ -364,7 +363,7 @@ public class JurReqTrFlechage {
 			
 			//Verifier nombre de fichiers chargés
 			charge = 8;//nombre de fichiers chargés
-			MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+			MicroFonctions.nombreFichiersCharges(nbr, charge);
 			
 			// information par courriel
 			MicroFonctions.actInfoCourriel(driver);
@@ -522,7 +521,7 @@ public class JurReqTrFlechage {
 			
 			//Verifier nombre de fichiers chargés
 			charge = 8;//nombre de fichiers chargés
-			MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+			MicroFonctions.nombreFichiersCharges(nbr, charge);
 			
 			// information par courriel
 			MicroFonctions.actInfoCourriel(driver);

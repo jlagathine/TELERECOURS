@@ -94,7 +94,9 @@ public class Transmission_TR_reception {
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			MesFonctions.objet(driver, myXpath).clear();
 			MesFonctions.objet(driver, myXpath).sendKeys(req);
+			Thread.sleep(200);
 			Keyboard.keyBoard(KeyEvent.VK_ENTER);
+			Thread.sleep(200);
 			System.out.println("Le dossier de destination est renseigné......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			Thread.sleep(500);
 		}
@@ -102,11 +104,12 @@ public class Transmission_TR_reception {
 		return null;
 	}
 	
-	public static Object choix_mesure_transmission(WebDriver driver) {
+	public static Object choix_mesure_transmission(WebDriver driver) throws InterruptedException {
 		//Sélection de la mesure
 		String myXpath = "//select[@id='Mstr_cpMain_ddlMesure']";
 		int index = 1;
 		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+		Thread.sleep(500);
 		MesFonctions.selection_byIndex(driver, myXpath, index);
 		
 		//Vérification de la mesure sélectionnée

@@ -2,10 +2,10 @@ package requete_depot_enreg;
 
 import org.openqa.selenium.WebDriver;
 
-import Juridictions.JurReqTrc;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurReqTrc;
 
 public class Requete_TRC_depot_enreg {
 	

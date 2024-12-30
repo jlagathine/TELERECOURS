@@ -47,31 +47,35 @@ public class DepotEnregistrementBrouillon {
 	@Test
 	public void Depot() throws Throwable {
 	recours = "seulRequerant";//les types de recours = "seulRequerant"; "autresRequerant"; "mandataire"
+	//Suppression brouillon
+//	MicroFonctions.suppression_Brouillon_Trc(driver);//INUTILE
 	//Validation des CGU
-//	TrcDepotReq_Brouillon.avertissement(driver);
+	TrcDepotReq_Brouillon.avertissement(driver);
 	//Etape requérant
-//	TrcDepotReq_Brouillon.informationRequerant(driver);
+	TrcDepotReq_Brouillon.informationRequerant(driver);
 	//Etape choix de juridiction
-//	TrcDepotReq_Brouillon.juridiction(driver, "TA");//TA ; CAA ; CE
+	TrcDepotReq_Brouillon.juridiction(driver, "TA");//TA ; CAA ; CE
 	//Urgenge du dossier
-//	TrcDepotReq_Brouillon.urgenceJuridiction(driver, "TA");//TA ; CAA ; CE
+	TrcDepotReq_Brouillon.urgenceJuridiction(driver, "TA");//TA ; CAA ; CE
 	//Etape justificatifs
-//	microfonctions.depotFilesReqTrc(driver);
+	MicroFonctions.depotFilesReqTrc(driver);
 	
 	//Enregistrement du brouillon
-//	String step = microfonctions.enregistrerBrouillonTRC(driver, etape);
+	String step = MicroFonctions.enregistrerBrouillonTRC(driver, etape);
 		//retour à l'accueil
-//	microfonctions.boutonAccueilTrc(driver);
-	//Récupération du brouillon
-//	microfonctions.repriseBrouillonTRC(driver, step);
-	//Récupération du brouillon(1)
-//	microfonctions.enregistrerBrouillonTRC1(driver);
+	MicroFonctions.boutonAccueilTrc(driver);
+		//Récupération du brouillon
+	MicroFonctions.repriseBrouillonTRC(driver, step);
+		//Récupération du brouillon(1)
+	step = MicroFonctions.enregistrerBrouillonTRC1(driver, etape);
+		//retour à l'accueil
+	MicroFonctions.boutonAccueilTrc(driver);
 	
-	MicroFonctions.repriseBrouillonTRC1(driver);
+	MicroFonctions.repriseBrouillonTRC1(driver, step);
 	
 	MicroFonctions.pagePrecedentTrc(driver);
 	
-	MicroFonctions.depotFilesReqTrc_99Pieces(driver);
+//	MicroFonctions.depotFilesReqTrc_99Pieces(driver);
 	
 	}
 	

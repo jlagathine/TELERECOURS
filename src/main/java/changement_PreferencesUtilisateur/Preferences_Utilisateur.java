@@ -17,10 +17,10 @@ public class Preferences_Utilisateur {
 		marc617
 		Lhommeest2019* */
 	
-	public static String preferences_MDP(WebDriver driver) throws Throwable {
+	public static String preferences_MDP(WebDriver driver, String jur) throws Throwable {
 		for(int i=0; i<2 ;i++) {
 		//Accès aux préférences utilisateur
-		MicroFonctions.accesLienPreferencesUtilisateur(driver);
+		MicroFonctions.accesLienPreferencesUtilisateur(driver, jur);
 		
 		//Clic sur le lien change ment de mot de passe
 		String myXpath = "//a[@id='linkChamgementMotDePasse']";

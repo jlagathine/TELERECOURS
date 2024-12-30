@@ -4,10 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
-import Juridictions.JurDocTrc;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurDocTrc;
 import lesFonctions.MesFonctions;
 import requete_depot_enreg.Requete_TRC_depot_enreg;
 
@@ -28,10 +28,10 @@ import requete_depot_enreg.Requete_TRC_depot_enreg;
 		   @Test(priority = 1)
 		   public void Trc_creation_dossier() throws Throwable  {
 		   //choix du dossier de dépôt de mémoires
-		   jur = "CTX"; //"TA" ou "CAA" et "CTX"(solution de contournement quant aux numéros de dossiers à la fois présents dans les deux juridictions)
-		   env = "int1";//int1 ou rec
+		   jur = "TA"; //"TA" ou "CAA" et "CTX"(solution de contournement quant aux numéros de dossiers à la fois présents dans les deux juridictions)
+		   env = "rec";//int1 ou rec
 		   browserName = "chrome";
-		   dossier = "412206";//Requete_TRC_depot_enreg.TRC_depot_enreg(jur, browserName, env);//dossier : est le numéro de dossier 
+		   dossier = "2400470";//Requete_TRC_depot_enreg.TRC_depot_enreg(jur, browserName, env);//dossier : est le numéro de dossier 
 		   }
 		   
 		   @Test(priority = 2)

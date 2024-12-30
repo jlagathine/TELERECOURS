@@ -9,10 +9,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import Juridictions.JurReqTrc;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurReqTrc;
 import lesFonctions.MesFonctions;
 import trc.RefusTrc;
 
@@ -30,11 +30,11 @@ public class TRC_Req {
 
 	   @BeforeSuite
 	   public void InitialisationDoc() throws IOException {
-	   browserName = "chrome";
+	   browserName = "edge";//firefox ; chrome ; edge
 	   recours = "seulRequerant";//les types de recours = "seulRequerant"; "autresRequerant"; "mandataire"
 	   jur = "TA"; //les types de dépôt sont : "TA" ou "CAA" et "CTX"
 	   formulaire = "NoForm"; //NoForm/Form /Form1 avec ou sans formulaire 
-	   env = "rec";//int1 ou rec
+	   env = "int1";//int1 ou rec
 	   
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);

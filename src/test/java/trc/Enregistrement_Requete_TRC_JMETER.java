@@ -3,15 +3,16 @@ package trc;
 import java.sql.SQLException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
-import Juridictions.JurReqTrc;
 import browser.Navigateur;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurReqTrc;
 import lesFonctions.MesFonctions;
 
 public class Enregistrement_Requete_TRC_JMETER {
@@ -21,7 +22,7 @@ public class Enregistrement_Requete_TRC_JMETER {
 	String env;
 	String browserName;
 	String jur;
-	List<String> listJur = List.of("TA", "CAA", "CTX");
+	List<String> listJur = Arrays.asList("TA", "CAA", "CTX");
 	List<Integer> dossier_TA = new ArrayList<>();
 	List<Integer> dossier_CAA = new ArrayList<>();
 	List<Integer> dossier_CTX = new ArrayList<>();

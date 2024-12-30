@@ -1,4 +1,4 @@
-package Juridictions;
+package juridictions;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -34,7 +34,6 @@ public class JurDocTrFlechage {
 	static String requerant2;
 	static int index;
 	static String numDos;
-	static int sum;
 	static int charge;
 	static String nomMem;
 	static String nomInv;
@@ -176,7 +175,7 @@ public class JurDocTrFlechage {
 			
 			//Verifier nombre de fichiers chargés
 			charge = 5;//nombre de fichiers chargés
-			MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+			MicroFonctions.nombreFichiersCharges(nbr, charge);
 			
 			//Convertion des fichiers en PDF
 			MicroFonctions.conversionPDF(driver);
@@ -297,7 +296,7 @@ public class JurDocTrFlechage {
 				
 				//Verifier nombre de fichiers chargés
 				charge = 5;//nombre de fichiers chargés
-				MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+				MicroFonctions.nombreFichiersCharges(nbr, charge);
 				
 				//Convertion des fichiers en PDF
 				MicroFonctions.conversionPDF(driver);
@@ -418,7 +417,7 @@ public class JurDocTrFlechage {
 				
 				//Verifier nombre de fichiers chargés
 				charge = 5;//nombre de fichiers chargés
-				MicroFonctions.nombreFichiersCharges(nbr, sum, charge);
+				MicroFonctions.nombreFichiersCharges(nbr, charge);
 				
 				//Convertion des fichiers en PDF
 				MicroFonctions.conversionPDF(driver);

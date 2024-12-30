@@ -590,8 +590,8 @@ public class JdbcClass {
 	 }
 	 
 	 public static String deleteUserTrc (String name, String mail) throws SQLException {
-		 String delUser = "DELETE FROM jhi_user_authority WHERE user_id = (SELECT id FROM jhi_user WHERE email = '"+mail+"')";
-		 String delUser1 = "DELETE FROM jhi_user WHERE last_name = '"+name+"' AND email = '"+mail+"'";
+		 String delUser = "DELETE FROM user_authority WHERE user_id = (SELECT id FROM trc_user WHERE email = '"+mail+"')";
+		 String delUser1 = "DELETE FROM trc_user WHERE last_name = '"+name+"' AND email = '"+mail+"'";
 		 stmt = con2.createStatement();
 		 System.out.println("exécution des requêtes : "+delUser+"\r"+delUser1+"\r");
 		 try {
@@ -608,7 +608,7 @@ public class JdbcClass {
 	 public static String resSqlTrc() throws SQLException {
 		 
 		 String sql = "SELECT first_name, last_name, activated, email, fc_souscription "
-		 		+ "FROM jhi_user "
+		 		+ "FROM trc_user "
 		 		+ "WHERE email in ('gradenait@yopmail.com', 'zaire@yopmail.com', 'wossewodda-3728@yopmail.com', 'delvy@yopmail.com')" ;
 		 stmt = con2.createStatement();
 		 System.out.println("exécution de la requête : "+sql);
@@ -1097,10 +1097,10 @@ public class JdbcClass {
 	 public static String verification_etat_req_TRC_Async(String mail) throws SQLException {
 		 //Récupération de la transaction ID depuis la table TRC
 		 String sql1 = "SELECT r.transaction_id \r\n"
-		 		+ "FROM requete r\r\n"
+		 		+ "FROM appeal r\r\n"
 		 		+ "WHERE r.id = (SELECT max(r2.id) \r\n"
-		 		+ "				FROM requete r2 \r\n"
-		 		+ "				WHERE r2.user_id = (SELECT id FROM jhi_user\r\n"
+		 		+ "				FROM appeal r2 \r\n"
+		 		+ "				WHERE r2.user_id = (SELECT id FROM trc_user\r\n"
 		 		+ "		 		 								WHERE email in ('"+mail+"')))";
 		 System.out.println("exécution de la requête : "+sql1);
 		 String numDos = "";
@@ -1743,8 +1743,8 @@ public class JdbcClass {
 	 
 	 public static void TRC_Verification_creation_dossier_BDTRC(String dossier) throws SQLException {
 		 stmt = con2.createStatement();
-		 String sql = "SELECT DISTINCT (SELECT r2.numero_requete  FROM requete r2 WHERE r2.numero_requete ='"+dossier+"') AS DOSSIER\r\n"
-		 		+ "FROM requete r ";
+		 String sql = "SELECT DISTINCT (SELECT r2.appeal_number  FROM appeal r2 WHERE r2.appeal_number ='"+dossier+"') AS DOSSIER\r\n"
+		 		+ "FROM appeal r ";
 		 System.out.println("Exécution de la requête : "+sql);
 		 try {
 			 rs = stmt.executeQuery(sql);
@@ -1769,6 +1769,23 @@ public class JdbcClass {
 		}
 		 stmt.close(); 
 	 }
+	 
+	 public static void suppression_utilisateur() throws SQLException {
+		 
+		 String sql = "DELETE\r\n"
+		 		+ "FROM UTI_EXT_TR \r\n"
+		 		+ "WHERE PRENOM LIKE 'Utilisateur_%'\r\n"
+		 		+ "AND ANJ_AEXID = 13993";
+		 
+		 System.out.println(sql);
+		 
+		 stmt = con.createStatement();
+			try {
+				System.out.println("Nombre de ligne(s) supprimée(s) : "+stmt.executeUpdate(sql));
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+	 	}
 	 
 }
 

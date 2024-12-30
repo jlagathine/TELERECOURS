@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import JDBC.JdbcClass;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
+import changement_PreferencesUtilisateur.Preferences_Utilisateurs_Modification_MDP;
 import fonctionnalites.MicroFonctions;
 import lesFonctions.MesFonctions;
 
@@ -35,7 +36,7 @@ public class FinDeValididite_MDP {
 			name = "GIANIS";
 			ANJ_AEXID = 20661;
 			duree = 367;//{"WarningDelay": 10,"MaximumPasswordAge": 365}
-			jur = "CTX";
+			jur = "CAA";
 			identifiant = "gia458f";
 			password = "Lhommeest2019*";
 			
@@ -51,7 +52,16 @@ public class FinDeValididite_MDP {
 		   driver = Navigateur.choixBrowser(browserName);
 		   System.out.println(driver);
 		   switch (jur) {
-			case "TACAA":
+			case "TA":
+				if(env.equals("rec")) {
+					driver.get("https://www.telerecours.recette.juradm.fr/");
+				}
+				else {
+					driver.get("https://www.telerecours.int1.juradm.fr/");
+				}
+				break;
+				
+			case "CAA":
 				if(env.equals("rec")) {
 					driver.get("https://www.telerecours.recette.juradm.fr/");
 				}
@@ -133,9 +143,38 @@ public class FinDeValididite_MDP {
 	   public void authentification_nouveau_mdp() throws Throwable {
 		 //authentification
 		   try {
-		   password = "Q(D5YI6UlnZ53EV{)V}J0ymoUsZ*Xr";
-		   MicroFonctions.authentification_nouveau_Mdp(driver, jur, identifiant, password);
+		   password1 = "Q(D5YI6UlnZ53EV{)V}J0ymoUsZ*Xr";
+		   MicroFonctions.authentification_nouveau_Mdp(driver, jur, identifiant, password1);
+		   if(jur=="TA"||jur=="CAA") {
+			   if(jur=="CAA") {
+			   MicroFonctions.choixJuridictionCAA(driver);
+			   }else {
+				   MicroFonctions.choixJuridictionTA(driver);
+			   }
 		   MicroFonctions.deconnexionTrExt(driver);
+		   	}
+		   }
+		   catch(Exception e) {
+		   My_SreenShot.takeScreenshot(driver);
+		   e.printStackTrace();
+		 }
+	   }
+	   
+	   @Test(priority = 8)
+	   public void authentification_mdp_origin() throws Throwable {
+		 //authentification
+		   try {
+		   MicroFonctions.AuthentificationTaCaaCeExt(driver, identifiant, password1);
+		   if(jur=="TA"||jur=="CAA") {
+			   if(jur=="CAA") {
+			   MicroFonctions.choixJuridictionCAA(driver);
+			   }else {
+				   MicroFonctions.choixJuridictionTA(driver);
+			   }
+		   }
+		   Preferences_Utilisateurs_Modification_MDP.modifier_mdp(driver, password1, jur);
+		   MicroFonctions.deconnexionTrExt(driver);
+		   driver.quit();
 		   }
 		   catch(Exception e) {
 		   My_SreenShot.takeScreenshot(driver);

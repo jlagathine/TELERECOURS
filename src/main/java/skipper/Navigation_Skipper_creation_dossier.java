@@ -98,7 +98,7 @@ public class Navigation_Skipper_creation_dossier {
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
 		MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()+65/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
-		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+67, coords.getFirst().getSecond()+1, 186, 16);
+		bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+65, coords.getFirst().getSecond()+1, 186, 16);
 		image = MesFonctions.screenshot(bounds);
 		result = MesFonctions.OCR_decryptage(image);
 		}
@@ -107,8 +107,8 @@ public class Navigation_Skipper_creation_dossier {
 			coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 			coords = MesFonctions.waitObject(fileImage);
 			MesFonctions.singleClick(coords.getFirst().getFirst() + coords.getSecond().getFirst()+65/2, coords.getFirst().getSecond() + coords.getSecond().getSecond()/2);
-			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+75, coords.getFirst().getSecond()+2, 120, 16);
 			MesFonctions.mouveSouris(1, 1);
+			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+75, coords.getFirst().getSecond()+2, 120, 16);
 			image = MesFonctions.screenshot(bounds);
 			result = MesFonctions.OCR_decryptage(image);
 		}

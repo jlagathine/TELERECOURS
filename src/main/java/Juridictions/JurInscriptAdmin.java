@@ -1,4 +1,4 @@
-package Juridictions;
+package juridictions;
 
 import org.openqa.selenium.WebDriver;
 

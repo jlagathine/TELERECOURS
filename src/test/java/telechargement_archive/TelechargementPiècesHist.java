@@ -12,8 +12,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import Juridictions.JurTelechargementTr;
 import browser.Navigateur;
+import juridictions.JurTelechargementTr;
 
 /*
  * 

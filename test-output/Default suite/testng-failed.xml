@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="skipper.sk_transmission_code_TRC">
+      <class name="skipper.Skipper_Ajout_Defendeur">
         <methods>
-          <include name="Trc_depot_documents"/>
-          <include name="trc_enregistrement_doc"/>
+          <include name="fin"/>
+          <include name="creation_dossier"/>
+          <include name="Ajout_defendeur_dossier"/>
         </methods>
-      </class> <!-- skipper.sk_transmission_code_TRC -->
+      </class> <!-- skipper.Skipper_Ajout_Defendeur -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

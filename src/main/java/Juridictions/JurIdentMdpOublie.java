@@ -1,4 +1,4 @@
-package Juridictions;
+package juridictions;
 
 import java.time.Duration;
 
@@ -156,7 +156,7 @@ public class JurIdentMdpOublie {
 	return null;
 	}
 		   
-   	public static String recupIndentLienInvalideMdp (WebDriver driver, WebElement element, String jur, String mail) throws Throwable {
+   	public static String recupIndentLienInvalideMdp (WebDriver driver, String jur, String mail) throws Throwable {
 		switch (jur) {
 		case "TACAA":
 		   

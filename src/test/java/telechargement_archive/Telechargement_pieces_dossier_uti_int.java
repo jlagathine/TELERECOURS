@@ -2,7 +2,6 @@ package telechargement_archive;
 
 import java.io.IOException;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -12,10 +11,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import Juridictions.JurTelechargementTr;
 import browser.Navigateur;
+import fonctionnalites.MicroFonctions;
+import juridictions.JurTelechargementTr;
+import juridictions.Verif_ordre_pieces_apres_fusion;
 
-public class DemArch {
+public class Telechargement_pieces_dossier_uti_int {
 	
 	WebDriver driver;
 	   DesiredCapabilities caps;
@@ -28,7 +29,7 @@ public class DemArch {
 	   String value;
 	   String identifiant;
 	   String mdp;
-	   String choiJur;
+	   String jur;
 	   String dossier;
 
 	 @BeforeSuite
@@ -40,9 +41,9 @@ public class DemArch {
 	 
 	 @BeforeMethod 
 	 public void initialisation () throws Throwable {
-		 choiJur = "CTX";
-		 dossier = "367856";//2300045 (TA) ;2300023 (CAA) ;366709 (CTX) 
-		JurTelechargementTr.actExtConnexion(driver, choiJur); 
+		 jur = "CTX";
+		 dossier = "368007";//2300045 (TA) ; 2300023 (CAA) ; 366709 (CTX) 
+		JurTelechargementTr.actIntConnexion(driver, jur); 
 	 }
 	 
 	 @Test
@@ -51,10 +52,16 @@ public class DemArch {
 		JurTelechargementTr.telechargement(driver, dossier) ;
 	 }
 	 
+	 @Test
+	 public void verification_ordre_des_pieces_apres_fusion() throws InterruptedException{
+		Verif_ordre_pieces_apres_fusion.conglet_telechargement(driver);
+		Verif_ordre_pieces_apres_fusion.telechargement_de_la_fusion_des_pieces(driver);
+	 }
+	 
 	 @AfterMethod
 	 public void déconnexion() throws Exception {
 		Thread.sleep(100);
-		driver.findElement(By.xpath("//a[@id='lnkdeconnecter']")).click();
+		MicroFonctions.deconnexionTrInt(driver);
 		System.out.println("Déconnexion réussie");
 		Thread.sleep(200);
 		}

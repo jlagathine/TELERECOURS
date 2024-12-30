@@ -12,8 +12,8 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
-import Juridictions.JurRpvaInscript;
 import browser.NavigaChromHeader;
+import juridictions.JurRpvaInscript;
 
 public class rpvaConexion {
 	WebDriver driver;

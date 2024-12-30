@@ -6,11 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
-import Juridictions.JurDocTr;
-import Juridictions.JurDoc_Constitution;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurDocTr;
+import juridictions.JurDoc_Constitution;
 import requete_depot_enreg.Requete_TR_depot_enreg;
 
 public class TR_Constitution_Avocat {
@@ -133,12 +133,12 @@ public class TR_Constitution_Avocat {
 	   @Test(priority = 5)
 	   public void depot_lettre_constitution() throws Throwable {
 		 //Identifiants
-		   id = "ancQB44";
+		   id = "marc617";
 		   mdp = "Lhommeest2019*";
-//		   browserName = "chrome";
-//		   dossier = "2400650";
-//		   jur = "TA";
-//		   env = "rec";
+		   browserName = "chrome";
+		   dossier = "2400737";
+		   jur = "TA";
+		   env = "rec";
 		   
 		   //Connexion
 		   driver = Navigateur.choixBrowser(browserName);

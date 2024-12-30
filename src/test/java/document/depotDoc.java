@@ -125,7 +125,7 @@ public class depotDoc {
 			driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtNumsaisi']")).sendKeys(dossier);
 			driver.findElement(By.xpath("//a[@id='Mstr_cpMain_btnRechercherDossier']")).click();
 			Thread.sleep(1000);
-			String verificat = driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtNumDossier']")).getAttribute("value");
+			String verificat = driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtNumDossier']")).getDomAttribute("value");
 			boolean verif1 = verificat.equals(dossier);
 			if (verif1 == false) {
 				throw new Exception ("ERREUR SUR LE DOSSIER !!!");
@@ -380,7 +380,7 @@ public class depotDoc {
 		driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtNumsaisi']")).sendKeys(dossier);
 		driver.findElement(By.xpath("//a[@id='Mstr_cpMain_btnRechercherDossier']")).click();
 		Thread.sleep(1000);
-		String verificat = driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtNumDossier']")).getAttribute("value");
+		String verificat = driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtNumDossier']")).getDomAttribute("value");
 		boolean verif1 = verificat.equals(dossier);
 		if (verif1 == false) {
 			throw new Exception ("ERREUR SUR LE DOSSIER !!!");
@@ -646,7 +646,7 @@ public class depotDoc {
 		driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtNumsaisi']")).sendKeys(dossier);
 		driver.findElement(By.xpath("//a[@id='Mstr_cpMain_btnRechercherDossier']")).click();
 		Thread.sleep(1000);
-		String verificat = driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtNumDossier']")).getAttribute("value");
+		String verificat = driver.findElement(By.xpath("//input[@id='Mstr_cpMain_txtNumDossier']")).getDomAttribute("value");
 		boolean verif1 = verificat.equals(dossier);
 		if (verif1 == false) {
 			throw new Exception ("ERREUR SUR LE DOSSIER !!!");

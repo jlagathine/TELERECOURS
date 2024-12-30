@@ -118,7 +118,8 @@ public class brouillon {
 			String line = br.readLine().trim();
 		
 			while(line != null) {
-				System.out.println(line.replace(line, "'"+line+"',"));
+//				System.out.println(line.replace(line, "'"+line+"',"));
+				System.out.println(line.replace(",","', '"));
 				line = br.readLine();
 			}
 		} finally {

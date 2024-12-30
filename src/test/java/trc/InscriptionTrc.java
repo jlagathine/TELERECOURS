@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import browser.Navigateur;
@@ -27,7 +26,7 @@ public class InscriptionTrc {
 	
 	@BeforeSuite
 	 public void navigateur () throws IOException {
-		   browserName = "chrome";
+		   browserName = "edge";
 		   driver = Navigateur.choixBrowser(browserName);
 		   System.out.println(driver);
 		   }
@@ -38,12 +37,12 @@ public class InscriptionTrc {
 		 MicroFonctions.accueilPageTrc(driver, env);
 	 }
 	 
-	 @Ignore
+//	 @Ignore
 	 @Test(priority = 1)
 	 public void formulaireParticulierTrc() throws Throwable {
 		 try {
 			 
-		 type = "Particulier";//ParticulierDefaut; Particulier
+		 type = "ParticulierDefaut";//ParticulierDefaut; Particulier
 		 CreationCompteTrc.inscriptionTypeTrc(driver, type, compagny);
 		 CreationCompteTrc.activationCpt(driver, env);
 		 String name = "chantale";

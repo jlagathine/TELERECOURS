@@ -9,10 +9,10 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
-import Juridictions.JurDocTr;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
+import juridictions.JurDocTr;
 import lesFonctions.MesFonctions;
 import requete_depot_enreg.Requete_TR_depot_enreg;
 import skipper.Navigation_Sk_Authentification;
@@ -164,6 +164,7 @@ public class Decision_Envoi {
 			}catch (Exception e) {
 				My_SreenShot.takeScreenshot(driver);
 				e.printStackTrace();
+				throw new Exception("Test interrompu....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				}	
 		}
 	

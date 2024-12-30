@@ -37,6 +37,7 @@ public class Verification_element_page_accueil {
 			}
 			tab.clear();
 		}
+		System.out.println("\r");
 		return null;
 	}
 }

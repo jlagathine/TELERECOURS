@@ -97,6 +97,13 @@ public class JurDoc_Constitution {
 				}else {
 					throw new Exception("Les messages sont différent....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				}
+				
+				//Renseigner la partie représentée
+				myXpath = "//textarea[@id='Mstr_cpMain_txtReqPrincip']";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.objet(driver, myXpath).clear();
+				MesFonctions.objet(driver, myXpath).sendKeys("DEFENDEUR");
+				System.out.println("La partie représentée est renseignée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			}
 			else {
 				myXpath = "//span[@id='Mstr_cpMain_lblMessageAvertissement']";
@@ -105,18 +112,11 @@ public class JurDoc_Constitution {
 				System.out.println(mess);
 			}
 
-			//Renseigner la partie représentée
-			myXpath = "//textarea[@id='Mstr_cpMain_txtReqPrincip']";
-			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			MesFonctions.objet(driver, myXpath).clear();
-			MesFonctions.objet(driver, myXpath).sendKeys("DEFENDEUR");
-			System.out.println("La partie représentée est renseignée....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
-			
 			//Choix du document
 			myXpath = "//input[@id='Mstr_cpMain_rbPj_2']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			MesFonctions.objet(driver, myXpath).click();
-			System.out.println("Le choix du document réalisé : "+MesFonctions.objet(driver, myXpath).getAttribute("value")+"....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			System.out.println("Le choix du document réalisé : "+MesFonctions.objet(driver, myXpath).getDomAttribute("value")+"....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Type de lettre sélectionné
 			myXpath = "//select[@id='Mstr_cpMain_ddlTypeCourrier']";

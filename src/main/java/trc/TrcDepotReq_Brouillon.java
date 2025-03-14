@@ -85,17 +85,21 @@ public class TrcDepotReq_Brouillon {
 		return null;
 		}
 		
-		public static String urgenceJuridiction(WebDriver driver, String juridiction) throws Throwable {
+		public static String urgenceJuridiction(WebDriver driver, String juridiction, String select, String scn) throws Throwable {
 			switch (juridiction) {
 			case "TA":
-				MicroFonctions.choixUrgenceTATRC(driver);
+				select = "Autre";
+				scn = "";
+				MicroFonctions.choixUrgenceTATRC(driver, select, scn);
 				break;
 				
 			case "CAA":
+				select = "Autre";
 				MicroFonctions.choixUrgenceCAATRC(driver);
 				break;
 				
 			case "CE":
+				select = "Autre";
 				MicroFonctions.choixUrgenceCTXTRC(driver);
 				break;
 

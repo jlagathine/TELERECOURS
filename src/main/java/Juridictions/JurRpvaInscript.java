@@ -11,7 +11,7 @@ public class JurRpvaInscript {
 	static String mail;
 	static String env;
 	
-	public static String connexion(WebDriver driver, WebElement element, String choixJur) throws Throwable {
+	public static String connexion(WebDriver driver, String choixJur) throws Throwable {
 		switch (choixJur) {
 		case "TACAA":
 			env = "rec"; //rec ou int1
@@ -30,7 +30,7 @@ public class JurRpvaInscript {
 		return null;
 	}
 	
-	public static String edentitasIntegrerStruct(WebDriver driver, WebElement element, String choixJur) throws Throwable {
+	public static String edentitasIntegrerStruct(WebDriver driver, String choixJur) throws Throwable {
 		switch (choixJur) {
 		case "TACAA":
 			int RPVA_AVOCAT_ID = 529196;

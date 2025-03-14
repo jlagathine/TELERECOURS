@@ -28,10 +28,10 @@ import requete_depot_enreg.Requete_TRC_depot_enreg;
 		   @Test(priority = 1)
 		   public void Trc_creation_dossier() throws Throwable  {
 		   //choix du dossier de dépôt de mémoires
-		   jur = "TA"; //"TA" ou "CAA" et "CTX"(solution de contournement quant aux numéros de dossiers à la fois présents dans les deux juridictions)
+		   jur = "CAA"; //"TA" ou "CAA" et "CTX"(solution de contournement quant aux numéros de dossiers à la fois présents dans les deux juridictions)
 		   env = "rec";//int1 ou rec
-		   browserName = "chrome";
-		   dossier = "2400470";//Requete_TRC_depot_enreg.TRC_depot_enreg(jur, browserName, env);//dossier : est le numéro de dossier 
+		   browserName = "edge";
+		   dossier = Requete_TRC_depot_enreg.TRC_depot_enreg(jur, browserName, env);//dossier : est le numéro de dossier 
 		   }
 		   
 		   @Test(priority = 2)

@@ -1,7 +1,5 @@
 package refus;
 
-import java.io.IOException;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -22,7 +20,7 @@ public class RefusReqTR {
 	   String choixJur;
 	
 	   @BeforeSuite
-	   public void InitialisationDoc () throws IOException{
+	   public void InitialisationDoc () throws Throwable{
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);

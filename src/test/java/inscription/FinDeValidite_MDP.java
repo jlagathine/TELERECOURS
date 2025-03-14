@@ -1,6 +1,5 @@
 package inscription;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 import org.openqa.selenium.WebDriver;
@@ -13,7 +12,7 @@ import changement_PreferencesUtilisateur.Preferences_Utilisateurs_Modification_M
 import fonctionnalites.MicroFonctions;
 import lesFonctions.MesFonctions;
 
-public class FinDeValididite_MDP {
+public class FinDeValidite_MDP {
 	
 	WebDriver driver;
 	   String password;
@@ -47,8 +46,8 @@ public class FinDeValididite_MDP {
 		}
 
 	   @Test(priority = 2)
-		public void updateDB () throws SQLException, IOException {
-		   browserName = "chrome";
+		public void updateDB () throws Throwable {
+		   browserName = "firefox";
 		   driver = Navigateur.choixBrowser(browserName);
 		   System.out.println(driver);
 		   switch (jur) {

@@ -43,13 +43,13 @@ public class Sk_transmission_code_inscription_avocat {
 	@Test(priority=1)
 	public void ouverture_Skipper() throws TesseractException, Throwable {
 		env = "rec";
-		nom = "AUDUC";
+		nom = "BOY CAROLE";
 		browserName = "chrome";
 		saisine = "Jugement";
 		jur = "TA";
 		id = "lb";
 		mdp = "lb";
-		numdoc = "2400628";//Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
+		numdoc = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
 		try {
 			//SKIPPER
 			Navigation_Sk_Authentification.authentification_env(jur, id, mdp, env);

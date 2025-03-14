@@ -1,6 +1,5 @@
 package inscription;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 import org.openqa.selenium.WebDriver;
@@ -24,8 +23,8 @@ public class Creation_Utilisateur_Structure {
 	   String DB_mdp;
 
    @Test(priority = 1)  
-   public void connection_navigateur() throws IOException {
-	   browserName = "firefox";
+   public void connection_navigateur() throws Throwable {
+	   browserName = "chrome";
 	   env = "rec";
 	   jur = "TA";
 	   acteur = "bacFa3C";
@@ -45,7 +44,7 @@ public class Creation_Utilisateur_Structure {
 	 
    @Test(priority = 3)
    public void ajout_nouvel_acteur() throws Throwable {
-	 while(count<20) {
+	 while(count<3) {
 	 Inscription_menu_superviseur.gestion_utilisateur(driver);
 	 mail = Inscription_menu_superviseur.création_nouvel_acteur(driver, acteur, count);
 	  

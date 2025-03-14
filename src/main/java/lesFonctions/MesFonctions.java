@@ -274,9 +274,10 @@ public class MesFonctions {
 			return str;
 		}
 		
+		
 		public static String verifyPresenceOfAttribute (WebDriver driver, String myXpath, String nomAttr) throws Throwable {
 				Thread.sleep(100);
-			String str = driver.findElement(By.xpath(myXpath)).getAttribute("value").trim();
+			String str = driver.findElement(By.xpath(myXpath)).getDomAttribute("value").trim();
 				boolean verif = str.contains(nomAttr);
 			if(verif == true) {
 				Thread.sleep(100);
@@ -289,7 +290,7 @@ public class MesFonctions {
 		
 		public static String verifyPresenceOfAttribute1 (WebDriver driver, String myXpath, String nomAttr, String valueAttr) throws Throwable {
 			Thread.sleep(100);
-		String str = driver.findElement(By.xpath(myXpath)).getAttribute(nomAttr).trim();
+		String str = driver.findElement(By.xpath(myXpath)).getDomAttribute(nomAttr).trim();
 			boolean verif = str.contains(valueAttr);
 		if(verif == true) {
 			Thread.sleep(100);

@@ -1,7 +1,5 @@
 package inscription;
 
-import java.io.IOException;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,10 +11,9 @@ import org.testng.annotations.Test;
 
 import browser.Navigateur;
 import juridictions.JurInscripTr;
-import juridictions.JurInscriptAdmin;
+import juridictions.JurInvitIsnscriptConsult;
 
-public class InscriptAdministration {
-	
+public class Invitation_Et_Consultation_Administration {
 	
 	WebDriver driver;
 	String identifiant;
@@ -29,12 +26,12 @@ public class InscriptAdministration {
 	String browserName;
 	String choixJur;
 	String nomCE;
+	String env;
 	String nom;
 	String prenom;
-	String env;
 
 	 @BeforeSuite
-	   public void navigateur () throws IOException {
+	   public void navigateur () throws Throwable {
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);
@@ -43,7 +40,7 @@ public class InscriptAdministration {
 	 @BeforeMethod
 		public void choixSite() throws Throwable {
 			choixJur = "Conseil";//TACAA, Conseil
-			env = "int1";//rec ou int1
+			env = "int1"; //rec ou int1
 			JurInscripTr.maJuridiction(driver, choixJur, env);
 		}
 	 
@@ -52,14 +49,14 @@ public class InscriptAdministration {
 			choixJur = "CE";
 			
 			mdp = "Lhommeest2019*";
-			code = "CE-wc4adx" ;
-			motdepasse = "czw5dn";
+			code = "CE-dw990d" ;
+			motdepasse = "ij1e8h";
 			nom = "";
-			prenom = "";
+			prenom ="";
 			//ne pas oublier de définir les Strings "nom" et "prenom" dans "JuriInscriptAdmin"
 			
 			//Inscription
-			JurInscriptAdmin.inscription(driver, choixJur, code, motdepasse, nom, prenom);
+			JurInvitIsnscriptConsult.ConsultationInscription(driver, choixJur, code, motdepasse, nom, prenom);
 		}
 	 
 	 @AfterMethod
@@ -76,4 +73,5 @@ public class InscriptAdministration {
 			System.out.println("LE TEST EST TERMINE !!!");
 			driver.quit();
 		}
+
 }

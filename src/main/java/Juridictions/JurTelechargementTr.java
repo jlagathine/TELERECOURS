@@ -217,7 +217,7 @@ public class JurTelechargementTr {
 		return null;
 	}
 	
-	public static String telechgtOngletHisto(WebDriver driver, WebElement element, String choixJur, String numDossier) throws Throwable {
+	public static String telechgtOngletHisto(WebDriver driver, String choixJur, String numDossier) throws Throwable {
 		switch (choixJur) {
 		case "TA":
 			//Champs de recherche 
@@ -227,7 +227,7 @@ public class JurTelechargementTr {
 			MicroFonctions.consultationOngletHistoDossier(driver);
 			
 			//Téléchargement fichier depuis les événement de l'historique
-			MicroFonctions.telechgtDossierOngletHisto(driver, element);
+			MicroFonctions.telechgtDossierOngletHisto(driver, numDossier);
 			break;
 			
 		case "CAA":
@@ -238,7 +238,7 @@ public class JurTelechargementTr {
 			MicroFonctions.consultationOngletHistoDossier(driver);
 			
 			//Téléchargement fichier depuis les événement de l'historique
-			MicroFonctions.telechgtDossierOngletHisto(driver, element);
+			MicroFonctions.telechgtDossierOngletHisto(driver, numDossier);
 			break;
 			
 		case "CTX":
@@ -249,7 +249,7 @@ public class JurTelechargementTr {
 			MicroFonctions.consultationOngletHistoDossier(driver);
 			
 			//Téléchargement fichier depuis les événement de l'historique
-			MicroFonctions.telechgtDossierOngletHisto(driver, element);
+			MicroFonctions.telechgtDossierOngletHisto(driver, numDossier);
 			break;
 
 		default: System.err.println("Aucune juridiction à ce nom"); 

@@ -5,11 +5,9 @@ import org.testng.annotations.Test;
 
 import browser.Navigateur;
 import captureTool.My_SreenShot;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import referentiel.Authentication;
-import referentiel.Les_Referentiels_Pagination;
+import referentiel.Referentiels_Pagination;
+import referentiel.Referentiels_Verification_Nombre_Enregistrements;
 import referentiel.Verification_element_page_accueil;
 
 public class Referentiel_Test_Verification_donnees {
@@ -50,23 +48,35 @@ public class Referentiel_Test_Verification_donnees {
 	}
 	
 //	@Then("Je peux consulter l'ensemble des données enregistrées par référentiel")
-	@Test(priority = 3)
-	public void donnees_Ref() throws Throwable {
-		try {
-			
-			Verification_element_page_accueil.verification_nomRef_nbrRef_actRef(driver);
-			
-		} catch (Throwable e) {
-			My_SreenShot.takeScreenshot(driver);
-			   e.printStackTrace();
-		}
-	}
+//	@Test(priority = 3)
+//	public void donnees_Ref() throws Throwable {
+//		try {
+//			
+//			Verification_element_page_accueil.verification_nomRef_nbrRef_actRef(driver);
+//			
+//		} catch (Throwable e) {
+//			My_SreenShot.takeScreenshot(driver);
+//			   e.printStackTrace();
+//		}
+//	}
+//	
+//	@Test(priority = 4)
+//	public void pagination_ref() throws Throwable {
+//		try {
+//			
+//			Referentiels_Pagination.verification_pagination(driver);
+//			
+//		} catch (Throwable e) {
+//			My_SreenShot.takeScreenshot(driver);
+//			   e.printStackTrace();
+//		}
+//	}
 	
-	@Test(priority = 4)
-	public void pagination_ref() throws Throwable {
+	@Test(priority = 5)
+	public void verif_nbr_enregistrements_actifs_par_ref() throws Throwable {
 		try {
 			
-			Les_Referentiels_Pagination.verification_pagination(driver);
+			Referentiels_Verification_Nombre_Enregistrements.recuperation_nombre_enregistre_page_accueil(driver);
 			
 		} catch (Throwable e) {
 			My_SreenShot.takeScreenshot(driver);

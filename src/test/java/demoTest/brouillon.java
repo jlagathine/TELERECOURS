@@ -48,11 +48,11 @@ public class brouillon {
 		
 	public static void main(String[] args) throws Throwable {
 		
-//		browserName = "chrome";
-//		   driver = Navigateur.choixBrowser(browserName);
-//		   System.out.println(driver);
-//		   
-//		driver.get("https://www.telerecours.recette.juradm.fr/");//attention URL
+		browserName = "chrome";
+		   driver = Navigateur.choixBrowser(browserName);
+		   System.out.println(driver);
+		   
+		driver.get("https://www.telerecours.recette.juradm.fr/");//attention URL
 //		ID = "aja1XOV";
 //		mdp = "Conseiletat123456*";
 //		
@@ -112,19 +112,21 @@ public class brouillon {
 //		System.out.println(str);
 		
 		//formatter un fichier de log ligne par ligne en conservant l'information du numéro TR
-		BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\jagathine\\Desktop\\test.txt"));
-		try {
-
-			String line = br.readLine().trim();
+//		BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\jagathine\\Desktop\\test.txt"));
+//		try {
+//
+//			String line = br.readLine().trim();
+//		
+//			while(line != null) {
+////				System.out.println(line.replace(line, "'"+line+"',"));
+//				System.out.println(line.replace(",","', '"));
+//				line = br.readLine();
+//			}
+//		} finally {
+//			br.close();
+//		}	
 		
-			while(line != null) {
-//				System.out.println(line.replace(line, "'"+line+"',"));
-				System.out.println(line.replace(",","', '"));
-				line = br.readLine();
-			}
-		} finally {
-			br.close();
-		}	
+		driver.get("https://google.com");
 	}
 }
 

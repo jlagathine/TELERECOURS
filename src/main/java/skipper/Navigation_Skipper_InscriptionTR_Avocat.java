@@ -126,7 +126,7 @@ public class Navigation_Skipper_InscriptionTR_Avocat {
 					fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Btn_Icone_Annuaire - Skipper - Fiche acteur - CTX.png";
 						}
 						else {
-							fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_Annuaire-Fiche acteur_bis.png";//Bouton_Annuaire-Fiche acteur.png_bis ; Bouton_Annuaire-Fiche acteur.png
+							fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Bouton_Annuaire-Fiche acteur.png";//Bouton_Annuaire-Fiche acteur.png_bis ; Bouton_Annuaire-Fiche acteur.png
 						}
 		coords = (Pair<Pair<Integer, Integer>, Pair<Integer, Integer>>) CaptureIcone.capture(fileImage);
 		coords = MesFonctions.waitObject(fileImage);
@@ -382,8 +382,13 @@ public class Navigation_Skipper_InscriptionTR_Avocat {
 		image = MesFonctions.screenshot(bounds);
 		result = MesFonctions.OCR_decryptage(image);
 		
+		String newname = "";
+		if(result.toUpperCase().contains("AVOCAT")) {
+			newname = result.toUpperCase().split("AVOCAT")[1].trim();
+		}
+		System.out.println(newname+"....."+nom);
 		//Accéder à la liste des destinataires
-		while(!result.contains(nom)) {
+		while(!nom.contains(newname)) {
 			//Déplacement du curseur
 			Thread.sleep(100);
 			fileImage = "C:\\Users\\jagathine\\Desktop\\Images_Capture_script\\Pointer-destinataire-Communication du code Télérecours citoyens.png";
@@ -392,6 +397,7 @@ public class Navigation_Skipper_InscriptionTR_Avocat {
 			bounds = MesFonctions.setNewRectangle(coords.getFirst().getFirst()+12, coords.getFirst().getSecond(), 221, 18);
 			image = MesFonctions.screenshot(bounds);
 			result = MesFonctions.OCR_decryptage(image);
+			newname = result.toUpperCase().split("avocat")[0].trim();
 			Keyboard.keyBoard(KeyEvent.VK_DOWN);
 			}
 		

@@ -32,8 +32,8 @@ public class sk_transmission_code_TRC {
 	@Test(priority=1)
 	public void navigation_skipper() throws Throwable {
 		browserName = "edge";
-		env = "int1";
-		jur = "CTX";
+		env = "rec";
+		jur = "CAA";
 		saisine = "Jugement";
 		if(env == "int1") {
 			mail = "zaire@yopmail.com";
@@ -41,9 +41,10 @@ public class sk_transmission_code_TRC {
 			mail = "martial@yopmail.com";
 		}
 		password = "Lhommeest2019*";
-		id = "sice";//lb
-		mdp = "sice";//lb
-		dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env); //CAA 2400070; CE 367628; TA 2400152
+		id = "lb";//lb en recette ; sice en intégration
+		mdp = "lb";//lb en recette; sice en intégration
+		dossier = "2500076";//Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env); //CAA 2400070; CE 367628; TA 2400152
+		
 		
 		try {
 			//Skipper
@@ -82,7 +83,7 @@ public class sk_transmission_code_TRC {
 //			env = "int1";
 			
 			//TRC
-			driver = Navigateur.choixBrowser("chrome");
+			driver = Navigateur.choixBrowser("edge");
 			MicroFonctions.trcURl(driver, env);
 			MicroFonctions.AuthentificationTrc(driver, mail, password);
 			EntrerCodeRattachement.rattachementTRC(driver, code, jur, env);

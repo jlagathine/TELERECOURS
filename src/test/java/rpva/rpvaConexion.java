@@ -1,14 +1,6 @@
 package rpva;
 
-import java.sql.SQLException;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import JDBC.JdbcClass;
@@ -17,21 +9,20 @@ import juridictions.JurRpvaInscript;
 
 public class rpvaConexion {
 	WebDriver driver;
-	WebElement element;
 	String cnbf;
 	String value;
 	String name;
 	String env;
 	String mdp;
-	String choixJur;
+	String jur;
 	Integer ANJ_AEXID;
 	Integer RPVA_AVOCAT_ID;
 	
 	
-	@BeforeSuite
+	@Test (priority = 1)
 	public void Initialisation() throws Throwable {
 		env = "rec";
-		choixJur = "Conseil";
+		jur = "TA";
 		name = "tr_commun";
 		mdp = "tr_commun";
 		cnbf = "CNBF";
@@ -45,35 +36,35 @@ public class rpvaConexion {
 		
 		//conexion à la base de données
 	   	JdbcClass.conDBTR(name, mdp, env);
-	   	Thread.sleep(2000);
+	   	Thread.sleep(200);
 	   	
 		//paramétrage extension modHeader  
 	   	NavigaChromHeader.extension(driver, cnbf, value);	   
 	}
 	
-	 @BeforeMethod
+	 @Test(priority = 2)
 	   public void connexEdentitas() throws Throwable  {
 		 //Connexion à TR
-		 JurRpvaInscript.connexion(driver, element, choixJur); 
+		 JurRpvaInscript.connexion(driver, jur); 
 	   }
 	 
-	 @Test
+	 @Test(priority = 3)
 	 public void connexionJur() throws Throwable {
 		//Connexion à la plateforme Edentitas
-		 JurRpvaInscript.edentitasIntegrerStruct(driver, element, choixJur);	 
+		 JurRpvaInscript.edentitasIntegrerStruct(driver, jur);	 
 	}
 	 
-	 @AfterMethod
-		public void déconnexion() throws Exception {
-			Thread.sleep(1000);
-			driver.findElement(By.xpath("//a[@id='lnkdeconnecter']")).click();
-			System.out.println("Déconnexion réussie");
-			Thread.sleep(2000);
-		}
-				
-		@AfterSuite
-		public void fin() throws SQLException, Throwable {
-			System.out.println("LE TEST EST TERMINE !!!");
-			driver.quit();
-		}
+//	 @AfterMethod
+//		public void déconnexion() throws Exception {
+//			Thread.sleep(1000);
+//			driver.findElement(By.xpath("//a[@id='lnkdeconnecter']")).click();
+//			System.out.println("Déconnexion réussie");
+//			Thread.sleep(2000);
+//		}
+//				
+//		@AfterSuite
+//		public void fin() throws SQLException, Throwable {
+//			System.out.println("LE TEST EST TERMINE !!!");
+//			driver.quit();
+//		}
 }

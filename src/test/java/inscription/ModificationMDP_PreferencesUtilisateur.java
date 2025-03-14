@@ -1,7 +1,5 @@
 package inscription;
 
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -23,7 +21,7 @@ public class ModificationMDP_PreferencesUtilisateur {
 	
 	
 	@BeforeSuite
-	public void InitialisationDoc () throws IOException{
+	public void InitialisationDoc () throws Throwable{
 	browserName = "chrome";
 	env = "rec";
 	driver = Navigateur.choixBrowser(browserName);

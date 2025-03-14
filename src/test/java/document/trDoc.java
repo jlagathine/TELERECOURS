@@ -28,7 +28,7 @@ import requete_depot_enreg.Requete_TR_depot_enreg;
 	   
 	   @BeforeSuite
 	   public void InitialisationDoc () throws Throwable {
-	   browserName = "chrome";
+	   browserName = "edge";
 	   env = "rec"; 
 	   saisine = "Jugement";
 	   choiJur = "TA"; //Ne pas oublier de mettre les autres juridiction en commentaire

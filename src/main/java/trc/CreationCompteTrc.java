@@ -1,6 +1,5 @@
-package trcFonctions;
+package trc;
 
-import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.List;
 
@@ -12,7 +11,6 @@ import org.openqa.selenium.WebElement;
 import JDBC.JdbcClass;
 import fonctionnalites.MicroFonctions;
 import lesFonctions.MesFonctions;
-import myKeyboard.Keyboard;
 
 public class CreationCompteTrc {
 	
@@ -23,6 +21,8 @@ public class CreationCompteTrc {
 	static String mail;
 	static String onglet;
 	static String password;
+	static String fc_name;
+	static String fc_password;
 //	static String env;
 	
 	 public static String inscriptionTypeTrc(WebDriver driver, String type, String compagnie) throws Throwable {
@@ -31,6 +31,8 @@ public class CreationCompteTrc {
 		 prenom = "Sylviane";
 		 value = "Madame";
 		 password = "Lhommeest2019*";
+		 fc_name = "test_ALAIN";
+		 fc_password = "123";
 		 
 		 //Inscription compte particulier
 		 
@@ -41,7 +43,7 @@ public class CreationCompteTrc {
 				String myXpath = "//button[@class='btn big-outline-button' and text()=\"Compte particulier\"]";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 				MesFonctions.goToDown(driver, myXpath);
-				Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+//				Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
 				Thread.sleep(500);
 				
 				//Accès page d'inscription
@@ -129,10 +131,33 @@ public class CreationCompteTrc {
 			    MesFonctions.objet(driver, myXpath).click();
 			    System.out.println("Click bouton création......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			    
+			    //Validation des CGU
+			    myXpath = "//strong[contains(text(),\"générales d'utilisation\")]";
+			    boolean verif = false;
+				   if(MesFonctions.isElementPresent(driver, myXpath, verif)) {
+					   //Acceptation des CGU
+					   myXpath = "//input[@id='flexCheckDefault']";
+					   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+					   MesFonctions.goToDown(driver, myXpath);
+					   Thread.sleep(500);
+					   MesFonctions.objet(driver, myXpath).click();
+					   System.out.println("La coche a été cochée....."+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r");
+					    
+					   //Validation Status
+					   myXpath = "//button//span[contains(text(),\"Accepter et créer mon compte\")]";
+					   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+					   MesFonctions.goToDown(driver, myXpath);
+					   Thread.sleep(500);
+					   MesFonctions.objet(driver, myXpath).click();
+					   System.out.println("Les CGU ont été validés....."+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r"); 	   
+				   }
+			    
 			    //Vérification de l'envoi du mail
 			    myXpath = "//h2[contains(text(),\"Nous venons de vous envoyer un courriel à l'adresse "+mail+"\")]";
 			    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			    System.out.println("Accès à la page de vérification de l'envoi du courriel....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+			    
+			    
 			    
 			    
 			    //Succès création
@@ -150,7 +175,7 @@ public class CreationCompteTrc {
 				myXpath = "//button[@class='btn big-outline-button' and text()=\"Compte particulier\"]";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 				MesFonctions.goToDown(driver, myXpath);
-				Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+//				Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
 				Thread.sleep(500);
 				MesFonctions.objet(driver, myXpath).click();
 				System.out.println("Accès formulaire d'inscription particulier......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
@@ -286,6 +311,28 @@ public class CreationCompteTrc {
 			    MesFonctions.objet(driver, myXpath).click();
 			    System.out.println("Click bouton création......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			    
+			    //Validation des CGU
+			    myXpath = "//strong[contains(text(),\"générales d'utilisation\")]";
+			    verif = false;
+				   if(MesFonctions.isElementPresent(driver, myXpath, verif)) {
+					   //Acceptation des CGU
+					   myXpath = "//input[@id='flexCheckDefault']";
+					   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+					   MesFonctions.goToDown(driver, myXpath);
+					   Thread.sleep(500);
+					   MesFonctions.objet(driver, myXpath).click();
+					   System.out.println("La coche a été cochée....."+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r");
+					    
+					   //Validation Status
+					   myXpath = "//button//span[contains(text(),\"Accepter et créer mon compte\")]";
+					   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+					   MesFonctions.goToDown(driver, myXpath);
+					   Thread.sleep(500);
+					   MesFonctions.objet(driver, myXpath).click();
+					   System.out.println("Les CGU ont été validés....."+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r"); 	   
+				   }
+			    
+			    
 			    //Succès création
 //			    myXpath = "//button//span[contains(@class,'label') and text()=\"Créer mon compte\"]";
 //			    mesFonctions.objet(driver,  myXpath).click();
@@ -313,7 +360,7 @@ public class CreationCompteTrc {
 				myXpath = "//button[@class='btn big-outline-button' and text()=\"Compte personne morale\"]";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 				MesFonctions.goToDown(driver, myXpath);
-				Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
+//				Keyboard.keyBoardShortCut(KeyEvent.VK_CONTROL, KeyEvent.VK_END);
 				Thread.sleep(500);
 				MesFonctions.objet(driver, myXpath).click();
 				System.out.println("Accès formulaire d'inscription des personnes morales");
@@ -403,6 +450,28 @@ public class CreationCompteTrc {
 			    MesFonctions.objet(driver,  myXpath).click();
 			    System.out.println("Click bouton création......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			    
+			    //Validation des CGU
+			    myXpath = "//strong[contains(text(),\"générales d'utilisation\")]";
+			    verif = false;
+				   if(MesFonctions.isElementPresent(driver, myXpath, verif)) {
+					   //Acceptation des CGU
+					   myXpath = "//input[@id='flexCheckDefault']";
+					   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+					   MesFonctions.goToDown(driver, myXpath);
+					   Thread.sleep(500);
+					   MesFonctions.objet(driver, myXpath).click();
+					   System.out.println("La coche a été cochée....."+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r");
+					    
+					   //Validation Status
+					   myXpath = "//button//span[contains(text(),\"Accepter et créer mon compte\")]";
+					   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+					   MesFonctions.goToDown(driver, myXpath);
+					   Thread.sleep(500);
+					   MesFonctions.objet(driver, myXpath).click();
+					   System.out.println("Les CGU ont été validés....."+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r"); 	   
+				   }
+			    
+			    
 			    //Vérification de l'envoi du mail
 			    myXpath = "//h2[contains(text(),\"Nous venons de vous envoyer un courriel à l'adresse "+mail+"\")]";
 			    MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
@@ -416,6 +485,110 @@ public class CreationCompteTrc {
 			    
 			    break;
 			    
+			case "fc" :
+				myXpath = "//button[@aria-label=\"S'identifier avec FranceConnect\"]";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.goToDown(driver, myXpath);
+				Thread.sleep(500);
+				
+				//Accès page d'inscription
+				MesFonctions.objet(driver, myXpath).click();
+				System.out.println("Accès formulaire d'inscription FranceConnecte....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				
+				//Page d'authentification FC
+				myXpath = "//button[@id='fi-fip1-low']";
+//				myXpath = "//button[contains(@id,'idp-07')]";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.objet(driver, myXpath).click();
+				System.out.println("Accès à la page d'authentification....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				
+				//Authentification
+				myXpath = "//input[@id='login']";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.objet(driver, myXpath).clear();
+				MesFonctions.objet(driver, myXpath).sendKeys(fc_name);
+				System.out.println("Insertion de l'identifiant : "+fc_name);
+				
+				myXpath = "//input[@id='password']";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.objet(driver, myXpath).clear();
+				MesFonctions.objet(driver, myXpath).sendKeys(fc_password);
+				System.out.println("Insertion de l'identifiant : "+fc_password);
+				
+				myXpath = "//button[@type='submit']";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.objet(driver, myXpath).click();
+				
+				System.out.println("L'identifiant : '"+fc_name+"' et le mot de passe : '"+fc_password+"'......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				
+				//Redirection vers le site TRC
+				myXpath = "//button[@type='submit']";
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.objet(driver, myXpath).click();
+				
+				//Vérification des données
+				//Adresse
+				myXpath = "//input[@id='adresse1']"; 
+				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+				MesFonctions.goToDown(driver, myXpath);
+				Thread.sleep(500);
+				MesFonctions.objet(driver,  myXpath).sendKeys("2, rue des Indes");
+				
+					//Adresse 1
+				myXpath = "//input[@id='adresse2']"; 
+				MesFonctions.objet(driver,  myXpath).sendKeys("BAT 2");
+				System.out.println("Adresse Ok");
+				
+					//Adresse 2
+				myXpath = "//input[@id='adresse3']"; 
+				MesFonctions.objet(driver,  myXpath).sendKeys("Porte 136");
+				System.out.println("Adresse 1 Ok");
+				
+					//Code Postal
+				myXpath = "//input[@id='codePostal']";
+				MesFonctions.objet(driver,  myXpath).sendKeys("29100");
+				System.out.println("Adresse 2 Ok");
+				
+					//Ville
+				myXpath = "//input[@id='ville']";
+				MesFonctions.objet(driver,  myXpath).sendKeys("Poullan-sur-Mer");
+				System.out.println("Ville Ok");
+				
+				//Captcha
+			    myXpath10 = "//input[@id='captcha-input']";
+			   	System.out.println("Captcha présent; 15s pour le renseigner");
+			    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,  myXpath10));
+			    Thread.sleep(15000);
+			    
+			    //Création compte
+			    myXpath = "//span[text()=\"Créer mon compte\"]";
+			    MesFonctions.objet(driver,  myXpath).click();
+			    System.out.println("Click bouton création......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+				
+			    //Validation des CGU
+			    myXpath = "//strong[contains(text(),\"générales d'utilisation\")]";
+			    verif = false;
+				   if(MesFonctions.isElementPresent(driver, myXpath, verif)) {
+					   //Acceptation des CGU
+					   myXpath = "//input[@id='flexCheckDefault']";
+					   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+					   MesFonctions.goToDown(driver, myXpath);
+					   Thread.sleep(500);
+					   MesFonctions.objet(driver, myXpath).click();
+					   System.out.println("La coche a été cochée....."+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r");
+					    
+					   //Validation Status
+					   myXpath = "//button//span[contains(text(),\"Accepter et créer mon compte\")]";
+					   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
+					   MesFonctions.goToDown(driver, myXpath);
+					   Thread.sleep(500);
+					   MesFonctions.objet(driver, myXpath).click();
+					   System.out.println("Les CGU ont été validés....."+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r"); 	   
+				   }
+				   
+				break;
+				
+			    
 			default: System.err.println("Ce type n'existe pas....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				break;
 			} 
@@ -423,6 +596,8 @@ public class CreationCompteTrc {
 		 
 		 return null;
 	 }
+	 
+	 
 	 
 	 public static String activationCpt(WebDriver driver, String env) throws Throwable {
 		 //Accès MAilHog
@@ -793,13 +968,34 @@ public class CreationCompteTrc {
 		 return null; 
 	 }
 	 
-	 public static String delUser(String env) throws Throwable {
+	 public static void delUser(String env) throws Throwable {
 		name = "Rouafa";
 		mail = "hourma@yopmail.com";
 		System.out.println(name+"  "+mail);
 		JdbcClass.conDBTRC(env);
 		JdbcClass.deleteUserTrc(name, mail);
 		
-		return null;
 	 }
+	 
+	 public static void delUser_FC(String env) throws Throwable {
+			System.out.println(fc_name);
+			JdbcClass.conDBTRC(env);
+			JdbcClass.deleteUserTrc_Fc(fc_name);
+			
+		 }
+	 
+	//AUthentification
+	 public static void verification_Authentification_FC(WebDriver driver, String env) throws Throwable {
+	   MicroFonctions.deconnexionTrc(driver);
+	   JdbcClass.conDBTRC(env);
+	   String email = JdbcClass.recuperation_emailTrc_Fc(fc_name);
+	   if(env.equals("rec")) {
+		   driver.get("https://citoyens.recette.telerecours.fr/#/authentication"); 
+	   }else {
+		   driver.get("https://citoyens.int1.telerecours.fr/#/authentication");  
+	   }
+	   
+	   MicroFonctions.AuthentificationTrc(driver, email , fc_password);
+	   MicroFonctions.deconnexionTrc(driver);
+	}
 }

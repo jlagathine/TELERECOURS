@@ -275,7 +275,7 @@ public class JurReqTr {
 			//Préparer l'envoi d'une requête
 			myXpath = "//input[@id='btNewRequete2']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			MesFonctions.objet(driver,  myXpath).click();
+			MesFonctions.objet(driver, myXpath).click();
 			System.out.println("Click bouton \"PREPARER L'ENVOI D'UNE REQUETE\"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			
 			//Ajouter un requérant

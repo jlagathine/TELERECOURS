@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="skipper.Skipper_Ajout_Defendeur">
+      <class name="document.trDoc">
         <methods>
           <include name="fin"/>
-          <include name="creation_dossier"/>
-          <include name="Ajout_defendeur_dossier"/>
+          <include name="depotDoc"/>
+          <include name="déconnexion"/>
+          <include name="InitialisationDoc"/>
+          <include name="connexionTr"/>
         </methods>
-      </class> <!-- skipper.Skipper_Ajout_Defendeur -->
+      </class> <!-- document.trDoc -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

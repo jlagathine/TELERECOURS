@@ -1,7 +1,5 @@
 package telechargement_archive;
 
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -33,7 +31,7 @@ public class Telechargement_pieces_dossier_uti_int {
 	   String dossier;
 
 	 @BeforeSuite
-	   public void navigateur () throws IOException {
+	   public void navigateur () throws Throwable {
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);

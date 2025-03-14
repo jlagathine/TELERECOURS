@@ -35,7 +35,7 @@ public class JurIdentMdpOublie {
 			System.out.println("Page de récupération de ses identifiants......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			break;
 			
-		case "Conseil":
+		case "CTX":
 			env = "rec"; //rec ou int1
 			JurInscripTr.maJuridiction(driver, choixJur, env);
 			Thread.sleep(1000);
@@ -67,23 +67,23 @@ public class JurIdentMdpOublie {
 		   //Captcha
 		   myXpath = "//input[@id='InputCaptcha']";
 		   System.out.println("Captcha présent; 15s pour le renseigner");
-		   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver,  myXpath));
+		   ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",  MesFonctions.objet(driver, myXpath));
 		   Thread.sleep(15000);
 		   
 		   //Valider
 		   myXpath = "//button[@id='recovery-submit']";
 		   MesFonctions.objet(driver,  myXpath).click();
-		   System.out.println("Clic bouton Valider");
+		   System.out.println("Click bouton Valider........"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		   
 		   //page de confirmation
-		   myXpath = "//h2[text()=\" Votre demande de récupération d'identifiant et mot de passe Télérecours est prise en compte.\"]";
+		   myXpath = "//h2[text()=\" Votre demande de récupération d'identifiant et mot de passe Télérecours a bien été effectuée.\"]";
 		   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-		   System.out.println("Envoi confirmé");
+		   System.out.println("Envoi confirmé......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		   
 		   //Clic bouton "Retour"
 		   myXpath = "//a[@class='btn btn-primary']";
-		   MesFonctions.objet(driver,  myXpath).click();
-		   System.out.println("Retour à la page d'authentification");
+		   MesFonctions.objet(driver, myXpath).click();
+		   System.out.println("Retour à la page d'authentification......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		   myXpath = "//h1[text()='Se connecter']";
 		   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 		  
@@ -92,24 +92,17 @@ public class JurIdentMdpOublie {
 		   
 		   //Récupération de ses codes
 		   MicroFonctions.InscriptionRecovery(driver, jur);
-			
+		
+		   /*Cette partie est déjà dans le script précédent "MicroFonctions.InscriptionRecovery"*/
 		   //Choix de la juridiction
-		   MicroFonctions.choixJuridictionTA(driver);
-		   Thread.sleep(1000);
-			
-		   name = "Paris";
-		   myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
-		   verif = name.contains(MesFonctions.objet(driver,  myXpath).getText());
-		   Thread.sleep(1500);
-		   System.out.println(verif);
-		   if (!verif) {
-				System.err.println("la redirection n\'a pas bien fonctionné");
-			}
-		   Thread.sleep(3000);
+//		   MicroFonctions.choixJuridictionTA(driver);
+//		   Thread.sleep(200);
+		   
+		   Thread.sleep(300);
 			
 		   break;
 			
-		case "Conseil":
+		case "CTX":
 			//Renseigner son mail
 			myXpath = "//input[@id='Email']";
 			MesFonctions.objet(driver,  myXpath).sendKeys(mail);
@@ -122,11 +115,11 @@ public class JurIdentMdpOublie {
 		   
 		   //Valider
 		   myXpath = "//button[@id='recovery-submit']";
-		   MesFonctions.objet(driver,  myXpath).click();
+		   MesFonctions.objet(driver, myXpath).click();
 		   System.out.println("Clic bouton Valider");
 		   
 		   //page de confirmation
-		   myXpath = "//h2[text()=\" Votre demande de récupération d'identifiant et mot de passe Télérecours est prise en compte.\"]";
+		   myXpath = "//h2[text()=\" Votre demande de récupération d'identifiant et mot de passe Télérecours a bien été effectuée.\"]";
 		   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 		   System.out.println("Envoi confirmé");
 		   
@@ -136,17 +129,17 @@ public class JurIdentMdpOublie {
 		   //Récupération de ses codes
 		   MicroFonctions.InscriptionRecovery(driver, jur);
 			
-		   name = "Télérecours - Conseil d'Etat";
-		   myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
-		   verif = name.equals(MesFonctions.objet(driver,  myXpath).getText());
-		   Thread.sleep(1500);
-		   System.out.println(verif);
-		   if (!verif) {
-				System.err.println("la redirection n\'a pas bien fonctionné");
-			}else {
-				System.out.println("la redirection a bien fonctionné");
-			}
-			Thread.sleep(3000);
+//		   name = "Télérecours - Conseil d'Etat";
+//		   myXpath = "//div[@id='Entete1_EnteteTeleProcedure1_bandeau']";
+//		   verif = name.equals(MesFonctions.objet(driver, myXpath).getText());
+//		   Thread.sleep(1500);
+//		   System.out.println(verif);
+//		   if (!verif) {
+//				System.err.println("la redirection n\'a pas bien fonctionné");
+//			}else {
+//				System.out.println("la redirection a bien fonctionné");
+//			}
+//			Thread.sleep(3000);
 			
 		   break;
 		default: System.err.println("Désolé, cette juridiction n'existe pas");
@@ -218,7 +211,7 @@ public class JurIdentMdpOublie {
 				
 		break;
 				
-		case "Conseil":
+		case "CTX":
 			
 		   //Page mail
 		   MicroFonctions.mailYopRecovery(driver, mail);

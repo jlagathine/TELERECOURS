@@ -10,11 +10,8 @@ import lesFonctions.MesFonctions;
 public class Preferences_Utilisateurs_Modification_MDP {
 	
 	public static void modifier_mdp(WebDriver driver, String mdp, String jur) throws InterruptedException {
-		//Accès aux préférences utilisateur
-		MicroFonctions.accesLienPreferencesUtilisateur(driver, jur);
-		
 		//Clic sur le lien change ment de mot de passe
-		String myXpath = "//a[@id='linkChamgementMotDePasse']";
+		String myXpath = "//a[@id='Entete1_EnteteDonnee1_lnkPassword']";
 		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 		MesFonctions.objet(driver, myXpath).click();
 		System.out.println("Click sur le lien \"Changer mon mot de passe\"......"+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r");

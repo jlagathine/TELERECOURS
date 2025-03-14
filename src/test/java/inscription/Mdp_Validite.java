@@ -1,6 +1,5 @@
 package inscription;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 import org.openqa.selenium.By;
@@ -10,9 +9,10 @@ import org.testng.annotations.Test;
 import JDBC.JdbcClass;
 import browser.Navigateur;
 import captureTool.My_SreenShot;
+import changement_PreferencesUtilisateur.Preferences_Utilisateurs_Modification_MDP;
 import fonctionnalites.MicroFonctions;
 
-public class mdpValidite {
+public class Mdp_Validite {
 	WebDriver driver; 
 	   String username;
 	   String password;
@@ -43,11 +43,11 @@ public class mdpValidite {
 		
 		JdbcClass.conDBTR(nom, mdp, env);
 		JdbcClass.mdpValidite(duree, name, ANJ_AEXID);
-		Thread.sleep(3000);
+		Thread.sleep(300);
 	}
 	
 	@Test(priority = 2)
-	public void Initialisation () throws SQLException, IOException {
+	public void Initialisation () throws Throwable {
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);
@@ -61,7 +61,7 @@ public class mdpValidite {
 		MicroFonctions.mdpFinValidite(driver, identifiant, password, choixJur);
 		
 		//Changement de mot de passe depuis les préférences utilisateurs
-		MicroFonctions.PrefUserChangeMdp(driver, password1, choixJur);
+		Preferences_Utilisateurs_Modification_MDP.modifier_mdp(driver, password1, choixJur);
 		
 		}catch(Exception e) {
 		   My_SreenShot.takeScreenshot(driver);
@@ -71,10 +71,10 @@ public class mdpValidite {
 	
 	@Test(priority = 4)
 	public void déconnexion() throws Exception {
-		Thread.sleep(1000);
+		Thread.sleep(100);
 		driver.findElement(By.xpath("//a[@id='lnkdeconnecter']")).click();
 		System.out.println("Déconnexion réussie");
-		Thread.sleep(2000);
+		Thread.sleep(200);
 	}
 			
 	@Test(priority = 5)

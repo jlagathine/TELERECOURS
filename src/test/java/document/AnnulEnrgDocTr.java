@@ -1,7 +1,5 @@
 package document;
 
-import java.io.IOException;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,7 +32,7 @@ public class AnnulEnrgDocTr {
 	   String env;
 	   
 	   @BeforeSuite
-	   public void InitialisationDoc () throws IOException {
+	   public void InitialisationDoc () throws Throwable {
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);

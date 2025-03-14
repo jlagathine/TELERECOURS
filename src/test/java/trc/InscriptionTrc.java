@@ -1,19 +1,17 @@
 package trc;
 
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import browser.Navigateur;
 import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
 import lesFonctions.MesFonctions;
-import trcFonctions.CreationCompteTrc;
 
 public class InscriptionTrc {
 	
@@ -25,24 +23,23 @@ public class InscriptionTrc {
 	String env;
 	
 	@BeforeSuite
-	 public void navigateur () throws IOException {
-		   browserName = "edge";
+	 public void navigateur () throws Throwable {
+		   browserName = "chrome";
 		   driver = Navigateur.choixBrowser(browserName);
 		   System.out.println(driver);
 		   }
 	
 	 @BeforeMethod
 	 public void getPageTrc () {
-		 env = "int1";//Vérifier si le test est en int1 ou en recette
+		 env = "rec";//Vérifier si le test est en int1 ou en recette
 		 MicroFonctions.accueilPageTrc(driver, env);
 	 }
 	 
-//	 @Ignore
+	 @Ignore
 	 @Test(priority = 1)
 	 public void formulaireParticulierTrc() throws Throwable {
 		 try {
-			 
-		 type = "ParticulierDefaut";//ParticulierDefaut; Particulier
+		 type = "Particulier";//ParticulierDefaut; Particulier; fc 
 		 CreationCompteTrc.inscriptionTypeTrc(driver, type, compagny);
 		 CreationCompteTrc.activationCpt(driver, env);
 		 String name = "chantale";
@@ -58,7 +55,7 @@ public class InscriptionTrc {
 		
 	 }
 	 
-//	 @Ignore
+	 @Ignore
 	 @Test(priority = 2)
 	 public void formulaireMoralTrc () throws Throwable {
 		 try {
@@ -76,6 +73,13 @@ public class InscriptionTrc {
 			 e.printStackTrace();
 			 throw new Exception("Test interrompu....."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		   		}  
+	 }
+	 
+	 @Test(priority = 3)
+	 public void formulaire_FranceConnect_Trc() throws Throwable {
+		 type = "fc";
+		 CreationCompteTrc.inscriptionTypeTrc(driver, type, compagny);
+//		 CreationCompteTrc.delUser_FC(env);
 	 }
 	 
 

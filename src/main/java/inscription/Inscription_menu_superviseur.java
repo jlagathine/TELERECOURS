@@ -38,34 +38,34 @@ public class Inscription_menu_superviseur {
 			myXpath = "//select[@id='Mstr_cpMain_ddlCivilite']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			MesFonctions.selection(driver, myXpath, "1");
-			System.out.println("Civilité renseignée");
+			System.out.println("Civilité renseignée : ");
 			
 			//Nom
 			myXpath = "//input[@id='Mstr_cpMain_txtNom']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			String nom = "MONTEST";
 			MesFonctions.objet(driver, myXpath).sendKeys(nom);
-			System.out.println("Nom renseigné");
+			System.out.println("Nom renseigné : "+nom);
 			
 			//Prénom
 			myXpath = "//input[@id='Mstr_cpMain_txtPrenom']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			String prenom = "Utilisateur_"+count;
+			String prenom = "Utilisateurs_"+count;
 			MesFonctions.objet(driver, myXpath).sendKeys(prenom);
-			System.out.println("Prénom renseignée");
+			System.out.println("Prénom renseignée : "+prenom);
 			
 			//Mail
 			myXpath = "//input[@id='Mstr_cpMain_txtMail']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			String mail = nom.toLowerCase()+prenom.toLowerCase()+"@yopmail.com";
 			MesFonctions.objet(driver, myXpath).sendKeys(mail);
-			System.out.println("Mail renseigné");
+			System.out.println("Mail renseigné : "+mail);
 			
 			//Habilitation
 			myXpath = "//select[@id='Mstr_cpMain_ddlHabilitations']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 			MesFonctions.selection(driver, myXpath, "TAV");
-			System.out.println("Habilitation renseignée");
+			System.out.println("Habilitation renseignée : ");
 			
 		//Enregistrement de de l'ajout de l'utilisateur
 		myXpath = "//span[text()='Enregistrer']";

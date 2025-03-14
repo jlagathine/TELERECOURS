@@ -1,7 +1,5 @@
 package trc;
 
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -22,10 +20,11 @@ public class DepotEnregistrementBrouillon {
 	String recours;
 	String password;
 	String etape;
-	
+	String select;
+	String scn;
 	
 	@BeforeSuite
-	 public void InitialisationReqTrc() throws IOException {
+	 public void InitialisationReqTrc() throws Throwable {
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);
@@ -37,6 +36,8 @@ public class DepotEnregistrementBrouillon {
 		password = "Lhommeest2019*";
 //		mail = "zaire@yopmail.com";//"zaire@yopmail.com" pour l'INT1; "delvy@yopmail.com" pour la recette 
 		env = "rec";//int1 ou rec
+		select = "Autre";
+		scn = "";
 		if(env == "int1") {
 			mail = "zaire@yopmail.com";
 		}else {
@@ -56,9 +57,9 @@ public class DepotEnregistrementBrouillon {
 	//Etape choix de juridiction
 	TrcDepotReq_Brouillon.juridiction(driver, "TA");//TA ; CAA ; CE
 	//Urgenge du dossier
-	TrcDepotReq_Brouillon.urgenceJuridiction(driver, "TA");//TA ; CAA ; CE
+	TrcDepotReq_Brouillon.urgenceJuridiction(driver, "TA", select, scn);//TA ; CAA ; CE
 	//Etape justificatifs
-	MicroFonctions.depotFilesReqTrc(driver);
+	MicroFonctions.depotFilesReqTrc(driver, select, scn);
 	
 	//Enregistrement du brouillon
 	String step = MicroFonctions.enregistrerBrouillonTRC(driver, etape);

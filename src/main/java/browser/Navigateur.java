@@ -1,7 +1,5 @@
 package browser;
 
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -21,7 +19,7 @@ public class Navigateur {
 	   static WebDriver driver;
 	   
 	   
-	   public static WebDriver choixBrowser(String browserName) throws IOException {
+	   public static WebDriver choixBrowser(String browserName) throws Throwable {
 		   
 		   switch (browserName) {
 		   case "chrome":
@@ -45,7 +43,7 @@ public class Navigateur {
 				   
 				   System.out.println("Début Testcase......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			} catch (Exception e) {
-				My_SreenShot.takeScreenshot(driver);
+				My_SreenShot.screenshot();
 				e.printStackTrace();
 			}
 

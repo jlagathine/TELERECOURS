@@ -32,13 +32,13 @@ public class Skipper_Ajout_Defendeur {
 	public void creation_dossier() throws TesseractException, Throwable {
 	try {
 			//Paramétrage
-			jur = "CAA";
+			jur = "TA";
 			id = "lb"; //"sice" ; "lb"
 			mdp = "lb"; //"sice" ; "lb"
 			env = "rec"; //"rec" ; "int1"
-			browserName = "chrome_git";
+			browserName = "chrome";
 			saisine = "Jugement";
-			numdoc = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
+			numdoc = "2500082";//Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
 			
 			//Ajout défendeur
 			qualite = "defendeur"; //defendeur

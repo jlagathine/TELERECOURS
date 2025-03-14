@@ -1,7 +1,5 @@
 package requete;
 
-import java.io.IOException;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -19,10 +17,10 @@ public class TR_ReqFlechage {
 	WebDriver driver;
 	   String browserName;
 	   String env;
-	   String choixJur;
+	   String jur;
 	
 	   @BeforeSuite
-	   public void InitialisationDoc () throws IOException{
+	   public void InitialisationDoc () throws Throwable{
 	   browserName = "chrome";
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);
@@ -30,28 +28,29 @@ public class TR_ReqFlechage {
 	   
 	   @BeforeMethod
 	   public void connexionTr() throws Throwable  {
-		  choixJur = "Cour";
-		  JurReqTr.maJuridiction(driver, choixJur, env);
+		  jur = "TA";
+		  env = "rec";
+		  JurReqTr.maJuridiction(driver, jur, env);
 	   }
 	   
 	   @Test
 		public void depotReq() throws Throwable {
 				
-		   JurReqTrFlechage.reqDepotFlec(driver, choixJur);
+		   JurReqTrFlechage.reqDepotFlec(driver, jur);
 		   
-		   JurReqTrFlechage.reqEnreg(driver, choixJur, env);
+		   JurReqTrFlechage.reqEnreg(driver, jur, env);
 		   
-		   JurReqTrFlechage.reqJurVer(driver, choixJur);
+		   JurReqTrFlechage.reqJurVer(driver, jur);
 		   }
 	   
 	   @AfterMethod
 		public void déconnexion() throws Exception {
-			Thread.sleep(1000);
+			Thread.sleep(100);
 
 
 			driver.findElement(By.xpath("//a[@id='lnkdeconnecter']")).click();
 			System.out.println("Déconnexion réussie");
-			Thread.sleep(2000);
+			Thread.sleep(200);
 		}
 			
 		@AfterSuite

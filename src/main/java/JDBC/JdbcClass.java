@@ -589,7 +589,7 @@ public class JdbcClass {
 		 
 	 }
 	 
-	 public static String deleteUserTrc (String name, String mail) throws SQLException {
+	 public static void deleteUserTrc (String name, String mail) throws SQLException {
 		 String delUser = "DELETE FROM user_authority WHERE user_id = (SELECT id FROM trc_user WHERE email = '"+mail+"')";
 		 String delUser1 = "DELETE FROM trc_user WHERE last_name = '"+name+"' AND email = '"+mail+"'";
 		 stmt = con2.createStatement();
@@ -602,7 +602,46 @@ public class JdbcClass {
 			e.printStackTrace();
 		}
 		 
-		 return null;
+	 }
+	 
+	 public static void deleteUserTrc_Fc (String name) throws SQLException {
+		 String delUser = "DELETE FROM user_authority WHERE user_id = (SELECT id FROM trc_user WHERE first_name = '"+name.split("_")[1]+"' AND fc_subscription is not null)";
+		 String delUser1 = "DELETE FROM trc_user WHERE first_name = '"+name.split("_")[1]+"' AND fc_subscription is not null";
+		 stmt = con2.createStatement();
+		 System.out.println("exécution des requêtes : "+delUser+"\r"+delUser1+"\r");
+		 try {
+			 System.out.println(stmt.executeUpdate(delUser));
+			 System.out.println(stmt.executeUpdate(delUser1));
+			 if(stmt.executeUpdate(delUser)!=0 ||stmt.executeUpdate(delUser1)!=0) {
+				 System.out.println("L'utilisateur a bien été supprimé"); 
+			 }else {
+				 System.err.println("Aucun utilisateur supprimé");  
+			 }
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 
+	 }
+	 
+	 public static String recuperation_emailTrc_Fc (String name) throws SQLException {
+		 String sql = "SELECT a.email  FROM trc_user a WHERE first_name = '"+name.split("_")[1]+"' AND fc_subscription is not null";
+		 stmt = con2.createStatement();
+		 System.out.println("exécution des requêtes : "+sql+"\r");
+		 String email = "";
+		 try {
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				email = rs.getString(1);
+			}
+			System.out.println("L'email a été récupéré : "+email);
+		
+		 } catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return email;
 	 }
 	 
 	 public static String resSqlTrc() throws SQLException {
@@ -1532,12 +1571,14 @@ public class JdbcClass {
 		 		+ "FROM TR_COMMUN.ANN_TR B\r\n"
 		 		+ "WHERE B.ANJ_AEXID IN(SELECT C.ANJ_AEXID FROM TELERECOURS.ACT A, TELERECOURS.ANN_AVO C WHERE A.ANN_ID = C.AVO_ID AND A.QUA_ID = 'A' AND A.REQ_ID = '"+dossier+"') \r\n"
 		 		+ "OR B.ANJ_AEXID IN(SELECT D.ANJ_AEXID FROM TELERECOURS.ACT A, TELERECOURS.ANN_JUR D WHERE A.ANN_ID = D.ANJ_ID AND A.ANJ_TYPE = 'MIN' AND A.REQ_ID = '"+dossier+"')\r\n"
+		 		+ "AND B.ACTIF = 1"
 		 		+ "ORDER BY 1 ASC";
 		 
 		 String reqsql = "SELECT B.ACT_EMAIL\r\n"
 		 		+ "FROM TR_COMMUN.ANN_TR B\r\n"
 		 		+ "WHERE B.ANJ_AEXID IN(SELECT C.ANJ_AEXID FROM TELERECOURS.ACT A, TELERECOURS.ANN_AVO C WHERE A.ANN_ID = C.AVO_ID AND A.REQ_ID = '"+dossier+"') \r\n"
 		 		+ "OR B.ANJ_AEXID IN(SELECT D.ANJ_AEXID FROM TELERECOURS.ACT A, TELERECOURS.ANN_JUR D WHERE A.ANN_ID = D.ANJ_ID AND A.REQ_ID = '"+dossier+"')\r\n"
+		 		+ "AND B.ACTIF = 1"
 		 		+ "ORDER BY 1 ASC";
 		 
 		 List<String> lst = new ArrayList<>();
@@ -1771,8 +1812,11 @@ public class JdbcClass {
 	 }
 	 
 	 public static void suppression_utilisateur() throws SQLException {
-		 
 		 String sql = "DELETE\r\n"
+		 		+ "FROM PREFERENCES_UTILISATEURS \r\n"
+		 		+ "WHERE PU_UTI_ID IN (SELECT UTI_EXT_TR_ID  FROM UTI_EXT_TR WHERE PRENOM LIKE 'Utilisateur_% AND ANJ_AEXID = 13993')"; 
+		 
+		 String sql1 = "DELETE\r\n"
 		 		+ "FROM UTI_EXT_TR \r\n"
 		 		+ "WHERE PRENOM LIKE 'Utilisateur_%'\r\n"
 		 		+ "AND ANJ_AEXID = 13993";
@@ -1780,12 +1824,203 @@ public class JdbcClass {
 		 System.out.println(sql);
 		 
 		 stmt = con.createStatement();
+		 stmt1 = con.createStatement();
 			try {
-				System.out.println("Nombre de ligne(s) supprimée(s) : "+stmt.executeUpdate(sql));
+				System.out.println("Nombre de ligne(s) supprimée(s) (Table PREFERENCES_UTILISATEURS) : "+stmt.executeUpdate(sql));
+				System.out.println("Nombre de ligne(s) supprimée(s) (Table UTI_EXT_TR) : "+stmt1.executeUpdate(sql1));
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
+			stmt.close();
+			stmt1.close();
 	 	}
+	 
+	 public static void saisine_TA_verification_des_valeurs_chargees_en_BDD  (String numDossier) throws SQLException {
+		 String sql = "SELECT A.RT_ID, A.RT_DEC_DATE_CRE, A.RT_CD_XML_ID_NIS, A.RT_DEC_TYPE, A.RT_DEC_NIVEAU, A.RT_CD_XML_ID_ARE, A.RT_DEC_NUM   \r\n"
+		 		+ "FROM REQUETE A\r\n"
+		 		+ "WHERE A.RT_ID ='"+numDossier+"'";
+		 System.out.println(sql);
+		 
+		 stmt = con.createStatement();
+		 
+		 try {
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				if(rs.getString(2)!=null) {
+					System.out.println("La date de la décision renseignée est : \""+rs.getString(2)+"\"");
+					
+					if(rs.getString(3).equals("15") && rs.getString(4).equals("DCS") && rs.getString(5).equals("DA")){
+						System.out.println("La saisine est égale à \""+rs.getString(3)+"\" ");
+						System.out.println("La valeur du type de décision est : \""+rs.getString(4)+"\" ");
+						System.out.println("La valeur du niveau de décision est : \""+rs.getString(5)+"\" ");
+						System.out.println("La valeur de l'administration auteur de la décision attaquée est : \""+rs.getString(6)+"\" ");
+						System.out.println("La valeur du numéro de décision attaquée est : \""+rs.getString(7)+"\" ");
+						
+					}else {
+						System.err.println("Une ou plusieurs informations sont incohérentes..... "+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
+					}
+				}else {
+					System.out.println("La date de la décision est : \""+rs.getString(2)+"\"");
+					if(rs.getString(3)==null) {
+						System.out.println("La saisine est : \""+rs.getString(3)+"\"");
+					}else {
+						System.err.println("La saisine n'est pas nulle : \""+rs.getString(3)+"\"");
+					}
+					System.out.println("La valeur du type de décision est : \""+rs.getString(4)+"\"");
+					System.out.println("La valeur du niveau de décision est : \""+rs.getString(5)+"\"");
+					System.out.println("La valeur de l'administration auteur de la décision attaquée est : "+rs.getString(6)+" ");
+					System.out.println("La valeur du numéro de décision attaquée est : \""+rs.getString(7)+"\"");
+				}
+			}
+			 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 
+		 stmt.close(); 
+	 }
+
+	 
+	public static void Desactivation_Compte (String id) throws SQLException {
+		String sql = "UPDATE UTI_EXT_TR\r\n"
+				+ "SET ETATCOMPTE = 'Désactivé'\r\n"
+				+ "WHERE MNEMO = '"+id+"'";
+		
+		String sql1 = "SELECT A.ETATCOMPTE \r\n"
+				+ "FROM UTI_EXT_TR A\r\n"
+				+ "WHERE A.MNEMO = '"+id+"'";
+		
+		System.out.println(sql+"\r");
+		System.out.println(sql1+"\r");
+		
+		stmt = con.createStatement();
+		stmt1 = con.createStatement();
+		
+		
+		try {
+				System.out.println("L'état du compte est modififé : "+stmt.executeUpdate(sql)+" ligne(s) modifiée(s)....."+MesFonctions.extractCurrentHeure()+"\r");
+				
+				rs = stmt1.executeQuery(sql1);
+				while(rs.next()) {
+				if(rs.getString(1).equals("Désactivé")) {
+					System.out.println("Le compte est bien à l'état \"Désactivé\"......"+MesFonctions.extractCurrentHeure()+"\r");
+				}else {
+					System.err.println("Le compte n'est pas à l'état \"désactivé\"......"+MesFonctions.extractCurrentHeure()+"\r");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		stmt.close();
+		stmt1.close();
+	}
+	
+	public static void Activation_Compte (String id) throws SQLException {
+		String sql = "UPDATE UTI_EXT_TR\r\n"
+				+ "SET ETATCOMPTE = 'Actif'\r\n"
+				+ "WHERE MNEMO = '"+id+"'";
+		
+		String sql1 = "SELECT A.ETATCOMPTE  \r\n"
+				+ "FROM UTI_EXT_TR A\r\n"
+				+ "WHERE A.MNEMO = '"+id+"' ";
+		
+		System.out.println(sql+"\r");
+		System.out.println(sql1+"\r");
+		
+		stmt = con.createStatement();
+		stmt1 = con.createStatement();
+		
+		
+		try {
+				System.out.println("L'état du compte est modififé : "+stmt.executeUpdate(sql)+" ligne(s) modifiée(s)....."+MesFonctions.extractCurrentHeure()+"\r");
+				
+				rs = stmt1.executeQuery(sql1);
+				while(rs.next()) {
+				if(rs.getString(1).equals("Actif")) {
+					System.out.println("Le compte est bien à l'état \"Actif\"......"+MesFonctions.extractCurrentHeure()+"\r");
+				}else {
+					System.err.println("Le compte n'est pas à l'état \"Actif\"......"+MesFonctions.extractCurrentHeure()+"\r");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		stmt.close();
+		stmt1.close();
+	}
+	
+	
+	public static void Désactivation_Compte_Acteur(Integer acteur) throws SQLException {
+		String sql = "UPDATE ANN_TR\r\n"
+				+ "SET ACTIF = 0\r\n"
+				+ "WHERE ANJ_AEXID = "+acteur+"";
+		
+		String sql1 = "SELECT A.ACTIF  \r\n"
+				+ "FROM ANN_TR A\r\n"
+				+ "WHERE A.ANJ_AEXID = "+acteur+" ";
+		
+		System.out.println(sql+"\r");
+		System.out.println(sql1+"\r");
+		
+		stmt = con.createStatement();
+		stmt1 = con.createStatement();
+		
+		
+		try {
+			
+				System.out.println("L'état du compte est modififé : "+stmt.executeUpdate(sql)+" ligne(s) modifiée(s)....."+MesFonctions.extractCurrentHeure()+"\r");
+				rs = stmt1.executeQuery(sql1);
+				while(rs.next()) {
+				if(rs.getInt(1)== 0) {
+					System.out.println("L'acteur est bien à l'état \"0\"......"+MesFonctions.extractCurrentHeure()+"\r");
+				}else {
+					System.err.println("L'acteur n'est pas à l'état \"0\"......"+MesFonctions.extractCurrentHeure()+"\r");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		stmt.close();
+		stmt1.close();
+	}
+	
+	public static void Activation_Compte_Acteur(Integer acteur) throws SQLException {
+		String sql = "UPDATE ANN_TR\r\n"
+				+ "SET ACTIF = 1\r\n"
+				+ "WHERE ANJ_AEXID = "+acteur+"";
+		
+		String sql1 = "SELECT A.ACTIF  \r\n"
+				+ "FROM ANN_TR A\r\n"
+				+ "WHERE A.ANJ_AEXID = "+acteur+" ";
+		
+		System.out.println(sql+"\r");
+		System.out.println(sql1+"\r");
+		
+		stmt = con.createStatement();
+		stmt1 = con.createStatement();
+		
+		
+		try {
+			
+				System.out.println("L'état du compte est modififé : "+stmt.executeUpdate(sql)+" ligne(s) modifiée(s)....."+MesFonctions.extractCurrentHeure()+"\r");
+				rs = stmt1.executeQuery(sql1);
+				while(rs.next()) {
+				if(rs.getInt(1)== 1) {
+					System.out.println("L'acteur est bien à l'état \"1\"......"+MesFonctions.extractCurrentHeure()+"\r");
+				}else {
+					System.err.println("L'acteur n'est pas à l'état \"1\"......"+MesFonctions.extractCurrentHeure()+"\r");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		stmt.close();
+		stmt1.close();
+	}
 	 
 }
 

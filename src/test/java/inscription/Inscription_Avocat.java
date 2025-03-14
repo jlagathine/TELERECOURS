@@ -1,7 +1,5 @@
 package inscription;
 
-import java.io.IOException;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +12,7 @@ import org.testng.annotations.Test;
 import browser.Navigateur;
 import juridictions.JurInscripTr;
 
-public class inscriptAvo {
+public class Inscription_Avocat {
 	
 	WebDriver driver;
 	String identifiant;
@@ -31,7 +29,7 @@ public class inscriptAvo {
 	
 
 	@BeforeSuite
-	public void InitialisationDoc () throws IOException {
+	public void InitialisationDoc () throws Throwable {
 		 browserName = "chrome";
 		   driver = Navigateur.choixBrowser(browserName);
 		   System.out.println(driver);	

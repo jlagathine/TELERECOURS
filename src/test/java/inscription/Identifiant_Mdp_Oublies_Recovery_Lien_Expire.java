@@ -1,8 +1,6 @@
 package inscription;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
@@ -14,7 +12,7 @@ import captureTool.My_SreenShot;
 import fonctionnalites.MicroFonctions;
 import juridictions.JurIdentMdpOublie;
 
-public class IdentMdpOublie_Recovery {
+public class Identifiant_Mdp_Oublies_Recovery_Lien_Expire {
 	WebDriver driver; 
 	   String browserName;
 	   String mail;
@@ -24,11 +22,11 @@ public class IdentMdpOublie_Recovery {
 	   @Test//(invocationCount = 5)==loop i=5
 		public void recuperation_identifiants_apres_expriration_jeton() throws Throwable {
 		   try {
-		   browserName = "chrome";
+		   browserName = "firefox";
 		   driver = Navigateur.choixBrowser(browserName);
 		   System.out.println(driver);
 		   
-			mail = "gianis@yopmail.com";
+			mail = "boycarole@yopmail.com";
 			jur = "TACAA";
 		   JurIdentMdpOublie.recupIndentLienInvalideMdp(driver, jur, mail);
 		   } 

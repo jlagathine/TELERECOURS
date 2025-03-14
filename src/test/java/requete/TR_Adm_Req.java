@@ -1,7 +1,5 @@
 package requete;
 
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -22,7 +20,7 @@ public class TR_Adm_Req {
 	   String choixJur;
 	
 	   @BeforeSuite
-	   public void InitialisationDoc() throws IOException{
+	   public void InitialisationDoc() throws Throwable{
 	   browserName = "chrome";
 	   env = "rec";
 	   choixJur = "CTX";//CAA, CTX, TA

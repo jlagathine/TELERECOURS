@@ -15,7 +15,6 @@ import lesFonctions.MesFonctions;
 import trc.Trc_depot_formulaire;
 
 public class JurReqTrc {
-	static WebElement element; 
 	static String username;
 	static String password;
 	static boolean verif;
@@ -68,15 +67,10 @@ public class JurReqTrc {
 		//Authentification
 		myXpath = "//input[@id='username']";
 		
-		if(MesFonctions.isElementPresent(driver, myXpath, verif)) 
-		
-		{
-		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(5));
-		MicroFonctions.AuthentificationTrc(driver, idUser, password);
-//		Thread.sleep(2000);
-		}
-		
-		else {
+		if(MesFonctions.isElementPresent(driver, myXpath, verif)) {
+			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(5));
+			MicroFonctions.AuthentificationTrc(driver, idUser, password);
+		}else {
 			System.err.println("Authentification déjà effectuée......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 		}
 							  
@@ -93,7 +87,7 @@ public class JurReqTrc {
 		return null;
 	}
 	
-	public static String reqDepotTrc (WebDriver driver, String jur, String form) throws Throwable {
+	public static String reqDepotTrc (WebDriver driver, String jur, String form, String selct, String scn) throws Throwable {
 		switch (form) {
 		case "NoForm":
 	
@@ -103,10 +97,10 @@ public class JurReqTrc {
 				   MicroFonctions.juridictionTATRC(driver);
 				   
 				   //Choix urgence 
-				   MicroFonctions.choixUrgenceTATRC(driver);
+				   MicroFonctions.choixUrgenceTATRC(driver, selct, scn);
 				   
 				   //dépôt fichiers (1 REQ, 1 DECACT, 4PC ou 97PC <= 99)
-				   MicroFonctions.depotFilesReqTrc(driver);//depotFilesReqTrc_99Pieces ou depotFilesReqTrc
+				   MicroFonctions.depotFilesReqTrc(driver, selct, scn);//depotFilesReqTrc_99Pieces ou depotFilesReqTrc
 				   System.out.println("Dépôt de fichiers réalisé......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				   Thread.sleep(100);
 				   
@@ -116,8 +110,9 @@ public class JurReqTrc {
 				   //Envoyer
 				   myXpath = "//span[contains(@class,'label') and (contains(text(),\"Envoyer\"))]";
 				   MesFonctions.objet(driver, myXpath).click();
-				   Thread.sleep(200);
+				   Thread.sleep(400);
 				   myXpath = "//div[contains(text(),\"En cours d'envoi\")]";
+				   MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(5));
 				   MesFonctions.goToUp(driver, myXpath);
 				   Thread.sleep(200);
 				   System.out.println("Envoi réussi......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
@@ -133,7 +128,7 @@ public class JurReqTrc {
 				   MicroFonctions.choixUrgenceCAATRC(driver);
 				   
 				   //dépôt fichiers (1 REQ, 1 DECACT, 4PC ou 97PC <= 99)
-				   MicroFonctions.depotFilesReqTrc(driver);//depotFilesReqTrc_99Pieces ou depotFilesReqTrc
+				   MicroFonctions.depotFilesReqTrc(driver, selct, scn);//depotFilesReqTrc_99Pieces ou depotFilesReqTrc
 				   System.out.println("Dépôt de fichiers réalisé......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				   Thread.sleep(100);
 				   
@@ -160,7 +155,7 @@ public class JurReqTrc {
 				   MicroFonctions.choixUrgenceCTXTRC(driver);
 				   
 				   //dépôt fichiers (1 REQ, 1 DECACT, 4PC ou 97PC <= 99)
-				   MicroFonctions.depotFilesReqTrc(driver);//depotFilesReqTrc_99Pieces ou depotFilesReqTrc
+				   MicroFonctions.depotFilesReqTrc(driver, selct, scn);//depotFilesReqTrc_99Pieces ou depotFilesReqTrc
 				   System.out.println("Dépôt de fichiers réalisé......."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 				   Thread.sleep(100);
 				   
@@ -883,7 +878,7 @@ public class JurReqTrc {
 		return requete;
 	}
 	
-	public static String reqEnrgTrc (WebDriver driver, String jur, String dossier, String env) throws Throwable {
+	public static String reqEnrgTrc (WebDriver driver, String jur, String dossier, String env, String scn) throws Throwable {
 		switch (jur) {
 		
 		case "TA":
@@ -952,21 +947,23 @@ public class JurReqTrc {
 			   String auteur = MesFonctions.leTexte(driver, texte, myXpath);
 			   System.out.println("Auteur du dépôt : "+auteur+"\r");
 			   Thread.sleep(100);
-			   
+			  
 			   //Vérification des fichiers
-			   System.out.println("vérification des fichiers en cours...");
-			   myXpath = "//a[@id='fileLinkFichierDecAttq_hplFichier']";
-			   caractSpec = "_";
-			   String actAtt = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
-			   str1.add(actAtt);
-			   Thread.sleep(500);
+			   if(scn!="2") {
+				   System.out.println("vérification des fichiers en cours...");
+				   myXpath = "//a[@id='fileLinkFichierDecAttq_hplFichier']";
+				   caractSpec = "_";
+				   String actAtt = (MesFonctions.leNom(driver, myXpath, caractSpec)).replace("_", " ").trim();
+				   str1.add(actAtt);
+				   Thread.sleep(500); 
+			   }
 			   
 			   myXpath = "//a[contains(@id,'rptPiecesJointe_ct')]";
 			   elements = driver.findElements(By.xpath(myXpath)); 
 			   
 			   int taille = elements.size();
 			   for(int i = 1; i <=taille; i++) {
-				   if(i<9) {
+				   if(i<10) {
 			   myXpath = "//a[contains(@id,'rptPiecesJointe_ctl0"+i+"')]";
 				   }else {
 					   myXpath = "//a[contains(@id,'rptPiecesJointe_ctl"+i+"')]";

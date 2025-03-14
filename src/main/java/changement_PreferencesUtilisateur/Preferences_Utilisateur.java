@@ -19,11 +19,11 @@ public class Preferences_Utilisateur {
 	
 	public static String preferences_MDP(WebDriver driver, String jur) throws Throwable {
 		for(int i=0; i<2 ;i++) {
-		//Accès aux préférences utilisateur
-		MicroFonctions.accesLienPreferencesUtilisateur(driver, jur);
+//		Accès aux préférences utilisateur
+//		MicroFonctions.accesLienPreferencesUtilisateur(driver, jur);
 		
 		//Clic sur le lien change ment de mot de passe
-		String myXpath = "//a[@id='linkChamgementMotDePasse']";
+		String myXpath = "//a[@id='Entete1_EnteteDonnee1_lnkPassword']";
 		MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
 		MesFonctions.objet(driver, myXpath).click();
 		System.out.println("Click sur le lien \"Changer mon mot de passe\"......"+MesFonctions.extractCurrentDate()+" a "+MesFonctions.extractCurrentHeure()+"\r");

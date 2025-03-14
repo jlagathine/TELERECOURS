@@ -24,7 +24,7 @@ public class JurInscripTr {
 				System.out.println("Connexion réussie");
 				break;
 				
-			case "Conseil":
+			case "CTX":
 				driver.get("https://www.telerecours.int1.conseil-etat.fr/");
 				myXpath = "//h1[text()='Se connecter']";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
@@ -46,7 +46,7 @@ public class JurInscripTr {
 				System.out.println("Connexion réussie");
 				break;
 				
-			case "Conseil":
+			case "CTX":
 				driver.get("https://www.telerecours.recette.conseil-etat.fr/");
 				myXpath = "//h1[text()='Se connecter']";
 				MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
@@ -98,7 +98,7 @@ public class JurInscripTr {
 //			Thread.sleep(3000);
 			break;
 			
-		case "Conseil":
+		case "CTX":
 			//Connexion
 			MicroFonctions.obtenirCodeCE(driver, code, motpasse);
 			Thread.sleep(1000);

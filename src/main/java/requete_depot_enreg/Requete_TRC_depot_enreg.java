@@ -15,6 +15,8 @@ public class Requete_TRC_depot_enreg {
 	   static String dossier;
 	   static String formulaire;
 	   static String req;
+	   static String select;
+	   static String scn;
 	   
 	   public static String TRC_depot_enreg(String jur, String navigateur, String env) throws Throwable {
 	   //Connection
@@ -24,6 +26,8 @@ public class Requete_TRC_depot_enreg {
 		   //Type de recours
 		   recours = "seulRequerant";//les types de recours = "seulRequerant"; "autresRequerant"; "mandataire"
 		   formulaire = "NoForm";
+		   select = "Autre";
+		   scn = "";
 			   if(env == "int1") {
 					mail = "zaire@yopmail.com";
 				}else {
@@ -36,7 +40,7 @@ public class Requete_TRC_depot_enreg {
 				   JurReqTrc.firstSteps(driver, recours, env, mail);
 					
 				   //Dépôt de req
-				   JurReqTrc.reqDepotTrc(driver, jur, formulaire);
+				   JurReqTrc.reqDepotTrc(driver, jur, formulaire, select, scn);
 				   
 				   
 				   //Vérification des mail
@@ -49,7 +53,7 @@ public class Requete_TRC_depot_enreg {
 				   req = JurReqTrc.Verification_Req_Async_DB(env, jur, mail);
 					
 				   //Enregistrement de la req
-				   dossier = JurReqTrc.reqEnrgTrc(driver, jur, req, env);
+				   dossier = JurReqTrc.reqEnrgTrc(driver, jur, req, env, scn);
 				 	   
 				   //Vérification des mail
 				   JurReqTrc.verification_Mail_Enreg_Req_TRC(driver, mail, env);

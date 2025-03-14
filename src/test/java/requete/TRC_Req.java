@@ -1,7 +1,5 @@
 package requete;
 
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -26,15 +24,22 @@ public class TRC_Req {
 	   String env;
 	   String dossier;
 	   String formulaire;
+	   String select;
+	   String scn;
 
 
 	   @BeforeSuite
-	   public void InitialisationDoc() throws IOException {
-	   browserName = "edge";//firefox ; chrome ; edge
+	   public void InitialisationDoc() throws Throwable {
+	   browserName = "chrome";//firefox ; chrome ; edge
 	   recours = "seulRequerant";//les types de recours = "seulRequerant"; "autresRequerant"; "mandataire"
 	   jur = "TA"; //les types de dépôt sont : "TA" ou "CAA" et "CTX"
 	   formulaire = "NoForm"; //NoForm/Form /Form1 avec ou sans formulaire 
 	   env = "int1";//int1 ou rec
+	   
+	   if(jur.equals("TA")) {
+		   select = "DALO/DAHO"; //Autre ; DALO/DAHO - urgence TRC
+		   scn = "1";// Ne fonctionne que si le select = 'DALO/DAHO' selectionné . nombre de scenarii : 1 ; 2 ; 3
+	   }
 	   
 	   driver = Navigateur.choixBrowser(browserName);
 	   System.out.println(driver);
@@ -57,7 +62,7 @@ public class TRC_Req {
 	   public void depotTrc() throws Throwable {
 	   try {
 	   //Dépôt de req
-	   JurReqTrc.reqDepotTrc(driver, jur, formulaire);
+	   JurReqTrc.reqDepotTrc(driver, jur, formulaire, select, scn);
 	   
    		//Vérification des mail
 		JurReqTrc.verification_Mail_Depot_Req_TRC(driver, mail, env);
@@ -81,7 +86,7 @@ public class TRC_Req {
 		
 		
 		//Enregistrement de la req
-		JurReqTrc.reqEnrgTrc(driver, jur, dossier, env);
+		JurReqTrc.reqEnrgTrc(driver, jur, dossier, env, scn);
 	   
    		//Vérification des mail
  		JurReqTrc.verification_Mail_Enreg_Req_TRC(driver, mail, env);

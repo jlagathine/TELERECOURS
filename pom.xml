@@ -22,34 +22,34 @@
 	<dependency>
 	    <groupId>org.seleniumhq.selenium</groupId>
 	    <artifactId>selenium-java</artifactId>
-	    <version>4.27.0</version>
+	    <version>4.29.0</version>
 	</dependency>
 	 <dependency>
 	    <groupId>org.seleniumhq.selenium</groupId>
 	    <artifactId>selenium-chrome-driver</artifactId>
-	    <version>4.27.0</version>
+	    <version>4.29.0</version>
 	</dependency>
 	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-api -->
 	<dependency>
 	    <groupId>org.seleniumhq.selenium</groupId>
 	    <artifactId>selenium-api</artifactId>
-	    <version>4.27.0</version>
+	    <version>4.29.0</version>
 	</dependency> 
 	 <dependency>
 	    <groupId>org.seleniumhq.selenium</groupId>
 	    <artifactId>selenium-firefox-driver</artifactId>
-	    <version>4.27.0</version>
+	    <version>4.29.0</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
+	<dependency>
+	    <groupId>org.seleniumhq.selenium</groupId>
+	    <artifactId>selenium-support</artifactId>
+	    <version>4.29.0</version>
 	</dependency>
 	<dependency>
 	    <groupId>org.seleniumhq.selenium</groupId>
 	    <artifactId>selenium-server</artifactId>
 	    <version>3.141.59</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
-	<dependency>
-	    <groupId>org.seleniumhq.selenium</groupId>
-	    <artifactId>selenium-remote-driver</artifactId>
-	    <version>4.27.0</version>
 	</dependency>
 	<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 	<dependency>
@@ -110,12 +110,6 @@
 	    <groupId>com.github.houbb</groupId>
 	    <artifactId>wait</artifactId>
 	    <version>0.0.1</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-support -->
-	<dependency>
-	    <groupId>org.seleniumhq.selenium</groupId>
-	    <artifactId>selenium-support</artifactId>
-	    <version>4.27.0</version>
 	</dependency>
 	<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
 	<dependency>

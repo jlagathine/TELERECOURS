@@ -1,6 +1,5 @@
 package inscription;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -22,7 +21,7 @@ import browser.Navigateur;
 			public String browserName;
 		
 			@BeforeSuite
-			public void connection() throws IOException{
+			public void connection() throws Throwable{
 				browserName = "chrome";
 				   driver = Navigateur.choixBrowser(browserName);
 				   System.out.println(driver);

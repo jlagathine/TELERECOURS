@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 
 import lesFonctions.MesFonctions;
 
-public class Les_Referentiels_Pagination {
+public class Referentiels_Pagination {
 	
 	
 	public static void verification_pagination (WebDriver driver) throws Throwable {
@@ -23,8 +23,9 @@ public class Les_Referentiels_Pagination {
 		for(int i=1;i<=nbr;i++) {
 			//Accéder à un référentiel
 			String myXpath0 = "(//span[@id='ref_name'])["+i+"]";
-			Thread.sleep(300);
 			String nom = MesFonctions.objet(driver, myXpath0).getText();//elt.get(i).getText();
+			MesFonctions.goToDown(driver, myXpath);
+			Thread.sleep(300);
 			MesFonctions.objet(driver, myXpath0).click();//elt.get(i).click();
 			System.out.println("Accès au référentiel : "+nom+"...."+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 			

@@ -38,7 +38,7 @@ public class Ajout_PAM {
 	public void navigation_sk() throws Throwable {
 	//Ajout de la mesure mémoire en défense
 	try {
-		browserName = "edge";
+		browserName = "chrome";
 		jur = "TA";
 		id = "lb";
 		mdp = "lb";

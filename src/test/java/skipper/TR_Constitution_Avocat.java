@@ -33,13 +33,13 @@ public class TR_Constitution_Avocat {
 	   public void Creation_dossier() throws Throwable {
 	   browserName = "chrome";
 	   env = "rec";
-	   jur = "CTX";//CAA, CTX, TA
+	   jur = "CAA";//CAA, CTX, TA
 	   id = "lb";
 	   mdp = "lb";
 	   saisine = "Jugement"; //Premier ressort ; Jugement
 	   try {
 		   
-		   dossier = "367945";//Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
+		   dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
 		   
 			} catch (Exception e) {
 				My_SreenShot.takeScreenshot(driver);
@@ -133,12 +133,12 @@ public class TR_Constitution_Avocat {
 	   @Test(priority = 5)
 	   public void depot_lettre_constitution() throws Throwable {
 		 //Identifiants
-		   id = "marc617";
+		   id = "ancQB44";
 		   mdp = "Lhommeest2019*";
-		   browserName = "chrome";
-		   dossier = "2400737";
-		   jur = "TA";
-		   env = "rec";
+//		   browserName = "chrome";
+//		   dossier = "2500078";
+//		   jur = "CAA";
+//		   env = "rec";
 		   
 		   //Connexion
 		   driver = Navigateur.choixBrowser(browserName);

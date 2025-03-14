@@ -50,9 +50,9 @@ public class Decision_Envoi {
 		mdp = "lb";
 		saisine = "Jugement";
 		date = MesFonctions.ajouter_jour_date(0); //nombre de jour ajouter à la décision
-		heure = "1600";//horaire de mise à disposition de la décision (regarder la prochaine exécution du job DECISIONS_SAISIES depuis le AdminTR)
+		heure = "1445";//horaire de mise à disposition de la décision (regarder la prochaine exécution du job DECISIONS_SAISIES depuis le AdminTR)
 		
-		dossier = "367947";//Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
+		dossier = Requete_TR_depot_enreg.TR_depot(jur, browserName, saisine, env);
 		
 		try {
 			//SKIPPER_ouverture

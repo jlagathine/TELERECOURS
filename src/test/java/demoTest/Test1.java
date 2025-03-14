@@ -31,6 +31,9 @@ public class Test1 {
 //			}
 //		}
 //	}
+		String result = "Avocat BOY";
+		String newname = result.toLowerCase().split("avocat")[1].trim();
+		System.out.println(newname);
 		
 	}
 

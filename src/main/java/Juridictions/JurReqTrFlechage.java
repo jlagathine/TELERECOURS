@@ -61,6 +61,7 @@ public class JurReqTrFlechage {
 	static List<Integer> nbr = new ArrayList<Integer>();
 	static List<String> str = new ArrayList<>();
 	static List<String> str1 = new ArrayList<>();
+	static List<String> dossierList = new ArrayList<>();
 
 	public static String maJuridiction(WebDriver driver, String choixJur) throws Throwable {
 		
@@ -140,13 +141,14 @@ public class JurReqTrFlechage {
 	public static String reqDepotFlec (WebDriver driver, String choixJur) throws Throwable {
 		
 		switch (choixJur) {
-		case "Tribunal":
+		case "TA":
 			int loop = 3;
 		for(int i = 0; i < loop ; i++) {
 			//Préparer l'envoi d'une requête
 			myXpath = "//input[@id='btNewRequete2']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			MesFonctions.objet(driver, myXpath).click();
+			MesFonctions.objet(driver,  myXpath).click();
+			System.out.println("Click bouton \"PREPARER L'ENVOI D'UNE REQUETE\"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 
 			//Ajouter un requérant
 			MicroFonctions.ajouterRequerantFlechTA(driver, i, loop);
@@ -159,7 +161,7 @@ public class JurReqTrFlechage {
 				urg = MicroFonctions.choixUrgence(driver);
 				}
 			
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			value = "09";
 			mat = MicroFonctions.choixMatiere(driver, value);
 			
@@ -220,7 +222,15 @@ public class JurReqTrFlechage {
 			// Envoyer
 			myXpath = "//input[@id='Mstr_cpMain_btDeposerRequete2']";
 			MesFonctions.objet(driver, myXpath).click();
-			Thread.sleep(2000);
+			Thread.sleep(200);
+			
+			//Modification du fichier de la requête
+			MicroFonctions.ajout_fichier_requete_page_verification(driver);
+			
+			// Envoyer
+			myXpath = "//input[@id='Mstr_cpMain_btDeposerRequete2']";
+			MesFonctions.objet(driver,  myXpath).click();// Vérification
+			Thread.sleep(200);
 			
 			// Vérification des fichiers téléchargés
 			System.out.println("Vérification des fichiers en cours...");
@@ -235,7 +245,7 @@ public class JurReqTrFlechage {
 				}else if(i==2) {
 					fil1.add(decAtt);
 					}
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			myXpath = "//a[@id='Mstr_cpMain_fileLinkFichierCourrier_hplFichier']";
 			caractSpec = "_";
@@ -247,7 +257,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil1.add(req);
 						}
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			//pieces complémentaires
 			myXpath = "//a[contains(@id,'Mstr_cpMain_rptPiecesJointe')]";
@@ -272,7 +282,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil1.add(AJ);
 						}
-			Thread.sleep(2000);
+			Thread.sleep(200);
 				
 			//Inventaire
 			myXpath = "//a[@id='Mstr_cpMain_fileLinkFichierInventaire_hplFichier']";
@@ -285,7 +295,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil1.add(inventaire);
 						}
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			if(i==0) {
 				System.out.println(str);
@@ -294,22 +304,24 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						System.out.println(fil1);
 						}
-			Thread.sleep(1000);
+			Thread.sleep(200);
 			
 			// Vérification succès envoi
 			MicroFonctions.envoiDepotTr(driver);
+			dossierList.add(MicroFonctions.recupEnvoiNumReqTr(driver)) ;
 			nbr.clear();
 			  
 		}
 			break;
 		
-		case "Cour":
+		case "CAA":
 			loop = 3;
 		for(int i = 0; i < loop ; i++) {
 			//Préparer l'envoi d'une requête
 			myXpath = "//input[@id='btNewRequete2']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			MesFonctions.objet(driver, myXpath).click();
+			MesFonctions.objet(driver,  myXpath).click();
+			System.out.println("Click bouton \"PREPARER L'ENVOI D'UNE REQUETE\"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 
 			//Ajouter un requérant
 			MicroFonctions.ajouterRequerantFlechCAA(driver, i, loop);
@@ -461,13 +473,14 @@ public class JurReqTrFlechage {
 		}
 			break;
 			
-		case "Conseil":
+		case "CTX":
 			loop = 3;
 		for(int i = 0; i < loop ; i++) {
 			//Préparer l'envoi d'une requête
-			myXpath = "//input[@id='btNewRequete']";;
+			myXpath = "//input[@id='btNewRequete']";
 			MesFonctions.waiting2(driver, myXpath, Duration.ofSeconds(3));
-			MesFonctions.objet(driver, myXpath).click();
+			MesFonctions.objet(driver,  myXpath).click();
+			System.out.println("Click bouton \"PREPARER L'ENVOI D'UNE REQUETE\"......"+MesFonctions.extractCurrentDate()+" à "+MesFonctions.extractCurrentHeure()+"\r");
 
 			//Ajouter un requérant
 			MicroFonctions.ajouterRequerantFlechCE(driver, i, loop);
@@ -481,12 +494,12 @@ public class JurReqTrFlechage {
 				urg = MicroFonctions.choixUrgence(driver);
 			}
 			
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			value = "12";
 			mat = MicroFonctions.choixMatiere(driver, value);
 			
 			// Décision attaquée
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			value = "10";
 			auteur = MicroFonctions.choixSaisine(driver, value);
 			
@@ -536,7 +549,7 @@ public class JurReqTrFlechage {
 			// Envoyer
 			myXpath = "//input[@id='Mstr_cpMain_btDeposerRequete2']";
 			MesFonctions.objet(driver, myXpath).click();// Vérification
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			// Vérification des fichiers téléchargés
 			System.out.println("Vérification des fichiers en cours...");
@@ -551,7 +564,7 @@ public class JurReqTrFlechage {
 				}else if(i==2) {
 					fil1.add(decAtt);
 					}
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			myXpath = "//a[@id='Mstr_cpMain_fileLinkFichierRequete_hplFichier']";
 			caractSpec = "_";
@@ -563,7 +576,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil1.add(req);
 						}
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			//pieces complémentaires
 			myXpath = "//a[contains(@id,'Mstr_cpMain_rptPiecesJointe')]";
@@ -575,7 +588,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil1.addAll(MesFonctions.fichier(driver, elements, myXpath, caractSpec));
 						}
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			//AJ
 			myXpath = "//a[@id='Mstr_cpMain_fileLinkFichierAideJur_hplFichier']";
@@ -588,7 +601,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil1.add(AJ);
 						}
-			Thread.sleep(2000);
+			Thread.sleep(200);
 				
 			//Inventaire
 			myXpath = "//a[@id='Mstr_cpMain_fileLinkFichierInventaire_hplFichier']";
@@ -601,7 +614,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil1.add(inventaire);
 						}
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			if(i==0) {
 				System.out.println(str);
@@ -610,7 +623,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						System.out.println(fil1);
 						}
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			
 			// Vérification succès envoi
 			MicroFonctions.envoiDepotTr(driver);
@@ -623,14 +636,19 @@ public class JurReqTrFlechage {
 		break;
 		
 		}
+		
+		// Déconnexion
+//		MicroFonctions.deconnexionTrExt(driver);
+		
+		Thread.sleep(200);
 		return null;
 	}
 	
 	public static String reqEnreg (WebDriver driver, String choixJur, String env) throws Throwable {
 		switch (choixJur) {
-		case "Tribunal" :
+		case "TA" :
 			// Récupération du num de reqête
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			value = "3";
 			dossier = MicroFonctions.recupEnvoiNumReqTrFlch(driver, element, value);
@@ -639,7 +657,7 @@ public class JurReqTrFlechage {
 			value = "1";
 			dossier2 = MicroFonctions.recupEnvoiNumReqTrFlch(driver, element, value);
 		
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			// Déconnexion
 			MicroFonctions.deconnexionTrExt(driver);
 			
@@ -694,17 +712,17 @@ public class JurReqTrFlechage {
 				 
 			driver.findElement(By.xpath("//input[@value ='" + auteur + "']"));
 			System.out.println("trouvé : " + auteur);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			driver.findElement(By.xpath("//input[@value ='" + ref + "']"));
 			System.out.println("trouvé : " + ref);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			driver.findElement(By.xpath("//input[@value ='" + dateRecla + "']"));
 			System.out.println("trouvé : " + dateRecla);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			driver.findElement(By.xpath("//input[@value ='" + dateDec + "']"));
 			System.out.println("trouvé : " + dateDec);
 
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			
 			// Choix de la chambre
 			ChbrMatCatTA = "chambre";
@@ -718,40 +736,40 @@ public class JurReqTrFlechage {
 						value ="11";
 						MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
 					}
-			Thread.sleep(1000);
+			Thread.sleep(100);
 
 			// Choix de la matière
 			if(i==0) {
 			ChbrMatCatTA = "matiere";
 			value ="18";
 			MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			}else if(i==1) {
 					ChbrMatCatTA = "matiere";
 					value ="03";
 					MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
-					Thread.sleep(1000);
+					Thread.sleep(100);
 				}else if(i==2) {
 					ChbrMatCatTA = "matiere";
 						value ="09";
 						MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
-						Thread.sleep(1000);
+						Thread.sleep(100);
 						}
 			if(i==0) {	
 			ChbrMatCatTA = "ssmatiere";
 			value ="18010202";
 			MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
-			Thread.sleep(1000);
+			Thread.sleep(10);
 			}else if(i==1) {
 				ChbrMatCatTA = "ssmatiere";
 				value ="0302";
 				MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
-				Thread.sleep(1000);
+				Thread.sleep(100);
 				}else if(i==2) {
 					ChbrMatCatTA = "ssmatiere";
 					value ="0902";
 					MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
-					Thread.sleep(1000);
+					Thread.sleep(100);
 					}
 
 			// Choix de la catégorie
@@ -764,20 +782,20 @@ public class JurReqTrFlechage {
 					MicroFonctions.choixChbrMatCatTA(driver, ChbrMatCatTA, value);
 				}
 
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			
 			// Sauvegarde de la requête
 			MicroFonctions.sauvReq(driver);
 			
 			// Retour sur la page d'enregistrement
 			if(i==0) {
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier + "')]")).click();
 			}else if(i==1) {
-				Thread.sleep(1000);
+				Thread.sleep(100);
 				driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier1 + "')]")).click();
 				}else if(i==2) {
-					Thread.sleep(1000);
+					Thread.sleep(100);
 					driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier2 + "')]")).click();
 					} 
 			
@@ -792,7 +810,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.add(verifFile1);
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			
 			myXpath = "//a[@id='fileLinkFichierCourrier_hplFichier']";
 			caractSpec = "_";
@@ -804,7 +822,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.add(verifFile2);
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			
 			myXpath = "//a[contains(@id,'fileLinkFichierPJRequete_hplFichier')]";
 			caractSpec = "_";
@@ -815,7 +833,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.addAll(MesFonctions.fichier(driver, elements, myXpath, caractSpec));
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 		
 			myXpath = "//a[@id='fileLinkFichierAideJur_hplFichier']";
 			caractSpec = "_";
@@ -827,7 +845,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.add(verifFile3);
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			
 			myXpath = "//a[@id='fileLinkFichierInventaire_hplFichier']";
 			caractSpec = "_";
@@ -839,7 +857,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.add(verifFile4);
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 		if(i==0) {
 			verif = str1.equals(str);
 			if(!verif) {
@@ -857,7 +875,7 @@ public class JurReqTrFlechage {
 									}
 								}
 
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			//Enregistrement de la requête
 			if(i==0) {
@@ -880,10 +898,11 @@ public class JurReqTrFlechage {
 			 
 		   	System.out.println("Dépôt et enregistrement TA terminés");
 		
-		
-		case "Cour" :
+		 break;
+		 
+		case "CAA" :
 			// Récupération du num de reqête
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			value = "3";
 			dossier = MicroFonctions.recupEnvoiNumReqTrFlch(driver, element, value);
@@ -892,7 +911,7 @@ public class JurReqTrFlechage {
 			value = "1";
 			dossier2 = MicroFonctions.recupEnvoiNumReqTrFlch(driver, element, value);
 		
-			Thread.sleep(2000);
+			Thread.sleep(200);
 	
 			// Déconnexion
 			MicroFonctions.deconnexionTrExt(driver);
@@ -902,7 +921,7 @@ public class JurReqTrFlechage {
 			
 			// Authentification
 			driver.get("https://www.telerecours.recette.juradm.fr/CA75");
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
 						
 			loop = 3;
@@ -933,17 +952,17 @@ public class JurReqTrFlechage {
 			
 			driver.findElement(By.xpath("//input[@value ='" + auteur + "']"));
 			System.out.println("trouvé : " + auteur);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			driver.findElement(By.xpath("//input[@value ='" + dateDec + "']"));
 			System.out.println("trouvé : " + dateDec);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			driver.findElement(By.xpath("//input[@value ='" + juridiction + "']"));
 			System.out.println("trouvé : " + juridiction);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			driver.findElement(By.xpath("//input[@value ='" + numero + "']"));
 			System.out.println("trouvé : " + numero);
 
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			
 			// Choix de la chambre
 			ChbrMatCatCAA = "chambre";
@@ -957,18 +976,18 @@ public class JurReqTrFlechage {
 						value ="18";
 						MicroFonctions.choixChbrMatCatCAA(driver, ChbrMatCatCAA, value);
 					}
-			Thread.sleep(1000);
+			Thread.sleep(100);
 
 			// Choix de la matière
 			ChbrMatCatCAA = "matiere";
 			value ="09";
 			MicroFonctions.choixChbrMatCatCAA(driver, ChbrMatCatCAA, value);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			
 			ChbrMatCatCAA = "ssmatiere";
 			value ="0906";
 			MicroFonctions.choixChbrMatCatCAA(driver, ChbrMatCatCAA, value);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 
 			// Choix de la catégorie
 			ChbrMatCatCAA = "categorie";
@@ -980,20 +999,20 @@ public class JurReqTrFlechage {
 					MicroFonctions.choixChbrMatCatCAA(driver, ChbrMatCatCAA, value);
 				}
 			
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			
 			// Sauvegarde de la requête
 			MicroFonctions.sauvReq(driver);
 			
 			// Retour sur la page d'enregistrement
 			if(i==0) {
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier + "')]")).click();
 			}else if(i==1) {
-				Thread.sleep(1000);
+				Thread.sleep(100);
 				driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier1 + "')]")).click();
 				}else if(i==2) {
-					Thread.sleep(1000);
+					Thread.sleep(100);
 					driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier2 + "')]")).click();
 					} 
 			
@@ -1008,7 +1027,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.add(verifFile1);
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			
 			myXpath = "//a[@id='fileLinkFichierCourrier_hplFichier']";
 			caractSpec = "_";
@@ -1020,7 +1039,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.add(verifFile2);
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			
 			myXpath = "//a[contains(@id,'fileLinkFichierPJRequete_hplFichier')]";
 			caractSpec = "_";
@@ -1031,7 +1050,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.addAll(MesFonctions.fichier(driver, elements, myXpath, caractSpec));
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 		
 			myXpath = "//a[@id='fileLinkFichierAideJur_hplFichier']";
 			caractSpec = "_";
@@ -1043,7 +1062,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.add(verifFile3);
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			
 			myXpath = "//a[@id='fileLinkFichierInventaire_hplFichier']";
 			caractSpec = "_";
@@ -1055,7 +1074,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.add(verifFile4);
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 		if(i==0) {
 			verif = str1.equals(str);
 			if(!verif) {
@@ -1073,7 +1092,7 @@ public class JurReqTrFlechage {
 									}
 								}
 
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			//Enregistrement de la requête
 			if(i==0) {
@@ -1098,9 +1117,9 @@ public class JurReqTrFlechage {
 		   	
 			break;
 			
-		case "Conseil" :
+		case "CTX" :
 			// Récupération du num de reqête
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			value = "3";
 			dossier = MicroFonctions.recupEnvoiNumReqTrFlch(driver, element, value);
@@ -1109,7 +1128,7 @@ public class JurReqTrFlechage {
 			value = "1";
 			dossier2 = MicroFonctions.recupEnvoiNumReqTrFlch(driver, element, value);
 		
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			// Déconnexion
 			MicroFonctions.deconnexionTrExt(driver);
@@ -1119,7 +1138,7 @@ public class JurReqTrFlechage {
 			
 			// Authentification
 			driver.get("https://www.telerecours.recette.conseil-etat.fr/conseil");
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
 						
 			loop = 3;
@@ -1150,17 +1169,17 @@ public class JurReqTrFlechage {
 			
 			driver.findElement(By.xpath("//input[@value ='" + auteur + "']"));
 			System.out.println("trouvé : " + auteur);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			driver.findElement(By.xpath("//input[@value ='" + dateDec + "']"));
 			System.out.println("trouvé : " + dateDec);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			driver.findElement(By.xpath("//input[@value =\""+juridiction+"\"]"));
 			System.out.println("trouvé : " + juridiction);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			driver.findElement(By.xpath("//input[@value ='" + numero + "']"));
 			System.out.println("trouvé : " + numero);
 
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			
 			// Choix de la chambre
 			ChbrMatCatCTX = "chambre";
@@ -1174,18 +1193,18 @@ public class JurReqTrFlechage {
 						value ="3";
 						MicroFonctions.choixChbrMatCatCTX(driver, ChbrMatCatCTX, value);
 					}
-			Thread.sleep(1000);
+			Thread.sleep(100);
 
 			// Choix de la matière
 			ChbrMatCatCTX = "matiere";
 			value ="12";
 			MicroFonctions.choixChbrMatCatCTX(driver, ChbrMatCatCTX, value);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			
 			ChbrMatCatCTX = "ssmatiere";
 			value ="1203";
 			MicroFonctions.choixChbrMatCatCTX(driver, ChbrMatCatCTX, value);
-			Thread.sleep(1000);
+			Thread.sleep(100);
 
 			// Choix de la catégorie
 			ChbrMatCatCTX = "categorie";
@@ -1198,20 +1217,20 @@ public class JurReqTrFlechage {
 					MicroFonctions.choixChbrMatCatCTX(driver, ChbrMatCatCTX, value);
 				}
 		
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			
 			// Sauvegarde de la requête
 			MicroFonctions.sauvReq(driver);
 			
 			// Retour sur la page d'enregistrement
 			if(i==0) {
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier + "')]")).click();
 			}else if(i==1) {
-				Thread.sleep(1000);
+				Thread.sleep(100);
 				driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier1 + "')]")).click();
 				}else if(i==2) {
-					Thread.sleep(1000);
+					Thread.sleep(100);
 					driver.findElement(By.xpath("//a[@class='numDossier' and (text()='" + dossier2 + "')]")).click();
 					} 
 			
@@ -1226,7 +1245,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.add(verifFile1);
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			
 			myXpath = "//a[@id='fileLinkFichierRequete_hplFichier']";
 			caractSpec = "_";
@@ -1238,7 +1257,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.add(verifFile2);
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			
 			myXpath = "//a[contains(@id,'fileLinkFichierPJRequete_hplFichier')]";
 			caractSpec = "_";
@@ -1249,7 +1268,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.addAll(MesFonctions.fichier(driver, elements, myXpath, caractSpec));
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 		
 			myXpath = "//a[@id='fileLinkFichierAideJur_hplFichier']";
 			caractSpec = "_";
@@ -1261,7 +1280,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.add(verifFile3);
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 			
 			myXpath = "//a[@id='fileLinkFichierInventaire_hplFichier']";
 			caractSpec = "_";
@@ -1273,7 +1292,7 @@ public class JurReqTrFlechage {
 					}else if(i==2) {
 						fil3.add(verifFile4);
 						}
-				Thread.sleep(2000);
+				Thread.sleep(200);
 		if(i==0) {
 			verif = str1.equals(str);
 			if(!verif) {
@@ -1291,7 +1310,7 @@ public class JurReqTrFlechage {
 									}
 								}
 
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			//Enregistrement de la requête
 			if(i==0) {
@@ -1323,7 +1342,7 @@ public class JurReqTrFlechage {
 	
 	public static String reqJurVer (WebDriver driver, String choixJur) throws Throwable {
 		switch (choixJur) {
-		case "Cour":
+		case "CAA":
 
 			// Déconnexion
 			MicroFonctions.deconnexionTrInt(driver);
@@ -1344,10 +1363,10 @@ public class JurReqTrFlechage {
 			
 			// Authentification
 			driver.get("https://www.telerecours.recette.juradm.fr/CA75");
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
 			
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			//Vérifier l'enregistrement de la requête
 			if(i==0) {
@@ -1363,13 +1382,13 @@ public class JurReqTrFlechage {
 			
 			if(i<2) {
 			driver.findElement(By.xpath("//a[@id='lnkdeconnecter']")).click();
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			MicroFonctions.changeWindow(driver);
 					}
 			}
 			break;
 			
-		case "Conseil":
+		case "CTX":
 
 			// Déconnexion
 			MicroFonctions.deconnexionTrInt(driver);
@@ -1393,7 +1412,7 @@ public class JurReqTrFlechage {
 			Thread.sleep(2000);
 			MicroFonctions.AuthentificationTaCaaCeInt(driver, identifiant, mdp);
 			
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			
 			//Vérifier l'enregistrement de la requête
 			if(i==0) {
@@ -1408,7 +1427,7 @@ public class JurReqTrFlechage {
 			
 			if(i<2) {
 			driver.findElement(By.xpath("//a[@id='lnkdeconnecter']")).click();
-			Thread.sleep(2000);
+			Thread.sleep(200);
 			MicroFonctions.changeWindow(driver);
 					}
 			}
